@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Scene from "@/components/canvas/Scene";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-zinc-950">
+      <Scene />
+      <main className="relative z-10 flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white/80 backdrop-blur-sm dark:bg-black/80 sm:items-start shadow-xl border border-zinc-200 dark:border-zinc-800">
         <Image
           className="dark:invert"
           src="/next.svg"
