@@ -10,21 +10,31 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const headingVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.5,
       },
     },
   };
 
   const wordVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 60, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 15,
+        damping: 12,
         duration: 0.8,
       },
     },
@@ -36,7 +46,6 @@ export default function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 1.2,
         duration: 0.8,
         ease: "easeOut",
       },
@@ -51,7 +60,10 @@ export default function Hero() {
         animate="visible"
         className="flex flex-col items-center"
       >
-        <h1 className="punchy-heading flex flex-wrap justify-center gap-x-4 text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem]">
+        <motion.h1 
+          variants={headingVariants}
+          className="punchy-heading flex flex-wrap justify-center gap-x-4 text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem]"
+        >
           {words.map((word, i) => (
             <motion.span
               key={i}
@@ -61,12 +73,10 @@ export default function Hero() {
               {word}
             </motion.span>
           ))}
-        </h1>
+        </motion.h1>
         
         <motion.div
           variants={subVariants}
-          initial="hidden"
-          animate="visible"
           className="mt-8 flex flex-col items-center gap-6"
         >
           <p className="max-w-2xl text-lg font-medium tracking-[0.2em] text-black/60 uppercase md:text-xl">
