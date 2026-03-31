@@ -1,12 +1,29 @@
 "use client";
 
 import { useFrame, useThree } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
+import { useDeviceOrientation } from "@/hooks/useDeviceOrientation";
 
 const Particles = () => {
   const points = useRef<THREE.Points>(null!);
   const { mouse, viewport } = useThree();
+  const { beta, gamma, requestPermission } = useDeviceOrientation();
+
+  // Handle iOS permission request on first user interaction
+  useEffect(() => {
+    const handleInteraction = () => {
+      requestPermission();
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+    };
+    window.addEventListener("click", handleInteraction);
+    window.addEventListener("touchstart", handleInteraction);
+    return () => {
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+    };
+  }, [requestPermission]);
 
   const count = 8000;
 
@@ -40,6 +57,7 @@ const Particles = () => {
     const time = state.clock.getElapsedTime();
     const pos = points.current.geometry.attributes.position.array as Float32Array;
 
+    // Mouse interaction (repulsion)
     // Convert mouse coordinates to 3D space relative to camera
     const mx = (mouse.x * viewport.width) / 2;
     const my = (mouse.y * viewport.height) / 2;
@@ -64,6 +82,23 @@ const Particles = () => {
     }
 
     points.current.geometry.attributes.position.needsUpdate = true;
+
+    // Parallax effect: shift group rotation based on mouse and gyroscope
+    // Combine mouse (-1 to 1) and device orientation (-1 to 1)
+    const combinedX = mouse.x * 0.5 + (gamma || 0) * 0.5;
+    const combinedY = mouse.y * 0.5 - (beta || 0) * 0.5;
+
+    // Smoothly interpolate rotation for a subtle 3D feel
+    points.current.rotation.x = THREE.MathUtils.lerp(
+      points.current.rotation.x,
+      -combinedY * 0.1,
+      0.1
+    );
+    points.current.rotation.y = THREE.MathUtils.lerp(
+      points.current.rotation.y,
+      combinedX * 0.1,
+      0.1
+    );
   });
 
   return (
