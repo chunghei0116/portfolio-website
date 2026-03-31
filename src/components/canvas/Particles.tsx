@@ -5,6 +5,27 @@ import { useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useDeviceOrientation } from "@/hooks/useDeviceOrientation";
 
+const createInitialData = (count: number) => {
+  const positions = new Float32Array(count * 3);
+  const initialPositions = new Float32Array(count * 3);
+
+  for (let i = 0; i < count; i++) {
+    const x = (Math.random() - 0.5) * 20;
+    const y = (Math.random() - 0.5) * 20;
+    const z = (Math.random() - 0.5) * 10;
+
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
+
+    initialPositions[i * 3] = x;
+    initialPositions[i * 3 + 1] = y;
+    initialPositions[i * 3 + 2] = z;
+  }
+
+  return { positions, initialPositions };
+};
+
 const Particles = () => {
   const points = useRef<THREE.Points>(null!);
   const { mouse, viewport } = useThree();
@@ -27,31 +48,7 @@ const Particles = () => {
 
   const count = 8000;
 
-  const [positions, initialPositions, velocities] = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    const initialPositions = new Float32Array(count * 3);
-    const velocities = new Float32Array(count * 3);
-
-    for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 20;
-      const y = (Math.random() - 0.5) * 20;
-      const z = (Math.random() - 0.5) * 10;
-
-      positions[i * 3] = x;
-      positions[i * 3 + 1] = y;
-      positions[i * 3 + 2] = z;
-
-      initialPositions[i * 3] = x;
-      initialPositions[i * 3 + 1] = y;
-      initialPositions[i * 3 + 2] = z;
-
-      velocities[i * 3] = (Math.random() - 0.5) * 0.01;
-      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.01;
-      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.01;
-    }
-
-    return [positions, initialPositions, velocities];
-  }, [count]);
+  const { positions, initialPositions } = useMemo(() => createInitialData(count), [count]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
