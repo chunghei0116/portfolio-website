@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Portfolio (March 2026)
 
-## Getting Started
+A high-performance, immersive portfolio website built with a "Clean & Punchy" aesthetic. Featuring a reactive 3D particle background, 2026-style Bento Grid layouts, and seamless route transitions.
 
-First, run the development server:
+## 🚀 Core Tech Stack
 
+- **Framework:** [Next.js 16.2.1](https://nextjs.org/) (App Router)
+- **Runtime:** React 19/20 (for optimized server components)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (Native CSS engine)
+- **3D Graphics:** [Three.js](https://threejs.org/) via `react-three-fiber`
+- **Animation:** [Framer Motion 12+](https://www.framer.com/motion/)
+- **Type Safety:** TypeScript 5.5+
+
+## ✨ Key Features
+
+- **Interactive 3D Background:** A vertex shader-driven particle system (8,000+ points) that reacts to mouse proximity on desktop and gyroscope tilt on mobile.
+- **"Clean & Punchy" UI:** Bold typography (Inter Tight), high-contrast light-mode primary aesthetic, and tactile "squircle" rounding (`2.5rem`).
+- **Active Bento Grid:** 2026-style "Active Grids" with glassmorphism and backdrop-blur effects that let 3D particles show through the UI.
+- **Skills Cloud:** An interactive, floating tech-tag cloud that responds to cursor movement on the About page.
+- **Route Transitions:** "Punchy" staggered animations between Home and About pages using `AnimatePresence`.
+- **Mobile Optimized:** Integrated iOS gyroscope permission handling and responsive touch interactions.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Node.js 18.17 or later
+- npm (standard)
+
+### Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd personal
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the development server.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Project Structure
 
-## Learn More
+- `src/app`: Next.js App Router (pages, layout, globals).
+- `src/components/canvas`: 3D-specific components (Scene, Particles).
+- `src/components/ui`: Shared UI components (Hero, BentoGrid, Navbar).
+- `src/hooks`: Custom React hooks (Device Orientation, Cursor Tracking).
+- `docs/plans`: Architectural design and implementation plans.
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Design Principles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **YAGNI:** Keep the code lean and focused.
+2. **Performance First:** 60fps 3D interactions even on mid-range mobile devices.
+3. **Accessibility:** WCAG 2.1 AA compliant contrast and semantic structure.
+4. **Visual Hierarchy:** Using size and bold weights to signal importance ("Loudness Control").
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Built with ⚡ by Gemini CLI (March 2026)
