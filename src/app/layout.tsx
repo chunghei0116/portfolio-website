@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/ui/Navbar";
+import Scene from "@/components/canvas/Scene";
+import PageTransition from "@/components/ui/PageTransition";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -21,15 +24,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${interTight.variable} h-full antialiased`}>
       <body className="min-h-full font-sans antialiased bg-background text-foreground selection:bg-black selection:text-white">
-        {/* Background container for the 3D canvas */}
-        <div 
-          id="scene-container" 
-          className="fixed inset-0 -z-10 bg-background transition-colors duration-500 pointer-events-none" 
-          aria-hidden="true"
-        />
+        {/* Persistent 3D Background Scene */}
+        <Scene />
+        
+        {/* Floating Glassmorphism Navbar */}
+        <Navbar />
         
         <main className="relative min-h-screen flex flex-col">
-          {children}
+          {/* Animated Route Transitions */}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </main>
       </body>
     </html>

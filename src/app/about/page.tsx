@@ -1,6 +1,5 @@
 "use client";
 
-import Scene from "@/components/canvas/Scene";
 import BentoCard from "@/components/ui/BentoCard";
 import SkillsCloud from "@/components/ui/SkillsCloud";
 import { motion } from "framer-motion";
@@ -22,8 +21,6 @@ export default function AboutPage() {
 
   return (
     <div className="relative w-full">
-      <Scene />
-      
       <main className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 md:py-32">
         {/* Header Section */}
         <motion.div
