@@ -50,8 +50,8 @@ export default function AboutPage() {
                 Bridging the gap between design and high-performance engineering.
               </h2>
               <p className="mt-8 text-xl leading-relaxed text-black/60 md:text-2xl">
-                I'm a creative engineer based at the intersection of aesthetic motion and robust code. 
-                My focus is on creating digital products that don't just work—they feel alive.
+                I&apos;m a creative engineer based at the intersection of aesthetic motion and robust code. 
+                My focus is on creating digital products that don&apos;t just work—they feel alive.
               </p>
             </div>
           </BentoCard>

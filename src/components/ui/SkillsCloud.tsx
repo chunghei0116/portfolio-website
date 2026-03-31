@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useEffect } from "react";
 import BentoCard from "./BentoCard";
 
 const skills = [
