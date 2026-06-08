@@ -14,30 +14,29 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
-      <div className="flex items-center gap-1 p-1.5 rounded-[2.5rem] border border-zinc-950/10 bg-zinc-950/5 backdrop-blur-2xl">
+      <div className="flex items-center gap-2 p-2 bg-white brutalist-border brutalist-shadow-sm">
         {navItems.map((item) => {
           const isActive = pathname === item.path;
           return (
             <Link
               key={item.path}
               href={item.path}
-              className={`relative px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${
-                isActive ? "text-black" : "text-black/40 hover:text-black/60"
+              className={`relative px-6 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-200 ${
+                isActive ? "text-black" : "text-black/50 hover:text-black"
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="nav-active"
-                  className="absolute inset-0 bg-white/40 rounded-[2rem] -z-10 shadow-sm backdrop-blur-md"
-                  transition={{ 
-                    type: "spring", 
-                    stiffness: 400, 
+                  className="absolute inset-0 bg-cyber-yellow brutalist-border border-2 -z-10"
+                  transition={{
+                    type: "spring",
+                    stiffness: 380,
                     damping: 30,
-                    mass: 0.8
                   }}
                 />
               )}
-              {item.name}
+              <span className="relative z-10">{item.name}</span>
             </Link>
           );
         })}
