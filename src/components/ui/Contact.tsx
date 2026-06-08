@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section className="relative flex w-full flex-col items-center justify-center px-6 py-24">
+    <section id="contact" className="relative flex w-full flex-col items-center justify-center px-6 py-24 scroll-mt-24">
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ export default function Contact() {
         </p>
 
         <a
-          href="mailto:hello@example.com"
+          href="mailto:chungheibrad@gmail.com"
           className="bg-black text-white hover:bg-white hover:text-black font-mono font-bold text-lg md:text-xl px-12 py-6 brutalist-border border-4 brutalist-press uppercase"
         >
           SEND HELLO

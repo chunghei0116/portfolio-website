@@ -28,6 +28,9 @@ export default function Particles() {
     if (gridRef.current) {
       gridRef.current.rotation.y = Math.sin(time * 0.05) * 0.1;
     }
+
+    // Request next frame (demand frameloop)
+    state.invalidate();
   });
 
   return (

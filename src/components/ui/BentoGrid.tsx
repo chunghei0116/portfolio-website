@@ -10,20 +10,22 @@ const projects = [
     category: "3D EXPERIENCES",
     description: "A high-performance 3D visualization platform using Three.js and Next.js 16.",
     tags: "NEXT.JS // R3F // GLSL",
-    className: "col-span-1 md:col-span-2 row-span-1 min-h-[300px]",
+    liveUrl: "#",
+    repoUrl: "https://github.com/chunghei0116",
   },
   {
     title: "Project Beta",
     category: "CREATIVE CODING",
     description: "Generative art collection using React-Three-Fiber and custom shaders.",
     tags: "WEBGL // SHADERS",
-    className: "col-span-1 min-h-[300px]",
+    liveUrl: "#",
+    repoUrl: "https://github.com/chunghei0116",
   },
 ];
 
 export default function BentoGrid() {
   return (
-    <section className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12">
+    <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {/* Skill terminal (col-span-1) */}
         <div className="col-span-1">
@@ -48,11 +50,26 @@ export default function BentoGrid() {
           <p className="mt-4 text-sm leading-relaxed text-black/70">
             {projects[1].description}
           </p>
-          <div className="mt-auto border-t-2 border-black pt-4 flex justify-between items-center">
+          <div className="mt-auto border-t-2 border-black pt-4 flex flex-wrap justify-between items-center gap-2">
             <span className="font-mono text-xs font-bold text-black/60">{projects[1].tags}</span>
-            <button className="bg-black text-white hover:bg-cyber-yellow hover:text-black font-mono text-xs font-bold px-3 py-1.5 brutalist-border border-2 brutalist-press">
-              LAUNCH
-            </button>
+            <div className="flex gap-2">
+              <a
+                href={projects[1].liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-black text-white hover:bg-cyber-yellow hover:text-black font-mono text-xs font-bold px-3 py-1.5 brutalist-border border-2 brutalist-press"
+              >
+                DEMO
+              </a>
+              <a
+                href={projects[1].repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black hover:bg-electric-cyan hover:text-black font-mono text-xs font-bold px-3 py-1.5 brutalist-border border-2 brutalist-press"
+              >
+                GITHUB
+              </a>
+            </div>
           </div>
         </BentoCard>
 
@@ -69,11 +86,26 @@ export default function BentoGrid() {
               {projects[0].description}
             </p>
           </div>
-          <div className="mt-8 border-t-2 border-black pt-4 flex justify-between items-center">
+          <div className="mt-8 border-t-2 border-black pt-4 flex flex-wrap justify-between items-center gap-2">
             <span className="font-mono text-xs font-bold text-black/60">{projects[0].tags}</span>
-            <button className="bg-black text-white hover:bg-cyber-yellow hover:text-black font-mono text-xs font-bold px-4 py-2 brutalist-border border-2 brutalist-press">
-              LAUNCH PROJECT
-            </button>
+            <div className="flex gap-2">
+              <a
+                href={projects[0].liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-black text-white hover:bg-cyber-yellow hover:text-black font-mono text-xs font-bold px-4 py-2 brutalist-border border-2 brutalist-press"
+              >
+                VIEW LIVE DEMO
+              </a>
+              <a
+                href={projects[0].repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black hover:bg-electric-cyan hover:text-black font-mono text-xs font-bold px-4 py-2 brutalist-border border-2 brutalist-press"
+              >
+                GITHUB REPO
+              </a>
+            </div>
           </div>
         </BentoCard>
 
