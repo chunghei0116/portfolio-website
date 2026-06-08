@@ -12,8 +12,8 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "Punchy Portfolio",
-  description: "Minimalist, bold, and punchy aesthetics with 3D elements",
+  title: "PORTFOLIO // 3D ENGINEER",
+  description: "Neo-Brutalist portfolio — Creative Developer & 3D Engineer. Built with Next.js, Three.js, and raw aesthetics.",
 };
 
 export default function RootLayout({
@@ -23,11 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${interTight.variable} h-full antialiased`}>
-      <body className="min-h-full font-sans antialiased bg-background text-foreground selection:bg-black selection:text-white">
+      <body className="min-h-full font-sans antialiased bg-background text-foreground selection:bg-cyber-yellow selection:text-black">
         {/* Persistent 3D Background Scene */}
         <Scene />
         
-        {/* Floating Glassmorphism Navbar */}
+        {/* Floating Brutalist Navbar */}
         <Navbar />
         
         <main className="relative min-h-screen flex flex-col">

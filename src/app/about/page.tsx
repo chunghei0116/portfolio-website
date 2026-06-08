@@ -1,127 +1,66 @@
 "use client";
 
 import BentoCard from "@/components/ui/BentoCard";
-import SkillsCloud from "@/components/ui/SkillsCloud";
-import { motion } from "framer-motion";
+import SkillTerminal from "@/components/ui/SkillTerminal";
 
 export default function AboutPage() {
-  const headingVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-        duration: 0.8,
-      } as const,
-    },
-  };
-
   return (
-    <div className="relative w-full">
-      <main className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 md:py-32">
-        {/* Header Section */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={headingVariants}
-          className="mb-16 md:mb-24"
-        >
-          <span className="text-sm font-bold tracking-[0.3em] text-black/40 uppercase">
-            WHO AM I
+    <div className="relative w-full min-h-screen px-6 py-32">
+      <main className="max-w-7xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-3">
+        {/* Page Header */}
+        <div className="col-span-1 md:col-span-3 bg-white brutalist-border brutalist-shadow p-8 md:p-12 mb-4">
+          <span className="text-xs font-mono font-bold tracking-widest bg-cyber-yellow px-2 py-1 brutalist-border border-2">
+            BIOGRAPHY // OVERVIEW
           </span>
-          <h1 className="punchy-heading mt-6 text-7xl md:text-8xl lg:text-9xl xl:text-[10rem]">
+          <h1 className="mt-6 font-sans font-black text-6xl md:text-8xl uppercase leading-none">
             ABOUT ME
           </h1>
-          <div className="mt-8 h-[2px] w-24 bg-black/10" />
-        </motion.div>
-
-        {/* Bento Layout */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
-          {/* Bio Section */}
-          <BentoCard className="col-span-1 md:col-span-2 lg:col-span-3 min-h-[400px] flex flex-col justify-center" delay={0.1}>
-            <div className="max-w-3xl">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 uppercase">
-                Biography
-              </span>
-              <h2 className="mt-6 text-4xl font-medium tracking-tight text-black/90 md:text-5xl lg:text-6xl">
-                Bridging the gap between design and high-performance engineering.
-              </h2>
-              <p className="mt-8 text-xl leading-relaxed text-black/60 md:text-2xl">
-                I&apos;m a creative engineer based at the intersection of aesthetic motion and robust code. 
-                My focus is on creating digital products that don&apos;t just work—they feel alive.
-              </p>
-            </div>
-          </BentoCard>
-
-          {/* Experience Highlights */}
-          <BentoCard className="col-span-1 min-h-[400px]" delay={0.2}>
-            <div className="flex h-full flex-col">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 uppercase">
-                Highlights
-              </span>
-              <div className="mt-12 space-y-12">
-                <div>
-                  <h3 className="text-4xl font-bold text-black/80 tracking-tight">6+</h3>
-                  <p className="text-sm text-black/40 mt-1 uppercase tracking-wider font-bold">Years Experience</p>
-                </div>
-                <div>
-                  <h3 className="text-4xl font-bold text-black/80 tracking-tight">40+</h3>
-                  <p className="text-sm text-black/40 mt-1 uppercase tracking-wider font-bold">Projects Delivered</p>
-                </div>
-                <div>
-                  <h3 className="text-4xl font-bold text-black/80 tracking-tight">3</h3>
-                  <p className="text-sm text-black/40 mt-1 uppercase tracking-wider font-bold">Design Awards</p>
-                </div>
-              </div>
-            </div>
-          </BentoCard>
-
-          {/* Skills Cloud */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-2 h-full">
-            <SkillsCloud />
-          </div>
-
-          {/* Timeline / Detailed Experience */}
-          <BentoCard className="col-span-1 md:col-span-2 lg:col-span-2 min-h-[400px]" delay={0.4}>
-             <div className="flex h-full flex-col">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 uppercase">
-                Experience
-              </span>
-              <div className="mt-12 space-y-12">
-                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
-                  <div className="text-sm font-bold text-black/30 min-w-[80px]">2022 — PRES</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black/80 uppercase">Lead Engineer @ Aesthetic Lab</h3>
-                    <p className="mt-2 text-black/60 leading-relaxed max-w-md">
-                      Spearheading interactive frontend systems and 3D web experiences using React-Three-Fiber.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
-                  <div className="text-sm font-bold text-black/30 min-w-[80px]">2020 — 2022</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black/80 uppercase">Interactive Designer @ Studio X</h3>
-                    <p className="mt-2 text-black/60 leading-relaxed max-w-md">
-                      Crafting minimalist digital identities and motion-driven user interfaces.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
-                   <div className="text-sm font-bold text-black/30 min-w-[80px]">2018 — 2020</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black/80 uppercase">Full Stack dev @ Tech Corp</h3>
-                    <p className="mt-2 text-black/60 leading-relaxed max-w-md">
-                      Building scalable web applications and component libraries with Next.js.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </BentoCard>
         </div>
+
+        {/* Bio Section */}
+        <BentoCard className="col-span-1 md:col-span-2 min-h-[300px] flex flex-col justify-center">
+          <h2 className="text-3xl font-black uppercase text-black">
+            CRAFTING DIGITAL OBJECTS
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-black/70">
+            I am a creative developer operating at the boundary of design systems and functional code. I build interactive websites designed to excite visitors and feel alive under the mouse.
+          </p>
+        </BentoCard>
+
+        {/* Skills Terminal */}
+        <div className="col-span-1">
+          <SkillTerminal />
+        </div>
+
+        {/* Timeline / Experience */}
+        <BentoCard className="col-span-1 md:col-span-3 min-h-[300px]">
+          <h3 className="text-2xl font-black uppercase mb-6 border-b-2 border-black pb-2">
+            TIMELINE // WORK RECORD
+          </h3>
+          <div className="space-y-6 font-mono text-xs text-black/80">
+            <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
+              <span className="font-bold text-cyber-yellow bg-black px-2 py-0.5 self-start">2022 — PRES</span>
+              <div>
+                <h4 className="font-black text-sm uppercase">Lead Engineer @ Aesthetic Lab</h4>
+                <p className="mt-1">Building high-performance interactive modules and custom canvases.</p>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
+              <span className="font-bold text-black bg-cyber-yellow px-2 py-0.5 self-start">2020 — 2022</span>
+              <div>
+                <h4 className="font-black text-sm uppercase">Interactive Designer @ Studio X</h4>
+                <p className="mt-1">Crafting flat vector components, typography assets, and UI motion prototypes.</p>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <span className="font-bold text-cyber-yellow bg-black px-2 py-0.5 self-start">2018 — 2020</span>
+              <div>
+                <h4 className="font-black text-sm uppercase">Full Stack Dev @ Tech Corp</h4>
+                <p className="mt-1">Building scalable web applications and component libraries with Next.js.</p>
+              </div>
+            </div>
+          </div>
+        </BentoCard>
       </main>
     </div>
   );
