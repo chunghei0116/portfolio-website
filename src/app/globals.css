@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #F2F0EA;
   --foreground: #000000;
-  --selection-bg: #000000;
-  --selection-text: #ffffff;
+  --selection-bg: #FFE600;
+  --selection-text: #000000;
 }
 
 @theme {
@@ -12,6 +12,9 @@
   
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-cyber-yellow: #FFE600;
+  --color-electric-cyan: #00F0FF;
+  --color-neo-red: #FF3E3E;
   
   --font-weight-punchy: 800;
   --font-weight-bold: 700;
@@ -21,18 +24,30 @@
   *, ::after, ::before {
     @apply border-black;
   }
-  
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
-  }
 
-  ::selection {
-    @apply bg-[var(--selection-bg)] text-[var(--selection-text)];
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-cyber-yellow selection:text-black;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
 }
 
 /* Standard utility for punchy text */
 .punchy-heading {
-  @apply font-sans font-[800] tracking-tight leading-[0.9] uppercase;
+  @apply font-sans font-punchy tracking-tight leading-[0.9] uppercase;
+}
+
+.brutalist-border {
+  @apply border-4 border-black;
+}
+
+.brutalist-shadow {
+  @apply shadow-[8px_8px_0px_0px_#000000];
+}
+
+.brutalist-shadow-sm {
+  @apply shadow-[4px_4px_0px_0px_#000000];
+}
+
+.brutalist-press {
+  @apply transition-all duration-200 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[6px] active:translate-y-[6px] active:shadow-[2px_2px_0px_0px_#000000];
 }
