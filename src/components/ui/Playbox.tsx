@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import BentoCard from "./BentoCard";
@@ -62,7 +62,14 @@ function ParticleSphere() {
     return new THREE.CanvasTexture(canvas);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      particleTexture?.dispose();
+    };
+  }, [particleTexture]);
+
   useFrame((state) => {
+    if (!pointsRef.current) return;
     const time = state.clock.getElapsedTime();
     if (!hovered) {
       pointsRef.current.rotation.x = time * 0.15;
