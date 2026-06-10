@@ -36,29 +36,23 @@ const lineVariants = {
   },
 } as const;
 
-const EST_TEXT = "EST. 2026 // PORTFOLIO";
-const STATUS_TEXT = "STATUS: OPEN FOR WORK";
-const TEXT_CREATIVE = "CREATIVE";
-const TEXT_DEVELOPER = "DEVELOPER";
-const TEXT_3D_ENGINEER = "[3D ENGINEER]";
-
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-transparent pt-24 pb-12">
-      {/* Header Badge Block */}
-      <div className="absolute top-0 left-0 w-full flex justify-between items-center px-6 py-4 border-b-4 border-black bg-white z-10 font-sans font-bold text-xs md:text-sm tracking-widest uppercase">
-        <div>{EST_TEXT}</div>
+    <section className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-transparent pt-24 pb-16">
+      {/* Header Badge Block — subdued, atmospheric */}
+      <div className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-3 border-b border-black/10 bg-white/60 backdrop-blur-sm z-10">
+        <span className="text-decorative opacity-60">EST. 2026 // PORTFOLIO</span>
         <div className="flex items-center gap-2">
-          {STATUS_TEXT}
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          <span className="text-decorative opacity-60">STATUS: OPEN FOR WORK</span>
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-40"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
           </span>
         </div>
       </div>
 
       {/* Main Hero Display Text */}
-      <div className="flex-grow flex flex-col justify-center px-6 md:px-12">
+      <div className="flex-grow flex flex-col justify-center px-8 md:px-16">
         <div className="max-w-7xl mx-auto w-full">
           <motion.h1
             variants={containerVariants}
@@ -67,31 +61,34 @@ export default function Hero() {
             className="punchy-heading text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] text-left leading-[0.85] select-none"
           >
             <motion.span variants={lineVariants} className="block">
-              {TEXT_CREATIVE}
+              CREATIVE
             </motion.span>
             <motion.span variants={lineVariants} className="block">
-              {TEXT_DEVELOPER}
+              DEVELOPER
             </motion.span>
-            <motion.span variants={lineVariants} className="block text-foreground">
-              &amp;{" "}
-              <span className="text-cyber-yellow [text-shadow:_-2px_-2px_0_#000,_2px_-2px_0_#000,_-2px_2px_0_#000,_2px_2px_0_#000] font-sans font-punchy tracking-tight">
-                {TEXT_3D_ENGINEER}
+            <motion.span variants={lineVariants} className="block text-foreground flex flex-wrap items-center gap-x-4">
+              <span>&amp;</span>
+              <span className="relative inline-block px-4 py-1.5 align-middle">
+                <span className="absolute inset-0 bg-cyber-yellow/15 -skew-x-6 rounded-xl -z-10" />
+                <span className="text-neutral-900 font-sans font-punchy tracking-tight">
+                  3D ENGINEER
+                </span>
               </span>
             </motion.span>
           </motion.h1>
         </div>
       </div>
 
-      {/* Ticker Banner (Infinite scrolling marquee) */}
-      <div className="w-full border-t-4 border-b-4 border-black bg-white py-4 overflow-hidden select-none">
+      {/* Ticker Banner — calmer, subdued text */}
+      <div className="w-full border-t border-black/10 bg-white/40 backdrop-blur-sm py-4 overflow-hidden select-none">
         <div className="flex animate-marquee whitespace-nowrap">
           <div className="flex shrink-0 items-center justify-around gap-12 min-w-full">
             {techItems.map((tech, idx) => (
               <span
                 key={idx}
-                className="font-sans font-bold text-xl md:text-3xl tracking-widest text-foreground"
+                className="font-sans font-bold text-lg md:text-2xl tracking-widest text-black/30"
               >
-                {tech} <span className="text-neo-red ml-6">//</span>
+                {tech} <span className="text-black/15 ml-6">//</span>
               </span>
             ))}
           </div>
@@ -99,9 +96,9 @@ export default function Hero() {
             {techItems.map((tech, idx) => (
               <span
                 key={`dup-${idx}`}
-                className="font-sans font-bold text-xl md:text-3xl tracking-widest text-foreground"
+                className="font-sans font-bold text-lg md:text-2xl tracking-widest text-black/30"
               >
-                {tech} <span className="text-neo-red ml-6">//</span>
+                {tech} <span className="text-black/15 ml-6">//</span>
               </span>
             ))}
           </div>
@@ -110,5 +107,3 @@ export default function Hero() {
     </section>
   );
 }
-
-

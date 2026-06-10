@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50" aria-label="Main navigation">
-      <div className="flex items-center gap-2 p-2 bg-white brutalist-border brutalist-shadow-sm">
+      <div className="flex items-center gap-1.5 p-1.5 bg-white/70 backdrop-blur-md border border-black/[0.06] rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
         {navItems.map((item) => {
           const active = isActive(item);
           return (
@@ -35,14 +35,14 @@ export default function Navbar() {
               key={item.path}
               href={item.path}
               scroll={!item.isAnchor}
-              className={`relative px-6 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-200 ${
-                active ? "text-black" : "text-black/50 hover:text-black"
+              className={`relative px-5 py-2 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-300 rounded-full ${
+                active ? "text-white" : "text-black/45 hover:text-black/80"
               }`}
             >
               {active && (
                 <motion.div
                   layoutId="nav-active"
-                  className="absolute inset-0 bg-cyber-yellow brutalist-border border-2 -z-10"
+                  className="absolute inset-0 bg-neutral-900 rounded-full -z-10"
                   transition={{
                     type: "spring",
                     stiffness: 380,

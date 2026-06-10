@@ -12,8 +12,8 @@ function Shape() {
 
   useFrame((state) => {
     if (!hovered) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.5;
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.4;
+      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.25;
     }
   });
 
@@ -22,13 +22,15 @@ function Shape() {
       ref={meshRef}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      scale={hovered ? 1.8 : 1.5}
+      scale={hovered ? 1.7 : 1.5}
     >
       <icosahedronGeometry args={[1, 1]} />
       <meshBasicMaterial
-        color={hovered ? "#00F0FF" : "#000000"}
+        color={hovered ? "#00F0FF" : "#ffffff"}
         wireframe
-        wireframeLinewidth={2}
+        wireframeLinewidth={1.5}
+        transparent
+        opacity={hovered ? 0.8 : 0.25}
       />
     </mesh>
   );
@@ -46,7 +48,7 @@ export default function Playbox() {
         </h3>
       </div>
 
-      <div className="h-[200px] w-full brutalist-border bg-zinc-50 relative overflow-hidden">
+      <div className="h-[200px] w-full bg-neutral-950 rounded-xl relative overflow-hidden shadow-inner border border-white/[0.05]">
         <Canvas camera={{ position: [0, 0, 3] }}>
           <ambientLight intensity={0.5} />
           <Shape />
@@ -54,8 +56,8 @@ export default function Playbox() {
         </Canvas>
       </div>
 
-      <p className="text-xs font-mono text-black/60">
-        * Renders low-poly icosahedron wireframe using React-Three-Fiber.
+      <p className="text-xs font-mono text-black/50">
+        * Interactive wireframe mesh using React-Three-Fiber.
       </p>
     </BentoCard>
   );

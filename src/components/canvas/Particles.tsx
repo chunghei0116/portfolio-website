@@ -38,7 +38,7 @@ export default function Particles() {
       {/* Retro Grid Plane */}
       <gridHelper
         ref={gridRef}
-        args={[30, 30, "#000000", "#d1d1cc"]}
+        args={[30, 30, "#e4e4e7", "#f4f4f5"]}
         position={[0, -4, 0]}
         rotation={[0.1, 0, 0]}
       />
@@ -46,13 +46,13 @@ export default function Particles() {
       {/* Floating Primitive 1 (Low-poly Torus Knot) */}
       <mesh ref={meshRef1} position={[-4, 2, -3]}>
         <torusKnotGeometry args={[0.8, 0.25, 40, 6, 2, 3]} />
-        <meshBasicMaterial color="#000000" wireframe />
+        <meshBasicMaterial color="#e4e4e7" wireframe />
       </mesh>
 
       {/* Floating Primitive 2 (Low-poly Icosahedron) */}
       <mesh ref={meshRef2} position={[4, -2, -3]}>
         <icosahedronGeometry args={[1, 1]} />
-        <meshBasicMaterial color="#000000" wireframe />
+        <meshBasicMaterial color="#e4e4e7" wireframe />
       </mesh>
     </group>
   );

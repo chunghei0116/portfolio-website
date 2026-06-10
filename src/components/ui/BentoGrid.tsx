@@ -26,7 +26,7 @@ const projects = [
 export default function BentoGrid() {
   return (
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {/* Skill terminal (col-span-1) */}
         <div className="col-span-1">
           <SkillTerminal />
@@ -50,14 +50,14 @@ export default function BentoGrid() {
           <p className="mt-4 text-sm leading-relaxed text-black/70">
             {projects[1].description}
           </p>
-          <div className="mt-auto border-t-2 border-black pt-4 flex flex-wrap justify-between items-center gap-2">
+          <div className="mt-auto border-t border-black/5 pt-4 flex flex-wrap justify-between items-center gap-2">
             <span className="font-mono text-xs font-bold text-black/60">{projects[1].tags}</span>
             <div className="flex gap-2">
               <a
                 href={projects[1].liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-black text-white hover:bg-cyber-yellow hover:text-black font-mono text-xs font-bold px-3 py-1.5 brutalist-border border-2 brutalist-press"
+                className="bg-neutral-900 text-white hover:bg-neutral-850 font-mono text-[10px] tracking-wider px-3.5 py-1.5 rounded-lg transition-all duration-200 hover:scale-[1.03]"
               >
                 DEMO
               </a>
@@ -65,7 +65,7 @@ export default function BentoGrid() {
                 href={projects[1].repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black hover:bg-electric-cyan hover:text-black font-mono text-xs font-bold px-3 py-1.5 brutalist-border border-2 brutalist-press"
+                className="bg-white text-neutral-900 border border-neutral-200 hover:bg-neutral-50 font-mono text-[10px] tracking-wider px-3.5 py-1.5 rounded-lg transition-all duration-200 hover:scale-[1.03]"
               >
                 GITHUB
               </a>
@@ -86,14 +86,14 @@ export default function BentoGrid() {
               {projects[0].description}
             </p>
           </div>
-          <div className="mt-8 border-t-2 border-black pt-4 flex flex-wrap justify-between items-center gap-2">
+          <div className="mt-8 border-t border-black/5 pt-4 flex flex-wrap justify-between items-center gap-2">
             <span className="font-mono text-xs font-bold text-black/60">{projects[0].tags}</span>
             <div className="flex gap-2">
               <a
                 href={projects[0].liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-black text-white hover:bg-cyber-yellow hover:text-black font-mono text-xs font-bold px-4 py-2 brutalist-border border-2 brutalist-press"
+                className="bg-neutral-900 text-white hover:bg-neutral-850 font-mono text-[10px] tracking-wider px-4.5 py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.03]"
               >
                 VIEW LIVE DEMO
               </a>
@@ -101,7 +101,7 @@ export default function BentoGrid() {
                 href={projects[0].repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black hover:bg-electric-cyan hover:text-black font-mono text-xs font-bold px-4 py-2 brutalist-border border-2 brutalist-press"
+                className="bg-white text-neutral-900 border border-neutral-200 hover:bg-neutral-50 font-mono text-[10px] tracking-wider px-4.5 py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.03]"
               >
                 GITHUB REPO
               </a>
@@ -122,7 +122,8 @@ export default function BentoGrid() {
           <p className="text-sm font-mono text-black/70">
             Experimenting with canvas particles, orbital controls, and hardware-accelerated shaders.
           </p>
-          <div className="bg-black text-cyber-yellow p-3 text-center font-mono font-bold uppercase text-xs brutalist-border">
+          <div className="flex items-center gap-2 bg-neutral-950 text-white p-3 rounded-xl justify-center font-mono text-[10px] tracking-widest uppercase shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-selection-bg animate-pulse" />
             CORE PIPELINE ACTIVE
           </div>
         </BentoCard>

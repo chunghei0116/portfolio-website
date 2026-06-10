@@ -15,14 +15,14 @@ export default function SkillTerminal() {
   return (
     <BentoCard className="flex h-full min-h-[400px] flex-col justify-between overflow-hidden">
       <div>
-        <div className="flex items-center justify-between border-b-2 border-black pb-2">
+        <div className="flex items-center justify-between border-b border-black/5 pb-2">
           <span className="text-[10px] font-mono font-bold tracking-widest text-black/50 uppercase">
             System Console // Terminal
           </span>
           <div className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500 border border-black" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500 border border-black" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500 border border-black" />
+            <span className="w-2 h-2 rounded-full bg-neutral-200" />
+            <span className="w-2 h-2 rounded-full bg-neutral-200" />
+            <span className="w-2 h-2 rounded-full bg-neutral-200" />
           </div>
         </div>
         <h3 className="mt-4 text-2xl font-black tracking-tight text-black uppercase">
@@ -30,22 +30,27 @@ export default function SkillTerminal() {
         </h3>
       </div>
 
-      <div className="mt-4 font-mono text-xs bg-zinc-950 text-[#00F0FF] p-4 brutalist-border space-y-3">
-        <p className="text-zinc-500">// Loading skill module metrics...</p>
+      <div className="mt-4 font-mono text-xs bg-neutral-900 text-neutral-100 p-5 rounded-xl border border-white/[0.04] space-y-4 shadow-inner">
+        <p className="text-neutral-500 text-[10px]">// Loading skill module metrics...</p>
         {skills.map((skill) => (
-          <div key={skill.name} className="flex flex-col gap-1">
-            <div className="flex justify-between font-bold">
-              <span>&gt; {skill.name}</span>
-              <span>{skill.rating}%</span>
+          <div key={skill.name} className="flex flex-col gap-2">
+            <div className="flex justify-between font-bold text-[11px]">
+              <span className="text-neutral-400">&gt; {skill.name}</span>
+              <span className="text-neutral-200">{skill.rating}%</span>
             </div>
-            <div className="text-cyber-yellow tracking-widest">{skill.bar}</div>
+            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-cyber-yellow to-[#E6FD50] rounded-full"
+                style={{ width: `${skill.rating}%` }}
+              />
+            </div>
           </div>
         ))}
       </div>
 
       <div className="mt-4">
         <p className="text-xs font-mono text-black/50">
-          * Systems updated real-time.
+          * Metrics updated real-time.
         </p>
       </div>
     </BentoCard>
