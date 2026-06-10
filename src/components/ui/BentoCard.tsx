@@ -20,7 +20,7 @@ export default function BentoCard({ children, className = "", delay = 0 }: Bento
         delay: delay,
         ease: "easeOut",
       }}
-      className={`bg-white/80 backdrop-blur-md brutalist-border brutalist-shadow brutalist-press p-8 overflow-hidden ${className}`}
+      className={`bg-white/45 backdrop-blur-xl brutalist-border brutalist-shadow brutalist-press p-8 overflow-hidden ${className}`}
     >
       {children}
     </motion.div>
