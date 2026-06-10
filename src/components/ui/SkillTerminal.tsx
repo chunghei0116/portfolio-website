@@ -3,12 +3,12 @@
 import BentoCard from "./BentoCard";
 
 const skills = [
-  { name: "Next.js", rating: 90, bar: "█████████░" },
-  { name: "React", rating: 95, bar: "██████████" },
-  { name: "Three.js", rating: 80, bar: "████████░░" },
-  { name: "WebGL / GLSL", rating: 70, bar: "███████░░░" },
-  { name: "TypeScript", rating: 90, bar: "█████████░" },
-  { name: "Tailwind CSS", rating: 95, bar: "██████████" },
+  { name: "Flutter / Mobile", rating: 90 },
+  { name: "Kubernetes / Docker", rating: 88 },
+  { name: "GitOps / ArgoCD", rating: 80 },
+  { name: "Tauri / Desktop Apps", rating: 75 },
+  { name: "Next.js / React", rating: 85 },
+  { name: "Cloud (AWS / Firebase)", rating: 75 },
 ];
 
 export default function SkillTerminal() {

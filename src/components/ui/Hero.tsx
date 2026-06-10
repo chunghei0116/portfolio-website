@@ -3,13 +3,15 @@
 import { motion } from "framer-motion";
 
 const techItems = [
-  "REACT",
-  "THREE.JS",
-  "WEBGL",
-  "SHADERS",
-  "TAILWIND",
+  "FLUTTER",
+  "KUBERNETES",
+  "DOCKER",
+  "GITOPS / ARGOCD",
+  "AWS",
+  "TAURI",
   "TYPESCRIPT",
-  "STYLISH MOTION",
+  "NEXT.JS",
+  "THREE.JS / WEBGL",
 ];
 
 const containerVariants = {

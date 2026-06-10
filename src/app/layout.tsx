@@ -12,8 +12,8 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "PORTFOLIO // 3D ENGINEER",
-  description: "Neo-Brutalist portfolio — Creative Developer & 3D Engineer. Built with Next.js, Three.js, and raw aesthetics.",
+  title: "JONES TSE // DEVOPS & MOBILE ENGINEER",
+  description: "Minimalist tech portfolio — DevOps infrastructure, Flutter & Tauri development. Built with Next.js.",
 };
 
 export default function RootLayout({

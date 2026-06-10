@@ -25,6 +25,17 @@ export default function Navbar() {
     return pathname === item.path;
   };
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
+    if (item.isAnchor && pathname === "/") {
+      e.preventDefault();
+      const targetId = item.path.replace("/#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50" aria-label="Main navigation">
       <div className="flex items-center gap-1.5 p-1.5 bg-white/70 backdrop-blur-md border border-black/[0.06] rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
@@ -34,7 +45,7 @@ export default function Navbar() {
             <Link
               key={item.path}
               href={item.path}
-              scroll={!item.isAnchor}
+              onClick={(e) => handleClick(e, item)}
               className={`relative px-5 py-2 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-300 rounded-full ${
                 active ? "text-white" : "text-black/45 hover:text-black/80"
               }`}
