@@ -31,7 +31,7 @@ export default function SkillTerminal() {
       </div>
 
       <div className="mt-4 font-mono text-xs bg-neutral-900 text-neutral-100 p-5 rounded-xl border border-white/[0.04] space-y-4 shadow-inner">
-        <p className="text-neutral-500 text-[10px]">// Loading skill module metrics...</p>
+        <p className="text-neutral-500 text-[10px]">{"// Loading skill module metrics..."}</p>
         {skills.map((skill) => (
           <div key={skill.name} className="flex flex-col gap-2">
             <div className="flex justify-between font-bold text-[11px]">

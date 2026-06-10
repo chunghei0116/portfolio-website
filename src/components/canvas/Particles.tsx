@@ -7,7 +7,7 @@ import * as THREE from "three";
 const count = 3000;
 
 // Pre-calculate positions and colors outside render to remain pure and high-performance
-const [positions, colors] = (() => {
+const [positions, colors, originalPositions] = (() => {
   const pos = new Float32Array(count * 3);
   const col = new Float32Array(count * 3);
   
@@ -42,12 +42,13 @@ const [positions, colors] = (() => {
     col[i * 3 + 1] = finalColor.g;
     col[i * 3 + 2] = finalColor.b;
   }
-  return [pos, col];
+  return [pos, col, pos.slice()];
 })();
 
 export default function Particles() {
   const pointsRef = useRef<THREE.Points>(null!);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const scrollYRef = useRef(0);
 
   // Monitor mouse position
   useEffect(() => {
@@ -57,6 +58,16 @@ export default function Particles() {
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Monitor scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollYRef.current = window.scrollY;
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Programmatically paint a soft circular alpha glow texture
@@ -84,6 +95,21 @@ export default function Particles() {
     // Smooth lerped mouse parallax
     pointsRef.current.rotation.y += (mouseRef.current.x * 0.12 - pointsRef.current.rotation.y) * 0.05;
     pointsRef.current.rotation.x += (-mouseRef.current.y * 0.12 - pointsRef.current.rotation.x) * 0.05;
+
+    // Scroll-Tracking Parallax (Camera expansion feel)
+    const scrollFraction = scrollYRef.current / (typeof document !== "undefined" ? Math.max(1, document.documentElement.scrollHeight - window.innerHeight) : 1000);
+    pointsRef.current.scale.setScalar(1 + scrollFraction * 0.2);
+    pointsRef.current.position.z = scrollFraction * 1.5;
+
+    // Dynamic wave displacement (undulation) inside render loop
+    const posArray = pointsRef.current.geometry.attributes.position.array as Float32Array;
+    for (let i = 0; i < count; i++) {
+      const x = posArray[i * 3];
+      const originalY = originalPositions[i * 3 + 1];
+      // Dynamic undulation using a sine wave based on time and point's x position
+      posArray[i * 3 + 1] = originalY + Math.sin(time * 0.4 + x * 0.3) * 0.15;
+    }
+    pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
     // Request next frame
     state.invalidate();

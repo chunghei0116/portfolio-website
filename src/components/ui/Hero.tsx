@@ -88,7 +88,7 @@ export default function Hero() {
                 key={idx}
                 className="font-sans font-bold text-lg md:text-2xl tracking-widest text-black/30"
               >
-                {tech} <span className="text-black/15 ml-6">//</span>
+                {tech} <span className="text-black/15 ml-6">{"//"}</span>
               </span>
             ))}
           </div>
@@ -98,7 +98,7 @@ export default function Hero() {
                 key={`dup-${idx}`}
                 className="font-sans font-bold text-lg md:text-2xl tracking-widest text-black/30"
               >
-                {tech} <span className="text-black/15 ml-6">//</span>
+                {tech} <span className="text-black/15 ml-6">{"//"}</span>
               </span>
             ))}
           </div>
