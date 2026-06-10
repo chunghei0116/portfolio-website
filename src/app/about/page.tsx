@@ -49,7 +49,7 @@ export default function AboutPage() {
               <span className="font-bold text-black bg-selection-bg px-2.5 py-1 rounded-md text-[10px] tracking-widest self-start uppercase">2020 — 2022</span>
               <div>
                 <h4 className="font-black text-sm uppercase">Cross-Platform App Developer @ Studio X</h4>
-                <p className="mt-1">Crafting custom desktop shells with Tauri, hot-reload Flutter engines, and Firebase backend services.</p>
+                <p className="mt-1">Crafting custom mobile/desktop clients, hot-reload Flutter engines, and Firebase backend services.</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4">

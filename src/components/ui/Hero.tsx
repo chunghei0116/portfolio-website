@@ -8,7 +8,6 @@ const techItems = [
   "DOCKER",
   "GITOPS / ARGOCD",
   "AWS",
-  "TAURI",
   "TYPESCRIPT",
   "NEXT.JS",
   "THREE.JS / WEBGL",
@@ -26,14 +25,13 @@ const containerVariants = {
 };
 
 const lineVariants = {
-  hidden: { y: 50, opacity: 0 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
-    y: 0,
     opacity: 1,
+    y: 0,
     transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 } as const;
@@ -60,20 +58,20 @@ export default function Hero() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="punchy-heading text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] text-left leading-[0.85] select-none"
+            className="punchy-heading text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] text-left leading-[0.9] select-none"
           >
             <motion.span variants={lineVariants} className="block">
-              CREATIVE
+              ENGINEERING
             </motion.span>
             <motion.span variants={lineVariants} className="block">
-              DEVELOPER
+              ROBUST APPS
             </motion.span>
-            <motion.span variants={lineVariants} className="block text-foreground flex flex-wrap items-center gap-x-4">
-              <span>&amp;</span>
-              <span className="relative inline-block px-4 py-1.5 align-middle">
-                <span className="absolute inset-0 bg-cyber-yellow/15 -skew-x-6 rounded-xl -z-10" />
+            <motion.span variants={lineVariants} className="block text-foreground">
+              &amp;{" "}
+              <span className="relative inline-block px-3 py-1 align-middle">
+                <span className="absolute inset-y-1 inset-x-0 bg-cyber-yellow/15 -skew-x-6 rounded-xl -z-10" />
                 <span className="text-neutral-900 font-sans font-punchy tracking-tight">
-                  3D ENGINEER
+                  CLOUD SYSTEMS
                 </span>
               </span>
             </motion.span>

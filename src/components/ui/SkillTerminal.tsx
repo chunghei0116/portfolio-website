@@ -6,7 +6,7 @@ const skills = [
   { name: "Flutter / Mobile", rating: 90 },
   { name: "Kubernetes / Docker", rating: 88 },
   { name: "GitOps / ArgoCD", rating: 80 },
-  { name: "Tauri / Desktop Apps", rating: 75 },
+  { name: "CI/CD Automation", rating: 82 },
   { name: "Next.js / React", rating: 85 },
   { name: "Cloud (AWS / Firebase)", rating: 75 },
 ];
@@ -36,7 +36,6 @@ export default function SkillTerminal() {
           <div key={skill.name} className="flex flex-col gap-2">
             <div className="flex justify-between font-bold text-[11px]">
               <span className="text-neutral-400">&gt; {skill.name}</span>
-              <span className="text-neutral-200">{skill.rating}%</span>
             </div>
             <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
               <div 

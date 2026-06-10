@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface NavItem {
   name: string;
@@ -19,10 +20,44 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState<string>("home");
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      const projectsElement = document.getElementById("projects");
+      const contactElement = document.getElementById("contact");
+
+      if (contactElement && scrollPosition >= contactElement.offsetTop) {
+        setActiveSection("contact");
+      } else if (projectsElement && scrollPosition >= projectsElement.offsetTop) {
+        setActiveSection("projects");
+      } else {
+        setActiveSection("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
 
   const isActive = (item: NavItem) => {
-    if (item.isAnchor) return false;
-    return pathname === item.path;
+    if (pathname === "/") {
+      if (item.path === "/") return activeSection === "home";
+      if (item.path === "/#projects") return activeSection === "projects";
+      if (item.path === "/#contact") return activeSection === "contact";
+    } else {
+      return pathname === item.path;
+    }
+    return false;
   };
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
