@@ -1,59 +1,115 @@
 "use client";
 
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import * as THREE from "three";
 
+const count = 3000;
+
+// Pre-calculate positions and colors outside render to remain pure and high-performance
+const [positions, colors] = (() => {
+  const pos = new Float32Array(count * 3);
+  const col = new Float32Array(count * 3);
+  
+  // Golden Yellow (#FFE600), Cyber Cyan (#00F0FF), Soft Silver-Grey (#CCCCCC)
+  const color1 = new THREE.Color("#FFE600");
+  const color2 = new THREE.Color("#00F0FF");
+  const color3 = new THREE.Color("#CCCCCC");
+
+  for (let i = 0; i < count; i++) {
+    const u = Math.random();
+    const v = Math.random();
+    const theta = u * 2.0 * Math.PI;
+    const phi = Math.acos(2.0 * v - 1.0);
+    const r = Math.cbrt(Math.random()) * 8 + 1.5; // Spread between 1.5 and 9.5 units
+
+    pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.6; // Slightly flattened ellipsoidal nebula
+    pos[i * 3 + 2] = r * Math.cos(phi);
+
+    // Randomly mix particle colors
+    const mix = Math.random();
+    let finalColor;
+    if (mix < 0.3) {
+      finalColor = color1;
+    } else if (mix < 0.6) {
+      finalColor = color2;
+    } else {
+      finalColor = color3;
+    }
+
+    col[i * 3] = finalColor.r;
+    col[i * 3 + 1] = finalColor.g;
+    col[i * 3 + 2] = finalColor.b;
+  }
+  return [pos, col];
+})();
+
 export default function Particles() {
-  const gridRef = useRef<THREE.GridHelper>(null!);
-  const meshRef1 = useRef<THREE.Mesh>(null!);
-  const meshRef2 = useRef<THREE.Mesh>(null!);
+  const pointsRef = useRef<THREE.Points>(null!);
+  const mouseRef = useRef({ x: 0, y: 0 });
+
+  // Monitor mouse position
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Programmatically paint a soft circular alpha glow texture
+  const particleTexture = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    const canvas = document.createElement("canvas");
+    canvas.width = 16;
+    canvas.height = 16;
+    const ctx = canvas.getContext("2d")!;
+    const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 16, 16);
+    return new THREE.CanvasTexture(canvas);
+  }, []);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
 
-    // Rotate floating elements
-    if (meshRef1.current) {
-      meshRef1.current.rotation.x = time * 0.15;
-      meshRef1.current.rotation.y = time * 0.2;
-      meshRef1.current.position.y = Math.sin(time * 0.4) * 0.5 + 2;
-    }
-    if (meshRef2.current) {
-      meshRef2.current.rotation.x = -time * 0.2;
-      meshRef2.current.rotation.z = time * 0.1;
-      meshRef2.current.position.y = Math.cos(time * 0.3) * 0.5 - 2;
-    }
+    // Constant slow drift rotation
+    pointsRef.current.rotation.y = time * 0.03;
+    pointsRef.current.rotation.z = time * 0.01;
 
-    // Rotate perspective grid slightly to show depth
-    if (gridRef.current) {
-      gridRef.current.rotation.y = Math.sin(time * 0.05) * 0.1;
-    }
+    // Smooth lerped mouse parallax
+    pointsRef.current.rotation.y += (mouseRef.current.x * 0.12 - pointsRef.current.rotation.y) * 0.05;
+    pointsRef.current.rotation.x += (-mouseRef.current.y * 0.12 - pointsRef.current.rotation.x) * 0.05;
 
-    // Request next frame (demand frameloop)
+    // Request next frame
     state.invalidate();
   });
 
   return (
-    <group>
-      {/* Retro Grid Plane */}
-      <gridHelper
-        ref={gridRef}
-        args={[30, 30, "#e4e4e7", "#f4f4f5"]}
-        position={[0, -4, 0]}
-        rotation={[0.1, 0, 0]}
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          args={[positions, 3]}
+        />
+        <bufferAttribute
+          attach="attributes-color"
+          args={[colors, 3]}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.065}
+        vertexColors
+        transparent
+        opacity={0.8}
+        map={particleTexture || undefined}
+        depthWrite={false}
+        blending={THREE.AdditiveBlending}
       />
-
-      {/* Floating Primitive 1 (Low-poly Torus Knot) */}
-      <mesh ref={meshRef1} position={[-4, 2, -3]}>
-        <torusKnotGeometry args={[0.8, 0.25, 40, 6, 2, 3]} />
-        <meshBasicMaterial color="#e4e4e7" wireframe />
-      </mesh>
-
-      {/* Floating Primitive 2 (Low-poly Icosahedron) */}
-      <mesh ref={meshRef2} position={[4, -2, -3]}>
-        <icosahedronGeometry args={[1, 1]} />
-        <meshBasicMaterial color="#e4e4e7" wireframe />
-      </mesh>
-    </group>
+    </points>
   );
 }
