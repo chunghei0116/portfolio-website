@@ -1,44 +1,51 @@
 "use client";
 
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame } from "@react-three/fiber";
+import React, { useRef, useMemo } from "react";
 import { OrbitControls } from "@react-three/drei";
-import * as THREE from 'three';
+import * as THREE from "three";
 import BentoCard from "./BentoCard";
 
 interface EmitterPoint {
   x: number;
   y: number;
   z: number;
-  type: "tip" | "exhaust" | "base";
+  type: "tip" | "claw" | "base";
 }
 
 function GNDrive() {
   const driveRef = useRef<THREE.Group>(null!);
-  const coneRef = useRef<THREE.LineSegments>(null!);
-  const starRef = useRef<THREE.LineSegments>(null!);
-  const ringRefs = useRef<(THREE.LineSegments | null)[]>([]);
+  const ringRef1 = useRef<THREE.Mesh>(null!);
+  const ringRef2 = useRef<THREE.Mesh>(null!);
   const particlesRef = useRef<THREE.Points>(null!);
 
-  const particleCount = 300;
+  const particleCount = 280;
 
-  // 1. Define physical emitters based on the new online layout geometry
+  // 1. Define physical vertices on the GN Drive model to act as particle emitters
   const vertexEmitters = useMemo<EmitterPoint[]>(() => {
     const emitters: EmitterPoint[] = [];
 
-    // Cone tip condenser emitter (at the front)
-    emitters.push({ x: 0, y: 0, z: 3.0, type: "tip" });
+    // Core condenser tip emitter
+    emitters.push({ x: 0.46, y: 0, z: 0, type: "tip" });
 
-    // Exhaust port gear emitter (at the back)
-    emitters.push({ x: 0, y: 0, z: -3.8, type: "exhaust" });
-
-    // Base cylinder ring points
-    for (let i = 0; i < 8; i++) {
-      const rad = (i * 45 * Math.PI) / 180;
+    // Claw tips at 120 degree offsets
+    for (let i = 0; i < 3; i++) {
+      const rad = (i * 120 * Math.PI) / 180;
       emitters.push({
-        x: 1.2 * Math.cos(rad),
-        y: 1.2 * Math.sin(rad),
-        z: -0.5,
+        x: 0.22,
+        y: 0.21 * Math.cos(rad),
+        z: 0.21 * Math.sin(rad),
+        type: "claw",
+      });
+    }
+
+    // Outer base plate points
+    for (let i = 0; i < 6; i++) {
+      const rad = (i * 60 * Math.PI) / 180;
+      emitters.push({
+        x: -0.42,
+        y: 0.28 * Math.cos(rad),
+        z: 0.28 * Math.sin(rad),
         type: "base",
       });
     }
@@ -64,32 +71,35 @@ function GNDrive() {
       pos[i * 3 + 1] = emitter.y;
       pos[i * 3 + 2] = emitter.z;
 
+      // Color selection matching GN Drive spectrum
       const mix = Math.random();
       const finalColor = mix < 0.45 ? colorGreen : (mix < 0.8 ? colorTeal : colorMint);
       col[i * 3] = finalColor.r;
       col[i * 3 + 1] = finalColor.g;
       col[i * 3 + 2] = finalColor.b;
 
+      // Determine directional trajectory vectors from source vertex
       let dx = 0;
       let dy = 0;
       let dz = 0;
 
       if (emitter.type === "tip") {
-        // Jet thrust forward along Z
-        dx = (Math.random() - 0.5) * 0.8;
-        dy = (Math.random() - 0.5) * 0.8;
-        dz = 1.2 + Math.random() * 0.8;
-      } else if (emitter.type === "exhaust") {
-        // Venting backwards along -Z
-        dx = (Math.random() - 0.5) * 0.8;
-        dy = (Math.random() - 0.5) * 0.8;
-        dz = -1.2 - Math.random() * 0.8;
+        // High velocity jet thrust forward along +X with cone angle spread
+        dx = 1.2 + Math.random() * 0.6;
+        dy = (Math.random() - 0.5) * 0.6;
+        dz = (Math.random() - 0.5) * 0.6;
+      } else if (emitter.type === "claw") {
+        // Venting radially outwards away from the locking safety hooks
+        const mag = Math.sqrt(emitter.y * emitter.y + emitter.z * emitter.z) || 1;
+        dx = (Math.random() - 0.5) * 0.25;
+        dy = (emitter.y / mag) * (0.6 + Math.random() * 0.5);
+        dz = (emitter.z / mag) * (0.6 + Math.random() * 0.5);
       } else {
-        // Spreading radially from base
-        const mag = Math.sqrt(emitter.x * emitter.x + emitter.y * emitter.y) || 1;
-        dx = (emitter.x / mag) * (0.6 + Math.random() * 0.6);
-        dy = (emitter.y / mag) * (0.6 + Math.random() * 0.6);
-        dz = (Math.random() - 0.5) * 0.4;
+        // Base venting sweeping along the drive housing
+        dx = 0.4 + Math.random() * 0.4;
+        const mag = Math.sqrt(emitter.y * emitter.y + emitter.z * emitter.z) || 1;
+        dy = (emitter.y / mag) * 0.15 + (Math.random() - 0.5) * 0.15;
+        dz = (emitter.z / mag) * 0.15 + (Math.random() - 0.5) * 0.15;
       }
 
       meta.push({
@@ -97,107 +107,121 @@ function GNDrive() {
         dx,
         dy,
         dz,
-        age: Math.random(),
-        speed: 0.6 + Math.random() * 1.2,
+        age: Math.random(), // Stagger initial frames
+        speed: 0.7 + Math.random() * 1.1,
       });
     }
 
     return [pos, col, meta];
   }, [vertexEmitters, particleCount]);
 
-  // 3. Pre-generate wireframe edges geometry from the online reference demo sizes
-  const [coneEdges, cylEdges, starEdges, ringEdges] = useMemo(() => {
-    const ring1 = new THREE.EdgesGeometry(new THREE.TorusGeometry(2.2, 0.08, 8, 32));
-    const ring2 = new THREE.EdgesGeometry(new THREE.TorusGeometry(2.5, 0.08, 8, 32));
-    const ring3 = new THREE.EdgesGeometry(new THREE.TorusGeometry(2.8, 0.08, 8, 32));
-
-    return [
-      new THREE.EdgesGeometry(new THREE.ConeGeometry(1.2, 3, 16, 8)),
-      new THREE.EdgesGeometry(new THREE.CylinderGeometry(1.2, 1.2, 3, 16, 6)),
-      new THREE.EdgesGeometry(new THREE.CylinderGeometry(1.5, 1.0, 0.8, 8, 2)),
-      [ring1, ring2, ring3],
-    ];
-  }, []);
-
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
 
-    // Rotate GN Drive group slowly for perspective view
+    // Rotate GN Drive group slowly
     if (driveRef.current) {
-      driveRef.current.rotation.y = time * 0.15;
+      driveRef.current.rotation.y = time * 0.25;
+      driveRef.current.rotation.z = Math.sin(time * 0.15) * 0.08;
     }
 
-    // Spin core and exhaust
-    if (coneRef.current) {
-      coneRef.current.rotation.y = time * 0.8;
+    // Spin dual concentric acceleration rings
+    if (ringRef1.current) {
+      ringRef1.current.rotation.x = time * 1.5;
+      ringRef1.current.rotation.y = time * 1.1;
     }
-    if (starRef.current) {
-      starRef.current.rotation.y = -time * 1.2;
+    if (ringRef2.current) {
+      ringRef2.current.rotation.y = -time * 1.3;
+      ringRef2.current.rotation.z = time * 0.8;
     }
 
-    // Spin outer rings at different speeds
-    ringRefs.current.forEach((ring, index) => {
-      if (ring) {
-        ring.rotation.z = time * (0.3 + index * 0.2);
-      }
-    });
-
-    // Animate GN particles spraying from vertices
+    // Animate GN particles spraying outwards from drive vertices
     if (particlesRef.current) {
       const posArray = particlesRef.current.geometry.attributes.position.array as Float32Array;
       for (let i = 0; i < particleCount; i++) {
         const m = particleMetadata[i];
         const emitter = vertexEmitters[m.emitterIdx];
 
+        // Increment particle lifetime
         m.age += 0.013 * m.speed;
         if (m.age > 1.0) {
-          m.age = 0;
+          m.age = 0; // Respawn at source vertex
         }
 
-        const wobbleRadius = m.age * 0.15;
-        const wobbleX = Math.cos(time * 6 + i) * wobbleRadius;
-        const wobbleY = Math.sin(time * 6 + i) * wobbleRadius;
+        // Circular wobble offsets to simulate swirling vapor
+        const wobbleRadius = m.age * 0.12;
+        const wobbleY = Math.cos(time * 6 + i) * wobbleRadius;
+        const wobbleZ = Math.sin(time * 6 + i) * wobbleRadius;
 
-        posArray[i * 3] = emitter.x + m.dx * m.age * 1.2 + wobbleX;
-        posArray[i * 3 + 1] = emitter.y + m.dy * m.age * 1.2 + wobbleY;
-        posArray[i * 3 + 2] = emitter.z + m.dz * m.age * 1.2;
+        posArray[i * 3] = emitter.x + m.dx * m.age * 0.85;
+        posArray[i * 3 + 1] = emitter.y + m.dy * m.age * 0.85 + wobbleY;
+        posArray[i * 3 + 2] = emitter.z + m.dz * m.age * 0.85 + wobbleZ;
       }
       particlesRef.current.geometry.attributes.position.needsUpdate = true;
     }
   });
 
   return (
-    <group ref={driveRef} scale={[0.22, 0.22, 0.22]} rotation={[0.4, 0.6, 0.1]}>
-      {/* A. Central Cone (尖頭) */}
-      <lineSegments ref={coneRef} geometry={coneEdges} position={[0, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]}>
-        <lineBasicMaterial color="#33ffaa" transparent opacity={0.85} />
-      </lineSegments>
+    <group ref={driveRef} rotation={[0, 0.3, 0.15]}>
+      {/* 1. Core GN Condenser Base & Emitter Core */}
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[0.2, 32, 32]} />
+        <meshBasicMaterial color="#00FF66" toneMapped={false} />
+      </mesh>
 
-      {/* B. Main Cylinder (後方主圓柱體) */}
-      <lineSegments geometry={cylEdges} position={[0, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]}>
-        <lineBasicMaterial color="#ffffff" transparent opacity={0.7} />
-      </lineSegments>
+      {/* 2. Main Conical Solar Reactor Shell */}
+      <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <coneGeometry args={[0.26, 0.82, 5]} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.15} flatShading />
+      </mesh>
 
-      {/* C. Star Exhaust (後方星形/齒輪狀排氣口) */}
-      <lineSegments ref={starRef} geometry={starEdges} position={[0, 0, -3.4]} rotation={[Math.PI / 2, 0, 0]}>
-        <lineBasicMaterial color="#0A5CFF" transparent opacity={0.8} />
-      </lineSegments>
+      {/* 3. Glowing Condenser Emitter Core (Cone Tip) */}
+      <mesh position={[0.42, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
+        <cylinderGeometry args={[0.04, 0.08, 0.1, 5]} />
+        <meshBasicMaterial color="#00FFAA" toneMapped={false} />
+      </mesh>
 
-      {/* D. Three Outer Rings (Torus wireframes offset on Z) */}
-      {[0.8, -0.5, -1.8].map((zPos, index) => (
-        <lineSegments
-          key={zPos}
-          ref={(el) => {
-            ringRefs.current[index] = el;
-          }}
-          geometry={ringEdges[index]}
-          position={[0, 0, zPos]}
-        >
-          <lineBasicMaterial color={index === 1 ? "#0A5CFF" : "#ffffff"} transparent opacity={0.75} />
-        </lineSegments>
-      ))}
+      {/* 4. Outer base cap plate */}
+      <mesh position={[-0.42, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <cylinderGeometry args={[0.28, 0.28, 0.12, 6]} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
+      </mesh>
 
-      {/* GN Particles cloud */}
+      {/* 5. Three Clamping Safety Lock Fasteners (120 degree intervals) */}
+      {[-120, 0, 120].map((angle) => {
+        const rad = (angle * Math.PI) / 180;
+        return (
+          <group key={angle} rotation={[rad, 0, 0]}>
+            {/* Clamping hinge base */}
+            <mesh position={[-0.2, 0.32, 0]}>
+              <boxGeometry args={[0.12, 0.08, 0.08]} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.5} metalness={0.15} />
+            </mesh>
+            {/* Claw arm structure */}
+            <mesh position={[0.02, 0.28, 0]} rotation={[0, 0, -Math.PI / 9]}>
+              <boxGeometry args={[0.35, 0.04, 0.06]} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
+            </mesh>
+            {/* Clamping hook locking onto reactor body */}
+            <mesh position={[0.21, 0.21, 0]} rotation={[0, 0, -Math.PI / 4]}>
+              <boxGeometry args={[0.12, 0.04, 0.05]} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.15} />
+            </mesh>
+          </group>
+        );
+      })}
+
+      {/* 6. Dual Accent Acceleration Rings */}
+      <mesh ref={ringRef1} position={[0, 0, 0]}>
+        <torusGeometry args={[0.46, 0.02, 8, 32]} />
+        <meshStandardMaterial color="#0A5CFF" roughness={0.3} metalness={0.7} />
+      </mesh>
+
+      <mesh ref={ringRef2} position={[0, 0, 0]}>
+        <torusGeometry args={[0.55, 0.018, 8, 32]} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
+      </mesh>
+
+      {/* 7. Vertex Particle Emitter Cloud */}
       <points ref={particlesRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -210,10 +234,10 @@ function GNDrive() {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.07}
+          size={0.06}
           vertexColors
           transparent
-          opacity={0.9}
+          opacity={0.95}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
         />
@@ -236,16 +260,19 @@ export default function Playbox() {
 
       <div className="h-[200px] w-full bg-[#050b10] rounded-none relative overflow-hidden border-[3px] border-black">
         <Canvas 
-          camera={{ position: [0, 0, 2.5], fov: 48 }}
+          camera={{ position: [0, 0, 2.2], fov: 48 }}
           gl={{ preserveDrawingBuffer: true }}
         >
+          <ambientLight intensity={0.9} />
+          <pointLight position={[5, 5, 5]} intensity={1.5} />
+          <directionalLight position={[0, 0, 5]} intensity={1.8} />
           <GNDrive />
           <OrbitControls enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
 
       <p className="text-xs font-mono text-black/50">
-        * Active GN Drive wireframe emitting green GN particles from geometry vertices.
+        * Interactive Gundam 00 solar reactor emitting green GN particles directly from geometry vertices.
       </p>
     </BentoCard>
   );
