@@ -168,10 +168,16 @@ function GNDrive() {
         <meshBasicMaterial color="#00FF66" toneMapped={false} />
       </mesh>
 
-      {/* 2. Main Conical Solar Reactor Shell */}
+      {/* 2. Main Conical Solar Reactor Shell (Solid White Base) */}
       <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <coneGeometry args={[0.26, 0.82, 5]} />
-        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.15} flatShading />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+
+      {/* 2b. Conical Wireframe Overlay (Holographic GN Energy Grid) */}
+      <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <coneGeometry args={[0.263, 0.823, 5]} />
+        <meshBasicMaterial color="#10B981" wireframe />
       </mesh>
 
       {/* 3. Glowing Condenser Emitter Core (Cone Tip) */}
@@ -180,10 +186,10 @@ function GNDrive() {
         <meshBasicMaterial color="#00FFAA" toneMapped={false} />
       </mesh>
 
-      {/* 4. Outer base cap plate */}
+      {/* 4. Outer base cap plate (Light Grey) */}
       <mesh position={[-0.42, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.28, 0.28, 0.12, 6]} />
-        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
+        <meshBasicMaterial color="#E5E7EB" />
       </mesh>
 
       {/* 5. Three Clamping Safety Lock Fasteners (120 degree intervals) */}
@@ -194,31 +200,31 @@ function GNDrive() {
             {/* Clamping hinge base */}
             <mesh position={[-0.2, 0.32, 0]}>
               <boxGeometry args={[0.12, 0.08, 0.08]} />
-              <meshStandardMaterial color="#FFFFFF" roughness={0.5} metalness={0.15} />
+              <meshBasicMaterial color="#D1D5DB" />
             </mesh>
             {/* Claw arm structure */}
             <mesh position={[0.02, 0.28, 0]} rotation={[0, 0, -Math.PI / 9]}>
               <boxGeometry args={[0.35, 0.04, 0.06]} />
-              <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
+              <meshBasicMaterial color="#FFFFFF" />
             </mesh>
             {/* Clamping hook locking onto reactor body */}
             <mesh position={[0.21, 0.21, 0]} rotation={[0, 0, -Math.PI / 4]}>
               <boxGeometry args={[0.12, 0.04, 0.05]} />
-              <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.15} />
+              <meshBasicMaterial color="#E5E7EB" />
             </mesh>
           </group>
         );
       })}
 
-      {/* 6. Dual Accent Acceleration Rings */}
+      {/* 6. Dual Accent rings */}
       <mesh ref={ringRef1} position={[0, 0, 0]}>
         <torusGeometry args={[0.46, 0.02, 8, 32]} />
-        <meshStandardMaterial color="#0A5CFF" roughness={0.3} metalness={0.7} />
+        <meshBasicMaterial color="#0A5CFF" />
       </mesh>
 
       <mesh ref={ringRef2} position={[0, 0, 0]}>
         <torusGeometry args={[0.55, 0.018, 8, 32]} />
-        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
+        <meshBasicMaterial color="#FFFFFF" />
       </mesh>
 
       {/* 7. Vertex Particle Emitter Cloud */}
