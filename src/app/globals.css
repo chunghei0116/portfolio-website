@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FDFBF7; /* Warm Ivory (象牙白) */
-  --foreground: #3D0C11; /* Dark Maroon (深栗色) */
-  --card-bg: #FFFFFF;
+  --background: #0F0F0F; /* Dark Charcoal (暗炭灰) */
+  --foreground: #FFFFFF; /* White */
+  --card-bg: #1A1A1A; /* Solid Dark Grey Cards */
   --accent-blue: #1982FC; /* Bright Blue */
   --moss-shadow: #1C2E24;
   --grid-color: transparent;

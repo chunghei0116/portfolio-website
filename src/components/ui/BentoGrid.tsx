@@ -6,193 +6,205 @@ import BentoCard from "./BentoCard";
 export default function BentoGrid() {
   return (
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24 select-none">
-      {/* 4-column desktop layout mirroring the design exactly */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-min">
+      {/* 12-column grid layout matching the reference layout structure */}
+      <div className="grid grid-cols-12 gap-5 auto-rows-min">
         
-        {/* Card 1: Top-Left Yellow Block (col-span-1) */}
-        <BentoCard className="col-span-1 bg-[#FFC53D] text-[#3D0C11] flex items-center justify-center min-h-[170px] p-6 hover:shadow-[0_15px_30px_rgba(255,197,61,0.25)]">
-          <svg viewBox="0 0 24 24" className="w-24 h-24 fill-current" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C10.9 2 10 2.9 10 4V8.5L8.5 7C7.7 6.2 6.3 6.2 5.5 7C4.7 7.8 4.7 9.2 5.5 10L10.5 15C11.3 15.8 11.9 16.8 12.2 18H18.5C19.9 18 21 16.9 21 15.5V11C21 9.9 20.1 9 19 9H17.5C16.4 9 15.5 8.1 15.5 7V4C15.5 2.9 14.6 2 13.5 2H12Z" />
-            <path d="M4 12C2.9 12 2 12.9 2 14V17C2 18.1 2.9 19 4 19C5.1 19 6 18.1 6 17V14C6 12.9 5.1 12 4 12Z" />
-          </svg>
-        </BentoCard>
-
-        {/* Card 2: Top Middle-Left Blue Block (col-span-1) */}
-        <BentoCard className="col-span-1 bg-[#1982FC] text-white flex flex-col justify-between min-h-[170px] p-6 hover:shadow-[0_15px_30px_rgba(25,130,252,0.25)]">
-          <a
-            href="mailto:example@domain.com"
-            className="w-full bg-[#FFF9E6] text-black px-5 py-3 rounded-full font-sans font-[900] text-[12px] uppercase tracking-wide flex items-center justify-between hover:bg-white transition-colors"
-          >
-            <span>POST YOUR TASK</span>
-            <span className="text-lg">→</span>
-          </a>
-          <p className="font-mono text-[9px] font-bold text-white/80 uppercase tracking-widest leading-none mt-4">
-            * PIPELINE TELEMETRY READY
-          </p>
-        </BentoCard>
-
-        {/* Card 3: Top-Right Giant Dark Maroon Block (col-span-2, row-span-2) */}
-        <BentoCard className="col-span-1 md:col-span-2 md:row-span-2 bg-[#3D0C11] text-[#FFF9E6] p-8 flex flex-col justify-between min-h-[364px] hover:shadow-[0_20px_40px_rgba(61,12,17,0.2)]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
-            
-            {/* Project 1: Daniel (Handyman) */}
-            <div className="bg-[#FFF9E6] text-black rounded-[1.8rem] p-4 flex flex-col justify-between h-full shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
-              <div>
-                <div className="rounded-t-[2rem] rounded-b-[0.5rem] bg-[#FFC53D] w-full aspect-[4/4.5] overflow-hidden relative flex items-center justify-center border border-black/5">
-                  <svg className="w-12 h-12 text-[#3D0C11] opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
-                  </svg>
-                </div>
-                <h4 className="font-sans font-[900] text-[15px] mt-3 uppercase tracking-tight leading-none text-[#3D0C11]">
-                  ALPHA
-                </h4>
-                <p className="text-[9px] font-mono text-black/50 font-bold mt-1 uppercase">
-                  ★ 4.9 | 3D CANVAS
-                </p>
-              </div>
-              <button className="w-full bg-[#FFC53D] text-[#3D0C11] py-2 rounded-full font-mono text-[9px] font-bold uppercase tracking-wider mt-4 hover:bg-[#e0ab30] transition-colors">
-                EXPLORE NOW
-              </button>
+        {/* ROW 1 & 2 Left Section: Welcome to Bento Portfolio (col-span-6, row-span-2) */}
+        <div className="col-span-12 md:col-span-6 md:row-span-2 bg-[#F5F2EB] text-[#0F0F0F] rounded-[1.8rem] p-8 flex flex-col justify-between min-h-[340px] hover:shadow-[0_15px_35px_rgba(245,242,235,0.08)]">
+          <div className="flex flex-col sm:flex-row gap-6 justify-between items-start">
+            <div className="max-w-md">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1982FC]">
+                Welcome to
+              </span>
+              <h3 className="text-4xl sm:text-5xl font-sans font-[950] tracking-[-0.03em] leading-none uppercase mt-2">
+                BENTO PORTFOLIO
+              </h3>
+              <p className="mt-4 text-xs font-semibold text-[#555555] leading-relaxed">
+                Where code meets clean design. Engineering highly automated deployment pipelines and modular cross-platform interfaces.
+              </p>
             </div>
-
-            {/* Project 2: Elisa (Cook) */}
-            <div className="bg-[#FFF9E6] text-black rounded-[1.8rem] p-4 flex flex-col justify-between h-full shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
-              <div>
-                <div className="rounded-t-[2rem] rounded-b-[0.5rem] bg-[#FFAEC9] w-full aspect-[4/4.5] overflow-hidden relative flex items-center justify-center border border-black/5">
-                  <svg className="w-12 h-12 text-[#3D0C11] opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h4 className="font-sans font-[900] text-[15px] mt-3 uppercase tracking-tight leading-none text-[#3D0C11]">
-                  BETA
-                </h4>
-                <p className="text-[9px] font-mono text-black/50 font-bold mt-1 uppercase">
-                  ★ 4.8 | WEBGL SHADER
-                </p>
-              </div>
-              <button className="w-full bg-[#FFC53D] text-[#3D0C11] py-2 rounded-full font-mono text-[9px] font-bold uppercase tracking-wider mt-4 hover:bg-[#e0ab30] transition-colors">
-                EXPLORE NOW
-              </button>
-            </div>
-
-            {/* Project 3: James (Mechanic) */}
-            <div className="bg-[#FFF9E6] text-black rounded-[1.8rem] p-4 flex flex-col justify-between h-full shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
-              <div>
-                <div className="rounded-t-[2rem] rounded-b-[0.5rem] bg-[#99CC33] w-full aspect-[4/4.5] overflow-hidden relative flex items-center justify-center border border-black/5">
-                  <svg className="w-12 h-12 text-[#3D0C11] opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                </div>
-                <h4 className="font-sans font-[900] text-[15px] mt-3 uppercase tracking-tight leading-none text-[#3D0C11]">
-                  GAMMA
-                </h4>
-                <p className="text-[9px] font-mono text-black/50 font-bold mt-1 uppercase">
-                  ★ 4.6 | CD GITOPS
-                </p>
-              </div>
-              <button className="w-full bg-[#FFC53D] text-[#3D0C11] py-2 rounded-full font-mono text-[9px] font-bold uppercase tracking-wider mt-4 hover:bg-[#e0ab30] transition-colors">
-                EXPLORE NOW
-              </button>
-            </div>
-
+            <img 
+              src="/avatar.png" 
+              alt="Profile Avatar" 
+              className="w-24 h-24 rounded-full border-2 border-[#1982FC]/20 shadow-[0_8px_25px_rgba(25,130,252,0.1)] flex-shrink-0"
+            />
           </div>
-        </BentoCard>
-
-        {/* Card 4: Row 2 Left Orange-Red Block (col-span-1) */}
-        <BentoCard className="col-span-1 bg-[#FF6333] text-[#3D0C11] flex items-center justify-center min-h-[170px] p-6 hover:shadow-[0_15px_30px_rgba(255,99,51,0.25)]">
-          <div className="grid grid-cols-3 gap-4 text-center">
-            {/* 6 Icons representing tech stack */}
-            {[
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>,
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>,
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            ].map((icon, i) => (
-              <div key={i} className="flex justify-center items-center opacity-85 hover:scale-110 transition-transform cursor-pointer">
-                {icon}
-              </div>
-            ))}
-          </div>
-        </BentoCard>
-
-        {/* Card 5: Row 2 Middle Pink Block (col-span-1) */}
-        <BentoCard className="col-span-1 bg-[#FFAEC9] text-[#3D0C11] flex items-center justify-center min-h-[170px] p-6 hover:shadow-[0_15px_30px_rgba(255,174,201,0.25)] relative overflow-hidden">
-          {/* Simple flat illustration of a calendar and a pencil */}
-          <div className="relative w-28 h-24 flex items-center justify-center">
-            {/* Calendar backing */}
-            <div className="absolute w-20 h-16 bg-[#FFF9E6] border-2 border-[#3D0C11] rounded-[0.5rem] shadow-[4px_4px_0px_#3D0C11] flex flex-col overflow-hidden">
-              <div className="h-4 bg-[#FF6333] border-b-2 border-[#3D0C11] flex gap-1 items-center px-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3D0C11]" />
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3D0C11]" />
-              </div>
-              <div className="flex-1 grid grid-cols-4 gap-1 p-1">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="bg-[#3D0C11]/10 rounded-[1px] w-full h-full" />
-                ))}
-              </div>
-            </div>
-            {/* Red pencil illustration */}
-            <div className="absolute w-2 h-14 bg-[#FF6333] border-2 border-[#3D0C11] rounded-full rotate-[35deg] translate-x-7 -translate-y-2 flex flex-col justify-between items-center shadow-[2px_2px_0px_#3D0C11]">
-              <div className="w-full h-2 bg-[#FFC53D]" />
+          <div className="flex items-center justify-between mt-8">
+            <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-[#555555]">
+              CHUNG HEI // DEVOPS & MOBILE
+            </span>
+            <div className="w-8 h-8 rounded-full bg-white border border-[#0F0F0F]/10 flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform">
+              <svg className="w-4 h-4 text-[#0F0F0F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </div>
           </div>
-        </BentoCard>
+        </div>
 
-        {/* Card 6: Row 3 Left Dark Maroon Block (col-span-1, row-span-2) */}
-        <BentoCard className="col-span-1 md:row-span-2 bg-[#3D0C11] text-[#FFF9E6] flex flex-col justify-between min-h-[364px] p-8 hover:shadow-[0_20px_40px_rgba(61,12,17,0.2)]">
-          <h3 className="font-sans font-[950] text-7xl uppercase leading-none tracking-tight">
-            4.8K
-          </h3>
-          <div>
-            <div className="w-fit bg-[#FFF9E6]/10 text-[#FFF9E6] border border-[#FFF9E6]/20 px-3 py-1.5 rounded-full font-mono text-[9px] font-bold uppercase tracking-wider flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              Next.js / DevOps
+        {/* ROW 1 Right Section: Program Stories Banner (col-span-6) */}
+        <div className="col-span-12 md:col-span-6 bg-[#F39C12] text-white rounded-[1.8rem] px-6 py-4 flex items-center justify-between min-h-[56px] hover:shadow-[0_10px_20px_rgba(243,156,18,0.15)]">
+          <span className="font-mono text-[11px] font-black uppercase tracking-wider">
+            Program Stories
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+        </div>
+
+        {/* ROW 2 Right Section: 3-column subgrid (col-span-6) */}
+        <div className="col-span-12 md:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          {/* Sub-Col 1: Two small stacked boxes */}
+          <div className="flex flex-col gap-5 h-full">
+            {/* Box 1 (White): DEVOPS info */}
+            <div className="bg-[#FFFFFF] text-[#0F0F0F] p-4 rounded-[1.5rem] flex-1 flex flex-col justify-between min-h-[120px] shadow-sm">
+              <div className="flex justify-between items-start">
+                <span className="font-mono text-[8px] font-black uppercase tracking-wider text-neutral-400">CD GitOps</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#1982FC]" />
+              </div>
+              <p className="font-mono text-[11px] font-black uppercase tracking-tight text-[#0f0f0f] leading-none">
+                VERIFIED ACTIONS
+              </p>
             </div>
-            <p className="font-sans text-[11px] font-bold leading-relaxed text-[#FFF9E6]/70">
-              Uptime deployment logs and core Git commits monitored continuously.
+            {/* Box 2 (Orange): WINNERS text */}
+            <div className="bg-[#F39C12] text-white p-4 rounded-[1.5rem] flex-1 flex flex-col justify-center min-h-[120px] shadow-sm">
+              <span className="font-mono text-[7px] font-bold uppercase tracking-widest text-white/60 mb-1">TELEMETRY</span>
+              <p className="font-mono text-[10px] font-black uppercase tracking-tight leading-tight">
+                4.8K+ Commits Shipped Live
+              </p>
+            </div>
+          </div>
+
+          {/* Sub-Col 2: Tall Red Card (MOBILE DEV) */}
+          <div className="bg-[#C0392B] text-white p-4 rounded-[1.5rem] flex flex-col justify-between min-h-[260px] shadow-sm">
+            <div>
+              <span className="font-mono text-[8px] font-black uppercase tracking-widest text-white/60">MOBILE DEV</span>
+              <h4 className="font-sans font-[900] text-sm uppercase mt-1 leading-tight">
+                FLUTTER ENGINE
+              </h4>
+            </div>
+            {/* Simulated Mobile Mock UI */}
+            <div className="bg-[#A93226] border border-white/10 rounded-lg p-3 my-2 flex flex-col gap-1.5">
+              <div className="w-full h-1.5 bg-white/20 rounded-full" />
+              <div className="w-2/3 h-1.5 bg-white/20 rounded-full" />
+              <div className="w-full h-5 bg-[#F39C12] rounded flex items-center justify-center font-mono text-[8px] font-bold mt-1">
+                RUN SIM
+              </div>
+            </div>
+            <p className="font-mono text-[8px] text-white/75 leading-tight">
+              * Activity Based Cross-Platform Mobile Handshake.
             </p>
           </div>
-        </BentoCard>
 
-        {/* Card 7: Row 3 Middle Lime Green Block (col-span-1, row-span-2) */}
-        <BentoCard className="col-span-1 md:row-span-2 bg-[#99CC33] text-[#3D0C11] flex flex-col justify-between min-h-[364px] p-8 hover:shadow-[0_20px_40px_rgba(153,204,51,0.2)]">
-          <div className="space-y-3 w-full">
-            {[
-              { name: "Kubernetes", count: 13 },
-              { name: "Docker", count: 8 },
-              { name: "Flutter", count: 21 },
-              { name: "AWS Cloud", count: 16 }
-            ].map((tool, index) => (
-              <div
-                key={index}
-                className="w-full bg-[#3D0C11] text-[#FFF9E6] px-4 py-3 rounded-full flex items-center justify-between font-mono text-[10px] font-bold uppercase tracking-wider shadow-[3px_3px_0px_#3D0C11]/30 hover:translate-x-1 transition-transform cursor-default"
-              >
-                <span>{tool.name}</span>
-                <span className="w-5 h-5 bg-[#FF6333] text-white rounded-full flex items-center justify-center text-[9px] font-black">
-                  {tool.count}
-                </span>
-              </div>
-            ))}
+          {/* Sub-Col 3: Tall White Card (LIVE RUN) */}
+          <div className="bg-[#FFFFFF] text-[#0F0F0F] p-4 rounded-[1.5rem] flex flex-col justify-between min-h-[260px] shadow-sm">
+            <div>
+              <span className="font-mono text-[8px] font-black uppercase tracking-widest text-neutral-400">STATUS</span>
+              <h4 className="font-sans font-[950] text-sm uppercase mt-1 leading-tight text-[#0F0F0F]">
+                DEPLOYMENT STATUS
+              </h4>
+            </div>
+            <div className="flex flex-col gap-2 my-2">
+              {["AWS EKS", "ArgoCD", "Kubernetes"].map((item, idx) => (
+                <div key={item} className="flex items-center gap-1.5 font-mono text-[9px] font-bold text-neutral-500 uppercase">
+                  <span className={`w-2 h-2 rounded-full ${idx === 1 ? "bg-amber-400 animate-pulse" : "bg-emerald-400"}`} />
+                  {item}
+                </div>
+              ))}
+            </div>
+            <p className="font-mono text-[8px] text-neutral-400 leading-tight">
+              * Live synchronizations running globally.
+            </p>
           </div>
-          <span className="font-mono text-[9px] font-extrabold uppercase tracking-widest text-[#3D0C11]/50 block mt-6">
-            * PIPELINE CLUSTER CORE
-          </span>
-        </BentoCard>
 
-        {/* Card 8: Row 3 Right Pink Block (col-span-2, row-span-2) */}
-        <BentoCard className="col-span-1 md:col-span-2 md:row-span-2 bg-[#FFAEC9] text-[#3D0C11] flex flex-col justify-between min-h-[364px] p-8 hover:shadow-[0_20px_40px_rgba(255,174,201,0.25)]">
-          <span className="font-mono text-[9px] font-black uppercase tracking-wider">
-            Brand Idea
+        </div>
+
+        {/* ROW 3 Left Section: Video walkthrough (col-span-5) */}
+        <div className="col-span-12 md:col-span-5 bg-white text-black rounded-[1.8rem] p-6 flex flex-col justify-between min-h-[260px] shadow-sm relative overflow-hidden group hover:shadow-[0_15px_30px_rgba(255,255,255,0.05)] border border-neutral-100">
+          <div className="relative w-full aspect-video rounded-xl bg-neutral-100 border border-neutral-200/50 flex items-center justify-center overflow-hidden">
+            {/* Red play button */}
+            <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center cursor-pointer shadow-md transform group-hover:scale-110 transition-transform z-10">
+              <svg className="w-5 h-5 text-white fill-current ml-0.5" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <div className="absolute inset-0 bg-neutral-900/5 backdrop-blur-[1px]" />
+          </div>
+          <div className="mt-4 flex justify-between items-center">
+            <h4 className="font-mono text-[10px] font-bold uppercase tracking-tight text-[#0F0F0F]">
+              Watch Pipeline Video Walkthrough
+            </h4>
+            <span className="text-[9px] font-mono text-neutral-400 font-bold">01:42</span>
+          </div>
+        </div>
+
+        {/* ROW 3 Middle Section: 2 stacked boxes (col-span-2) */}
+        <div className="col-span-12 md:col-span-2 flex flex-col gap-5 h-full">
+          {/* Box 1 (Pink): Tech logo */}
+          <div className="bg-[#FFAEC9] text-[#3D0C11] p-4 rounded-[1.5rem] flex-1 flex items-center justify-center min-h-[120px] shadow-sm relative overflow-hidden">
+            <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+            </svg>
+          </div>
+          {/* Box 2 (Dark Grey): Node Grid Map */}
+          <div className="bg-[#2A2A2A] text-white p-4 rounded-[1.5rem] flex-1 flex flex-col justify-between min-h-[120px] shadow-sm">
+            <span className="font-mono text-[7px] font-bold uppercase tracking-widest text-neutral-400">Node Matrix Grid</span>
+            <div className="grid grid-cols-5 gap-1 my-2">
+              {Array.from({ length: 15 }).map((_, i) => (
+                <div key={i} className={`h-2 rounded-[1px] ${i % 4 === 0 ? "bg-red-500 animate-pulse" : "bg-emerald-400"}`} />
+              ))}
+            </div>
+            <span className="font-mono text-[7px] font-bold text-neutral-500">SYS: EKS CLUSTER ACTIVE</span>
+          </div>
+        </div>
+
+        {/* ROW 3 Right Section: Bento Design (col-span-5) */}
+        <div className="col-span-12 md:col-span-5 bg-[#0F3D64] text-[#FFF9E6] rounded-[1.8rem] p-8 flex flex-col justify-between min-h-[260px] hover:shadow-[0_15px_30px_rgba(15,61,100,0.25)]">
+          <div>
+            <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-neutral-300">
+              Bento Design
+            </span>
+            <h3 className="text-3xl font-sans font-[950] tracking-[-0.03em] leading-none uppercase mt-3">
+              SYSTEM ARCHITECTURE
+            </h3>
+            <p className="mt-4 text-[11px] font-semibold text-[#FFF9E6]/70 leading-relaxed">
+              This approach borrows concepts from GitOps, deploying containerized pods and configurations in dynamic code branches for cleaner structure.
+            </p>
+          </div>
+          <div className="flex items-center justify-between mt-6">
+            {/* Mini avatar overlap circle indicators */}
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="w-6 h-6 rounded-full bg-neutral-200 border border-[#0F3D64] flex items-center justify-center font-mono text-[8px] font-bold text-black">
+                  U{i}
+                </div>
+              ))}
+            </div>
+            <div className="w-8 h-8 rounded-full bg-white border border-[#FFF9E6]/10 flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform">
+              <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* ROW 4 Section: Authorized Partners Banner (col-span-12) */}
+        <div className="col-span-12 bg-[#F39C12] text-white rounded-[1.8rem] px-6 py-4 flex items-center justify-between min-h-[56px] mt-2 shadow-sm">
+          <span className="font-mono text-[11px] font-black uppercase tracking-wider">
+            Verified Technologies & Toolsets
           </span>
-          <h3 className="swiss-massive-heading text-4xl sm:text-5xl md:text-6xl text-[#3D0C11] leading-[0.9] tracking-tight uppercase max-w-md my-6">
-            CRAFTED ANSWERS FOR YOUR APPS
-          </h3>
-          <span className="font-mono text-[9px] font-black uppercase tracking-wider">
-            Helper
-          </span>
-        </BentoCard>
+          <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center cursor-pointer">
+            <span className="text-[10px] text-black">➔</span>
+          </div>
+        </div>
+
+        {/* ROW 5 Section: Partner Logos row (6 items, col-span-2 each) */}
+        {["React/Next", "TypeScript", "Kubernetes", "Docker", "Flutter", "AWS"].map((tool, index) => (
+          <div
+            key={index}
+            className="col-span-6 md:col-span-2 bg-[#FFFFFF] text-[#0F0F0F] p-4 rounded-[1.5rem] flex items-center justify-center min-h-[90px] font-mono text-[10px] font-black uppercase tracking-wider shadow-sm hover:scale-105 transition-transform duration-200 cursor-default"
+          >
+            {tool}
+          </div>
+        ))}
 
       </div>
     </section>
