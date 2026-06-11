@@ -80,14 +80,14 @@ export default function GitOpsPipeline() {
   return (
     <BentoCard className="flex h-full min-h-[400px] flex-col justify-between overflow-hidden">
       <div>
-        <div className="flex items-center justify-between border-b border-black/10 pb-2">
-          <span className="text-[10px] font-mono font-bold tracking-widest text-black/50 uppercase">
+        <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-neutral-400 uppercase">
             Cluster Map // GitOps Deployment
           </span>
           <div className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 bg-neutral-200 border border-black" />
-            <span className="w-2.5 h-2.5 bg-neutral-200 border border-black" />
-            <span className="w-2.5 h-2.5 bg-neutral-200 border border-black" />
+            <span className="w-2.5 h-2.5 bg-neutral-100 rounded-full border border-neutral-200/50" />
+            <span className="w-2.5 h-2.5 bg-neutral-100 rounded-full border border-neutral-200/50" />
+            <span className="w-2.5 h-2.5 bg-neutral-100 rounded-full border border-neutral-200/50" />
           </div>
         </div>
         <h3 className="mt-4 text-2xl font-black tracking-tight text-black uppercase">
@@ -96,26 +96,26 @@ export default function GitOpsPipeline() {
       </div>
 
       {/* Interactive Diagram Pipeline Flow */}
-      <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
         {pipelineStages.map((stage) => {
           const isActive = stage.id === activeStageId;
           return (
             <button
               key={stage.id}
               onClick={() => setActiveStageId(stage.id)}
-              className={`text-left p-3 border-[3px] border-black transition-all duration-100 relative ${
+              className={`text-left p-4 border rounded-[1.3rem] transition-all duration-300 relative ${
                 isActive
-                  ? "bg-accent-blue text-white shadow-none translate-x-[2px] translate-y-[2px]"
-                  : "bg-white text-black shadow-[3px_3px_0px_#000000] hover:-translate-y-[1px] hover:-translate-x-[1px] hover:shadow-[4px_4px_0px_#000000]"
+                  ? "bg-accent-blue border-accent-blue text-white shadow-[0_8px_25px_rgba(10,92,255,0.2)] -translate-y-0.5"
+                  : "bg-white/60 border-neutral-200/50 text-black shadow-[0_4px_12px_rgba(0,0,0,0.01)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.03)] hover:border-neutral-300"
               }`}
             >
-              <div className="flex items-center justify-between gap-1 mb-2">
-                <span className={`w-2 h-2 rounded-full border ${
-                  stage.status === "SUCCESS" ? "bg-emerald-400 border-black/30" :
-                  stage.status === "SYNCING" ? "bg-amber-400 animate-pulse border-black/30" :
-                  "bg-neutral-300 border-black/30"
+              <div className="flex items-center justify-between gap-1 mb-3">
+                <span className={`w-2 h-2 rounded-full ${
+                  stage.status === "SUCCESS" ? "bg-emerald-400" :
+                  stage.status === "SYNCING" ? "bg-amber-400 animate-pulse" :
+                  "bg-neutral-300"
                 }`} />
-                <span className={`font-mono text-[7px] font-bold ${isActive ? "text-white/60" : "text-black/40"}`}>
+                <span className={`font-mono text-[8px] font-bold uppercase tracking-wider ${isActive ? "text-white/60" : "text-neutral-400"}`}>
                   {stage.status}
                 </span>
               </div>
@@ -128,30 +128,30 @@ export default function GitOpsPipeline() {
       </div>
 
       {/* Stage Detail Display Panel */}
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-4 border-[3px] border-black p-4 bg-zinc-50 font-mono text-xs">
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-5 gap-6 border border-neutral-200/50 rounded-[1.8rem] p-6 bg-white/40 backdrop-blur-md font-mono text-xs shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
         {/* Left Description Column */}
-        <div className="md:col-span-3 flex flex-col justify-between space-y-4">
+        <div className="md:col-span-3 flex flex-col justify-between space-y-5">
           <div>
-            <p className="text-[10px] font-bold text-accent-blue uppercase tracking-wider">
+            <span className="bg-accent-blue/10 text-accent-blue px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider">
               {activeStage.name}
-            </p>
-            <p className="mt-2 text-[11px] font-sans font-bold leading-relaxed text-neutral-700">
+            </span>
+            <p className="mt-3.5 text-[12px] font-sans font-bold leading-relaxed text-neutral-600">
               {activeStage.description}
             </p>
           </div>
 
           <div>
-            <span className="block text-[8px] font-bold text-black/40 uppercase mb-1">Telemetry Monitor:</span>
-            <div className="bg-black text-emerald-400 p-2 text-[9px] border border-black overflow-x-auto whitespace-nowrap">
+            <span className="block text-[8px] font-bold text-neutral-400 uppercase tracking-wider mb-1.5">Telemetry Monitor:</span>
+            <div className="bg-neutral-900 text-emerald-400 p-2.5 rounded-lg border border-neutral-800 text-[9px] overflow-x-auto whitespace-nowrap">
               &gt; {activeStage.telemetry}
             </div>
           </div>
 
           <div>
-            <span className="block text-[8px] font-bold text-black/40 uppercase mb-1">Tooling Assembly:</span>
+            <span className="block text-[8px] font-bold text-neutral-400 uppercase tracking-wider mb-1.5">Tooling Assembly:</span>
             <div className="flex flex-wrap gap-1.5">
               {activeStage.tools.map((t) => (
-                <span key={t} className="bg-neutral-200 text-black border border-black text-[9px] px-1.5 py-0.5 font-bold">
+                <span key={t} className="bg-neutral-100 text-neutral-600 border border-neutral-200/50 text-[9px] px-2.5 py-0.5 rounded-full font-bold">
                   {t}
                 </span>
               ))}
@@ -161,15 +161,15 @@ export default function GitOpsPipeline() {
 
         {/* Right Code Config Column */}
         <div className="md:col-span-2 flex flex-col">
-          <span className="text-[8px] font-bold text-black/40 uppercase mb-1">Source Config Payload:</span>
-          <pre className="flex-1 bg-neutral-900 text-neutral-300 p-3 text-[9px] border border-black overflow-auto select-all leading-tight max-h-[140px]">
+          <span className="text-[8px] font-bold text-neutral-400 uppercase tracking-wider mb-1.5">Source Config Payload:</span>
+          <pre className="flex-1 bg-neutral-950 text-neutral-400 p-4 rounded-xl border border-neutral-900 text-[9px] overflow-auto select-all leading-tight max-h-[150px]">
             <code>{activeStage.yaml}</code>
           </pre>
         </div>
       </div>
 
       <div className="mt-4">
-        <p className="text-xs font-mono text-black/50">
+        <p className="text-xs font-mono text-neutral-400">
           * Interactive GitOps architecture block. Click pipeline stages to inspect real-time telemetry specs.
         </p>
       </div>

@@ -26,7 +26,7 @@ const timelineData: Milestone[] = [
   {
     quarter: "Q2 2025",
     title: "Flutter Native Bridging",
-    detail: "Integrated multi-target Flutter frameworks into production native iOS and Android retail applications.",
+    detail: "Integrated multi-target Flutter frameworks into production native iOS and retail applications.",
     badge: "Flutter"
   },
   {
@@ -41,13 +41,13 @@ export default function SystemTimeline() {
   return (
     <BentoCard className="flex h-full min-h-[400px] flex-col justify-between overflow-hidden">
       <div>
-        <div className="flex items-center justify-between border-b border-black/10 pb-2">
-          <span className="text-[10px] font-mono font-bold tracking-widest text-black/50 uppercase">
+        <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-neutral-400 uppercase">
             History Log // Milestones
           </span>
           <div className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 bg-neutral-200 border border-black" />
-            <span className="w-2.5 h-2.5 bg-neutral-200 border border-black" />
+            <span className="w-2.5 h-2.5 bg-neutral-100 rounded-full border border-neutral-200/50" />
+            <span className="w-2.5 h-2.5 bg-neutral-100 rounded-full border border-neutral-200/50" />
           </div>
         </div>
         <h3 className="mt-4 text-2xl font-black tracking-tight text-black uppercase">
@@ -56,25 +56,25 @@ export default function SystemTimeline() {
       </div>
 
       {/* Vertical Timeline Layout */}
-      <div className="mt-4 flex-1 space-y-4 border-l-2 border-black pl-4 ml-1.5 py-1 relative">
+      <div className="mt-6 flex-1 space-y-6 border-l-2 border-neutral-200/60 pl-5 ml-1.5 py-1 relative">
         {timelineData.map((m, idx) => (
           <div key={idx} className="relative group">
             {/* Timeline Dot Indicator */}
-            <div className="absolute -left-[23px] top-1.5 w-3 h-3 bg-white border-[3px] border-black rounded-full group-hover:bg-accent-blue transition-colors duration-100" />
+            <div className="absolute -left-[27px] top-1.5 w-3 h-3 bg-white border-[3px] border-neutral-300 rounded-full group-hover:border-accent-blue group-hover:bg-accent-blue/20 transition-all duration-300 shadow-[0_0_10px_transparent] group-hover:shadow-[0_0_8px_rgba(10,92,255,0.4)]" />
             
             <div>
               <div className="flex items-baseline justify-between gap-2">
-                <span className="font-mono text-[9px] font-extrabold text-accent-blue uppercase">
+                <span className="font-mono text-[9px] font-extrabold text-accent-blue uppercase tracking-wider">
                   {m.quarter}
                 </span>
-                <span className="bg-black text-white text-[7px] font-mono font-bold px-1 py-0.5 uppercase tracking-wide">
+                <span className="bg-neutral-100 text-neutral-500 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full border border-neutral-200/30">
                   {m.badge}
                 </span>
               </div>
-              <h4 className="font-sans font-black text-xs text-black uppercase mt-0.5 leading-tight group-hover:text-accent-blue transition-colors duration-100">
+              <h4 className="font-sans font-black text-xs text-black uppercase mt-1.5 leading-tight group-hover:text-accent-blue transition-colors duration-200">
                 {m.title}
               </h4>
-              <p className="font-sans text-[10px] leading-snug text-neutral-600 mt-1 font-semibold">
+              <p className="font-sans text-[11px] leading-relaxed text-neutral-500 mt-1.5 font-semibold">
                 {m.detail}
               </p>
             </div>
@@ -82,8 +82,8 @@ export default function SystemTimeline() {
         ))}
       </div>
 
-      <div className="mt-4 border-t border-black/10 pt-3">
-        <p className="text-xs font-mono text-black/50">
+      <div className="mt-4 border-t border-neutral-100 pt-3">
+        <p className="text-xs font-mono text-neutral-400">
           * Recorded production checkpoints.
         </p>
       </div>
