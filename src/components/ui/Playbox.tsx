@@ -1,81 +1,65 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useState, useMemo, useEffect } from "react";
+import { useRef, useState, useMemo } from "react";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import BentoCard from "./BentoCard";
 
-// Pure seeded pseudorandom number generator to satisfy React render purity rules
-function createSeededRandom(seed: number) {
-  let s = seed;
-  return function () {
-    const x = Math.sin(s++) * 10000;
-    return x - Math.floor(x);
-  };
-}
-
-function ParticleSphere() {
+function ParticleMountain() {
   const pointsRef = useRef<THREE.Points>(null!);
   const [hovered, setHovered] = useState(false);
 
-  const count = 600;
+  const rows = 35;
+  const cols = 35;
+  const count = rows * cols;
 
-  // Pre-calculate positions and colors inside a spherical shell deterministically
   const [positions, colors] = useMemo(() => {
-    const random = createSeededRandom(42);
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
-    const colorYellow = new THREE.Color("#FFE600");
-    const colorCyan = new THREE.Color("#00F0FF");
+    const colorWhite = new THREE.Color("#FFFFFF");
+    const colorRed = new THREE.Color("#E60000");
+    const colorGray = new THREE.Color("#555555");
 
-    for (let i = 0; i < count; i++) {
-      const u = random();
-      const v = random();
-      const theta = u * 2.0 * Math.PI;
-      const phi = Math.acos(2.0 * v - 1.0);
-      const r = 1.0 + random() * 0.25; // Spherical shell thickness
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const idx = r * cols + c;
+        // Grid positions from -1.5 to 1.5
+        const x = (c / (cols - 1) - 0.5) * 3;
+        const z = (r / (rows - 1) - 0.5) * 3;
 
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      pos[i * 3 + 2] = r * Math.cos(phi);
+        // Generate mountain contours using exp-distance peaks
+        const d1 = Math.sqrt(x * x + z * z);
+        const d2 = Math.sqrt((x - 0.6) * (x - 0.6) + (z + 0.6) * (z + 0.6));
+        const y = 0.8 * Math.exp(-d1 * d1 * 2.5) + 0.45 * Math.exp(-d2 * d2 * 3.5) - 0.3;
 
-      const finalColor = random() > 0.5 ? colorYellow : colorCyan;
-      col[i * 3] = finalColor.r;
-      col[i * 3 + 1] = finalColor.g;
-      col[i * 3 + 2] = finalColor.b;
+        pos[idx * 3] = x;
+        pos[idx * 3 + 1] = y;
+        pos[idx * 3 + 2] = z;
+
+        // Higher peaks are Swiss Trail Red, valleys are gray, general slopes are white
+        let finalColor = colorWhite;
+        if (y > 0.25) {
+          finalColor = colorRed;
+        } else if (y < -0.15) {
+          finalColor = colorGray;
+        }
+
+        col[idx * 3] = finalColor.r;
+        col[idx * 3 + 1] = finalColor.g;
+        col[idx * 3 + 2] = finalColor.b;
+      }
     }
     return [pos, col];
   }, []);
-
-  const particleTexture = useMemo(() => {
-    if (typeof window === "undefined") return null;
-    const canvas = document.createElement("canvas");
-    canvas.width = 16;
-    canvas.height = 16;
-    const ctx = canvas.getContext("2d")!;
-    const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
-    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 16, 16);
-    return new THREE.CanvasTexture(canvas);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      particleTexture?.dispose();
-    };
-  }, [particleTexture]);
 
   useFrame((state) => {
     if (!pointsRef.current) return;
     const time = state.clock.getElapsedTime();
     if (!hovered) {
-      pointsRef.current.rotation.x = time * 0.15;
-      pointsRef.current.rotation.y = time * 0.25;
+      pointsRef.current.rotation.y = time * 0.15;
     } else {
-      pointsRef.current.rotation.y += 0.015;
+      pointsRef.current.rotation.y += 0.01;
     }
   });
 
@@ -96,13 +80,11 @@ function ParticleSphere() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.12}
+        size={0.08}
         vertexColors
         transparent
         opacity={0.9}
-        map={particleTexture || undefined}
-        depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        depthWrite={true}
       />
     </points>
   );
@@ -116,20 +98,20 @@ export default function Playbox() {
           Interact // Drag to Rotate
         </span>
         <h3 className="mt-2 text-2xl font-black tracking-tight text-black uppercase">
-          3D ORB PLAYBOX
+          TOPO PEAK PLAYBOX
         </h3>
       </div>
 
-      <div className="h-[200px] w-full bg-neutral-950 rounded-xl relative overflow-hidden shadow-inner border border-white/[0.05]">
-        <Canvas camera={{ position: [0, 0, 2.5] }}>
+      <div className="h-[200px] w-full bg-black rounded-none relative overflow-hidden border-2 border-black">
+        <Canvas camera={{ position: [0, 1.2, 2.5], fov: 55 }}>
           <ambientLight intensity={0.5} />
-          <ParticleSphere />
+          <ParticleMountain />
           <OrbitControls enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
 
       <p className="text-xs font-mono text-black/50">
-        * Interactive cosmic particle shell using React-Three-Fiber.
+        * Interactive topographic peak mesh using React-Three-Fiber.
       </p>
     </BentoCard>
   );

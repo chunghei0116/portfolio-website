@@ -28,17 +28,30 @@ export default function BentoGrid() {
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         
-        {/* Skill terminal (col-span-1) */}
-        <div className="col-span-1">
-          <SkillTerminal />
-        </div>
+        {/* Card 1: BASECAMP // TRAILHEAD (col-span-2) */}
+        <BentoCard className="col-span-1 md:col-span-2 min-h-[350px] flex flex-col justify-between">
+          <div>
+            <span className="text-alpine-mono">
+              ABOUT THE ROUTE // INFRASTRUCTURE & APPS
+            </span>
+            <h3 className="text-4xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-2">
+              BASECAMP // TRAILHEAD
+            </h3>
+            <p className="font-bold mt-6 text-moss-shadow leading-relaxed max-w-2xl">
+              I am a developer operating at the intersection of DevOps, mobile ecosystems, and interactive interfaces. I engineer automated deployment pipelines and cross-platform desktop/mobile apps designed to be highly secure, reliable, and smooth to use.
+            </p>
+          </div>
+          <div>
+            <span className="text-alpine-mono block mb-3 font-semibold">SKILLSETS & TOOLING:</span>
+            <div className="flex flex-wrap gap-2">
+              {["React", "Next.js 16", "TypeScript", "Flutter", "TailwindCSS", "Kubernetes", "Docker", "GitOps", "ArgoCD", "AWS", "GLSL / Shaders"].map((tag) => (
+                <span key={tag} className="bg-black text-white font-mono text-[0.7rem] font-bold px-2 py-1 uppercase">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </BentoCard>
 
-        {/* Interactive Playbox (col-span-1) */}
-        <div className="col-span-1">
-          <Playbox />
-        </div>
-
-        {/* Featured Telemetry stats card (col-span-1) - High impact Swiss red back */}
+        {/* Card 2: ASCENT TELEMETRY // STATS (col-span-1) - High impact Swiss red back */}
         <div className="col-span-1 brutalist-border bg-accent-red text-white p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[350px]">
           <div>
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.12em] uppercase text-white border-b-2 border-white pb-1 inline-block">
@@ -56,7 +69,7 @@ export default function BentoGrid() {
           </div>
         </div>
 
-        {/* Project card 1 (col-span-2) */}
+        {/* Card 3: SUMMIT // ROUTE-01 (col-span-2) */}
         <BentoCard className="col-span-1 md:col-span-2 min-h-[350px] flex flex-col justify-between">
           <div>
             <span className="text-alpine-mono">
@@ -89,7 +102,17 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* Project card 2 (col-span-1) */}
+        {/* Card 4: Playbox (col-span-1) */}
+        <div className="col-span-1">
+          <Playbox />
+        </div>
+
+        {/* Card 5: SkillTerminal (col-span-2) */}
+        <div className="col-span-1 md:col-span-2">
+          <SkillTerminal />
+        </div>
+
+        {/* Card 6: SUMMIT // ROUTE-02 (col-span-1) */}
         <BentoCard className="col-span-1 min-h-[350px] flex flex-col justify-between">
           <div>
             <span className="text-alpine-mono">

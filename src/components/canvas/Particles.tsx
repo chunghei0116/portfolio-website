@@ -11,10 +11,10 @@ const [positions, colors, originalPositions] = (() => {
   const pos = new Float32Array(count * 3);
   const col = new Float32Array(count * 3);
   
-  // Golden Yellow (#FFE600), Cyber Cyan (#00F0FF), Soft Silver-Grey (#CCCCCC)
-  const color1 = new THREE.Color("#FFE600");
-  const color2 = new THREE.Color("#00F0FF");
-  const color3 = new THREE.Color("#CCCCCC");
+  // Swiss Trail Red (#E60000), Moss Shadow (#1C2E24), Raw Iron / Black (#000000)
+  const color1 = new THREE.Color("#E60000");
+  const color2 = new THREE.Color("#1C2E24");
+  const color3 = new THREE.Color("#000000");
 
   for (let i = 0; i < count; i++) {
     const u = Math.random();
@@ -30,7 +30,7 @@ const [positions, colors, originalPositions] = (() => {
     // Randomly mix particle colors
     const mix = Math.random();
     let finalColor;
-    if (mix < 0.3) {
+    if (mix < 0.25) {
       finalColor = color1;
     } else if (mix < 0.6) {
       finalColor = color2;
@@ -70,7 +70,7 @@ export default function Particles() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Programmatically paint a soft circular alpha glow texture
+  // Programmatically paint a sharp circular dot texture
   const particleTexture = useMemo(() => {
     if (typeof window === "undefined") return null;
     const canvas = document.createElement("canvas");
@@ -79,6 +79,7 @@ export default function Particles() {
     const ctx = canvas.getContext("2d")!;
     const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
     gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.8)");
     gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 16, 16);
@@ -128,13 +129,13 @@ export default function Particles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.065}
+        size={0.07}
         vertexColors
         transparent
-        opacity={0.8}
+        opacity={0.65}
         map={particleTexture || undefined}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );
