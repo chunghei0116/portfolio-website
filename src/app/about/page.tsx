@@ -1,7 +1,7 @@
 "use client";
 
 import BentoCard from "@/components/ui/BentoCard";
-import SkillTerminal from "@/components/ui/SkillTerminal";
+import GitOpsPipeline from "@/components/ui/GitOpsPipeline";
 
 export default function AboutPage() {
   return (
@@ -27,9 +27,9 @@ export default function AboutPage() {
           </p>
         </BentoCard>
 
-        {/* Skills Terminal */}
+        {/* GitOps Pipeline */}
         <div className="col-span-1">
-          <SkillTerminal />
+          <GitOpsPipeline />
         </div>
 
         {/* Timeline / Experience */}

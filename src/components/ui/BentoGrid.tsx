@@ -1,8 +1,8 @@
 "use client";
 
 import BentoCard from "./BentoCard";
-import Playbox from "./Playbox";
-import SkillTerminal from "./SkillTerminal";
+import SystemTimeline from "./SystemTimeline";
+import GitOpsPipeline from "./GitOpsPipeline";
 
 const projects = [
   {
@@ -102,14 +102,14 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* Card 4: Playbox (col-span-1) */}
+        {/* Card 4: SystemTimeline (col-span-1) */}
         <div className="col-span-1">
-          <Playbox />
+          <SystemTimeline />
         </div>
 
-        {/* Card 5: SkillTerminal (col-span-2) */}
+        {/* Card 5: GitOpsPipeline (col-span-2) */}
         <div className="col-span-1 md:col-span-2">
-          <SkillTerminal />
+          <GitOpsPipeline />
         </div>
 
         {/* Card 6: SUMMIT // ROUTE-02 (col-span-1) */}
