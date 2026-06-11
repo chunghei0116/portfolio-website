@@ -5,26 +5,14 @@ import { useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useDeviceOrientation } from "@/hooks/useDeviceOrientation";
 
-const createInitialData = (count: number) => {
-  const positions = new Float32Array(count * 3);
-  const initialPositions = new Float32Array(count * 3);
-
-  for (let i = 0; i < count; i++) {
-    const x = (Math.random() - 0.5) * 20;
-    const y = (Math.random() - 0.5) * 20;
-    const z = (Math.random() - 0.5) * 10;
-
-    positions[i * 3] = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
-
-    initialPositions[i * 3] = x;
-    initialPositions[i * 3 + 1] = y;
-    initialPositions[i * 3 + 2] = z;
-  }
-
-  return { positions, initialPositions };
-};
+interface ParticleMetadata {
+  x: number;
+  z: number;
+  speed: number;
+  wobbleSpeed: number;
+  wobbleForce: number;
+  colorType: number; // 0 = black, 1 = Gundam Blue, 2 = Slate/Moss
+}
 
 const Particles = () => {
   const points = useRef<THREE.Points>(null!);
@@ -46,55 +34,103 @@ const Particles = () => {
     };
   }, [requestPermission]);
 
-  const count = 8000;
+  const count = 1000; // Optimal count for background visibility and performance
 
-  const { positions, initialPositions } = useMemo(() => createInitialData(count), [count]);
+  // Generate initial flowing particles data
+  const [positions, colors, metadata] = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    const cols = new Float32Array(count * 3);
+    const meta: ParticleMetadata[] = [];
+
+    // Colors matching theme
+    const colorBlack = new THREE.Color("#000000");
+    const colorBlue = new THREE.Color("#0A5CFF");
+    const colorMoss = new THREE.Color("#1C2E24");
+
+    for (let i = 0; i < count; i++) {
+      // Random X, Y (-8 to 8), Z (-4 to 4)
+      const x = (Math.random() - 0.5) * 22;
+      const y = (Math.random() - 0.5) * 16;
+      const z = (Math.random() - 0.5) * 8;
+
+      pos[i * 3] = x;
+      pos[i * 3 + 1] = y;
+      pos[i * 3 + 2] = z;
+
+      const colorType = Math.random() < 0.45 ? 0 : (Math.random() < 0.85 ? 1 : 2);
+      const activeColor = colorType === 0 ? colorBlack : (colorType === 1 ? colorBlue : colorMoss);
+
+      cols[i * 3] = activeColor.r;
+      cols[i * 3 + 1] = activeColor.g;
+      cols[i * 3 + 2] = activeColor.b;
+
+      meta.push({
+        x,
+        z,
+        speed: 0.012 + Math.random() * 0.024,
+        wobbleSpeed: 0.3 + Math.random() * 0.7,
+        wobbleForce: 0.05 + Math.random() * 0.12,
+        colorType
+      });
+    }
+
+    return [pos, cols, meta];
+  }, []);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     const pos = points.current.geometry.attributes.position.array as Float32Array;
 
-    // Mouse interaction (repulsion)
     // Convert mouse coordinates to 3D space relative to camera
     const mx = (mouse.x * viewport.width) / 2;
     const my = (mouse.y * viewport.height) / 2;
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
+      const meta = metadata[i];
 
-      // Subtle float movement
-      pos[i3] = initialPositions[i3] + Math.sin(time * 0.5 + initialPositions[i3]) * 0.1;
-      pos[i3 + 1] = initialPositions[i3 + 1] + Math.cos(time * 0.5 + initialPositions[i3 + 1]) * 0.1;
+      // Update Y (Flow upwards)
+      pos[i3 + 1] += meta.speed;
 
-      // Mouse interaction (repulsion)
+      // Add horizontal sine-wave sway
+      pos[i3] = meta.x + Math.sin(time * meta.wobbleSpeed + i) * meta.wobbleForce;
+
+      // Mouse repulsion (push away from pointer)
       const dx = pos[i3] - mx;
       const dy = pos[i3 + 1] - my;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < 2) {
-        const force = (2 - dist) / 2;
-        pos[i3] += dx * force * 0.2;
-        pos[i3 + 1] += dy * force * 0.2;
+      if (dist < 2.5) {
+        const force = (2.5 - dist) / 2.5;
+        pos[i3] += (dx / (dist || 0.1)) * force * 0.18;
+        pos[i3 + 1] += (dy / (dist || 0.1)) * force * 0.18;
+      }
+
+      // Recycle particles when they exit the top boundary
+      if (pos[i3 + 1] > 8) {
+        pos[i3 + 1] = -8;
+        pos[i3] = (Math.random() - 0.5) * 22;
+        meta.x = pos[i3];
+        meta.z = (Math.random() - 0.5) * 8;
+        pos[i3 + 2] = meta.z;
       }
     }
 
     points.current.geometry.attributes.position.needsUpdate = true;
 
-    // Parallax effect: shift group rotation based on mouse and gyroscope
-    // Combine mouse (-1 to 1) and device orientation (-1 to 1)
-    const combinedX = mouse.x * 0.5 + (gamma || 0) * 0.5;
-    const combinedY = mouse.y * 0.5 - (beta || 0) * 0.5;
+    // Parallax rotation effect using mouse / gyro
+    const combinedX = mouse.x * 0.4 + (gamma || 0) * 0.4;
+    const combinedY = mouse.y * 0.4 - (beta || 0) * 0.4;
 
-    // Smoothly interpolate rotation for a subtle 3D feel
     points.current.rotation.x = THREE.MathUtils.lerp(
       points.current.rotation.x,
-      -combinedY * 0.1,
-      0.1
+      -combinedY * 0.08,
+      0.08
     );
     points.current.rotation.y = THREE.MathUtils.lerp(
       points.current.rotation.y,
-      combinedX * 0.1,
-      0.1
+      combinedX * 0.08,
+      0.08
     );
   });
 
@@ -105,13 +141,17 @@ const Particles = () => {
           attach="attributes-position"
           args={[positions, 3]}
         />
+        <bufferAttribute
+          attach="attributes-color"
+          args={[colors, 3]}
+        />
       </bufferGeometry>
       <pointsMaterial
-        size={0.035}
-        color="#000000"
+        size={0.12} // Increased size so they appear clearly as glowing mechanical circles/dust
+        vertexColors
         sizeAttenuation={true}
         transparent
-        opacity={0.6}
+        opacity={0.75}
       />
     </points>
   );
