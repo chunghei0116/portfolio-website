@@ -26,17 +26,21 @@
 }
 
 @layer base {
-  html, body {
+  html {
     max-width: 100vw;
     overflow-x: hidden;
-  }
-  body {
-    @apply bg-background text-foreground antialiased selection:bg-accent-blue selection:text-white;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
+    background-color: var(--background);
     background-image: 
       linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
       linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
     background-size: 80px 80px;
+  }
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: transparent;
+    @apply text-foreground antialiased selection:bg-accent-blue selection:text-white;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
 }
 
