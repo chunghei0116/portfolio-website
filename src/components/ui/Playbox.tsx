@@ -15,8 +15,8 @@ interface EmitterPoint {
 
 function GNDrive() {
   const driveRef = useRef<THREE.Group>(null!);
-  const ringRef1 = useRef<THREE.Mesh>(null!);
-  const ringRef2 = useRef<THREE.Mesh>(null!);
+  const ringRef1 = useRef<THREE.LineSegments>(null!);
+  const ringRef2 = useRef<THREE.LineSegments>(null!);
   const particlesRef = useRef<THREE.Points>(null!);
 
   const particleCount = 280;
@@ -115,6 +115,20 @@ function GNDrive() {
     return [pos, col, meta];
   }, [vertexEmitters, particleCount]);
 
+  // 3. Pre-generate wireframe edges geometry to make GN Drive frame 100% wireframe lines
+  const [coneEdges, tipEdges, baseEdges, hingeEdges, clawEdges, hookEdges, ring1Edges, ring2Edges] = useMemo(() => {
+    return [
+      new THREE.EdgesGeometry(new THREE.ConeGeometry(0.26, 0.82, 5)),
+      new THREE.EdgesGeometry(new THREE.CylinderGeometry(0.04, 0.08, 0.1, 5)),
+      new THREE.EdgesGeometry(new THREE.CylinderGeometry(0.28, 0.28, 0.12, 6)),
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(0.12, 0.08, 0.08)),
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(0.35, 0.04, 0.06)),
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(0.12, 0.04, 0.05)),
+      new THREE.EdgesGeometry(new THREE.TorusGeometry(0.46, 0.02, 8, 32)),
+      new THREE.EdgesGeometry(new THREE.TorusGeometry(0.55, 0.018, 8, 32))
+    ];
+  }, []);
+
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
 
@@ -162,35 +176,31 @@ function GNDrive() {
 
   return (
     <group ref={driveRef} rotation={[0, 0.3, 0.15]}>
-      {/* 1. Core GN Condenser Base & Emitter Core */}
+      {/* 1. Core GN Condenser Base & Emitter Core (Glowing Sphere wireframe) */}
       <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[0.2, 32, 32]} />
-        <meshBasicMaterial color="#00FF66" toneMapped={false} />
+        <sphereGeometry args={[0.2, 16, 16]} />
+        <meshBasicMaterial color="#00FF66" wireframe toneMapped={false} />
       </mesh>
 
-      {/* 2. Main Conical Solar Reactor Shell (Solid White Base) */}
-      <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <coneGeometry args={[0.26, 0.82, 5]} />
-        <meshBasicMaterial color="#FFFFFF" />
-      </mesh>
+      {/* 2. Main Conical Solar Reactor Shell (Clean holographic wireframe) */}
+      <lineSegments geometry={coneEdges} rotation={[0, 0, Math.PI / 2]}>
+        <lineBasicMaterial color="#FFFFFF" transparent opacity={0.85} />
+      </lineSegments>
 
-      {/* 2b. Conical Wireframe Overlay (Holographic GN Energy Grid) */}
-      <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <coneGeometry args={[0.263, 0.823, 5]} />
-        <meshBasicMaterial color="#10B981" wireframe />
-      </mesh>
+      {/* 2b. Conical HUD Energy Grid wireframe */}
+      <lineSegments geometry={coneEdges} scale={[1.02, 1.02, 1.02]} rotation={[0, 0, Math.PI / 2]}>
+        <lineBasicMaterial color="#10B981" transparent opacity={0.6} />
+      </lineSegments>
 
-      {/* 3. Glowing Condenser Emitter Core (Cone Tip) */}
-      <mesh position={[0.42, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
-        <cylinderGeometry args={[0.04, 0.08, 0.1, 5]} />
-        <meshBasicMaterial color="#00FFAA" toneMapped={false} />
-      </mesh>
+      {/* 3. Glowing Condenser Emitter Core Tip (Wireframe) */}
+      <lineSegments geometry={tipEdges} position={[0.42, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
+        <lineBasicMaterial color="#00FFAA" transparent opacity={0.9} />
+      </lineSegments>
 
-      {/* 4. Outer base cap plate (Light Grey) */}
-      <mesh position={[-0.42, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.28, 0.28, 0.12, 6]} />
-        <meshBasicMaterial color="#E5E7EB" />
-      </mesh>
+      {/* 4. Outer base cap plate (Wireframe) */}
+      <lineSegments geometry={baseEdges} position={[-0.42, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <lineBasicMaterial color="#E5E7EB" transparent opacity={0.7} />
+      </lineSegments>
 
       {/* 5. Three Clamping Safety Lock Fasteners (120 degree intervals) */}
       {[-120, 0, 120].map((angle) => {
@@ -198,34 +208,29 @@ function GNDrive() {
         return (
           <group key={angle} rotation={[rad, 0, 0]}>
             {/* Clamping hinge base */}
-            <mesh position={[-0.2, 0.32, 0]}>
-              <boxGeometry args={[0.12, 0.08, 0.08]} />
-              <meshBasicMaterial color="#D1D5DB" />
-            </mesh>
+            <lineSegments geometry={hingeEdges} position={[-0.2, 0.32, 0]}>
+              <lineBasicMaterial color="#D1D5DB" transparent opacity={0.65} />
+            </lineSegments>
             {/* Claw arm structure */}
-            <mesh position={[0.02, 0.28, 0]} rotation={[0, 0, -Math.PI / 9]}>
-              <boxGeometry args={[0.35, 0.04, 0.06]} />
-              <meshBasicMaterial color="#FFFFFF" />
-            </mesh>
+            <lineSegments geometry={clawEdges} position={[0.02, 0.28, 0]} rotation={[0, 0, -Math.PI / 9]}>
+              <lineBasicMaterial color="#FFFFFF" transparent opacity={0.8} />
+            </lineSegments>
             {/* Clamping hook locking onto reactor body */}
-            <mesh position={[0.21, 0.21, 0]} rotation={[0, 0, -Math.PI / 4]}>
-              <boxGeometry args={[0.12, 0.04, 0.05]} />
-              <meshBasicMaterial color="#E5E7EB" />
-            </mesh>
+            <lineSegments geometry={hookEdges} position={[0.21, 0.21, 0]} rotation={[0, 0, -Math.PI / 4]}>
+              <lineBasicMaterial color="#E5E7EB" transparent opacity={0.65} />
+            </lineSegments>
           </group>
         );
       })}
 
       {/* 6. Dual Accent rings */}
-      <mesh ref={ringRef1} position={[0, 0, 0]}>
-        <torusGeometry args={[0.46, 0.02, 8, 32]} />
-        <meshBasicMaterial color="#0A5CFF" />
-      </mesh>
+      <lineSegments ref={ringRef1} geometry={ring1Edges} position={[0, 0, 0]}>
+        <lineBasicMaterial color="#0A5CFF" transparent opacity={0.85} />
+      </lineSegments>
 
-      <mesh ref={ringRef2} position={[0, 0, 0]}>
-        <torusGeometry args={[0.55, 0.018, 8, 32]} />
-        <meshBasicMaterial color="#FFFFFF" />
-      </mesh>
+      <lineSegments ref={ringRef2} geometry={ring2Edges} position={[0, 0, 0]}>
+        <lineBasicMaterial color="#FFFFFF" transparent opacity={0.7} />
+      </lineSegments>
 
       {/* 7. Vertex Particle Emitter Cloud */}
       <points ref={particlesRef}>
