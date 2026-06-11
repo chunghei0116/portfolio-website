@@ -1,142 +1,120 @@
 "use client";
 
-import { useFrame } from "@react-three/fiber";
-import { useRef, useMemo, useEffect } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
+import { useDeviceOrientation } from "@/hooks/useDeviceOrientation";
 
-const count = 3000;
-
-// Pre-calculate positions and colors outside render to remain pure and high-performance
-const [positions, colors, originalPositions] = (() => {
-  const pos = new Float32Array(count * 3);
-  const col = new Float32Array(count * 3);
-  
-  // Gundam 00 Signature Blue (#0A5CFF), Deep GN Green (#097A3E), Vibrant GN Green (#10B981)
-  const color1 = new THREE.Color("#0A5CFF");
-  const color2 = new THREE.Color("#097A3E");
-  const color3 = new THREE.Color("#10B981");
+const createInitialData = (count: number) => {
+  const positions = new Float32Array(count * 3);
+  const initialPositions = new Float32Array(count * 3);
 
   for (let i = 0; i < count; i++) {
-    const u = Math.random();
-    const v = Math.random();
-    const theta = u * 2.0 * Math.PI;
-    const phi = Math.acos(2.0 * v - 1.0);
-    const r = Math.cbrt(Math.random()) * 8 + 1.5; // Spread between 1.5 and 9.5 units
+    const x = (Math.random() - 0.5) * 20;
+    const y = (Math.random() - 0.5) * 20;
+    const z = (Math.random() - 0.5) * 10;
 
-    pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-    pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.6; // Slightly flattened ellipsoidal nebula
-    pos[i * 3 + 2] = r * Math.cos(phi);
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
 
-    // Randomly mix particle colors
-    const mix = Math.random();
-    let finalColor;
-    if (mix < 0.25) {
-      finalColor = color1;
-    } else if (mix < 0.6) {
-      finalColor = color2;
-    } else {
-      finalColor = color3;
-    }
-
-    col[i * 3] = finalColor.r;
-    col[i * 3 + 1] = finalColor.g;
-    col[i * 3 + 2] = finalColor.b;
+    initialPositions[i * 3] = x;
+    initialPositions[i * 3 + 1] = y;
+    initialPositions[i * 3 + 2] = z;
   }
-  return [pos, col, pos.slice()];
-})();
 
-export default function Particles() {
-  const pointsRef = useRef<THREE.Points>(null!);
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const scrollYRef = useRef(0);
+  return { positions, initialPositions };
+};
 
-  // Monitor mouse position
+const Particles = () => {
+  const points = useRef<THREE.Points>(null!);
+  const { mouse, viewport } = useThree();
+  const { beta, gamma, requestPermission } = useDeviceOrientation();
+
+  // Handle iOS permission request on first user interaction
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    const handleInteraction = () => {
+      requestPermission();
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  // Monitor scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      scrollYRef.current = window.scrollY;
+    window.addEventListener("click", handleInteraction);
+    window.addEventListener("touchstart", handleInteraction);
+    return () => {
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
     };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [requestPermission]);
 
-  // Programmatically paint a sharp circular dot texture
-  const particleTexture = useMemo(() => {
-    if (typeof window === "undefined") return null;
-    const canvas = document.createElement("canvas");
-    canvas.width = 16;
-    canvas.height = 16;
-    const ctx = canvas.getContext("2d")!;
-    const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
-    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.8)");
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 16, 16);
-    return new THREE.CanvasTexture(canvas);
-  }, []);
+  const count = 8000;
+
+  const { positions, initialPositions } = useMemo(() => createInitialData(count), [count]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
+    const pos = points.current.geometry.attributes.position.array as Float32Array;
 
-    // Constant slow drift rotation
-    pointsRef.current.rotation.y = time * 0.03;
-    pointsRef.current.rotation.z = time * 0.01;
+    // Mouse interaction (repulsion)
+    // Convert mouse coordinates to 3D space relative to camera
+    const mx = (mouse.x * viewport.width) / 2;
+    const my = (mouse.y * viewport.height) / 2;
 
-    // Smooth lerped mouse parallax
-    pointsRef.current.rotation.y += (mouseRef.current.x * 0.12 - pointsRef.current.rotation.y) * 0.05;
-    pointsRef.current.rotation.x += (-mouseRef.current.y * 0.12 - pointsRef.current.rotation.x) * 0.05;
-
-    // Scroll-Tracking Parallax (Camera expansion feel)
-    const scrollFraction = scrollYRef.current / (typeof document !== "undefined" ? Math.max(1, document.documentElement.scrollHeight - window.innerHeight) : 1000);
-    pointsRef.current.scale.setScalar(1 + scrollFraction * 0.2);
-    pointsRef.current.position.z = scrollFraction * 1.5;
-
-    // Dynamic wave displacement (undulation) inside render loop
-    const posArray = pointsRef.current.geometry.attributes.position.array as Float32Array;
     for (let i = 0; i < count; i++) {
-      const x = posArray[i * 3];
-      const originalY = originalPositions[i * 3 + 1];
-      // Dynamic undulation using a sine wave based on time and point's x position
-      posArray[i * 3 + 1] = originalY + Math.sin(time * 0.4 + x * 0.3) * 0.15;
-    }
-    pointsRef.current.geometry.attributes.position.needsUpdate = true;
+      const i3 = i * 3;
 
-    // Request next frame
-    state.invalidate();
+      // Subtle float movement
+      pos[i3] = initialPositions[i3] + Math.sin(time * 0.5 + initialPositions[i3]) * 0.1;
+      pos[i3 + 1] = initialPositions[i3 + 1] + Math.cos(time * 0.5 + initialPositions[i3 + 1]) * 0.1;
+
+      // Mouse interaction (repulsion)
+      const dx = pos[i3] - mx;
+      const dy = pos[i3 + 1] - my;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 2) {
+        const force = (2 - dist) / 2;
+        pos[i3] += dx * force * 0.2;
+        pos[i3 + 1] += dy * force * 0.2;
+      }
+    }
+
+    points.current.geometry.attributes.position.needsUpdate = true;
+
+    // Parallax effect: shift group rotation based on mouse and gyroscope
+    // Combine mouse (-1 to 1) and device orientation (-1 to 1)
+    const combinedX = mouse.x * 0.5 + (gamma || 0) * 0.5;
+    const combinedY = mouse.y * 0.5 - (beta || 0) * 0.5;
+
+    // Smoothly interpolate rotation for a subtle 3D feel
+    points.current.rotation.x = THREE.MathUtils.lerp(
+      points.current.rotation.x,
+      -combinedY * 0.1,
+      0.1
+    );
+    points.current.rotation.y = THREE.MathUtils.lerp(
+      points.current.rotation.y,
+      combinedX * 0.1,
+      0.1
+    );
   });
 
   return (
-    <points ref={pointsRef}>
+    <points ref={points}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
           args={[positions, 3]}
         />
-        <bufferAttribute
-          attach="attributes-color"
-          args={[colors, 3]}
-        />
       </bufferGeometry>
       <pointsMaterial
-        size={0.07}
-        vertexColors
+        size={0.035}
+        color="#000000"
+        sizeAttenuation={true}
         transparent
-        opacity={0.65}
-        map={particleTexture || undefined}
-        depthWrite={false}
-        blending={THREE.NormalBlending}
+        opacity={0.6}
       />
     </points>
   );
-}
+};
+
+export default Particles;
