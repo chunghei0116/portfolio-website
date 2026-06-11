@@ -31,22 +31,29 @@ export default function BentoGrid() {
         
         {/* Card 1: BASECAMP // TRAILHEAD (col-span-2) */}
         <BentoCard className="col-span-1 md:col-span-2 flex flex-col justify-between min-h-[340px]">
-          <div>
-            <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider">
-              ABOUT THE ROUTE // INFRASTRUCTURE & APPS
-            </span>
-            <h3 className="text-4xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-3">
-              BASECAMP // TRAILHEAD
-            </h3>
-            <p className="mt-5 text-sm font-semibold text-neutral-600 leading-relaxed">
-              I am a developer operating at the intersection of DevOps, mobile ecosystems, and interactive interfaces. I engineer automated deployment pipelines and cross-platform desktop/mobile apps designed to be highly secure, reliable, and smooth to use.
-            </p>
+          <div className="flex flex-col sm:flex-row gap-6 items-start">
+            <img 
+              src="/avatar.png" 
+              alt="Avatar Profile" 
+              className="w-20 h-20 rounded-full border-2 border-accent-blue/30 shadow-[0_4px_20px_rgba(10,92,255,0.15)] flex-shrink-0 select-none pointer-events-none"
+            />
+            <div>
+              <span className="text-accent-blue font-mono text-[9px] font-bold uppercase tracking-wider bg-accent-blue/10 px-2.5 py-0.5 rounded-full">
+                ACTIVE STATUS // OPERATIONAL
+              </span>
+              <h3 className="text-3xl font-sans font-[950] tracking-[-0.03em] leading-none uppercase mt-3">
+                CHUNG HEI
+              </h3>
+              <p className="mt-4 text-xs font-semibold text-neutral-600 leading-relaxed max-w-md">
+                I am a developer operating at the intersection of DevOps, mobile ecosystems, and interactive interfaces. I engineer automated deployment pipelines and cross-platform desktop/mobile apps designed to be highly secure, reliable, and smooth to use.
+              </p>
+            </div>
           </div>
-          <div className="mt-6">
-            <span className="text-neutral-400 block mb-3 font-mono text-[9px] font-bold uppercase tracking-wider">SKILLSETS & TOOLING:</span>
-            <div className="flex flex-wrap gap-2">
+          <div className="mt-6 border-t border-neutral-100 pt-4">
+            <span className="text-neutral-400 block mb-2.5 font-mono text-[9px] font-bold uppercase tracking-wider">SKILLSETS & TOOLING:</span>
+            <div className="flex flex-wrap gap-1.5">
               {["React", "Next.js 16", "TypeScript", "Flutter", "TailwindCSS", "Kubernetes", "Docker", "GitOps", "ArgoCD", "AWS"].map((tag) => (
-                <span key={tag} className="bg-neutral-100/80 text-neutral-600 hover:bg-accent-blue/10 hover:text-accent-blue border border-neutral-200/50 hover:border-accent-blue/20 text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase transition-all duration-200 cursor-default">{tag}</span>
+                <span key={tag} className="bg-neutral-100/80 text-neutral-600 hover:bg-accent-blue/10 hover:text-accent-blue border border-neutral-200/50 hover:border-accent-blue/20 text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase transition-all duration-200 cursor-default">{tag}</span>
               ))}
             </div>
           </div>
@@ -58,15 +65,30 @@ export default function BentoGrid() {
             <span className="font-mono text-[9px] font-bold tracking-[0.15em] uppercase text-white/80 border-b border-white/20 pb-1.5 inline-block">
               ASCENT TELEMETRY
             </span>
-            <h3 className="mt-8 text-5xl font-sans font-[950] tracking-[-0.05em] leading-[0.8] uppercase text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">
+            <h3 className="mt-6 text-5xl font-sans font-[950] tracking-[-0.05em] leading-[0.8] uppercase text-white">
               4,810M
             </h3>
-            <p className="mt-5 text-xs font-bold leading-relaxed text-white/90">
+            <p className="mt-3 text-xs font-bold leading-relaxed text-white/90">
               TOTAL ACCUMULATED VERTICAL PRODUCTION DEPLOYMENTS SHIPPED AT SCALE.
             </p>
           </div>
-          <div className="border-t border-white/10 pt-4 text-left font-mono text-[9px] font-bold uppercase tracking-wider text-white/80">
-            SYS_STATUS: 100% OPERATIONAL
+          
+          {/* Mini Activity Commit Grid (very fancy!) */}
+          <div className="my-4">
+            <span className="block text-[8px] font-mono font-bold text-white/50 uppercase tracking-widest mb-1.5">COMMIT FREQUENCY:</span>
+            <div className="grid grid-cols-7 gap-1 w-fit">
+              {Array.from({ length: 28 }).map((_, idx) => {
+                const opacity = idx % 5 === 0 ? "bg-white/20" : idx % 3 === 0 ? "bg-white/60" : idx % 2 === 0 ? "bg-emerald-400" : "bg-white/90";
+                return (
+                  <div key={idx} className={`w-2.5 h-2.5 rounded-[2px] ${opacity} shadow-[0_0_4px_rgba(255,255,255,0.1)]`} />
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-3 text-left font-mono text-[9px] font-bold uppercase tracking-wider text-white/80 flex justify-between items-center">
+            <span>SYS_STATUS: 100% OK</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
           </div>
         </div>
 
