@@ -171,7 +171,7 @@ function GNDrive() {
       {/* 2. Main Conical Solar Reactor Shell */}
       <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <coneGeometry args={[0.26, 0.82, 5]} />
-        <meshStandardMaterial color="#FFFFFF" roughness={0.1} metalness={0.9} flatShading />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.15} flatShading />
       </mesh>
 
       {/* 3. Glowing Condenser Emitter Core (Cone Tip) */}
@@ -183,7 +183,7 @@ function GNDrive() {
       {/* 4. Outer base cap plate */}
       <mesh position={[-0.42, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.28, 0.28, 0.12, 6]} />
-        <meshStandardMaterial color="#EAEAEA" roughness={0.2} metalness={0.8} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
       </mesh>
 
       {/* 5. Three Clamping Safety Lock Fasteners (120 degree intervals) */}
@@ -194,17 +194,17 @@ function GNDrive() {
             {/* Clamping hinge base */}
             <mesh position={[-0.2, 0.32, 0]}>
               <boxGeometry args={[0.12, 0.08, 0.08]} />
-              <meshStandardMaterial color="#FFFFFF" roughness={0.3} metalness={0.7} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.5} metalness={0.15} />
             </mesh>
             {/* Claw arm structure */}
             <mesh position={[0.02, 0.28, 0]} rotation={[0, 0, -Math.PI / 9]}>
               <boxGeometry args={[0.35, 0.04, 0.06]} />
-              <meshStandardMaterial color="#FFFFFF" roughness={0.2} metalness={0.9} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
             </mesh>
             {/* Clamping hook locking onto reactor body */}
             <mesh position={[0.21, 0.21, 0]} rotation={[0, 0, -Math.PI / 4]}>
               <boxGeometry args={[0.12, 0.04, 0.05]} />
-              <meshStandardMaterial color="#EAEAEA" roughness={0.15} metalness={0.8} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.15} />
             </mesh>
           </group>
         );
@@ -213,12 +213,12 @@ function GNDrive() {
       {/* 6. Dual Accent Acceleration Rings */}
       <mesh ref={ringRef1} position={[0, 0, 0]}>
         <torusGeometry args={[0.46, 0.02, 8, 32]} />
-        <meshStandardMaterial color="#0A5CFF" roughness={0.2} metalness={0.8} />
+        <meshStandardMaterial color="#0A5CFF" roughness={0.3} metalness={0.7} />
       </mesh>
 
       <mesh ref={ringRef2} position={[0, 0, 0]}>
         <torusGeometry args={[0.55, 0.018, 8, 32]} />
-        <meshStandardMaterial color="#FFFFFF" roughness={0.15} metalness={0.85} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.4} metalness={0.2} />
       </mesh>
 
       {/* 7. Vertex Particle Emitter Cloud */}
@@ -260,8 +260,9 @@ export default function Playbox() {
 
       <div className="h-[200px] w-full bg-black rounded-none relative overflow-hidden border-[3px] border-black">
         <Canvas camera={{ position: [0, 0, 2.2], fov: 48 }}>
-          <ambientLight intensity={0.7} />
+          <ambientLight intensity={0.9} />
           <pointLight position={[5, 5, 5]} intensity={1.5} />
+          <directionalLight position={[0, 0, 5]} intensity={1.8} />
           <GNDrive />
           <OrbitControls enableZoom={false} enablePan={false} />
         </Canvas>
