@@ -26,69 +26,47 @@ const projects = [
 export default function BentoGrid() {
   return (
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24">
-      {/* 4-column dynamic Grid */}
+      {/* 4-column responsive Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-4 auto-rows-min">
         
         {/* Card 1: BASECAMP // TRAILHEAD (col-span-2) */}
         <BentoCard className="col-span-1 md:col-span-2 flex flex-col justify-between min-h-[340px]">
-          <div className="flex flex-col sm:flex-row gap-6 items-start">
-            <img 
-              src="/avatar.png" 
-              alt="Avatar Profile" 
-              className="w-20 h-20 rounded-full border-2 border-accent-blue/30 shadow-[0_4px_20px_rgba(10,92,255,0.15)] flex-shrink-0 select-none pointer-events-none"
-            />
-            <div>
-              <span className="text-accent-blue font-mono text-[9px] font-bold uppercase tracking-wider bg-accent-blue/10 px-2.5 py-0.5 rounded-full">
-                ACTIVE STATUS // OPERATIONAL
-              </span>
-              <h3 className="text-3xl font-sans font-[950] tracking-[-0.03em] leading-none uppercase mt-3">
-                CHUNG HEI
-              </h3>
-              <p className="mt-4 text-xs font-semibold text-neutral-600 leading-relaxed max-w-md">
-                I am a developer operating at the intersection of DevOps, mobile ecosystems, and interactive interfaces. I engineer automated deployment pipelines and cross-platform desktop/mobile apps designed to be highly secure, reliable, and smooth to use.
-              </p>
-            </div>
+          <div>
+            <span className="text-alpine-mono">
+              ABOUT THE ROUTE // INFRASTRUCTURE & APPS
+            </span>
+            <h3 className="text-4xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-2">
+              BASECAMP // TRAILHEAD
+            </h3>
+            <p className="font-bold mt-6 text-moss-shadow leading-relaxed">
+              I am a developer operating at the intersection of DevOps, mobile ecosystems, and interactive interfaces. I engineer automated deployment pipelines and cross-platform desktop/mobile apps designed to be highly secure, reliable, and smooth to use.
+            </p>
           </div>
-          <div className="mt-6 border-t border-neutral-100 pt-4">
-            <span className="text-neutral-400 block mb-2.5 font-mono text-[9px] font-bold uppercase tracking-wider">SKILLSETS & TOOLING:</span>
-            <div className="flex flex-wrap gap-1.5">
+          <div className="mt-6">
+            <span className="text-alpine-mono block mb-3 font-semibold text-[10px]">SKILLSETS & TOOLING:</span>
+            <div className="flex flex-wrap gap-2">
               {["React", "Next.js 16", "TypeScript", "Flutter", "TailwindCSS", "Kubernetes", "Docker", "GitOps", "ArgoCD", "AWS"].map((tag) => (
-                <span key={tag} className="bg-neutral-100/80 text-neutral-600 hover:bg-accent-blue/10 hover:text-accent-blue border border-neutral-200/50 hover:border-accent-blue/20 text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase transition-all duration-200 cursor-default">{tag}</span>
+                <span key={tag} className="bg-black text-white font-mono text-[0.65rem] font-bold px-2 py-0.5 border border-black uppercase">{tag}</span>
               ))}
             </div>
           </div>
         </BentoCard>
 
         {/* Card 2: ASCENT TELEMETRY // STATS (col-span-1) - Accent box */}
-        <div className="col-span-1 bg-gradient-to-br from-accent-blue via-[#004CD0] to-[#012670] text-white p-8 rounded-[2.2rem] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_rgba(10,92,255,0.25)] border border-white/10 flex flex-col justify-between min-h-[340px]">
+        <div className="col-span-1 brutalist-border bg-accent-blue text-white p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[340px]">
           <div>
-            <span className="font-mono text-[9px] font-bold tracking-[0.15em] uppercase text-white/80 border-b border-white/20 pb-1.5 inline-block">
+            <span className="font-mono text-[0.7rem] font-bold tracking-[0.12em] uppercase text-white border-b-2 border-white pb-1 inline-block">
               ASCENT TELEMETRY
             </span>
             <h3 className="mt-6 text-5xl font-sans font-[950] tracking-[-0.05em] leading-[0.8] uppercase text-white">
               4,810M
             </h3>
-            <p className="mt-3 text-xs font-bold leading-relaxed text-white/90">
+            <p className="mt-4 text-xs font-bold leading-relaxed text-white">
               TOTAL ACCUMULATED VERTICAL PRODUCTION DEPLOYMENTS SHIPPED AT SCALE.
             </p>
           </div>
-          
-          {/* Mini Activity Commit Grid (very fancy!) */}
-          <div className="my-4">
-            <span className="block text-[8px] font-mono font-bold text-white/50 uppercase tracking-widest mb-1.5">COMMIT FREQUENCY:</span>
-            <div className="grid grid-cols-7 gap-1 w-fit">
-              {Array.from({ length: 28 }).map((_, idx) => {
-                const opacity = idx % 5 === 0 ? "bg-white/20" : idx % 3 === 0 ? "bg-white/60" : idx % 2 === 0 ? "bg-emerald-400" : "bg-white/90";
-                return (
-                  <div key={idx} className={`w-2.5 h-2.5 rounded-[2px] ${opacity} shadow-[0_0_4px_rgba(255,255,255,0.1)]`} />
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-3 text-left font-mono text-[9px] font-bold uppercase tracking-wider text-white/80 flex justify-between items-center">
-            <span>SYS_STATUS: 100% OK</span>
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="border-t border-white/20 pt-4 text-left font-mono text-[0.7rem] font-bold uppercase tracking-wider text-white">
+            SYS_STATUS: 100% OPERATIONAL
           </div>
         </div>
 
@@ -100,30 +78,30 @@ export default function BentoGrid() {
         {/* Card 4: SUMMIT // ROUTE-01 (col-span-2) */}
         <BentoCard className="col-span-1 md:col-span-2 flex flex-col justify-between min-h-[340px]">
           <div>
-            <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider">
+            <span className="text-alpine-mono">
               {projects[0].category}
             </span>
-            <h3 className="text-4xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-3">
+            <h3 className="text-4xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-2">
               {projects[0].title}
             </h3>
-            <p className="mt-4 text-sm font-semibold text-neutral-600 leading-relaxed">
+            <p className="font-bold mt-4 text-moss-shadow">
               {projects[0].description}
             </p>
-            <div className="flex flex-wrap gap-2 mt-5">
+            <div className="flex flex-wrap gap-1.5 mt-4">
               {projects[0].tags.map((tag) => (
-                <span key={tag} className="bg-neutral-100/85 text-neutral-500 border border-neutral-200/50 text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase">{tag}</span>
+                <span key={tag} className="bg-black text-white font-mono text-[0.65rem] font-bold px-2 py-0.5 border border-black uppercase">{tag}</span>
               ))}
             </div>
           </div>
           <div className="flex gap-3 mt-6">
-            <a href={projects[0].liveUrl} className="bg-accent-blue text-white px-5 py-2.5 rounded-full font-mono text-[11px] font-bold uppercase transition-all hover:bg-accent-blue/90 hover:shadow-[0_8px_20px_rgba(10,92,255,0.25)] active:scale-[0.98]">
+            <a href={projects[0].liveUrl} className="bg-accent-blue text-white border-[3px] border-black px-4 py-1.5 font-mono text-[0.7rem] font-bold uppercase transition-all duration-100 shadow-[3px_3px_0px_#000000] hover:-translate-y-[1px] hover:-translate-x-[1px] hover:shadow-[4px_4px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[1px_1px_0px_#000000]">
               EXPLORE
             </a>
             <a
               href={projects[0].repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-neutral-100 text-black border border-neutral-200/60 px-5 py-2.5 rounded-full font-mono text-[11px] font-bold uppercase transition-all hover:bg-neutral-200 active:scale-[0.98]"
+              className="bg-white text-black border-[3px] border-black px-4 py-1.5 font-mono text-[0.7rem] font-bold uppercase transition-all duration-100 shadow-[3px_3px_0px_#000000] hover:-translate-y-[1px] hover:-translate-x-[1px] hover:shadow-[4px_4px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[1px_1px_0px_#000000]"
             >
               GITHUB
             </a>
@@ -133,25 +111,25 @@ export default function BentoGrid() {
         {/* Card 5: SUMMIT // ROUTE-02 (col-span-1) - Small square card */}
         <BentoCard className="col-span-1 flex flex-col justify-between min-h-[340px]">
           <div>
-            <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider">
+            <span className="text-alpine-mono">
               {projects[1].category}
             </span>
-            <h3 className="text-2xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-3">
+            <h3 className="text-2xl font-sans font-[950] tracking-[-0.03em] leading-[0.9] uppercase mt-2">
               {projects[1].title}
             </h3>
-            <p className="mt-4 text-xs font-semibold text-neutral-600 leading-relaxed">
+            <p className="font-bold mt-4 text-moss-shadow text-[11px] leading-relaxed">
               {projects[1].description}
             </p>
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-1.5 mt-4">
               {projects[1].tags.map((tag) => (
-                <span key={tag} className="bg-neutral-100/85 text-neutral-500 border border-neutral-200/50 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">{tag}</span>
+                <span key={tag} className="bg-black text-white font-mono text-[0.6rem] font-bold px-1.5 py-0.5 border border-black uppercase">{tag}</span>
               ))}
             </div>
           </div>
           <div className="flex gap-3 mt-6">
             <a
               href={projects[1].liveUrl}
-              className="bg-neutral-100 text-black border border-neutral-200/60 px-4 py-2 rounded-full font-mono text-[10px] font-bold uppercase transition-all hover:bg-neutral-200 active:scale-[0.98]"
+              className="bg-white text-black border-[3px] border-black px-3 py-1 font-mono text-[0.65rem] font-bold uppercase transition-all duration-100 shadow-[3px_3px_0px_#000000] hover:-translate-y-[1px] hover:-translate-x-[1px] hover:shadow-[4px_4px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[1px_1px_0px_#000000]"
             >
               RECONNOITER
             </a>
