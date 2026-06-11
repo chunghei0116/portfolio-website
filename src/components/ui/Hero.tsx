@@ -3,109 +3,7 @@
 import { motion } from "framer-motion";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import React, { useRef, useMemo, Suspense } from "react";
-
-interface ParticleMetadata {
-  x: number;
-  y: number;
-  speedY: number;
-  wobbleSpeed: number;
-  wobbleForce: number;
-}
-
-function HeroParticles() {
-  const pointsRef = useRef<THREE.Points>(null!);
-  const { mouse, viewport } = useThree();
-  const count = 350;
-
-  const [positions, colors, metadata] = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const cols = new Float32Array(count * 3);
-    const meta: ParticleMetadata[] = [];
-
-    const colorBlue = new THREE.Color("#0A5CFF");
-    const colorBlack = new THREE.Color("#000000");
-
-    for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 16;
-      const y = (Math.random() - 0.5) * 10;
-      const z = (Math.random() - 0.5) * 4;
-
-      pos[i * 3] = x;
-      pos[i * 3 + 1] = y;
-      pos[i * 3 + 2] = z;
-
-      const isBlue = Math.random() < 0.45;
-      const activeColor = isBlue ? colorBlue : colorBlack;
-      cols[i * 3] = activeColor.r;
-      cols[i * 3 + 1] = activeColor.g;
-      cols[i * 3 + 2] = activeColor.b;
-
-      meta.push({
-        x,
-        y,
-        speedY: 0.006 + Math.random() * 0.012,
-        wobbleSpeed: 0.4 + Math.random() * 0.6,
-        wobbleForce: 0.04 + Math.random() * 0.06,
-      });
-    }
-
-    return [pos, cols, meta];
-  }, []);
-
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    const pos = pointsRef.current.geometry.attributes.position.array as Float32Array;
-
-    const mx = (mouse.x * viewport.width) / 2;
-    const my = (mouse.y * viewport.height) / 2;
-
-    for (let i = 0; i < count; i++) {
-      const i3 = i * 3;
-      const m = metadata[i];
-
-      pos[i3 + 1] += m.speedY;
-      pos[i3] = m.x + Math.sin(time * m.wobbleSpeed + i) * m.wobbleForce;
-
-      const dx = pos[i3] - mx;
-      const dy = pos[i3 + 1] - my;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < 2.0) {
-        const force = (2.0 - dist) / 2.0;
-        pos[i3] += (dx / (dist || 0.1)) * force * 0.1;
-        pos[i3 + 1] += (dy / (dist || 0.1)) * force * 0.1;
-      }
-
-      if (pos[i3 + 1] > 6) {
-        pos[i3 + 1] = -6;
-        pos[i3] = (Math.random() - 0.5) * 16;
-        m.x = pos[i3];
-      }
-    }
-
-    pointsRef.current.geometry.attributes.position.needsUpdate = true;
-
-    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -mouse.y * 0.12, 0.06);
-    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.12, 0.06);
-  });
-
-  return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.14}
-        vertexColors
-        sizeAttenuation={true}
-        transparent
-        opacity={0.7}
-      />
-    </points>
-  );
-}
+import React, { useRef, Suspense } from "react";
 
 function HeroMechObject() {
   const groupRef = useRef<THREE.Group>(null!);
@@ -179,7 +77,7 @@ const lineVariants = {
 export default function Hero() {
   return (
     <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
-      {/* 3D Hero Background Canvas underlay */}
+      {/* 3D Hero Background Canvas underlay (Only contains the heavy mech HUD crosshairs) */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <Canvas
           camera={{ position: [0, 0, 5], fov: 60 }}
@@ -187,7 +85,6 @@ export default function Hero() {
           gl={{ antialias: true, alpha: true }}
         >
           <Suspense fallback={null}>
-            <HeroParticles />
             <HeroMechObject />
           </Suspense>
         </Canvas>

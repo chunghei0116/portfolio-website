@@ -1,210 +1,212 @@
 "use client";
 
-import React from "react";
+import { Canvas } from "@react-three/fiber";
 import BentoCard from "./BentoCard";
+import { CityEnvironment, CameraController } from "../canvas/CityEnvironment";
+import PipelineScene from "../canvas/PipelineScene";
+import FlutterParticles from "../canvas/FlutterParticles";
+
+const projects = [
+  {
+    title: "PROJECT ALPHA // 3D CANVAS",
+    category: "SUMMIT // ROUTE-01",
+    description: "A high-performance 3D spatial visualization platform built with React Three Fiber and Next.js 16. Implements custom orbit controllers, high-precision vertex terrain shaders, and dynamic lighting simulation for mountain path explorations.",
+    tags: ["Three.js", "R3F", "Next.js 16", "GLSL / Shaders"],
+    liveUrl: "#",
+    repoUrl: "https://github.com/chunghei0116",
+  },
+  {
+    title: "Project Beta",
+    category: "SUMMIT // ROUTE-02",
+    description: "Generative art collections using WebGL shaders and real-time noise displacement vectors.",
+    tags: ["WebGL", "Shaders", "GLSL"],
+    liveUrl: "#",
+    repoUrl: "https://github.com/chunghei0116",
+  },
+];
 
 export default function BentoGrid() {
   return (
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24 select-none">
-      {/* 12-column grid layout matching the reference layout structure */}
-      <div className="grid grid-cols-12 gap-5 auto-rows-min">
+      <div className="grid grid-cols-12 gap-6 auto-rows-min">
         
-        {/* ROW 1 & 2 Left Section: Welcome to Bento Portfolio (col-span-6, row-span-2) */}
-        <div className="col-span-12 md:col-span-6 md:row-span-2 bg-[#F5F2EB] text-[#0F0F0F] rounded-[1.8rem] p-8 flex flex-col justify-between min-h-[340px] hover:shadow-[0_15px_35px_rgba(245,242,235,0.08)]">
-          <div className="flex flex-col sm:flex-row gap-6 justify-between items-start">
-            <div className="max-w-md">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1982FC]">
-                Welcome to
-              </span>
-              <h3 className="text-4xl sm:text-5xl font-sans font-[950] tracking-[-0.03em] leading-none uppercase mt-2">
-                BENTO PORTFOLIO
-              </h3>
-              <p className="mt-4 text-xs font-semibold text-[#555555] leading-relaxed">
-                Where code meets clean design. Engineering highly automated deployment pipelines and modular cross-platform interfaces.
-              </p>
-            </div>
-            <img 
-              src="/avatar.png" 
-              alt="Profile Avatar" 
-              className="w-24 h-24 rounded-full border-2 border-[#1982FC]/20 shadow-[0_8px_25px_rgba(25,130,252,0.1)] flex-shrink-0"
-            />
-          </div>
-          <div className="flex items-center justify-between mt-8">
-            <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-[#555555]">
-              CHUNG HEI // DEVOPS & MOBILE
-            </span>
-            <div className="w-8 h-8 rounded-full bg-white border border-[#0F0F0F]/10 flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform">
-              <svg className="w-4 h-4 text-[#0F0F0F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        {/* ROW 1 Right Section: Program Stories Banner (col-span-6) */}
-        <div className="col-span-12 md:col-span-6 bg-[#F39C12] text-white rounded-[1.8rem] px-6 py-4 flex items-center justify-between min-h-[56px] hover:shadow-[0_10px_20px_rgba(243,156,18,0.15)]">
-          <span className="font-mono text-[11px] font-black uppercase tracking-wider">
-            Program Stories
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-        </div>
-
-        {/* ROW 2 Right Section: 3-column subgrid (col-span-6) */}
-        <div className="col-span-12 md:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-5">
-          
-          {/* Sub-Col 1: Two small stacked boxes */}
-          <div className="flex flex-col gap-5 h-full">
-            {/* Box 1 (White): DEVOPS info */}
-            <div className="bg-[#FFFFFF] text-[#0F0F0F] p-4 rounded-[1.5rem] flex-1 flex flex-col justify-between min-h-[120px] shadow-sm">
-              <div className="flex justify-between items-start">
-                <span className="font-mono text-[8px] font-black uppercase tracking-wider text-neutral-400">CD GitOps</span>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1982FC]" />
-              </div>
-              <p className="font-mono text-[11px] font-black uppercase tracking-tight text-[#0f0f0f] leading-none">
-                VERIFIED ACTIONS
-              </p>
-            </div>
-            {/* Box 2 (Orange): WINNERS text */}
-            <div className="bg-[#F39C12] text-white p-4 rounded-[1.5rem] flex-1 flex flex-col justify-center min-h-[120px] shadow-sm">
-              <span className="font-mono text-[7px] font-bold uppercase tracking-widest text-white/60 mb-1">TELEMETRY</span>
-              <p className="font-mono text-[10px] font-black uppercase tracking-tight leading-tight">
-                4.8K+ Commits Shipped Live
-              </p>
-            </div>
-          </div>
-
-          {/* Sub-Col 2: Tall Red Card (MOBILE DEV) */}
-          <div className="bg-[#C0392B] text-white p-4 rounded-[1.5rem] flex flex-col justify-between min-h-[260px] shadow-sm">
-            <div>
-              <span className="font-mono text-[8px] font-black uppercase tracking-widest text-white/60">MOBILE DEV</span>
-              <h4 className="font-sans font-[900] text-sm uppercase mt-1 leading-tight">
-                FLUTTER ENGINE
-              </h4>
-            </div>
-            {/* Simulated Mobile Mock UI */}
-            <div className="bg-[#A93226] border border-white/10 rounded-lg p-3 my-2 flex flex-col gap-1.5">
-              <div className="w-full h-1.5 bg-white/20 rounded-full" />
-              <div className="w-2/3 h-1.5 bg-white/20 rounded-full" />
-              <div className="w-full h-5 bg-[#F39C12] rounded flex items-center justify-center font-mono text-[8px] font-bold mt-1">
-                RUN SIM
-              </div>
-            </div>
-            <p className="font-mono text-[8px] text-white/75 leading-tight">
-              * Activity Based Cross-Platform Mobile Handshake.
-            </p>
-          </div>
-
-          {/* Sub-Col 3: Tall White Card (LIVE RUN) */}
-          <div className="bg-[#FFFFFF] text-[#0F0F0F] p-4 rounded-[1.5rem] flex flex-col justify-between min-h-[260px] shadow-sm">
-            <div>
-              <span className="font-mono text-[8px] font-black uppercase tracking-widest text-neutral-400">STATUS</span>
-              <h4 className="font-sans font-[950] text-sm uppercase mt-1 leading-tight text-[#0F0F0F]">
-                DEPLOYMENT STATUS
-              </h4>
-            </div>
-            <div className="flex flex-col gap-2 my-2">
-              {["AWS EKS", "ArgoCD", "Kubernetes"].map((item, idx) => (
-                <div key={item} className="flex items-center gap-1.5 font-mono text-[9px] font-bold text-neutral-500 uppercase">
-                  <span className={`w-2 h-2 rounded-full ${idx === 1 ? "bg-amber-400 animate-pulse" : "bg-emerald-400"}`} />
-                  {item}
-                </div>
-              ))}
-            </div>
-            <p className="font-mono text-[8px] text-neutral-400 leading-tight">
-              * Live synchronizations running globally.
-            </p>
-          </div>
-
-        </div>
-
-        {/* ROW 3 Left Section: Video walkthrough (col-span-5) */}
-        <div className="col-span-12 md:col-span-5 bg-white text-black rounded-[1.8rem] p-6 flex flex-col justify-between min-h-[260px] shadow-sm relative overflow-hidden group hover:shadow-[0_15px_30px_rgba(255,255,255,0.05)] border border-neutral-100">
-          <div className="relative w-full aspect-video rounded-xl bg-neutral-100 border border-neutral-200/50 flex items-center justify-center overflow-hidden">
-            {/* Red play button */}
-            <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center cursor-pointer shadow-md transform group-hover:scale-110 transition-transform z-10">
-              <svg className="w-5 h-5 text-white fill-current ml-0.5" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-            <div className="absolute inset-0 bg-neutral-900/5 backdrop-blur-[1px]" />
-          </div>
-          <div className="mt-4 flex justify-between items-center">
-            <h4 className="font-mono text-[10px] font-bold uppercase tracking-tight text-[#0F0F0F]">
-              Watch Pipeline Video Walkthrough
-            </h4>
-            <span className="text-[9px] font-mono text-neutral-400 font-bold">01:42</span>
-          </div>
-        </div>
-
-        {/* ROW 3 Middle Section: 2 stacked boxes (col-span-2) */}
-        <div className="col-span-12 md:col-span-2 flex flex-col gap-5 h-full">
-          {/* Box 1 (Pink): Tech logo */}
-          <div className="bg-[#FFAEC9] text-[#3D0C11] p-4 rounded-[1.5rem] flex-1 flex items-center justify-center min-h-[120px] shadow-sm relative overflow-hidden">
-            <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
-            </svg>
-          </div>
-          {/* Box 2 (Dark Grey): Node Grid Map */}
-          <div className="bg-[#2A2A2A] text-white p-4 rounded-[1.5rem] flex-1 flex flex-col justify-between min-h-[120px] shadow-sm">
-            <span className="font-mono text-[7px] font-bold uppercase tracking-widest text-neutral-400">Node Matrix Grid</span>
-            <div className="grid grid-cols-5 gap-1 my-2">
-              {Array.from({ length: 15 }).map((_, i) => (
-                <div key={i} className={`h-2 rounded-[1px] ${i % 4 === 0 ? "bg-red-500 animate-pulse" : "bg-emerald-400"}`} />
-              ))}
-            </div>
-            <span className="font-mono text-[7px] font-bold text-neutral-500">SYS: EKS CLUSTER ACTIVE</span>
-          </div>
-        </div>
-
-        {/* ROW 3 Right Section: Bento Design (col-span-5) */}
-        <div className="col-span-12 md:col-span-5 bg-[#0F3D64] text-[#FFF9E6] rounded-[1.8rem] p-8 flex flex-col justify-between min-h-[260px] hover:shadow-[0_15px_30px_rgba(15,61,100,0.25)]">
+        {/* Card A: ASCENT TELEMETRY - Giant Stat (col-span-4) */}
+        <div className="col-span-12 md:col-span-4 brutalist-border bg-[#F0A828] text-[#373C42] p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[200px]">
           <div>
-            <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-neutral-300">
-              Bento Design
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] uppercase text-[#373C42]/70 border-b-2 border-[#373C42]/20 pb-1.5 inline-block">
+              ASCENT TELEMETRY
             </span>
-            <h3 className="text-3xl font-sans font-[950] tracking-[-0.03em] leading-none uppercase mt-3">
-              SYSTEM ARCHITECTURE
+            <h3 className="text-6xl md:text-7xl font-sans font-[950] tracking-[-0.05em] leading-none uppercase text-[#373C42] mt-6">
+              4.8K+
             </h3>
-            <p className="mt-4 text-[11px] font-semibold text-[#FFF9E6]/70 leading-relaxed">
-              This approach borrows concepts from GitOps, deploying containerized pods and configurations in dynamic code branches for cleaner structure.
-            </p>
           </div>
-          <div className="flex items-center justify-between mt-6">
-            {/* Mini avatar overlap circle indicators */}
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-6 h-6 rounded-full bg-neutral-200 border border-[#0F3D64] flex items-center justify-center font-mono text-[8px] font-bold text-black">
-                  U{i}
-                </div>
-              ))}
-            </div>
-            <div className="w-8 h-8 rounded-full bg-white border border-[#FFF9E6]/10 flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform">
-              <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        {/* ROW 4 Section: Authorized Partners Banner (col-span-12) */}
-        <div className="col-span-12 bg-[#F39C12] text-white rounded-[1.8rem] px-6 py-4 flex items-center justify-between min-h-[56px] mt-2 shadow-sm">
-          <span className="font-mono text-[11px] font-black uppercase tracking-wider">
-            Verified Technologies & Toolsets
+          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-[#373C42]/80">
+            * LIVE PROD DEPLOYMENTS
           </span>
-          <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center cursor-pointer">
-            <span className="text-[10px] text-black">➔</span>
+        </div>
+
+        {/* Card B: PROJECT ALPHA - Massive Heading (col-span-8) */}
+        <BentoCard className="col-span-12 md:col-span-8 flex flex-col justify-between min-h-[200px]">
+          <div>
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase">
+              SUMMIT // ROUTE-01
+            </span>
+            <h3 className="text-4xl md:text-5xl font-sans font-[950] tracking-[-0.04em] leading-[0.85] uppercase mt-4 text-foreground">
+              PROJECT ALPHA
+            </h3>
+          </div>
+          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-foreground/50">
+            3D CANVAS VISUALIZATION // R3F & SHADERS
+          </span>
+        </BentoCard>
+
+        {/* Card C: ROUTE LOG / TIMELINE (col-span-3, row-span-2) */}
+        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
+          <div>
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-foreground/10 pb-1.5 inline-block w-full">
+              ROUTE LOG
+            </span>
+            <h3 className="text-3xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
+              2026
+            </h3>
+            <div className="flex flex-col gap-5 mt-6 font-sans font-[900] text-sm md:text-base leading-none text-foreground uppercase tracking-tight">
+              <div>Q1 SYNC //</div>
+              <div className="text-accent-blue">Q2 BRIDGE //</div>
+              <div className="text-foreground/40">Q3 STABLE //</div>
+            </div>
+          </div>
+          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-foreground/40">
+            * PROGRESS ARCHIVE
+          </span>
+        </BentoCard>
+
+        {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with static 3D City background and giant Swiss typography */}
+        <BentoCard 
+          className="col-span-12 md:col-span-6 md:row-span-2 flex flex-col justify-between min-h-[380px] bg-card-bg border-black border-[5px] shadow-[12px_12px_0px_#000000] hover:shadow-[16px_16px_0px_#000000] hover:-translate-x-1 hover:-translate-y-1 relative overflow-hidden p-0"
+        >
+          {/* Static Background 3D City Canvas */}
+          <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
+            <Canvas camera={{ position: [0, 0.5, 2.8], fov: 50 }}>
+              <ambientLight intensity={1.5} />
+              <pointLight position={[5, 5, 5]} intensity={2} />
+              <CityEnvironment isExpanded={false} />
+              <CameraController isExpanded={false} />
+            </Canvas>
+          </div>
+
+          {/* Foreground overlay static UI details */}
+          <div className="flex justify-between items-start p-8 relative z-10 pointer-events-none w-full">
+            <span className="text-accent-blue font-mono text-[9px] font-bold uppercase tracking-wider bg-accent-blue/10 border border-black px-2.5 py-0.5">
+              3D CANVAS CITY
+            </span>
+          </div>
+
+          <div className="p-8 relative z-10 pointer-events-none w-full flex-1 flex flex-col justify-end">
+            <h3 className="text-5xl md:text-6xl font-sans font-[950] tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
+              CHUNG HEI
+            </h3>
+            <div className="border-t border-black/10 pt-4 mt-6">
+              <h4 className="text-2xl font-sans font-[950] tracking-tight uppercase leading-none text-foreground">
+                DEVOPS & MOBILE
+              </h4>
+              <span className="text-foreground/50 block font-mono text-[9px] font-bold uppercase tracking-widest mt-2">
+                3D PROCEDURAL CITY ARCHITECTURE SYSTEM ACTIVE
+              </span>
+            </div>
+          </div>
+        </BentoCard>
+
+        {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
+        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
+          <div>
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-foreground/10 pb-1.5 inline-block w-full">
+              SUMMIT // ROUTE-02
+            </span>
+            <h3 className="text-3xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
+              PROJECT BETA
+            </h3>
+          </div>
+          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-foreground/50 leading-snug">
+            WEBGL SHADERS & DISPLACEMENTS
+          </span>
+        </BentoCard>
+
+        {/* Card F: GITOPS PIPELINE (col-span-8) */}
+        <div className="col-span-12 md:col-span-8 brutalist-border bg-accent-blue text-white p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[300px] md:min-h-[240px] relative overflow-hidden">
+          
+          {/* Absolute Background 3D Flowing Pipeline Canvas */}
+          <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
+            <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>
+              <ambientLight intensity={1.5} />
+              <PipelineScene />
+            </Canvas>
+          </div>
+
+          {/* Frosted Glass Overlay for Readability */}
+          <div className="absolute inset-0 z-[5] bg-accent-blue/60 backdrop-blur-[3px] pointer-events-none" />
+
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 w-full relative z-10 pointer-events-none">
+            <div>
+              <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-white/60 uppercase border-b border-white/20 pb-1.5 inline-block">
+                SYSTEM DEPLOYMENTS
+              </span>
+              <h3 className="text-3xl md:text-4xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase text-white mt-4">
+                GITOPS // DEVOPS CORE
+              </h3>
+            </div>
+            <span className="font-mono text-[10px] font-black uppercase tracking-widest text-emerald-300 bg-white/10 border border-white/20 px-3 py-1 select-none flex-shrink-0 w-fit">
+              100% OK // ACTIVE
+            </span>
+          </div>
+
+          {/* 3-Column Typographic DevOps Stack Grid with Custom SVG Icons */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/10 pt-6 mt-6 relative z-10 pointer-events-none">
+            <div className="flex flex-col items-start">
+              {/* Kubernetes heptagon-wheel icon (Purple to match upper branch) */}
+              <svg className="w-6 h-6 text-[#c084fc] mb-3 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L20.5 7v10L12 22L3.5 17V7L12 2z" />
+                <path d="M12 2v20M3.5 7l17 10M3.5 17l17-10" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" fillOpacity="0.2" />
+              </svg>
+              <span className="font-sans font-black text-sm uppercase text-white tracking-tight block mb-1">01 / KUBERNETES</span>
+              <span className="font-mono text-[9px] uppercase tracking-wide text-white/60">ArgoCD, GitOps loops, Helm, EKS cluster deploys</span>
+            </div>
+            <div className="flex flex-col items-start">
+              {/* Docker/Hypervisor isometric container stack icon (Emerald to match middle branch) */}
+              <svg className="w-6 h-6 text-[#34d399] mb-3 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+                <path d="M2 7v10M12 12v10M22 7v10" />
+              </svg>
+              <span className="font-sans font-black text-sm uppercase text-white tracking-tight block mb-1">02 / HYPERVISOR</span>
+              <span className="font-mono text-[9px] uppercase tracking-wide text-white/60">Docker containers, multi-stage hermetic builds</span>
+            </div>
+            <div className="flex flex-col items-start">
+              {/* Bare-Metal Server Rack icon (Amber/Orange to match lower branch) */}
+              <svg className="w-6 h-6 text-[#fb923c] mb-3 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="3" width="20" height="5" rx="1" />
+                <rect x="2" y="11" width="20" height="5" rx="1" />
+                <rect x="2" y="19" width="20" height="5" rx="1" />
+                <path d="M6 5.5h.01M6 13.5h.01M6 21.5h.01" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M17 5.5h2M17 13.5h2M17 21.5h2" strokeWidth="1.2" />
+              </svg>
+              <span className="font-sans font-black text-sm uppercase text-white tracking-tight block mb-1">03 / BARE-METAL</span>
+              <span className="font-mono text-[9px] uppercase tracking-wide text-white/60">Linux systems, self-hosted homelabs, AWS cloud</span>
+            </div>
           </div>
         </div>
 
-        {/* ROW 5 Section: Partner Logos row (6 items, col-span-2 each) */}
-        {["React/Next", "TypeScript", "Kubernetes", "Docker", "Flutter", "AWS"].map((tool, index) => (
-          <div
-            key={index}
-            className="col-span-6 md:col-span-2 bg-[#FFFFFF] text-[#0F0F0F] p-4 rounded-[1.5rem] flex items-center justify-center min-h-[90px] font-mono text-[10px] font-black uppercase tracking-wider shadow-sm hover:scale-105 transition-transform duration-200 cursor-default"
-          >
-            {tool}
+        {/* Card G: Interactive Flutter Particle Canvas (col-span-4) */}
+        <BentoCard className="col-span-12 md:col-span-4 min-h-[240px] relative overflow-hidden">
+          {/* Background Interactive Flutter Particle Canvas */}
+          <div className="absolute inset-0 z-0 opacity-100 select-none">
+            <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>
+              <ambientLight intensity={1.5} />
+              <FlutterParticles />
+            </Canvas>
           </div>
-        ))}
+        </BentoCard>
 
       </div>
     </section>

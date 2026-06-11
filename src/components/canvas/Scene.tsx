@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useState, useEffect, useCallback, useRef } from "react";
+import { Suspense, useState, useCallback, useRef } from "react";
 import * as THREE from "three";
 import Particles from "./Particles";
 

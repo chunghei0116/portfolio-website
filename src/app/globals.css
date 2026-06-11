@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0F0F0F; /* Dark Charcoal (暗炭灰) */
-  --foreground: #FFFFFF; /* White */
-  --card-bg: #1A1A1A; /* Solid Dark Grey Cards */
-  --accent-blue: #1982FC; /* Bright Blue */
-  --moss-shadow: #1C2E24;
+  --background: #E6ECF1; /* 主體白 (Cold White) */
+  --foreground: #373C42; /* 幻影灰 (Phantom Grey) */
+  --card-bg: #FFFFFF;
+  --accent-blue: #1F438A; /* 海老川藍 (Ebikawa Blue) */
+  --classic-red: #C82833; /* 經典紅 (Classic Red) */
+  --antenna-yellow: #F0A828; /* 天線黃 (Antenna Yellow) */
+  --moss-shadow: #373C42; /* 幻影灰 (Phantom Grey) for theme consistency */
   --grid-color: transparent;
-  --selection-bg: #1982FC;
+  --selection-bg: #1F438A;
   --selection-text: #FFFFFF;
 }
 
@@ -18,6 +20,8 @@
   --color-foreground: var(--foreground);
   --color-card-bg: var(--card-bg);
   --color-accent-blue: var(--accent-blue);
+  --color-classic-red: var(--classic-red);
+  --color-antenna-yellow: var(--antenna-yellow);
   --color-moss-shadow: var(--moss-shadow);
   
   --font-weight-punchy: 950;

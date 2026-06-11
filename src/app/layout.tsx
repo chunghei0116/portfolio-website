@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${interTight.variable} h-full antialiased`}>
-      <body className="min-h-full font-sans antialiased bg-background text-foreground selection:bg-accent-blue selection:text-white">
+      <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-blue selection:text-white">
         {/* Persistent 3D Background Scene */}
         <Scene />
         
