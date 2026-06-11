@@ -41,8 +41,11 @@ function BalloonPhysics({ windTrigger, resetWind }: { windTrigger: boolean; rese
     for (let i = 0; i < list.length; i++) {
       const b = list[i];
 
-      // Gentler buoyancy force (float upwards)
-      b.vy += 0.0006;
+      // Center gravity pull (group in center instead of floating up)
+      const gravity = 0.006;
+      b.vx -= b.x * gravity;
+      b.vy -= b.y * gravity;
+      b.vz -= b.z * gravity;
       // Soft random Brownian movements
       b.vx += (Math.random() - 0.5) * 0.0015;
       b.vy += (Math.random() - 0.5) * 0.0015;
