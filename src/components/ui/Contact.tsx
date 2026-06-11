@@ -22,7 +22,7 @@ export default function Contact() {
 
         <a
           href="mailto:chungheibrad@gmail.com"
-          className="bg-accent-red text-white border-[3px] border-black px-10 py-5 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] rounded-none"
+          className="bg-accent-blue text-white border-[3px] border-black px-10 py-5 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] rounded-none"
         >
           SEND HELLO
         </a>

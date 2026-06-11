@@ -18,11 +18,11 @@ interface BalloonState {
 }
 
 const initialBalloons: BalloonState[] = [
-  { name: "Flutter", color: "#E60000", x: -1.2, y: -0.8, z: 0, vx: 0, vy: 0, vz: 0 },
+  { name: "Flutter", color: "#0A5CFF", x: -1.2, y: -0.8, z: 0, vx: 0, vy: 0, vz: 0 },
   { name: "Kubernetes", color: "#1C2E24", x: -0.6, y: 0.2, z: -0.1, vx: 0, vy: 0, vz: 0 },
   { name: "Docker", color: "#7F8E96", x: 0, y: -0.6, z: 0.1, vx: 0, vy: 0, vz: 0 },
   { name: "GitOps / ArgoCD", color: "#000000", x: 0.6, y: 0.6, z: 0, vx: 0, vy: 0, vz: 0 },
-  { name: "Next.js / React", color: "#E60000", x: 1.2, y: -0.4, z: -0.2, vx: 0, vy: 0, vz: 0 },
+  { name: "Next.js / React", color: "#0A5CFF", x: 1.2, y: -0.4, z: -0.2, vx: 0, vy: 0, vz: 0 },
   { name: "AWS Cloud", color: "#1C2E24", x: 1.4, y: 0.8, z: 0.2, vx: 0, vy: 0, vz: 0 },
 ];
 
@@ -187,7 +187,7 @@ export default function SkillTerminal() {
           </h3>
           <button
             onClick={() => setWindTrigger(true)}
-            className="bg-accent-red text-white border-2 border-black px-3 py-1 font-mono text-[0.65rem] font-bold uppercase transition-all duration-100 shadow-[2px_2px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[1px_1px_0px_#000000]"
+            className="bg-accent-blue text-white border-2 border-black px-3 py-1 font-mono text-[0.65rem] font-bold uppercase transition-all duration-100 shadow-[2px_2px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[1px_1px_0px_#000000]"
           >
             TRIGGER GUST // 💨
           </button>

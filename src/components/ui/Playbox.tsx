@@ -18,7 +18,7 @@ function ParticleMountain() {
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
     const colorWhite = new THREE.Color("#FFFFFF");
-    const colorRed = new THREE.Color("#E60000");
+    const colorBlue = new THREE.Color("#0A5CFF");
     const colorGray = new THREE.Color("#555555");
 
     for (let r = 0; r < rows; r++) {
@@ -37,10 +37,10 @@ function ParticleMountain() {
         pos[idx * 3 + 1] = y;
         pos[idx * 3 + 2] = z;
 
-        // Higher peaks are Swiss Trail Red, valleys are gray, general slopes are white
+        // Higher peaks are Gundam Blue, valleys are gray, general slopes are white
         let finalColor = colorWhite;
         if (y > 0.25) {
-          finalColor = colorRed;
+          finalColor = colorBlue;
         } else if (y < -0.15) {
           finalColor = colorGray;
         }

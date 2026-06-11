@@ -9,7 +9,7 @@ export default function AboutPage() {
       <main className="max-w-7xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-3">
         {/* Page Header */}
         <div className="col-span-1 md:col-span-3 bg-white border-[4px] border-black rounded-none shadow-[8px_8px_0px_#000000] p-8 md:p-12 mb-4">
-          <span className="text-[10px] font-mono font-bold tracking-widest bg-accent-red text-white px-3 py-1 rounded-none border border-black">
+          <span className="text-[10px] font-mono font-bold tracking-widest bg-accent-blue text-white px-3 py-1 rounded-none border border-black">
             BIOGRAPHY // OVERVIEW
           </span>
           <h1 className="mt-6 font-sans font-[950] text-6xl md:text-8xl uppercase leading-none tracking-tight">
@@ -46,7 +46,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
-              <span className="font-bold text-white bg-accent-red px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2020 — 2022</span>
+              <span className="font-bold text-white bg-accent-blue px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2020 — 2022</span>
               <div>
                 <h4 className="font-black text-sm uppercase">Cross-Platform App Developer @ Studio X</h4>
                 <p className="mt-1 font-bold text-moss-shadow">Crafting custom mobile/desktop clients, hot-reload Flutter engines, and Firebase backend services.</p>

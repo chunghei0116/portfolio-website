@@ -11,10 +11,10 @@ const [positions, colors, originalPositions] = (() => {
   const pos = new Float32Array(count * 3);
   const col = new Float32Array(count * 3);
   
-  // Swiss Trail Red (#E60000), Moss Shadow (#1C2E24), Raw Iron / Black (#000000)
-  const color1 = new THREE.Color("#E60000");
-  const color2 = new THREE.Color("#1C2E24");
-  const color3 = new THREE.Color("#000000");
+  // Gundam 00 Signature Blue (#0A5CFF), Deep GN Green (#097A3E), Vibrant GN Green (#10B981)
+  const color1 = new THREE.Color("#0A5CFF");
+  const color2 = new THREE.Color("#097A3E");
+  const color3 = new THREE.Color("#10B981");
 
   for (let i = 0; i < count; i++) {
     const u = Math.random();

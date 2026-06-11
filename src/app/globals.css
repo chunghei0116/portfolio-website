@@ -4,10 +4,10 @@
   --background: #F1F3F5; /* Alpine Slate (冷灰頁岩) */
   --foreground: #000000; /* Pure Black */
   --card-bg: #FFFFFF; /* Pure Alpine Snow */
-  --accent-red: #E60000; /* Swiss Trail Red */
+  --accent-blue: #0A5CFF; /* Gundam 00 Blue */
   --moss-shadow: #1C2E24; /* Moss Shadow deep fir-green */
   --grid-color: #DDE2E5; /* Survey map faint grid lines */
-  --selection-bg: #E60000;
+  --selection-bg: #0A5CFF;
   --selection-text: #FFFFFF;
 }
 
@@ -17,7 +17,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card-bg: var(--card-bg);
-  --color-accent-red: var(--accent-red);
+  --color-accent-blue: var(--accent-blue);
   --color-moss-shadow: var(--moss-shadow);
   --color-grid-color: var(--grid-color);
   
@@ -27,7 +27,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased selection:bg-accent-red selection:text-white;
+    @apply bg-background text-foreground antialiased selection:bg-accent-blue selection:text-white;
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
     background-image: 
       linear-gradient(to right, var(--grid-color) 1px, transparent 1px),

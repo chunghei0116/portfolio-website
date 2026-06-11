@@ -51,8 +51,8 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-        {/* Card 2: ASCENT TELEMETRY // STATS (col-span-1) - High impact Swiss red back */}
-        <div className="col-span-1 brutalist-border bg-accent-red text-white p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[350px]">
+        {/* Card 2: ASCENT TELEMETRY // STATS (col-span-1) - High impact Gundam blue back */}
+        <div className="col-span-1 brutalist-border bg-accent-blue text-white p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[350px]">
           <div>
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.12em] uppercase text-white border-b-2 border-white pb-1 inline-block">
               ASCENT TELEMETRY
@@ -88,7 +88,7 @@ export default function BentoGrid() {
             </div>
           </div>
           <div className="flex gap-3 mt-8">
-            <a href={projects[0].liveUrl} className="bg-accent-red text-white border-[3px] border-black px-5 py-2 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000]">
+            <a href={projects[0].liveUrl} className="bg-accent-blue text-white border-[3px] border-black px-5 py-2 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000]">
               EXPLORE LIVE SUMMIT
             </a>
             <a

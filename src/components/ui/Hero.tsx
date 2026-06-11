@@ -34,11 +34,11 @@ export default function Hero() {
         <span>DAVOS, GRISONS, CH</span>
       </div>
 
-      {/* Alpine Swiss Trail Marker Segment [Red | White | Red] */}
+      {/* Gundam Blue Trail Marker Segment [Blue | White | Blue] */}
       <div className="relative z-10 flex h-[16px] w-[70px] brutalist-border overflow-hidden mb-6">
-        <div className="flex-1 bg-accent-red" />
+        <div className="flex-1 bg-accent-blue" />
         <div className="flex-1 bg-white" />
-        <div className="flex-1 bg-accent-red" />
+        <div className="flex-1 bg-accent-blue" />
       </div>
 
       {/* Giant Deconstructed Swiss Grotesque Headline */}
@@ -55,7 +55,7 @@ export default function Hero() {
           <motion.span variants={lineVariants} className="block">
             ENGINEERING
           </motion.span>
-          <motion.span variants={lineVariants} className="block text-accent-red">
+          <motion.span variants={lineVariants} className="block text-accent-blue">
             ROBUST SYSTEMS
           </motion.span>
         </motion.h1>
