@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F1F3F5; /* Alpine Slate (冷灰頁岩) */
-  --foreground: #000000; /* Pure Black */
-  --card-bg: #FFFFFF; /* Pure Alpine Snow */
-  --accent-blue: #0A5CFF; /* Gundam 00 Blue */
-  --moss-shadow: #1C2E24; /* Moss Shadow deep fir-green */
-  --grid-color: #DDE2E5; /* Survey map faint grid lines */
-  --selection-bg: #0A5CFF;
+  --background: #FDFBF7; /* Warm Ivory (象牙白) */
+  --foreground: #3D0C11; /* Dark Maroon (深栗色) */
+  --card-bg: #FFFFFF;
+  --accent-blue: #1982FC; /* Bright Blue */
+  --moss-shadow: #1C2E24;
+  --grid-color: transparent;
+  --selection-bg: #1982FC;
   --selection-text: #FFFFFF;
 }
 
@@ -19,7 +19,6 @@
   --color-card-bg: var(--card-bg);
   --color-accent-blue: var(--accent-blue);
   --color-moss-shadow: var(--moss-shadow);
-  --color-grid-color: var(--grid-color);
   
   --font-weight-punchy: 950;
   --font-weight-bold: 800;
@@ -30,10 +29,6 @@
     max-width: 100vw;
     overflow-x: hidden;
     background-color: var(--background);
-    background-image: 
-      linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-    background-size: 80px 80px;
   }
   body {
     max-width: 100vw;
