@@ -171,7 +171,7 @@ function GNDrive() {
       {/* 2. Main Conical Solar Reactor Shell */}
       <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <coneGeometry args={[0.26, 0.82, 5]} />
-        <meshStandardMaterial color="#1a1a1a" roughness={0.15} metalness={0.9} flatShading />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.1} metalness={0.9} flatShading />
       </mesh>
 
       {/* 3. Glowing Condenser Emitter Core (Cone Tip) */}
@@ -183,7 +183,7 @@ function GNDrive() {
       {/* 4. Outer base cap plate */}
       <mesh position={[-0.42, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.28, 0.28, 0.12, 6]} />
-        <meshStandardMaterial color="#FFFFFF" roughness={0.2} metalness={0.8} />
+        <meshStandardMaterial color="#EAEAEA" roughness={0.2} metalness={0.8} />
       </mesh>
 
       {/* 5. Three Clamping Safety Lock Fasteners (120 degree intervals) */}
@@ -199,12 +199,12 @@ function GNDrive() {
             {/* Claw arm structure */}
             <mesh position={[0.02, 0.28, 0]} rotation={[0, 0, -Math.PI / 9]}>
               <boxGeometry args={[0.35, 0.04, 0.06]} />
-              <meshStandardMaterial color="#0A5CFF" roughness={0.25} metalness={0.8} />
+              <meshStandardMaterial color="#FFFFFF" roughness={0.2} metalness={0.9} />
             </mesh>
             {/* Clamping hook locking onto reactor body */}
             <mesh position={[0.21, 0.21, 0]} rotation={[0, 0, -Math.PI / 4]}>
               <boxGeometry args={[0.12, 0.04, 0.05]} />
-              <meshStandardMaterial color="#111111" roughness={0.1} metalness={0.95} />
+              <meshStandardMaterial color="#EAEAEA" roughness={0.15} metalness={0.8} />
             </mesh>
           </group>
         );
