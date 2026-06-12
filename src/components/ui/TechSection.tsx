@@ -221,7 +221,7 @@ export default function TechSection() {
                     <span className="font-sans font-[950] text-xl md:text-2xl text-foreground tracking-tight leading-none uppercase">
                       {node.role}
                     </span>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider bg-accent-blue/10 border border-black px-2.5 py-0.5 text-accent-blue rounded-none select-none">
+                    <span className="font-mono text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-wider bg-accent-blue text-white border-2 border-black px-3 py-1.5 shadow-[2px_2px_0px_#000000] select-none">
                       {node.year}
                     </span>
                   </div>
