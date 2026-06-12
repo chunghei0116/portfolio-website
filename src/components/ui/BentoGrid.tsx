@@ -1,10 +1,11 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
 import BentoCard from "./BentoCard";
 import { CityEnvironment, CameraController } from "../canvas/CityEnvironment";
 import PipelineScene from "../canvas/PipelineScene";
-import FlutterParticles from "../canvas/FlutterParticles";
+import FlutterParticles, { SodaBubbles } from "../canvas/FlutterParticles";
 
 const projects = [
   {
@@ -31,7 +32,7 @@ export default function BentoGrid() {
       <div className="grid grid-cols-12 gap-6 auto-rows-min">
         
         {/* Card A: ASCENT TELEMETRY - Giant Stat (col-span-4) */}
-        <div className="col-span-12 md:col-span-4 brutalist-border bg-[#F0A828] text-[#373C42] p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[200px]">
+        <div className="col-span-12 md:col-span-4 brutalist-border bg-[#F0A828] text-[#373C42] p-5 sm:p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[200px]">
           <div>
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] uppercase text-[#373C42]/70 border-b-2 border-[#373C42]/20 pb-1.5 inline-block">
               ASCENT TELEMETRY
@@ -95,13 +96,13 @@ export default function BentoGrid() {
           </div>
 
           {/* Foreground overlay static UI details */}
-          <div className="flex justify-between items-start p-8 relative z-10 pointer-events-none w-full">
+          <div className="flex justify-between items-start p-5 sm:p-8 relative z-10 pointer-events-none w-full">
             <span className="text-accent-blue font-mono text-[9px] font-bold uppercase tracking-wider bg-accent-blue/10 border border-black px-2.5 py-0.5">
               3D CANVAS CITY
             </span>
           </div>
 
-          <div className="p-8 relative z-10 pointer-events-none w-full flex-1 flex flex-col justify-end">
+          <div className="p-5 sm:p-8 relative z-10 pointer-events-none w-full flex-1 flex flex-col justify-end">
             <h3 className="text-5xl md:text-6xl font-sans font-[950] tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
               CHUNG HEI
             </h3>
@@ -132,7 +133,7 @@ export default function BentoGrid() {
         </BentoCard>
 
         {/* Card F: GITOPS PIPELINE (col-span-8) */}
-        <div className="col-span-12 md:col-span-8 brutalist-border bg-accent-blue text-white p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[300px] md:min-h-[240px] relative overflow-hidden">
+        <div className="col-span-12 md:col-span-8 brutalist-border bg-accent-blue text-white p-5 sm:p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[300px] md:min-h-[240px] relative overflow-hidden">
           
           {/* Absolute Background 3D Flowing Pipeline Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
@@ -198,11 +199,12 @@ export default function BentoGrid() {
         </div>
 
         {/* Card G: Interactive Flutter Particle Canvas (col-span-4) */}
-        <BentoCard className="col-span-12 md:col-span-4 min-h-[240px] relative overflow-hidden">
+        <BentoCard className="col-span-12 md:col-span-4 min-h-[240px] relative overflow-hidden !bg-[radial-gradient(circle_at_center,rgba(57,206,253,0.15)_0%,rgba(255,255,255,1)_70%)]">
           {/* Background Interactive Flutter Particle Canvas */}
           <div className="absolute inset-0 z-0 opacity-100 select-none">
             <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>
               <ambientLight intensity={1.5} />
+              <SodaBubbles />
               <FlutterParticles />
             </Canvas>
           </div>

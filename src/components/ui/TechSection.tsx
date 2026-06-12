@@ -7,24 +7,30 @@ import * as THREE from "three";
 function ScrollingBuildings() {
   const groupRef = useRef<THREE.Group>(null!);
 
-  // Generate 4 initial modern buildings with slightly staggered Z positions
+  // Generate 10 modern buildings with staggered Z positions and distinct cool-tone blueprint colors
   const initialBuildings = useMemo(() => [
-    { id: 1, x: -0.65, h: 1.8, w: 0.3, z: -1 },
-    { id: 2, x: 0.7, h: 2.3, w: 0.24, z: -3 },
-    { id: 3, x: -0.85, h: 1.4, w: 0.28, z: -5 },
-    { id: 4, x: 0.6, h: 1.9, w: 0.26, z: -7 }
+    { id: 1, x: -0.65, h: 1.8, w: 0.3, z: -1, color: "#1e3a8a" }, // Deep Blue
+    { id: 2, x: 0.7, h: 2.3, w: 0.24, z: -2, color: "#0284c7" },  // Sky/Cyan Blue
+    { id: 3, x: -0.85, h: 1.4, w: 0.28, z: -3, color: "#1F438A" }, // Steel Blue
+    { id: 4, x: 0.6, h: 1.9, w: 0.26, z: -4, color: "#0369a1" },  // Slate Blue
+    { id: 5, x: -0.55, h: 2.1, w: 0.25, z: -5, color: "#0891b2" }, // Cyan-teal
+    { id: 6, x: 0.8, h: 1.6, w: 0.3, z: -6, color: "#2563eb" },   // Royal Blue
+    { id: 7, x: -0.75, h: 2.5, w: 0.22, z: -7, color: "#1d4ed8" },  // Cobalt Blue
+    { id: 8, x: 0.5, h: 1.7, w: 0.27, z: -8, color: "#3b82f6" },   // Dodger Blue
+    { id: 9, x: -0.9, h: 2.0, w: 0.29, z: -9, color: "#1e3a8a" },   // Deep Blue
+    { id: 10, x: 0.75, h: 2.2, w: 0.24, z: -10, color: "#0284c7" } // Sky/Cyan Blue
   ], []);
 
   useFrame((state, delta) => {
-    // Frame-rate independent speed: 0.55 units per second
-    const speed = 0.55 * delta;
+    // Frame-rate independent speed: increased to 1.1 units per second for faster flight feel
+    const speed = 1.1 * delta;
     if (groupRef.current) {
       groupRef.current.children.forEach((mesh) => {
         mesh.position.z += speed;
         
         // When a building passes the camera (Z > 1.5), recycle and generate randomized dimensions
         if (mesh.position.z > 1.5) {
-          mesh.position.z = -7.5; // Recycle back to horizon
+          mesh.position.z = -10.5; // Recycle back to horizon (since we have 10 buildings going to z = -10)
           
           // Randomize X offset, ensuring it spawns either on the left or right of flightpath to avoid collisions
           const isLeft = Math.random() < 0.5;
@@ -51,8 +57,8 @@ function ScrollingBuildings() {
         <mesh key={b.id} position={[b.x, b.h / 2 - 1.1, b.z]}>
           {/* Base box geometry. We will scale this mesh procedurally on recycle */}
           <boxGeometry args={[0.3, 1.5, 0.3]} />
-          {/* Sleek, procedurally spawning wireframe skyscrapers */}
-          <meshBasicMaterial color="#1F438A" wireframe transparent opacity={0.08} />
+          {/* Sleek, procedurally spawning wireframe skyscrapers using individual cool-tone colors */}
+          <meshBasicMaterial color={b.color} wireframe transparent opacity={0.09} />
         </mesh>
       ))}
     </group>
@@ -131,16 +137,16 @@ function PaperAirplane() {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     
-    // Sweeping, highly fluid, majestic gliding physics (slower frequencies)
-    const posY = Math.sin(time * 0.8) * 0.18;
-    const posX = Math.sin(time * 0.5) * 0.45; // Wider horizontal sways
+    // Speeded up flight sways to match the faster background scroll
+    const posY = Math.sin(time * 1.25) * 0.18;
+    const posX = Math.sin(time * 0.85) * 0.45; 
     
-    // Deep, elegant banking/rolling (Z-axis)
-    const roll = Math.cos(time * 0.5) * 0.3;
-    // Steering/yawing (Y-axis) - nose points forward (Math.PI) + sways slowly
-    const yaw = Math.cos(time * 0.5) * 0.2;
+    // Banking/rolling (Z-axis)
+    const roll = Math.cos(time * 0.85) * 0.3;
+    // Steering/yawing (Y-axis)
+    const yaw = Math.cos(time * 0.85) * 0.2;
     // Pitching nose up/down slightly (X-axis)
-    const pitch = Math.cos(time * 0.8) * 0.06;
+    const pitch = Math.cos(time * 1.25) * 0.06;
     
     if (meshRef.current) {
       meshRef.current.position.set(posX, posY, 0);
@@ -191,7 +197,7 @@ const history = [
 export default function TechSection() {
   return (
     <section className="relative w-full max-w-7xl mx-auto px-6 py-12 select-none">
-      <div className="grid grid-cols-12 gap-8 brutalist-border bg-card-bg p-8 brutalist-shadow">
+      <div className="grid grid-cols-12 gap-8 brutalist-border bg-card-bg p-4 sm:p-8 brutalist-shadow">
         
         {/* Left Column: Minimalist Vertical Career Timeline (col-span-12 lg:col-span-7) */}
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-between">
@@ -204,11 +210,11 @@ export default function TechSection() {
             </h2>
             
             {/* Flat axis point/line timeline */}
-            <div className="border-l-[3px] border-black ml-4 pl-8 relative py-4 flex flex-col gap-10">
+            <div className="border-l-[3px] border-black ml-2 pl-6 sm:ml-4 sm:pl-8 relative py-4 flex flex-col gap-10">
               {history.map((node) => (
                 <div key={node.year} className="relative flex flex-col gap-1">
                   {/* High-contrast node dot point */}
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#F0A828] border-2 border-black absolute -left-[38.5px] top-1.5 z-10" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#F0A828] border-2 border-black absolute -left-[30.5px] sm:-left-[38.5px] top-1.5 z-10" />
                   
                   {/* Job Title & Year Row (Job Title in big bold, Year in custom tag) */}
                   <div className="flex items-baseline justify-between flex-wrap gap-2">
@@ -238,8 +244,8 @@ export default function TechSection() {
         {/* Right Column: Pure 3D Paper Airplane Canvas Window with scrolling skyscrapers (col-span-12 lg:col-span-5) */}
         <div className="col-span-12 lg:col-span-5 min-h-[360px] lg:min-h-full brutalist-border bg-white relative overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 z-0">
-            {/* Zoomed out camera: position.z = 2.5 */}
-            <Canvas camera={{ position: [0, 0, 2.5], fov: 50 }}>
+            {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
+            <Canvas camera={{ position: [0, 0.38, 2.3], fov: 50 }}>
               <ambientLight intensity={1.5} />
               
               {/* Infinite Scrolling Blue Skyscrapers */}

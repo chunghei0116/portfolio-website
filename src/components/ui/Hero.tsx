@@ -7,7 +7,7 @@ import React, { useRef, Suspense } from "react";
 
 function HeroMechObject() {
   const groupRef = useRef<THREE.Group>(null!);
-  const { mouse } = useThree();
+  const { mouse, viewport } = useThree();
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
@@ -18,8 +18,14 @@ function HeroMechObject() {
     }
   });
 
+  const isMobile = viewport.width < 7;
+  const posX = isMobile ? 0 : 1.8;
+  const posY = isMobile ? 1.0 : 0;
+  const posZ = isMobile ? -2.5 : -2;
+  const scaleVal = isMobile ? 1.4 : 2.2;
+
   return (
-    <group ref={groupRef} position={[2, 0, -2]} scale={[2.2, 2.2, 2.2]}>
+    <group ref={groupRef} position={[posX, posY, posZ]} scale={[scaleVal, scaleVal, scaleVal]}>
       {/* Heavy Mech HUD outer ring */}
       <mesh>
         <torusGeometry args={[1.5, 0.012, 8, 64]} />
@@ -76,7 +82,7 @@ const lineVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
+    <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-6 sm:px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
       {/* 3D Hero Background Canvas underlay (Only contains the heavy mech HUD crosshairs) */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <Canvas
@@ -91,9 +97,9 @@ export default function Hero() {
       </div>
 
       {/* Absolute Survey Header bar */}
-      <div className="absolute top-24 left-0 w-full flex justify-between items-center px-8 md:px-16 text-alpine-mono opacity-80 select-none z-10">
-        <span>ROUTE DIRECTORY v4 // EXPEDITION ACCLIMATIZED</span>
-        <span>DAVOS, GRISONS, CH</span>
+      <div className="absolute top-24 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider opacity-80 select-none z-10">
+        <span>ROUTE DIRECTORY v4 // EXPEDITION ACTIVE</span>
+        <span className="hidden sm:inline">DAVOS, GRISONS, CH</span>
       </div>
 
       {/* Gundam Blue Trail Marker Segment [Blue | White | Blue] */}

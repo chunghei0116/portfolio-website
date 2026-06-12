@@ -10,7 +10,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-7xl bg-moss-shadow text-white border-[4px] border-black rounded-none shadow-[8px_8px_0px_#000000] p-8 md:p-16 flex flex-col items-center text-center gap-8"
+        className="w-full max-w-7xl bg-moss-shadow text-white border-[4px] border-black rounded-none shadow-[8px_8px_0px_#000000] p-5 sm:p-8 md:p-16 flex flex-col items-center text-center gap-8"
       >
         <h2 className="font-sans font-[950] text-5xl sm:text-7xl md:text-8xl tracking-tighter uppercase leading-[0.95] text-white">
           LET&apos;S WORK TOGETHER.
