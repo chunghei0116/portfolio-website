@@ -214,14 +214,14 @@ export default function TechSection() {
               {history.map((node) => (
                 <div key={node.year} className="relative flex flex-col gap-1">
                   {/* High-contrast node dot point */}
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#F0A828] border-2 border-black absolute -left-[30.5px] sm:-left-[38.5px] top-1.5 z-10" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#F0A828] border-2 border-black absolute -left-[29.5px] sm:-left-[37.5px] top-1.5 z-10" />
                   
                   {/* Job Title & Year Row (Job Title in big bold, Year in custom tag) */}
-                  <div className="flex items-baseline justify-between flex-wrap gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <span className="font-sans font-[950] text-xl md:text-2xl text-foreground tracking-tight leading-none uppercase">
                       {node.role}
                     </span>
-                    <span className="font-mono text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-wider bg-accent-blue text-white border-2 border-black px-3 py-1.5 shadow-[2px_2px_0px_#000000] select-none">
+                    <span className="font-mono text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-wider bg-accent-blue text-white border-2 border-black px-3 py-1.5 shadow-[2px_2px_0px_#000000] select-none self-start sm:self-auto">
                       {node.year}
                     </span>
                   </div>
@@ -242,7 +242,7 @@ export default function TechSection() {
         </div>
 
         {/* Right Column: Pure 3D Paper Airplane Canvas Window with scrolling skyscrapers (col-span-12 lg:col-span-5) */}
-        <div className="col-span-12 lg:col-span-5 min-h-[360px] lg:min-h-full brutalist-border bg-white relative overflow-hidden flex items-center justify-center">
+        <div className="col-span-12 lg:col-span-5 min-h-[250px] sm:min-h-[360px] lg:min-h-full brutalist-border bg-white relative overflow-hidden flex items-center justify-center pointer-events-none">
           <div className="absolute inset-0 z-0">
             {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
             <Canvas camera={{ position: [0, 0.38, 2.3], fov: 50 }}>
