@@ -10,22 +10,36 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-7xl bg-moss-shadow text-white border-[4px] border-black rounded-none shadow-[8px_8px_0px_#000000] p-5 sm:p-8 md:p-16 flex flex-col items-center text-center gap-8"
+        className="w-full max-w-7xl parchment-card shield-border p-5 sm:p-8 md:p-16 flex flex-col items-center text-center gap-8"
       >
-        <h2 className="font-sans font-[950] text-5xl sm:text-7xl md:text-8xl tracking-tighter uppercase leading-[0.95] text-white">
-          LET&apos;S WORK TOGETHER.
+        {/* Decorative top */}
+        <div className="flex items-center gap-4 text-accent-gold/40 text-2xl">
+          <span>✦</span>
+          <span className="text-3xl">⚔</span>
+          <span>✦</span>
+        </div>
+
+        <h2 className="font-serif font-bold text-4xl sm:text-6xl md:text-7xl tracking-tight uppercase leading-[0.95] text-accent-gold fire-glow">
+          Join the Quest
         </h2>
 
-        <p className="max-w-2xl font-mono text-xs md:text-sm text-neutral-100 uppercase tracking-wider leading-relaxed">
-          Have a cool project or want to collaborate on an interactive site? Drop an email and connect now.
+        <p className="max-w-2xl font-mono text-xs md:text-sm text-muted-foreground uppercase tracking-wider leading-relaxed">
+          Have a grand project or wish to forge an alliance? Send a raven and connect now.
         </p>
 
         <a
           href="mailto:chungheibrad@gmail.com"
-          className="bg-accent-blue text-white border-[3px] border-black px-10 py-5 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] rounded-none"
+          className="medieval-btn text-lg px-12 py-5"
         >
-          SEND HELLO
+          ✉ Send a Raven
         </a>
+
+        {/* Decorative bottom */}
+        <div className="flex items-center gap-3 text-accent-gold/30 text-xs font-serif tracking-[0.3em]">
+          <span>—</span>
+          <span>🏰</span>
+          <span>—</span>
+        </div>
       </motion.div>
     </section>
   );

@@ -25,42 +25,42 @@ const history = [
 
 export default function TechSection() {
   return (
-    <section className="relative w-full max-w-7xl mx-auto px-6 py-12 select-none">
-      <div className="brutalist-border bg-card-bg p-6 sm:p-8">
+    <section className="relative w-full max-w-7xl mx-auto px-6 py-16 select-none">
+      <div className="parchment-card shield-border p-6 sm:p-8">
         
-        {/* Main timeline header */}
-        <div className="border-b border-neutral-200/60 pb-4 mb-6">
-          <span className="text-moss-shadow font-mono text-[9px] font-bold uppercase tracking-wider bg-neutral-100 border border-neutral-200 px-2 py-0.5">
-            CAREER TIMELINE // PATHWAY
+        {/* Timeline header */}
+        <div className="border-b border-accent-gold/20 pb-4 mb-6">
+          <span className="text-alpine-mono bg-dark-wood border border-accent-gold/20 px-2 py-0.5">
+            📜 CHRONICLE // QUESTS COMPLETED
           </span>
-          <h2 className="text-3xl font-sans font-semibold tracking-tight uppercase mt-4 text-foreground">
-            FLIGHT PATHWAY
+          <h2 className="text-3xl font-serif font-bold tracking-tight uppercase mt-4 text-parchment medieval-heading">
+            The Journey
           </h2>
         </div>
 
-        {/* Brutalist Coordinate Grid Timeline */}
-        <div className="flex flex-col divide-y divide-neutral-200/60 w-full max-w-full">
-          {history.map((node) => (
+        {/* Medieval scroll timeline */}
+        <div className="flex flex-col divide-y divide-accent-gold/15 w-full max-w-full">
+          {history.map((node, i) => (
             <div key={node.year} className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-6 w-full max-w-full">
-              {/* Left Metadata Coordinate block */}
+              {/* Year badge */}
               <div className="min-w-[150px]">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider bg-neutral-100 border border-neutral-200 px-2 py-1 select-none text-moss-shadow">
-                  [ {node.year} ]
+                <span className="font-serif text-[10px] font-bold uppercase tracking-wider bg-fire/20 border border-fire/30 px-3 py-1 select-none text-fire">
+                  {i === 0 ? "⚔" : i === 1 ? "🛡" : "✦"} {node.year}
                 </span>
               </div>
 
-              {/* Right Content Block */}
+              {/* Content */}
               <div className="flex-1 min-w-0 w-full max-w-full">
                 <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
-                  <span className="font-sans font-semibold text-base text-foreground tracking-tight uppercase break-words">
+                  <span className="font-serif font-semibold text-base text-accent-gold tracking-tight uppercase break-words">
                     {node.role}
                   </span>
-                  <span className="hidden md:inline text-neutral-300 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">
+                  <span className="hidden md:inline text-accent-gold/40 font-mono text-xs select-none">→</span>
+                  <span className="font-mono text-xs font-bold text-muted-foreground uppercase">
                     {node.company}
                   </span>
                 </div>
-                <p className="text-xs leading-relaxed text-moss-shadow font-medium mt-2 max-w-2xl">
+                <p className="text-xs leading-relaxed text-muted-foreground font-medium mt-2 max-w-2xl">
                   {node.desc}
                 </p>
               </div>

@@ -15,14 +15,17 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-neutral-200/60 bg-[#FAFAFA]/80 backdrop-blur-[8px] px-8 py-4 flex justify-between items-center`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-accent-gold/20 px-8 py-4 flex justify-between items-center ${
+        scrolled ? "bg-background/90 backdrop-blur-[8px]" : "bg-transparent"
+      }`}
     >
-      <span className="font-sans font-black tracking-[-0.04em] uppercase text-lg text-black">
-        CHUNG HEI
+      <span className="font-serif font-bold tracking-[-0.02em] uppercase text-lg text-accent-gold">
+        ⚔ CHUNG HEI
       </span>
       
-      <div className="flex items-center gap-2 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-moss-shadow bg-neutral-100 border border-neutral-200 px-2.5 py-1.5 rounded-none">
-        <span>🟢 AVAILABLE</span>
+      <div className="flex items-center gap-2 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground bg-dark-wood border border-accent-gold/20 px-2.5 py-1.5 rounded-sm">
+        <span className="text-green-500">●</span>
+        <span>AVAILABLE</span>
       </div>
     </nav>
   );
