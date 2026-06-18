@@ -216,12 +216,12 @@ export default function TechSection() {
       <div className="grid grid-cols-12 gap-8 brutalist-border bg-card-bg p-4 sm:p-8 brutalist-shadow">
         
         {/* Left Column: Minimalist Vertical Career Timeline (col-span-12 lg:col-span-7) */}
-        <div className="col-span-12 lg:col-span-7 flex flex-col justify-between">
+        <div className="col-span-12 lg:col-span-7 min-w-0 flex flex-col justify-between">
           <div>
             <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider bg-accent-blue/10 border border-black px-2.5 py-0.5">
               CAREER TIMELINE // PATHWAY
             </span>
-            <h2 className="text-4xl md:text-5xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase mt-4 text-foreground mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase mt-4 text-foreground mb-8">
               FLIGHT PATHWAY
             </h2>
             
@@ -234,7 +234,7 @@ export default function TechSection() {
                   
                   {/* Job Title & Year Row (Job Title in big bold, Year in custom tag) */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <span className="font-sans font-[950] text-xl md:text-2xl text-foreground tracking-tight leading-none uppercase">
+                    <span className="font-sans font-[950] text-lg sm:text-xl md:text-2xl text-foreground tracking-tight leading-none uppercase break-words">
                       {node.role}
                     </span>
                     <span className="font-mono text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-wider bg-accent-blue text-white border-2 border-black px-3 py-1.5 shadow-[2px_2px_0px_#000000] select-none self-start sm:self-auto">
@@ -258,8 +258,8 @@ export default function TechSection() {
         </div>
 
         {/* Right Column: Pure 3D Paper Airplane Canvas Window with scrolling skyscrapers (col-span-12 lg:col-span-5) */}
-        <div className="col-span-12 lg:col-span-5 min-h-[250px] sm:min-h-[360px] lg:min-h-full brutalist-border bg-white relative overflow-hidden flex items-center justify-center pointer-events-none">
-          <div className="absolute inset-0 z-0">
+        <div className="col-span-12 lg:col-span-5 min-w-0 min-h-[250px] sm:min-h-[360px] lg:min-h-full brutalist-border bg-white relative overflow-hidden flex items-center justify-center pointer-events-none">
+          <div className="absolute inset-0 w-full h-full z-0">
             {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
             <Canvas camera={{ position: [0, 0.38, 2.3], fov: 50 }}>
               <ambientLight intensity={1.5} />
