@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
-import Scene from "@/components/canvas/Scene";
 import PageTransition from "@/components/ui/PageTransition";
 
 const interTight = Inter_Tight({
@@ -24,9 +23,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${interTight.variable} h-full antialiased`}>
       <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-blue selection:text-white">
-        {/* Persistent 3D Background Scene */}
-        <Scene />
-        
         {/* Floating Brutalist Navbar */}
         <Navbar />
         
