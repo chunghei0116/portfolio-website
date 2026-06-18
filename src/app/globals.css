@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #E6ECF1; /* 主體白 (Cold White) */
-  --foreground: #373C42; /* 幻影灰 (Phantom Grey) */
-  --card-bg: #FFFFFF;
-  --accent-blue: #1F438A; /* 海老川藍 (Ebikawa Blue) */
-  --classic-red: #C82833; /* 經典紅 (Classic Red) */
-  --antenna-yellow: #F0A828; /* 天線黃 (Antenna Yellow) */
-  --moss-shadow: #373C42; /* 幻影灰 (Phantom Grey) for theme consistency */
+  --background: #FAFAFA; /* Elegant Off-White */
+  --foreground: #171717; /* Carbon Black */
+  --card-bg: #FAFAFA;
+  --accent-blue: #171717; /* Charcoal/Neutral Black */
+  --classic-red: #DC2626;
+  --antenna-yellow: #F59E0B;
+  --moss-shadow: #737373; /* Neutral Slate Gray */
   --grid-color: transparent;
-  --selection-bg: #1F438A;
+  --selection-bg: #171717;
   --selection-text: #FFFFFF;
 }
 
@@ -24,8 +24,8 @@
   --color-antenna-yellow: var(--antenna-yellow);
   --color-moss-shadow: var(--moss-shadow);
   
-  --font-weight-punchy: 950;
-  --font-weight-bold: 800;
+  --font-weight-punchy: 600; /* Sleek semibold instead of massive black */
+  --font-weight-bold: 500;
 }
 
 @layer base {
@@ -43,37 +43,38 @@
   }
 }
 
-/* Massive Swiss Grotesque Headline style */
+/* Massive Headline style - transitioned to clean semibold */
 .swiss-massive-heading {
-  @apply font-sans font-punchy tracking-[-0.05em] leading-[0.82] uppercase text-black;
+  @apply font-sans font-punchy tracking-[-0.03em] leading-[1.15] text-[#171717];
 }
 
-/* Heavy solid flat-edge brutalist borders */
+/* Thin coordinate borders instead of brutalist 4px borders */
 .brutalist-border {
-  @apply border-[4px] border-black rounded-none;
+  @apply border border-neutral-200 rounded-none;
 }
 
-/* Solid unblurred flat-shadow utility */
+/* Remove heavy unblurred shadows */
 .brutalist-shadow {
-  box-shadow: 8px 8px 0px #000000;
+  box-shadow: none;
 }
 
-/* Solid heavy hover lift with flat transition */
+/* Clean, simple hover transitions */
 .brutalist-hover-lift {
-  @apply transition-all duration-300 ease-out;
+  @apply transition-opacity duration-300 ease-out;
 }
 .brutalist-hover-lift:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px #000000;
+  @apply opacity-80;
+  transform: none;
+  box-shadow: none;
 }
 .brutalist-hover-lift:active {
-  transform: translate(2px, 2px);
-  box-shadow: 4px 4px 0px #000000;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Monospaced alpine tag typography */
+/* Monospaced tag typography */
 .text-alpine-mono {
-  @apply font-mono text-[0.75rem] font-bold tracking-[0.12em] uppercase text-moss-shadow;
+  @apply font-mono text-[0.7rem] tracking-[0.08em] uppercase text-moss-shadow;
 }
 
 @keyframes marquee {
