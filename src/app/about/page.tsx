@@ -42,21 +42,21 @@ export default function AboutPage() {
               <span className="font-bold text-white bg-black px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2025 — PRES</span>
               <div>
                 <h4 className="font-black text-sm uppercase">Mobile Application Developer @ AS Watson Group</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Architecting international Kubernetes container clusters, GitLab/ArgoCD GitOps synchronization loops, and engineering high-availability client mobile engines (Flutter).</p>
+                <p className="mt-1 font-bold text-moss-shadow">Primary developer on 1M Active user CRM in Hong Kong. Flutter Expertised.</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
               <span className="font-bold text-white bg-accent-blue px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2023 — 2025</span>
               <div>
                 <h4 className="font-black text-sm uppercase">Programmer @ Asia Allied Infrastructure Group</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Assembling stable, secure cloud EKS clusters, multi-stage automated pipelines (ArgoCD), and cross-platform native corporate solutions (Flutter).</p>
+                <p className="mt-1 font-bold text-moss-shadow">Procurement website, internal Staff app, enterprise / unlisted app release, DevOps / CICD, K8s admin.</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4">
               <span className="font-bold text-black bg-white px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2021</span>
               <div>
                 <h4 className="font-black text-sm uppercase">Summer Intern @ EMSD HKSAR</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Programming industrial PLC electronic automation systems, telemetry log aggregations, and maintaining critical HKSAR municipal automation infrastructures.</p>
+                <p className="mt-1 font-bold text-moss-shadow">Mainly assisting System Analyst to bugfix and develop features on government websites.</p>
               </div>
             </div>
           </div>

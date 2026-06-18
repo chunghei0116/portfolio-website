@@ -194,19 +194,19 @@ const history = [
     year: "2025 — PRESENT",
     role: "MOBILE APPLICATION DEVELOPER",
     company: "AS Watson Group",
-    desc: "Architecting international Kubernetes container clusters, GitLab/ArgoCD GitOps synchronization loops, and engineering high-availability client mobile engines (Flutter)."
+    desc: "Primary developer on 1M Active user CRM in Hong Kong. Flutter Expertised."
   },
   {
     year: "2023 — 2025",
     role: "PROGRAMMER",
     company: "Asia Allied Infrastructure Group",
-    desc: "Assembling stable, secure cloud EKS clusters, multi-stage automated pipelines (ArgoCD), and cross-platform native corporate solutions (Flutter)."
+    desc: "Procurement website, internal Staff app, enterprise / unlisted app release, DevOps / CICD, K8s admin."
   },
   {
     year: "2021",
     role: "SUMMER INTERN",
     company: "EMSD HKSAR",
-    desc: "Programming industrial PLC electronic automation systems, telemetry log aggregations, and maintaining critical HKSAR municipal automation infrastructures."
+    desc: "Mainly assisting System Analyst to bugfix and develop features on government websites."
   }
 ];
 
