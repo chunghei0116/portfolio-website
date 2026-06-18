@@ -1,28 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAFA; /* Elegant Off-White */
-  --foreground: #171717; /* Carbon Black */
-  --card-bg: #FAFAFA;
-  --accent-blue: #171717; /* Charcoal/Neutral Black */
-  --classic-red: #DC2626;
-  --antenna-yellow: #F59E0B;
-  --moss-shadow: #737373; /* Neutral Slate Gray */
-  --grid-color: transparent;
-  --selection-bg: #171717;
-  --selection-text: #FFFFFF;
+  --background: 243 240 231;      /* #f7f4ed */
+  --foreground: 20 36 44;         /* #14242c */
+  --card: 255 253 248;            /* #fffdf8 */
+  --card-foreground: 20 36 44;
+  --popover: 255 253 248;
+  --popover-foreground: 20 36 44;
+  --primary: 23 51 59;            /* #17333b */
+  --primary-foreground: 255 253 248;
+  --secondary: 237 241 234;       /* #edf1ea */
+  --secondary-foreground: 20 36 44;
+  --muted: 237 241 234;
+  --muted-foreground: 74 90 92;   /* #4a5a5c */
+  --accent: 201 137 77;           /* #c9894d (golden-amber) */
+  --accent-foreground: 255 253 248;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 20 36 44 / 0.12;      /* rgba(20, 36, 44, 0.12) */
+  --input: 20 36 44 / 0.12;
+  --ring: 201 137 77;
+  --radius: 1rem;
 }
 
 @theme {
   --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cinzel', Georgia, serif;
   
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card-bg: var(--card-bg);
-  --color-accent-blue: var(--accent-blue);
-  --color-classic-red: var(--classic-red);
-  --color-antenna-yellow: var(--antenna-yellow);
-  --color-moss-shadow: var(--moss-shadow);
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-card-bg: rgb(var(--card));
+  --color-accent-blue: rgb(var(--primary));
+  --color-classic-red: rgb(var(--destructive));
+  --color-antenna-yellow: rgb(var(--accent));
+  --color-moss-shadow: rgb(var(--muted-foreground));
   
   --font-weight-punchy: 600; /* Sleek semibold instead of massive black */
   --font-weight-bold: 500;
