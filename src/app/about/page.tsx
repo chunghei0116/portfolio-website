@@ -37,15 +37,15 @@ export default function AboutPage() {
           <h3 className="text-2xl font-[950] uppercase mb-4 border-b-2 border-black pb-2">
             TIMELINE // WORK RECORD
           </h3>
-          <div className="flex flex-col divide-y-2 divide-black/10">
-            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="flex flex-col divide-y-2 divide-black/10 w-full max-w-full">
+            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
               <div className="min-w-[150px]">
                 <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-black text-white border border-black px-2 py-1 select-none">
                   [ 2025 — PRES ]
                 </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+              <div className="flex-1 min-w-0 w-full max-w-full">
+                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
                   <h4 className="font-black text-sm uppercase text-black break-words">Mobile Application Developer</h4>
                   <span className="hidden md:inline text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
                   <span className="font-mono text-xs font-bold text-accent-blue uppercase tracking-wider md:tracking-normal">AS Watson Group</span>
@@ -56,14 +56,14 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
               <div className="min-w-[150px]">
                 <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-accent-blue text-white border border-black px-2 py-1 select-none">
                   [ 2023 — 2025 ]
                 </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+              <div className="flex-1 min-w-0 w-full max-w-full">
+                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
                   <h4 className="font-black text-sm uppercase text-black break-words">Programmer</h4>
                   <span className="hidden md:inline text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
                   <span className="font-mono text-xs font-bold text-accent-blue uppercase tracking-wider md:tracking-normal">Asia Allied Infrastructure Group</span>
@@ -74,14 +74,14 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
               <div className="min-w-[150px]">
                 <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white text-black border border-black px-2 py-1 select-none">
                   [ 2021 ]
                 </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+              <div className="flex-1 min-w-0 w-full max-w-full">
+                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
                   <h4 className="font-black text-sm uppercase text-black break-words">Summer Intern</h4>
                   <span className="hidden md:inline text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
                   <span className="font-mono text-xs font-bold text-accent-blue uppercase tracking-wider md:tracking-normal">EMSD HKSAR</span>

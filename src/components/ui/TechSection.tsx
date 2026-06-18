@@ -216,7 +216,7 @@ export default function TechSection() {
       <div className="grid grid-cols-12 gap-8 brutalist-border bg-card-bg p-4 sm:p-8 brutalist-shadow">
         
         {/* Left Column: Minimalist Vertical Career Timeline (col-span-12 lg:col-span-7) */}
-        <div className="col-span-12 lg:col-span-7 min-w-0 flex flex-col justify-between">
+        <div className="col-span-12 lg:col-span-7 min-w-0 w-full max-w-full flex flex-col justify-between">
           <div>
             <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider bg-accent-blue/10 border border-black px-2.5 py-0.5">
               CAREER TIMELINE // PATHWAY
@@ -226,9 +226,9 @@ export default function TechSection() {
             </h2>
             
             {/* Brutalist Coordinate Grid Timeline */}
-            <div className="flex flex-col border-t-2 border-black divide-y-2 divide-black/10 mt-6">
+            <div className="flex flex-col border-t-2 border-black divide-y-2 divide-black/10 mt-6 w-full max-w-full">
               {history.map((node) => (
-                <div key={node.year} className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4">
+                <div key={node.year} className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
                   {/* Left Metadata Coordinate block */}
                   <div className="flex flex-row md:flex-col items-center md:items-start gap-2.5 min-w-[150px]">
                     <span className="font-mono text-[11px] font-black uppercase tracking-wider bg-accent-blue text-white border-2 border-black px-2.5 py-1.5 shadow-[2px_2px_0px_#000000] select-none">
@@ -237,8 +237,8 @@ export default function TechSection() {
                   </div>
 
                   {/* Right Content Block */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+                  <div className="flex-1 min-w-0 w-full max-w-full">
+                    <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
                       <span className="font-sans font-[950] text-lg sm:text-xl text-foreground tracking-tight uppercase break-words">
                         {node.role}
                       </span>
