@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Redesign the portfolio into a warm, clean, minimalist design with procedural 3D golden-amber wireframe medieval elements.
+**Goal:** Redesign the portfolio into a warm, clean, minimalist design with procedural 3D golden-amber wireframe medieval elements (Castle, Shield, Tree & Path, Fire Flame).
 
-**Architecture:** Update variables in `globals.css` to match `ahronsilv.dev` warm tones. Re-enable Three.js background and hero canvases with customized R3F procedural wireframe geometries (Castle Watchtower, Runic Astrolabe, and DevOps Pipeline beams).
+**Architecture:** Update variables in `globals.css` to match `ahronsilv.dev` warm tones. Re-enable Three.js background and hero canvases with customized R3F procedural wireframe geometries (Castle Watchtower, Runic Shield, Winding Path with Trees, and a Bonfire with rising flame particles).
 
 **Tech Stack:** React, Next.js, TailwindCSS, Three.js, React Three Fiber (R3F), Framer Motion.
 
@@ -161,7 +161,7 @@
     return (
       <div className="fixed inset-0 -z-10 w-screen h-screen pointer-events-none bg-transparent select-none overflow-hidden">
         <Canvas
-          camera={{ position: [0, 0, 6], fof: 60 } as any}
+          camera={{ position: [0, 0, 6], fov: 60 } as any}
           dpr={[1, 1.5]}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           onCreated={handleCreated}
@@ -181,12 +181,6 @@
 - [ ] **Step 2: Restore Scene background rendering in layout.tsx**
   Add `<Scene />` back into the main body elements of `src/app/layout.tsx`.
 
-  ```typescript
-  import Navbar from "@/components/ui/Navbar";
-  import Scene from "@/components/canvas/Scene";
-  import PageTransition from "@/components/ui/PageTransition";
-  ```
-
 - [ ] **Step 3: Run typescript compiler check**
   Run: `npx tsc --noEmit`
   Expected: SUCCESS
@@ -199,16 +193,16 @@
 
 ---
 
-### Task 3: Hero Runic Astrolabe & Styling
+### Task 3: Hero Runic Shield & Styling
 
 **Files:**
 - Modify: `src/components/ui/Hero.tsx`
 
-- [ ] **Step 1: Write HeroMedievalCrest component and restore Hero canvas underlay**
-  Restore R3F canvas render and code the Golden-Amber Wireframe astrolabe.
+- [ ] **Step 1: Write HeroMedievalShield component and restore Hero canvas underlay**
+  Restore R3F canvas render and code the Golden-Amber Wireframe Shield and Crossed Swords.
 
   ```typescript
-  function HeroMedievalCrest() {
+  function HeroMedievalShield() {
     const groupRef = useRef<THREE.Group>(null!);
 
     useFrame((state) => {
@@ -224,26 +218,20 @@
 
     return (
       <group ref={groupRef} position={[1.8, 0, -2.2]} scale={[2.0, 2.0, 2.0]}>
-        {/* Outer Runic Circle */}
-        <mesh>
-          <torusGeometry args={[1.5, 0.03, 8, 48]} />
+        {/* Shield outline geometry */}
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[1.0, 0.6, 0.1, 5, 2, true]} />
           <primitive object={activeMat} attach="material" />
         </mesh>
         
-        {/* Central Shield plate representation */}
-        <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[1.1, 1.1, 0.04, 8, 1, true]} />
+        {/* Swords crossed (represented as wireframe lines or slender boxes) */}
+        <mesh position={[0, 0, -0.1]} rotation={[0, 0, Math.PI / 4]}>
+          <boxGeometry args={[2.0, 0.08, 0.04]} />
           <primitive object={mutedMat} attach="material" />
         </mesh>
-
-        {/* Diagonal Cross braces */}
-        <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
-          <boxGeometry args={[2.2, 0.08, 0.08]} />
-          <primitive object={activeMat} attach="material" />
-        </mesh>
-        <mesh position={[0, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
-          <boxGeometry args={[2.2, 0.08, 0.08]} />
-          <primitive object={activeMat} attach="material" />
+        <mesh position={[0, 0, -0.1]} rotation={[0, 0, -Math.PI / 4]}>
+          <boxGeometry args={[2.0, 0.08, 0.04]} />
+          <primitive object={mutedMat} attach="material" />
         </mesh>
       </group>
     );
@@ -257,7 +245,7 @@
 - [ ] **Step 3: Commit Hero updates**
   ```bash
   git add src/components/ui/Hero.tsx
-  git commit -m "feat: restore Hero 3D Canvas and implement 3D Wireframe Runic Astrolabe"
+  git commit -m "feat: restore Hero 3D Canvas and implement 3D Wireframe Runic Shield"
   ```
 
 ---
@@ -286,21 +274,95 @@
 
 ---
 
-### Task 5: Bento 3D Pipeline & Particle Canvases
+### Task 5: Bento 3D Winding Path and Bonfire Canvases
 
 **Files:**
 - Modify: `src/components/ui/BentoGrid.tsx`
 
-- [ ] **Step 1: Restore 3D Canvas elements inside Bento Cards**
-  - Card F: DevOps Pipeline Canvas underlay rendering `PipelineScene` styled to flow with glowing golden-amber wireframe paths.
-  - Card G: Flutter particles rendering `SodaBubbles` and `FlutterParticles` in warm amber/gold hues.
+- [ ] **Step 1: Restore 3D Winding Path and Trees in Card A**
+  Implement the wireframe terrain with a path and trees using procedural cone geometries.
 
-- [ ] **Step 2: Run complete typescript verification**
+  ```typescript
+  function WindingPathAndTrees() {
+    const groupRef = useRef<THREE.Group>(null!);
+    useFrame((state) => {
+      const time = state.clock.getElapsedTime();
+      if (groupRef.current) groupRef.current.rotation.y = time * 0.05;
+    });
+
+    const activeMat = new THREE.MeshBasicMaterial({ color: "#c9894d", wireframe: true, transparent: true, opacity: 0.4 });
+    const mutedMat = new THREE.MeshBasicMaterial({ color: "#8b5a2b", wireframe: true, transparent: true, opacity: 0.15 });
+
+    return (
+      <group ref={groupRef} position={[0, -0.2, 0]}>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.8, 1.2, 32, 1, 0, Math.PI * 1.5]} />
+          <primitive object={mutedMat} attach="material" />
+        </mesh>
+        {[-0.8, 0.8, 1.2].map((x, idx) => {
+          const z = idx === 1 ? -0.5 : 0.6;
+          return (
+            <group key={idx} position={[x, -0.3, z]}>
+              <mesh position={[0, 0.1, 0]}>
+                <cylinderGeometry args={[0.03, 0.05, 0.3, 4]} />
+                <primitive object={mutedMat} attach="material" />
+              </mesh>
+              <mesh position={[0, 0.5, 0]}>
+                <coneGeometry args={[0.22, 0.6, 5]} />
+                <primitive object={activeMat} attach="material" />
+              </mesh>
+            </group>
+          );
+        })}
+      </group>
+    );
+  }
+  ```
+
+- [ ] **Step 2: Restore 3D Bonfire and Rising Flames in Card G**
+  Write a procedural bonfire that updates rising wireframe particle scale.
+
+  ```typescript
+  function BonfireAndFlames() {
+    const groupRef = useRef<THREE.Group>(null!);
+    useFrame((state) => {
+      const time = state.clock.getElapsedTime();
+      if (groupRef.current) groupRef.current.rotation.y = time * 0.2;
+    });
+
+    const activeMat = new THREE.MeshBasicMaterial({ color: "#c9894d", wireframe: true, transparent: true, opacity: 0.5 });
+    const mutedMat = new THREE.MeshBasicMaterial({ color: "#8b5a2b", wireframe: true, transparent: true, opacity: 0.2 });
+
+    return (
+      <group ref={groupRef} position={[0, -0.2, 0]}>
+        <mesh rotation={[0, 0, Math.PI / 6]}>
+          <cylinderGeometry args={[0.04, 0.04, 0.7, 4]} />
+          <primitive object={mutedMat} attach="material" />
+        </mesh>
+        <mesh rotation={[0, 0, -Math.PI / 6]}>
+          <cylinderGeometry args={[0.04, 0.04, 0.7, 4]} />
+          <primitive object={mutedMat} attach="material" />
+        </mesh>
+        {Array.from({ length: 4 }).map((_, idx) => {
+          const angle = (idx * Math.PI) / 2;
+          return (
+            <mesh key={idx} position={[Math.cos(angle)*0.15, 0.1, Math.sin(angle)*0.15]}>
+              <coneGeometry args={[0.1, 0.4, 4]} />
+              <primitive object={activeMat} attach="material" />
+            </mesh>
+          );
+        })}
+      </group>
+    );
+  }
+  ```
+
+- [ ] **Step 3: Run complete typescript verification**
   Run: `npx tsc --noEmit`
   Expected: Success with no warnings.
 
-- [ ] **Step 3: Commit final layout canvases**
+- [ ] **Step 4: Commit final layout canvases**
   ```bash
   git add src/components/ui/BentoGrid.tsx
-  git commit -m "feat: restore DevOps pipeline and particle canvases inside bento layout in warm amber style"
+  git commit -m "feat: implement 3D wireframe Winding Path and Bonfire flame components in BentoGrid"
   ```
