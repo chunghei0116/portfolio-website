@@ -33,9 +33,14 @@
   --color-foreground: rgb(var(--foreground));
   --color-card-bg: rgb(var(--card));
   --color-accent-blue: rgb(var(--primary));
-  --color-classic-red: rgb(var(--destructive));
+  --color-classic-red: hsl(var(--destructive));
   --color-antenna-yellow: rgb(var(--accent));
   --color-moss-shadow: rgb(var(--muted-foreground));
+  --color-border: rgb(var(--border));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
   
   --font-weight-punchy: 600; /* Sleek semibold instead of massive black */
   --font-weight-bold: 500;
