@@ -34,29 +34,61 @@ export default function AboutPage() {
 
         {/* Timeline / Experience */}
         <BentoCard className="col-span-1 md:col-span-3 min-h-[300px]">
-          <h3 className="text-2xl font-[950] uppercase mb-6 border-b-2 border-black pb-2">
+          <h3 className="text-2xl font-[950] uppercase mb-4 border-b-2 border-black pb-2">
             TIMELINE // WORK RECORD
           </h3>
-          <div className="space-y-6 font-mono text-xs text-black">
-            <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
-              <span className="font-bold text-white bg-black px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2025 — PRES</span>
-              <div>
-                <h4 className="font-black text-sm uppercase">Mobile Application Developer @ AS Watson Group</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Primary developer on 1M Active user CRM in Hong Kong. Flutter Expertised.</p>
+          <div className="flex flex-col divide-y-2 divide-black/10">
+            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4">
+              <div className="min-w-[150px]">
+                <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-black text-white border border-black px-2 py-1 select-none">
+                  [ 2025 — PRES ]
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-black text-sm uppercase text-black">Mobile Application Developer</h4>
+                  <span className="text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
+                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">AS Watson Group</span>
+                </div>
+                <p className="mt-2 text-xs font-bold leading-relaxed text-moss-shadow">
+                  Lead Flutter developer responsible for the 1M+ active user CRM application in Hong Kong. Engineered high-availability client architectures and optimized core module load times.
+                </p>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
-              <span className="font-bold text-white bg-accent-blue px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2023 — 2025</span>
-              <div>
-                <h4 className="font-black text-sm uppercase">Programmer @ Asia Allied Infrastructure Group</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Procurement website, internal Staff app, enterprise / unlisted app release, DevOps / CICD, K8s admin.</p>
+
+            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4">
+              <div className="min-w-[150px]">
+                <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-accent-blue text-white border border-black px-2 py-1 select-none">
+                  [ 2023 — 2025 ]
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-black text-sm uppercase text-black">Programmer</h4>
+                  <span className="text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
+                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">Asia Allied Infrastructure Group</span>
+                </div>
+                <p className="mt-2 text-xs font-bold leading-relaxed text-moss-shadow">
+                  Architected secure procurement portals, internal staff platforms, and managed enterprise-grade app store deployments. Set up GitLab/ArgoCD pipelines and EKS container administration.
+                </p>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4">
-              <span className="font-bold text-black bg-white px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2021</span>
-              <div>
-                <h4 className="font-black text-sm uppercase">Summer Intern @ EMSD HKSAR</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Mainly assisting System Analyst to bugfix and develop features on government websites.</p>
+
+            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4">
+              <div className="min-w-[150px]">
+                <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white text-black border border-black px-2 py-1 select-none">
+                  [ 2021 ]
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-black text-sm uppercase text-black">Summer Intern</h4>
+                  <span className="text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
+                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">EMSD HKSAR</span>
+                </div>
+                <p className="mt-2 text-xs font-bold leading-relaxed text-moss-shadow">
+                  Collaborated with senior System Analysts to patch, debug, and develop new public-facing features on government municipal websites.
+                </p>
               </div>
             </div>
           </div>
