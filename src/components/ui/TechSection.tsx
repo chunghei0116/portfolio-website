@@ -174,9 +174,13 @@ function PaperAirplane() {
 }
 
 function ResponsiveScene() {
-  const { viewport } = useThree();
-  // Dynamically scale based on viewport width to prevent clipping on mobile
-  const scale = Math.max(0.55, Math.min(1.0, viewport.width / 2.4));
+  const { size } = useThree();
+  // Scale dynamically based on physical canvas height & width (in pixels)
+  // Base target: 500px height / 600px width for scale 1.0
+  const heightScale = Math.max(0.45, Math.min(1.0, size.height / 500));
+  const widthScale = Math.max(0.45, Math.min(1.0, size.width / 600));
+  const scale = Math.min(heightScale, widthScale);
+
   return (
     <group scale={scale}>
       <ScrollingBuildings />
