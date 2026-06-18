@@ -22,7 +22,7 @@ export default function Navbar() {
       </span>
       
       <div className="flex items-center gap-2 font-mono text-[0.7rem] font-bold uppercase tracking-wider text-moss-shadow bg-white/40 border border-black/10 px-3 py-1.5 rounded-none">
-        <span>🟢 STATUS: OPEN TO COLLABORATE</span>
+        <span>🟢 AVAILABLE</span>
       </div>
     </nav>
   );
