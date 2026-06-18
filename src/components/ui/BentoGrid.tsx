@@ -54,18 +54,18 @@ function GithubCoinsScene() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Rich silver metallic gradient background for the coin face
+    // Rich light-silver/white metallic gradient background for the coin face
     const gradient = ctx.createRadialGradient(128, 128, 20, 128, 128, 120);
-    gradient.addColorStop(0, "#1E293B"); // Deep charcoal silver shadow
-    gradient.addColorStop(0.5, "#334155");
-    gradient.addColorStop(0.85, "#94A3B8"); // Muted silver
-    gradient.addColorStop(1, "#CBD5E1"); // Light silver edge
+    gradient.addColorStop(0, "#FFFFFF"); // Bright white center
+    gradient.addColorStop(0.5, "#F1F5F9"); // Extremely light slate
+    gradient.addColorStop(0.85, "#E2E8F0"); // Light silver-grey
+    gradient.addColorStop(1, "#CBD5E1"); // Silver edge
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 256, 256);
 
-    // Glowing silver outer rim
-    ctx.strokeStyle = "#F1F5F9";
+    // Glowing light-silver outer rim
+    ctx.strokeStyle = "#E2E8F0";
     ctx.lineWidth = 14;
     ctx.shadowColor = "#CBD5E1";
     ctx.shadowBlur = 10;
@@ -73,9 +73,9 @@ function GithubCoinsScene() {
     ctx.arc(128, 128, 110, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Clean GitHub Icon Path in bright reflective white-silver
-    ctx.fillStyle = "#FFFFFF";
-    ctx.shadowColor = "#E2E8F0";
+    // Clean GitHub Icon Path in bright reflective GitHub Green
+    ctx.fillStyle = "#39D353";
+    ctx.shadowColor = "#39D353";
     ctx.shadowBlur = 14;
     const p = new Path2D(
       "M128 40c-48.6 0-88 39.4-88 88 0 38.9 25.2 71.9 60.2 83.5 4.4.8 6-.9 6-4.2 0-2.1-.1-7.6-.1-14.9-24.5 5.3-29.7-11.8-29.7-11.8-4-10.2-9.8-12.9-9.8-12.9-8-5.5.6-5.4.6-5.4 8.8.6 13.5 9.1 13.5 9.1 7.9 13.5 20.7 9.6 25.7 7.3.8-5.7 3.1-9.6 5.6-11.8-19.5-2.2-40.1-9.8-40.1-43.5 0-9.6 3.4-17.5 9.1-23.7-.9-2.2-4-11.2.9-23.4 0 0 7.4-2.4 24.2 9 7-2 14.6-2.9 22.1-3 7.5 0 15 1 22.1 3 16.8-11.4 24.2-9 24.2-9 4.9 12.2 1.8 21.2.9 23.4 5.7 6.2 9.1 14.1 9.1 23.7 0 33.8-20.6 41.2-40.2 43.4 3.2 2.7 6 8.2 6 16.5 0 11.9-.1 21.5-.1 24.4 0 3.3 1.6 5.1 6 4.2 35-11.7 60.2-44.7 60.2-83.5 0-48.6-39.4-88-88-88z"
