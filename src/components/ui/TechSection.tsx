@@ -226,11 +226,22 @@ export default function TechSection() {
             </h2>
             
             {/* Flat axis point/line timeline */}
-            <div className="border-l-[3px] border-black ml-2 pl-6 sm:ml-4 sm:pl-8 relative py-4 flex flex-col gap-10">
+            <div className="ml-2 pl-6 sm:ml-4 sm:pl-8 relative py-4 flex flex-col gap-10">
+              {/* Double vector track line */}
+              <div className="absolute left-0 top-0 bottom-0 w-[6px] pointer-events-none">
+                <div className="absolute inset-y-0 left-[1px] w-[2px] bg-black" />
+                <div className="absolute inset-y-0 left-[4px] w-0 border-l border-dashed border-accent-blue/30 h-full" />
+              </div>
+
               {history.map((node) => (
                 <div key={node.year} className="relative flex flex-col gap-1">
-                  {/* High-contrast node dot point */}
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#F0A828] border-2 border-black absolute -left-[29.5px] sm:-left-[37.5px] top-1.5 z-10" />
+                  {/* High-contrast target node dot point */}
+                  <div className="absolute -left-[9px] top-[4px] z-10 flex items-center justify-center w-5 h-5 bg-white">
+                    {/* Outer dashed radar scanning ring */}
+                    <div className="absolute w-5 h-5 rounded-full border border-black border-dashed animate-[spin_16s_linear_infinite]" />
+                    {/* Inner core vector diamond */}
+                    <div className="w-2.5 h-2.5 bg-accent-blue border border-black rotate-45" />
+                  </div>
                   
                   {/* Job Title & Year Row (Job Title in big bold, Year in custom tag) */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
