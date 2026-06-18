@@ -238,12 +238,12 @@ export default function TechSection() {
 
                   {/* Right Content Block */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-sans font-[950] text-xl text-foreground tracking-tight uppercase">
+                    <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+                      <span className="font-sans font-[950] text-lg sm:text-xl text-foreground tracking-tight uppercase break-words">
                         {node.role}
                       </span>
-                      <span className="text-black/30 font-mono text-xs font-bold select-none">&mdash;&gt;</span>
-                      <span className="font-mono text-xs font-black text-accent-blue uppercase tracking-widest">
+                      <span className="hidden md:inline text-black/30 font-mono text-xs font-bold select-none">&mdash;&gt;</span>
+                      <span className="font-mono text-xs font-black text-accent-blue uppercase tracking-wider md:tracking-widest">
                         {node.company}
                       </span>
                     </div>

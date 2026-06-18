@@ -45,10 +45,10 @@ export default function AboutPage() {
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="font-black text-sm uppercase text-black">Mobile Application Developer</h4>
-                  <span className="text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">AS Watson Group</span>
+                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+                  <h4 className="font-black text-sm uppercase text-black break-words">Mobile Application Developer</h4>
+                  <span className="hidden md:inline text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
+                  <span className="font-mono text-xs font-bold text-accent-blue uppercase tracking-wider md:tracking-normal">AS Watson Group</span>
                 </div>
                 <p className="mt-2 text-xs font-bold leading-relaxed text-moss-shadow">
                   Lead Flutter developer responsible for the 1M+ active user CRM application in Hong Kong. Engineered high-availability client architectures and optimized core module load times.
@@ -63,10 +63,10 @@ export default function AboutPage() {
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="font-black text-sm uppercase text-black">Programmer</h4>
-                  <span className="text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">Asia Allied Infrastructure Group</span>
+                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+                  <h4 className="font-black text-sm uppercase text-black break-words">Programmer</h4>
+                  <span className="hidden md:inline text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
+                  <span className="font-mono text-xs font-bold text-accent-blue uppercase tracking-wider md:tracking-normal">Asia Allied Infrastructure Group</span>
                 </div>
                 <p className="mt-2 text-xs font-bold leading-relaxed text-moss-shadow">
                   Architected secure procurement portals, internal staff platforms, and managed enterprise-grade app store deployments. Set up GitLab/ArgoCD pipelines and EKS container administration.
@@ -81,10 +81,10 @@ export default function AboutPage() {
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="font-black text-sm uppercase text-black">Summer Intern</h4>
-                  <span className="text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-bold text-accent-blue uppercase">EMSD HKSAR</span>
+                <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+                  <h4 className="font-black text-sm uppercase text-black break-words">Summer Intern</h4>
+                  <span className="hidden md:inline text-black/30 font-mono text-xs select-none">&mdash;&gt;</span>
+                  <span className="font-mono text-xs font-bold text-accent-blue uppercase tracking-wider md:tracking-normal">EMSD HKSAR</span>
                 </div>
                 <p className="mt-2 text-xs font-bold leading-relaxed text-moss-shadow">
                   Collaborated with senior System Analysts to patch, debug, and develop new public-facing features on government municipal websites.
