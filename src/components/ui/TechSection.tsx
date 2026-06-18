@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 function ScrollingBuildings() {
@@ -173,6 +173,18 @@ function PaperAirplane() {
   );
 }
 
+function ResponsiveScene() {
+  const { viewport } = useThree();
+  // Dynamically scale based on viewport width to prevent clipping on mobile
+  const scale = Math.max(0.55, Math.min(1.0, viewport.width / 2.4));
+  return (
+    <group scale={scale}>
+      <ScrollingBuildings />
+      <PaperAirplane />
+    </group>
+  );
+}
+
 const history = [
   {
     year: "2025 — PRESENT",
@@ -247,12 +259,7 @@ export default function TechSection() {
             {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
             <Canvas camera={{ position: [0, 0.38, 2.3], fov: 50 }}>
               <ambientLight intensity={1.5} />
-              
-              {/* Infinite Scrolling Blue Skyscrapers */}
-              <ScrollingBuildings />
-              
-              {/* Minimalist Paper Airplane */}
-              <PaperAirplane />
+              <ResponsiveScene />
             </Canvas>
           </div>
           <span className="absolute bottom-4 right-4 z-10 font-mono text-[8px] text-[#373C42]/40 font-bold uppercase tracking-widest">

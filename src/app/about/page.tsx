@@ -39,24 +39,24 @@ export default function AboutPage() {
           </h3>
           <div className="space-y-6 font-mono text-xs text-black">
             <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
-              <span className="font-bold text-white bg-black px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2022 — PRES</span>
+              <span className="font-bold text-white bg-black px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2025 — PRES</span>
               <div>
-                <h4 className="font-black text-sm uppercase">Lead DevOps & Mobile Engineer @ International Construction Company</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Architecting Kubernetes clusters, CI/CD GitOps pipelines (ArgoCD/GitLab), and writing enterprise Flutter applications.</p>
+                <h4 className="font-black text-sm uppercase">Mobile Application Developer @ AS Watson Group</h4>
+                <p className="mt-1 font-bold text-moss-shadow">Architecting international Kubernetes container clusters, GitLab/ArgoCD GitOps synchronization loops, and engineering high-availability client mobile engines (Flutter).</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4 border-b border-black/10 pb-4">
-              <span className="font-bold text-white bg-accent-blue px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2020 — 2022</span>
+              <span className="font-bold text-white bg-accent-blue px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2023 — 2025</span>
               <div>
-                <h4 className="font-black text-sm uppercase">Cross-Platform App Developer @ Studio X</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Crafting custom mobile/desktop clients, hot-reload Flutter engines, and Firebase backend services.</p>
+                <h4 className="font-black text-sm uppercase">Programmer @ Asia Allied Infrastructure Group</h4>
+                <p className="mt-1 font-bold text-moss-shadow">Assembling stable, secure cloud EKS clusters, multi-stage automated pipelines (ArgoCD), and cross-platform native corporate solutions (Flutter).</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4">
-              <span className="font-bold text-black bg-white px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2018 — 2020</span>
+              <span className="font-bold text-black bg-white px-2.5 py-1 rounded-none border border-black text-[10px] tracking-widest self-start uppercase">2021</span>
               <div>
-                <h4 className="font-black text-sm uppercase">Cloud DevOps Engineer @ Tech Corp</h4>
-                <p className="mt-1 font-bold text-moss-shadow">Building containerization architectures (Docker), ELK monitoring stacks, and maintaining AWS cloud infrastructure.</p>
+                <h4 className="font-black text-sm uppercase">Summer Intern @ EMSD HKSAR</h4>
+                <p className="mt-1 font-bold text-moss-shadow">Programming industrial PLC electronic automation systems, telemetry log aggregations, and maintaining critical HKSAR municipal automation infrastructures.</p>
               </div>
             </div>
           </div>

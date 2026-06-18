@@ -16,7 +16,7 @@ export default function Contact() {
           LET&apos;S WORK TOGETHER.
         </h2>
 
-        <p className="max-w-2xl font-mono text-xs md:text-sm text-neutral-300 uppercase tracking-wider leading-relaxed">
+        <p className="max-w-2xl font-mono text-xs md:text-sm text-neutral-100 uppercase tracking-wider leading-relaxed">
           Have a cool project or want to collaborate on an interactive site? Drop an email and connect now.
         </p>
 

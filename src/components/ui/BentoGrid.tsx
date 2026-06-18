@@ -18,7 +18,7 @@ const projects = [
     repoUrl: "https://github.com/chunghei0116",
   },
   {
-    title: "Project Beta",
+    title: "PROJECT BETA // GENERATIVE ART",
     category: "SUMMIT // ROUTE-02",
     description: "Generative art collections using WebGL shaders and real-time noise displacement vectors.",
     tags: ["WebGL", "Shaders", "GLSL"],
@@ -210,7 +210,7 @@ export default function BentoGrid() {
 
           <div className="p-5 sm:p-7 relative z-10 pointer-events-none w-full">
             <div className="border-b-2 border-white/10 pb-2.5">
-              <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] uppercase text-white/60">
+              <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] uppercase text-white/85">
                 GITHUB CONTRIBUTIONS
               </span>
             </div>
@@ -329,7 +329,7 @@ export default function BentoGrid() {
 
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 w-full relative z-10 pointer-events-none">
             <div>
-              <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-white/60 uppercase border-b border-white/20 pb-1.5 inline-block">
+              <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-white/85 uppercase border-b border-white/20 pb-1.5 inline-block">
                 SYSTEM DEPLOYMENTS
               </span>
               <h3 className="text-3xl md:text-4xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase text-white mt-4">
