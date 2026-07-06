@@ -196,7 +196,7 @@ export default function BentoGrid() {
       <div className="grid grid-cols-12 gap-6 auto-rows-min">
         
         {/* Card A: GITHUB - 3D Landscape Stat (col-span-4) */}
-        <div className="col-span-12 md:col-span-4 min-w-0 brutalist-border bg-[#0D1117] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] text-white min-h-[240px] brutalist-shadow brutalist-hover-lift flex flex-col justify-between relative overflow-hidden">
+        <div className="col-span-4 min-w-0 brutalist-border bg-[#0D1117] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] text-white min-h-[240px] brutalist-shadow brutalist-hover-lift flex flex-col justify-between relative overflow-hidden">
           
           {/* Background 3D Rotating Contribution Scene */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
@@ -239,7 +239,7 @@ export default function BentoGrid() {
         </div>
 
         {/* Card B: PROJECT ALPHA - Massive Heading (col-span-8) */}
-        <BentoCard className="col-span-12 md:col-span-8 flex flex-col justify-between min-h-[200px]">
+        <BentoCard className="col-span-8 flex flex-col justify-between min-h-[200px]">
           <div>
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase">
               ROUTE-01
@@ -254,7 +254,7 @@ export default function BentoGrid() {
         </BentoCard>
 
         {/* Card C: ROUTE LOG / TIMELINE (col-span-3, row-span-2) */}
-        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
+        <BentoCard className="col-span-3 row-span-2 flex flex-col justify-between min-h-[380px]">
           <div>
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE LOG
@@ -275,7 +275,7 @@ export default function BentoGrid() {
 
         {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with static 3D City background and giant Swiss typography */}
         <div 
-          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[380px] bg-white/45 border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="col-span-6 row-span-2 min-w-0 flex flex-col justify-end min-h-[380px] bg-white/45 border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         >
           {/* Static Background 3D City Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
@@ -300,7 +300,7 @@ export default function BentoGrid() {
         </div>
 
         {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
-        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
+        <BentoCard className="col-span-3 row-span-2 flex flex-col justify-between min-h-[380px]">
           <div>
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE-02
@@ -315,7 +315,7 @@ export default function BentoGrid() {
         </BentoCard>
 
         {/* Card F: GITOPS PIPELINE (col-span-8) */}
-        <div className="col-span-12 md:col-span-8 min-w-0 brutalist-border bg-accent-blue text-white p-5 sm:p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[300px] md:min-h-[240px] relative overflow-hidden">
+        <div className="col-span-8 min-w-0 brutalist-border bg-accent-blue text-white p-5 sm:p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[300px] md:min-h-[240px] relative overflow-hidden">
           
           {/* Absolute Background 3D Flowing Pipeline Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
@@ -340,7 +340,7 @@ export default function BentoGrid() {
           </div>
 
           {/* 3-Column Typographic DevOps Stack Grid with Custom SVG Icons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/10 pt-6 mt-6 relative z-10 pointer-events-none">
+          <div className="grid grid-cols-3 gap-6 border-t border-white/10 pt-6 mt-6 relative z-10 pointer-events-none">
             <div className="flex flex-col items-start">
               {/* Kubernetes heptagon-wheel icon (Purple to match upper branch) */}
               <svg className="w-6 h-6 text-[#c084fc] mb-3 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -378,7 +378,7 @@ export default function BentoGrid() {
         </div>
 
         {/* Card G: Interactive Flutter Particle Canvas (col-span-4) */}
-        <BentoCard className="col-span-12 md:col-span-4 min-w-0 min-h-[240px] relative overflow-hidden !bg-[radial-gradient(circle_at_center,rgba(57,206,253,0.15)_0%,rgba(255,255,255,1)_70%)]">
+        <BentoCard className="col-span-4 min-w-0 min-h-[240px] relative overflow-hidden !bg-[radial-gradient(circle_at_center,rgba(57,206,253,0.15)_0%,rgba(255,255,255,1)_70%)]">
           {/* Background Interactive Flutter Particle Canvas */}
           <div className="absolute inset-0 z-0 opacity-100 select-none">
             <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>

@@ -51,7 +51,7 @@ export default function AboutPage() {
                   <span className="font-mono text-xs font-semibold text-accent-blue uppercase tracking-wider">AS Watson Group</span>
                 </div>
                 <p className="mt-2 text-xs font-semibold leading-relaxed text-neutral-500">
-                  Lead Flutter developer responsible for the 1M+ active user CRM application in Hong Kong. Engineered high-availability client architectures and optimized core module load times.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                 </p>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                   <span className="font-mono text-xs font-semibold text-accent-blue uppercase tracking-wider">Asia Allied Infrastructure Group</span>
                 </div>
                 <p className="mt-2 text-xs font-semibold leading-relaxed text-neutral-500">
-                  Architected secure procurement portals, internal staff platforms, and managed enterprise-grade app store deployments. Set up GitLab/ArgoCD pipelines and EKS container administration.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
                 </p>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
                   <span className="font-mono text-xs font-semibold text-accent-blue uppercase tracking-wider">EMSD HKSAR</span>
                 </div>
                 <p className="mt-2 text-xs font-semibold leading-relaxed text-neutral-500">
-                  Collaborated with senior System Analysts to patch, debug, and develop new public-facing features on government municipal websites.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mollis nunc sed id semper risus in hendrerit gravida rutrum.
                 </p>
               </div>
             </div>

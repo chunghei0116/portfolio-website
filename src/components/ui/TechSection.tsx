@@ -194,19 +194,19 @@ const history = [
     year: "2025 — PRESENT",
     role: "MOBILE APPLICATION DEVELOPER",
     company: "AS Watson Group",
-    desc: "Lead Flutter developer responsible for the 1M+ active user CRM application in Hong Kong. Engineered high-availability client architectures and optimized core module load times."
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
   },
   {
     year: "2023 — 2025",
     role: "PROGRAMMER",
     company: "Asia Allied Infrastructure Group",
-    desc: "Architected secure procurement portals, internal staff platforms, and managed enterprise-grade app store deployments. Set up GitLab/ArgoCD pipelines and EKS container administration."
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate."
   },
   {
     year: "2021",
     role: "SUMMER INTERN",
     company: "EMSD HKSAR",
-    desc: "Collaborated with senior System Analysts to patch, debug, and develop new public-facing features on government municipal websites."
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mollis nunc sed id semper risus in hendrerit gravida rutrum."
   }
 ];
 
@@ -258,10 +258,13 @@ export default function TechSection() {
         </div>
 
         {/* Right Column: Pure 3D Paper Airplane Canvas Window with scrolling skyscrapers (col-span-12 lg:col-span-5) */}
-        <div className="col-span-12 lg:col-span-5 min-w-0 min-h-[250px] sm:min-h-[360px] lg:min-h-full border border-black/5 rounded-2xl bg-black/5 relative overflow-hidden flex items-center justify-center pointer-events-none">
-          <div className="absolute inset-0 w-full h-full z-0">
+        <div className="col-span-12 lg:col-span-5 min-w-0 min-h-[250px] sm:min-h-[360px] lg:min-h-full border border-black/5 rounded-2xl bg-black/5 relative overflow-hidden z-0 flex items-center justify-center pointer-events-none">
+          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden rounded-2xl">
             {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
-            <Canvas camera={{ position: [0, 0.38, 2.3], fov: 50 }}>
+            <Canvas 
+              camera={{ position: [0, 0.38, 2.3], fov: 50 }}
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+            >
               <ambientLight intensity={1.5} />
               <ResponsiveScene />
             </Canvas>
