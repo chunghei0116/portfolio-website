@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} h-full antialiased`}>
+    <html lang="en" className={`${interTight.variable} h-full antialiased scroll-smooth`}>
       <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-blue selection:text-white">
         {/* Persistent 3D Background Scene */}
         <Scene />

@@ -111,22 +111,51 @@ export default function Hero() {
 
       {/* Giant Deconstructed Swiss Grotesque Headline */}
       <div className="max-w-7xl w-full mx-auto relative z-10">
-        <motion.h1
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="swiss-massive-heading text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.5rem]"
+          className="flex flex-col"
         >
-          <motion.span variants={lineVariants} className="block">
-            CHUNG HEI
-          </motion.span>
-          <motion.span variants={lineVariants} className="block">
-            ENGINEERING
-          </motion.span>
-          <motion.span variants={lineVariants} className="block text-accent-blue">
-            ROBUST SYSTEMS
-          </motion.span>
-        </motion.h1>
+          <h1 className="swiss-massive-heading text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.5rem]">
+            <motion.span variants={lineVariants} className="block">
+              CHUNG HEI
+            </motion.span>
+            <motion.span variants={lineVariants} className="block">
+              ENGINEERING
+            </motion.span>
+            <motion.span variants={lineVariants} className="block text-accent-blue">
+              ROBUST SYSTEMS
+            </motion.span>
+          </h1>
+
+          {/* Subtext describing core expertise */}
+          <motion.p
+            variants={lineVariants}
+            className="mt-6 font-mono text-[0.8rem] md:text-sm font-bold uppercase tracking-wide text-moss-shadow max-w-[65ch] leading-relaxed"
+          >
+            DEVOPS INFRASTRUCTURE &amp; MOBILE APPLICATIONS. I BUILD SCALABLE AUTOMATION SYSTEMS AND CROSS-PLATFORM NATIVE PRODUCTS.
+          </motion.p>
+
+          {/* Premium Neo-Brutalist CTAs */}
+          <motion.div
+            variants={lineVariants}
+            className="mt-8 flex flex-wrap gap-4 items-center"
+          >
+            <a
+              href="#projects"
+              className="bg-accent-blue text-white border-[3px] border-black px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[2px_2px_0px_#000000] rounded-none"
+            >
+              EXPLORE PROJECTS
+            </a>
+            <a
+              href="#contact"
+              className="bg-white text-black border-[3px] border-black px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[2px_2px_0px_#000000] rounded-none"
+            >
+              CONTACT ME
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
