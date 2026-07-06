@@ -83,6 +83,14 @@ const lineVariants = {
 export default function Hero() {
   return (
     <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-6 sm:px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
+      {/* Premium Cybernetic Network Background Image */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.25] pointer-events-none select-none mix-blend-screen"
+        style={{ backgroundImage: "url('/cyber_mesh_bg.jpg')" }}
+      />
+      {/* Dark vignette gradient overlay for the image */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
+
       {/* 3D Hero Background Canvas underlay (Only contains the heavy mech HUD crosshairs) */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <Canvas
@@ -97,15 +105,15 @@ export default function Hero() {
       </div>
 
       {/* Absolute Survey Header bar */}
-      <div className="absolute top-24 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider opacity-80 select-none z-10">
+      <div className="absolute top-28 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider text-neutral-400 opacity-80 select-none z-10">
         <span>ROUTE DIRECTORY v4 // EXPEDITION ACTIVE</span>
         <span className="hidden sm:inline">DAVOS, GRISONS, CH</span>
       </div>
 
       {/* Gundam Blue Trail Marker Segment [Blue | White | Blue] */}
-      <div className="relative z-10 flex h-[16px] w-[70px] brutalist-border overflow-hidden mb-6">
+      <div className="relative z-10 flex h-[8px] w-[60px] border border-white/20 rounded-full overflow-hidden mb-6 bg-slate-950/40 backdrop-blur-xs">
         <div className="flex-1 bg-accent-blue" />
-        <div className="flex-1 bg-white" />
+        <div className="flex-1 bg-white/20" />
         <div className="flex-1 bg-accent-blue" />
       </div>
 

@@ -244,11 +244,11 @@ export default function BentoGrid() {
             <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase">
               ROUTE-01
             </span>
-            <h3 className="text-4xl md:text-5xl font-sans font-[950] tracking-[-0.04em] leading-[0.85] uppercase mt-4 text-foreground">
+            <h3 className="text-4xl md:text-5xl font-sans font-punchy tracking-[-0.04em] leading-tight uppercase mt-4 text-foreground">
               PROJECT ALPHA
             </h3>
           </div>
-          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-foreground/50">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/50">
             3D CANVAS VISUALIZATION
           </span>
         </BentoCard>
@@ -256,26 +256,26 @@ export default function BentoGrid() {
         {/* Card C: ROUTE LOG / TIMELINE (col-span-3, row-span-2) */}
         <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
           <div>
-            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-foreground/10 pb-1.5 inline-block w-full">
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-white/10 pb-1.5 inline-block w-full">
               ROUTE LOG
             </span>
-            <h3 className="text-3xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
+            <h3 className="text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
               2026
             </h3>
-            <div className="flex flex-col gap-5 mt-6 font-sans font-[900] text-sm md:text-base leading-none text-foreground uppercase tracking-tight">
+            <div className="flex flex-col gap-5 mt-6 font-sans font-bold text-sm md:text-base leading-none text-foreground uppercase tracking-tight">
               <div>Q1 SYNC</div>
               <div className="text-accent-blue">Q2 BRIDGE</div>
               <div className="text-foreground/40">Q3 STABLE</div>
             </div>
           </div>
-          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-foreground/40">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/40">
             PROGRESS ARCHIVE
           </span>
         </BentoCard>
 
         {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with static 3D City background and giant Swiss typography */}
-        <BentoCard 
-          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[380px] bg-card-bg border-black border-[5px] shadow-[12px_12px_0px_#000000] hover:shadow-[16px_16px_0px_#000000] hover:-translate-x-1 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8"
+        <div 
+          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[380px] bg-slate-900/30 border border-white/10 shadow-2xl hover:border-accent-blue/30 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         >
           {/* Static Background 3D City Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
@@ -288,28 +288,28 @@ export default function BentoGrid() {
           </div>
 
           <div className="relative z-10 pointer-events-none w-full flex flex-col justify-end">
-            <h3 className="text-5xl md:text-6xl font-sans font-[950] tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
+            <h3 className="text-5xl md:text-6xl font-sans font-punchy tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
               CHUNG HEI
             </h3>
-            <div className="border-t border-black/10 pt-4 mt-6">
-              <h4 className="text-2xl font-sans font-[950] tracking-tight uppercase leading-none text-foreground">
+            <div className="border-t border-white/10 pt-4 mt-6">
+              <h4 className="text-2xl font-sans font-punchy tracking-tight uppercase leading-none text-foreground">
                 DEVOPS & MOBILE
               </h4>
             </div>
           </div>
-        </BentoCard>
+        </div>
 
         {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
         <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
           <div>
-            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-foreground/10 pb-1.5 inline-block w-full">
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-white/10 pb-1.5 inline-block w-full">
               ROUTE-02
             </span>
-            <h3 className="text-3xl font-sans font-[950] tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
+            <h3 className="text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
               PROJECT BETA
             </h3>
           </div>
-          <span className="font-mono text-[10px] font-black uppercase tracking-widest text-foreground/50 leading-snug">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/50 leading-snug">
             WEBGL SHADERS & DISPLACEMENTS
           </span>
         </BentoCard>
