@@ -128,7 +128,7 @@ export default function GitOpsPipeline() {
       </div>
 
       {/* Stage Detail Display Panel */}
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-4 border border-black/5 p-4 bg-white/45 rounded-xl font-mono text-xs backdrop-blur-md">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-4 border border-black/5 p-4 bg-white/78 rounded-xl font-mono text-xs backdrop-blur-md">
         {/* Left Description Column */}
         <div className="md:col-span-3 flex flex-col justify-between space-y-4">
           <div>

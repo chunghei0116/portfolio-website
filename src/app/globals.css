@@ -3,7 +3,7 @@
 :root {
   --background: #FAF9F6; /* Alabaster Cream */
   --foreground: #0F172A; /* Slate Dark */
-  --card-bg: rgba(255, 255, 255, 0.65); /* Translucent White Glass */
+  --card-bg: rgba(255, 255, 255, 0.82); /* Frosted White Glass */
   --accent-blue: #2563EB; /* Premium Cobalt Blue */
   --classic-red: #DC2626; /* Tech Red */
   --antenna-yellow: #D97706; /* Tech Yellow */
@@ -50,7 +50,7 @@
 
 /* Sleek premium glass borders instead of brutalist outlines */
 .brutalist-border {
-  @apply border border-black/8 rounded-2xl;
+  @apply border border-black/8 rounded-2xl backdrop-blur-md;
 }
 
 /* Ambient dark glow instead of solid flat shadows */

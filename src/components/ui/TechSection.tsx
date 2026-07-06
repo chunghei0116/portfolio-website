@@ -51,6 +51,7 @@ const rowVariants = {
 export default function TechSection() {
   return (
     <section className="relative w-full max-w-7xl mx-auto px-6 py-16 md:py-24 select-none overflow-hidden">
+      <div className="bg-white/78 backdrop-blur-md border border-black/8 rounded-2xl p-6 sm:p-8 md:p-10">
       {/* ── Section Header ── */}
       <div className="mb-10 md:mb-14">
         <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider bg-accent-blue/5 border border-black/5 px-2.5 py-0.5 inline-block">
@@ -140,6 +141,7 @@ export default function TechSection() {
           </motion.div>
         ))}
       </motion.div>
+      </div>
     </section>
   );
 }
