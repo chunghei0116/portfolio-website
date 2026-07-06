@@ -227,17 +227,20 @@ export default function TechSection() {
             
             {/* Brutalist Coordinate Grid Timeline */}
             <div className="flex flex-col border-t border-black/5 divide-y divide-black/5 mt-6 w-full max-w-full">
-              {history.map((node) => (
-                <div key={node.year} className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
+              {history.map((node, index) => (
+                <div key={node.year} className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full relative">
                   {/* Left Metadata Coordinate block */}
-                  <div className="flex flex-row md:flex-col items-center md:items-start gap-2.5 min-w-[150px]">
-                    <span className="font-mono text-[11px] font-black uppercase tracking-wider bg-white text-neutral-700 border border-black/5 px-2.5 py-1.5 shadow-sm select-none">
+                  <div className="flex flex-row md:flex-col items-center md:items-start gap-2.5 min-w-[150px] relative">
+                    {index < history.length - 1 && (
+                      <div className="hidden md:block absolute left-[2.8rem] top-10 bottom-[-1.5rem] w-[1px] border-l border-dashed border-black/10 z-0" />
+                    )}
+                    <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white text-neutral-700 border border-black/10 px-3 py-1.5 shadow-xs select-none relative z-10">
                       [ {node.year} ]
                     </span>
                   </div>
 
                   {/* Right Content Block */}
-                  <div className="flex-1 min-w-0 w-full max-w-full">
+                  <div className="flex-1 min-w-0 w-full max-w-full relative z-10">
                     <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
                       <span className="font-sans font-punchy text-lg sm:text-xl text-foreground tracking-tight uppercase break-words">
                         {node.role}
@@ -258,7 +261,7 @@ export default function TechSection() {
         </div>
 
         {/* Right Column: Pure 3D Paper Airplane Canvas Window with scrolling skyscrapers (col-span-12 lg:col-span-5) */}
-        <div className="col-span-12 lg:col-span-5 min-w-0 min-h-[250px] sm:min-h-[360px] lg:min-h-full border border-black/5 rounded-2xl bg-black/5 relative overflow-hidden z-0 flex items-center justify-center pointer-events-none">
+        <div className="col-span-12 lg:col-span-5 min-w-0 h-[280px] sm:h-[380px] lg:h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[440px] border border-black/5 rounded-2xl bg-black/5 relative overflow-hidden z-0 flex items-center justify-center pointer-events-none">
           <div className="absolute inset-0 w-full h-full z-0 overflow-hidden rounded-2xl">
             {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
             <Canvas 
