@@ -41,40 +41,40 @@ export default function SystemTimeline() {
   return (
     <BentoCard className="flex h-full min-h-[400px] flex-col justify-between overflow-hidden">
       <div>
-        <div className="flex items-center justify-between border-b border-white/10 pb-2">
-          <span className="text-[10px] font-mono font-bold tracking-widest text-white/50 uppercase">
+        <div className="flex items-center justify-between border-b border-black/5 pb-2">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-foreground/50 uppercase">
             History Log // Milestones
           </span>
           <div className="flex gap-1.5">
-            <span className="w-2 h-2 bg-white/10 border border-white/20 rounded-full" />
-            <span className="w-2 h-2 bg-white/10 border border-white/20 rounded-full" />
+            <span className="w-2 h-2 bg-black/5 border border-black/10 rounded-full" />
+            <span className="w-2 h-2 bg-black/5 border border-black/10 rounded-full" />
           </div>
         </div>
-        <h3 className="mt-4 text-2xl font-punchy tracking-tight text-white uppercase">
+        <h3 className="mt-4 text-2xl font-punchy tracking-tight text-foreground uppercase">
           ROUTE LOG
         </h3>
       </div>
 
       {/* Vertical Timeline Layout */}
-      <div className="mt-4 flex-1 space-y-4 border-l border-white/10 pl-4 ml-1.5 py-1 relative">
+      <div className="mt-4 flex-1 space-y-4 border-l border-black/5 pl-4 ml-1.5 py-1 relative">
         {timelineData.map((m, idx) => (
           <div key={idx} className="relative group">
             {/* Timeline Dot Indicator */}
-            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 bg-slate-950 border border-white/20 rounded-full group-hover:bg-accent-blue transition-colors duration-200" />
+            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 bg-white border border-black/10 rounded-full group-hover:bg-accent-blue transition-colors duration-200" />
             
             <div>
               <div className="flex items-baseline justify-between gap-2">
                 <span className="font-mono text-[9px] font-extrabold text-accent-blue uppercase">
                   {m.quarter}
                 </span>
-                <span className="bg-slate-800 text-neutral-300 border border-white/10 text-[7px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">
+                <span className="bg-white text-neutral-600 border border-black/5 text-[7px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide shadow-xs">
                   {m.badge}
                 </span>
               </div>
-              <h4 className="font-sans font-bold text-xs text-white uppercase mt-0.5 leading-tight group-hover:text-accent-blue transition-colors duration-200">
+              <h4 className="font-sans font-bold text-xs text-foreground uppercase mt-0.5 leading-tight group-hover:text-accent-blue transition-colors duration-200">
                 {m.title}
               </h4>
-              <p className="font-sans text-[10px] leading-snug text-neutral-400 mt-1 font-semibold">
+              <p className="font-sans text-[10px] leading-snug text-neutral-500 mt-1 font-semibold">
                 {m.detail}
               </p>
             </div>
@@ -82,8 +82,8 @@ export default function SystemTimeline() {
         ))}
       </div>
 
-      <div className="mt-4 border-t border-white/10 pt-3">
-        <p className="text-xs font-mono text-white/30">
+      <div className="mt-4 border-t border-black/5 pt-3">
+        <p className="text-xs font-mono text-black/40">
           * Recorded production checkpoints.
         </p>
       </div>

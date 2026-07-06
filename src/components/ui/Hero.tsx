@@ -85,11 +85,11 @@ export default function Hero() {
     <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-6 sm:px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
       {/* Premium Cybernetic Network Background Image */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.25] pointer-events-none select-none mix-blend-screen"
-        style={{ backgroundImage: "url('/cyber_mesh_bg.jpg')" }}
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.72] pointer-events-none select-none"
+        style={{ backgroundImage: "url('/light_cyber_mesh_bg.jpg')" }}
       />
-      {/* Dark vignette gradient overlay for the image */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
+      {/* Light vignette gradient overlay for the image */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/30 via-transparent to-background pointer-events-none" />
 
       {/* 3D Hero Background Canvas underlay (Only contains the heavy mech HUD crosshairs) */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -105,15 +105,15 @@ export default function Hero() {
       </div>
 
       {/* Absolute Survey Header bar */}
-      <div className="absolute top-28 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider text-neutral-400 opacity-80 select-none z-10">
+      <div className="absolute top-28 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider text-neutral-500 opacity-80 select-none z-10">
         <span>ROUTE DIRECTORY v4 // EXPEDITION ACTIVE</span>
         <span className="hidden sm:inline">DAVOS, GRISONS, CH</span>
       </div>
 
       {/* Gundam Blue Trail Marker Segment [Blue | White | Blue] */}
-      <div className="relative z-10 flex h-[8px] w-[60px] border border-white/20 rounded-full overflow-hidden mb-6 bg-slate-950/40 backdrop-blur-xs">
+      <div className="relative z-10 flex h-[8px] w-[60px] border border-black/5 rounded-full overflow-hidden mb-6 bg-white/40 backdrop-blur-xs">
         <div className="flex-1 bg-accent-blue" />
-        <div className="flex-1 bg-white/20" />
+        <div className="flex-1 bg-black/10" />
         <div className="flex-1 bg-accent-blue" />
       </div>
 
@@ -152,13 +152,13 @@ export default function Hero() {
           >
             <a
               href="#projects"
-              className="bg-accent-blue text-white border-[3px] border-black px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[2px_2px_0px_#000000] rounded-none"
+              className="bg-accent-blue text-white border border-black/5 px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_15px_30px_-5px_rgba(37,99,235,0.3)] rounded-full active:translate-y-[-1px] active:scale-[0.98]"
             >
               EXPLORE PROJECTS
             </a>
             <a
               href="#contact"
-              className="bg-white text-black border-[3px] border-black px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-100 shadow-[4px_4px_0px_#000000] hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_#000000] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[2px_2px_0px_#000000] rounded-none"
+              className="bg-white/80 text-neutral-900 border border-black/10 px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.05)] rounded-full active:translate-y-[-1px] active:scale-[0.98] backdrop-blur-xs"
             >
               CONTACT ME
             </a>

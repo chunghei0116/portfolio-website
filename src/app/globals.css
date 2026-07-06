@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712; /* Obsidian Black */
-  --foreground: #F3F4F6; /* Slate Light */
-  --card-bg: rgba(17, 24, 39, 0.45); /* Transparent Slate Glass */
-  --accent-blue: #38BDF8; /* Sky/Cyber Cyan */
-  --classic-red: #EF4444; /* Tech Red */
-  --antenna-yellow: #F59E0B; /* Tech Yellow */
-  --moss-shadow: #9CA3AF; /* Smoke Grey */
-  --grid-color: rgba(255, 255, 255, 0.03);
-  --selection-bg: #38BDF8;
-  --selection-text: #030712;
+  --background: #FAF9F6; /* Alabaster Cream */
+  --foreground: #0F172A; /* Slate Dark */
+  --card-bg: rgba(255, 255, 255, 0.65); /* Translucent White Glass */
+  --accent-blue: #2563EB; /* Premium Cobalt Blue */
+  --classic-red: #DC2626; /* Tech Red */
+  --antenna-yellow: #D97706; /* Tech Yellow */
+  --moss-shadow: #64748B; /* Smoke Grey */
+  --grid-color: rgba(15, 23, 42, 0.03);
+  --selection-bg: #2563EB;
+  --selection-text: #FFFFFF;
 }
 
 @theme {
@@ -38,24 +38,24 @@
     max-width: 100vw;
     overflow-x: hidden;
     background-color: transparent;
-    @apply text-foreground antialiased selection:bg-accent-blue selection:text-black;
+    @apply text-foreground antialiased selection:bg-accent-blue selection:text-white;
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
 }
 
 /* Massive Swiss Grotesque Headline style - Normal Case, elegant tracking */
 .swiss-massive-heading {
-  @apply font-sans font-punchy tracking-[-0.04em] leading-[1.05] normal-case text-white;
+  @apply font-sans font-punchy tracking-[-0.04em] leading-[1.05] normal-case text-foreground;
 }
 
 /* Sleek premium glass borders instead of brutalist outlines */
 .brutalist-border {
-  @apply border border-white/10 rounded-2xl;
+  @apply border border-black/8 rounded-2xl;
 }
 
 /* Ambient dark glow instead of solid flat shadows */
 .brutalist-shadow {
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
 }
 
 /* Premium smooth hover lift with spring physics response */
@@ -65,8 +65,8 @@
 }
 .brutalist-hover-lift:hover {
   transform: translateY(-4px);
-  border-color: rgba(56, 189, 248, 0.25);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.1);
+  border-color: rgba(37, 99, 235, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.08);
 }
 .brutalist-hover-lift:active {
   transform: translateY(-1px) scale(0.995);
@@ -97,6 +97,6 @@
 
 /* Subtle dot grid overlay for depth */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
   background-size: 24px 24px;
 }

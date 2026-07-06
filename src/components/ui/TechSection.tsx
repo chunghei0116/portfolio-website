@@ -218,7 +218,7 @@ export default function TechSection() {
         {/* Left Column: Minimalist Vertical Career Timeline (col-span-12 lg:col-span-7) */}
         <div className="col-span-12 lg:col-span-7 min-w-0 w-full max-w-full flex flex-col justify-between">
           <div>
-            <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider bg-accent-blue/5 border border-white/10 px-2.5 py-0.5">
+            <span className="text-accent-blue font-mono text-[10px] font-bold uppercase tracking-wider bg-accent-blue/5 border border-black/5 px-2.5 py-0.5">
               CAREER TIMELINE // PATHWAY
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-4 text-foreground mb-8">
@@ -226,12 +226,12 @@ export default function TechSection() {
             </h2>
             
             {/* Brutalist Coordinate Grid Timeline */}
-            <div className="flex flex-col border-t border-white/10 divide-y divide-white/5 mt-6 w-full max-w-full">
+            <div className="flex flex-col border-t border-black/5 divide-y divide-black/5 mt-6 w-full max-w-full">
               {history.map((node) => (
                 <div key={node.year} className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
                   {/* Left Metadata Coordinate block */}
                   <div className="flex flex-row md:flex-col items-center md:items-start gap-2.5 min-w-[150px]">
-                    <span className="font-mono text-[11px] font-black uppercase tracking-wider bg-slate-900 text-neutral-300 border border-white/10 px-2.5 py-1.5 shadow-md select-none">
+                    <span className="font-mono text-[11px] font-black uppercase tracking-wider bg-white text-neutral-700 border border-black/5 px-2.5 py-1.5 shadow-sm select-none">
                       [ {node.year} ]
                     </span>
                   </div>
@@ -242,7 +242,7 @@ export default function TechSection() {
                       <span className="font-sans font-punchy text-lg sm:text-xl text-foreground tracking-tight uppercase break-words">
                         {node.role}
                       </span>
-                      <span className="hidden md:inline text-white/20 font-mono text-xs font-bold select-none">&mdash;&gt;</span>
+                      <span className="hidden md:inline text-black/20 font-mono text-xs font-bold select-none">&mdash;&gt;</span>
                       <span className="font-mono text-xs font-black text-accent-blue uppercase tracking-wider md:tracking-widest">
                         {node.company}
                       </span>
@@ -258,7 +258,7 @@ export default function TechSection() {
         </div>
 
         {/* Right Column: Pure 3D Paper Airplane Canvas Window with scrolling skyscrapers (col-span-12 lg:col-span-5) */}
-        <div className="col-span-12 lg:col-span-5 min-w-0 min-h-[250px] sm:min-h-[360px] lg:min-h-full border border-white/10 rounded-2xl bg-slate-950/20 relative overflow-hidden flex items-center justify-center pointer-events-none">
+        <div className="col-span-12 lg:col-span-5 min-w-0 min-h-[250px] sm:min-h-[360px] lg:min-h-full border border-black/5 rounded-2xl bg-black/5 relative overflow-hidden flex items-center justify-center pointer-events-none">
           <div className="absolute inset-0 w-full h-full z-0">
             {/* Camera adjusted to a lower, dynamic profile angle looking down slightly at the plane */}
             <Canvas camera={{ position: [0, 0.38, 2.3], fov: 50 }}>
@@ -266,7 +266,7 @@ export default function TechSection() {
               <ResponsiveScene />
             </Canvas>
           </div>
-          <span className="absolute bottom-4 right-4 z-10 font-mono text-[8px] text-white/20 font-bold uppercase tracking-widest">
+          <span className="absolute bottom-4 right-4 z-10 font-mono text-[8px] text-black/30 font-bold uppercase tracking-widest">
             * 3D LIVE VECTOR FLIGHT SYSTEM
           </span>
         </div>

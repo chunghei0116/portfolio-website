@@ -256,7 +256,7 @@ export default function BentoGrid() {
         {/* Card C: ROUTE LOG / TIMELINE (col-span-3, row-span-2) */}
         <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
           <div>
-            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-white/10 pb-1.5 inline-block w-full">
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE LOG
             </span>
             <h3 className="text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
@@ -275,7 +275,7 @@ export default function BentoGrid() {
 
         {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with static 3D City background and giant Swiss typography */}
         <div 
-          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[380px] bg-slate-900/30 border border-white/10 shadow-2xl hover:border-accent-blue/30 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[380px] bg-white/45 border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         >
           {/* Static Background 3D City Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
@@ -291,7 +291,7 @@ export default function BentoGrid() {
             <h3 className="text-5xl md:text-6xl font-sans font-punchy tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
               CHUNG HEI
             </h3>
-            <div className="border-t border-white/10 pt-4 mt-6">
+            <div className="border-t border-black/5 pt-4 mt-6">
               <h4 className="text-2xl font-sans font-punchy tracking-tight uppercase leading-none text-foreground">
                 DEVOPS & MOBILE
               </h4>
@@ -302,7 +302,7 @@ export default function BentoGrid() {
         {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
         <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[380px]">
           <div>
-            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-white/10 pb-1.5 inline-block w-full">
+            <span className="font-mono text-[0.75rem] font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE-02
             </span>
             <h3 className="text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
