@@ -239,8 +239,17 @@ export default function BentoGrid() {
         </div>
 
         {/* Card B: PROJECT ALPHA - Massive Heading (col-span-8) */}
-        <BentoCard className="col-span-12 md:col-span-8 flex flex-col justify-between min-h-[160px] md:min-h-[200px]">
-          <div>
+        <BentoCard className="col-span-12 md:col-span-8 flex flex-col justify-between min-h-[160px] md:min-h-[200px] relative overflow-hidden">
+          {/* Background Line-art illustration */}
+          <div className="absolute right-0 bottom-0 top-0 w-full sm:w-1/2 opacity-35 z-0 pointer-events-none select-none mix-blend-multiply">
+            <img 
+              src="/lineart_tauri.jpg" 
+              alt="Project Alpha Line-art" 
+              className="w-full h-full object-contain object-right-bottom"
+            />
+          </div>
+
+          <div className="relative z-10 pointer-events-none">
             <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase">
               ROUTE-01
             </span>
@@ -248,7 +257,7 @@ export default function BentoGrid() {
               PROJECT ALPHA
             </h3>
           </div>
-          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/50">
+          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/50 relative z-10">
             3D CANVAS VISUALIZATION
           </span>
         </BentoCard>
@@ -300,8 +309,17 @@ export default function BentoGrid() {
         </div>
 
         {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
-        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[240px] md:min-h-[380px]">
-          <div>
+        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[240px] md:min-h-[380px] relative overflow-hidden">
+          {/* Background Line-art illustration */}
+          <div className="absolute inset-x-0 bottom-8 h-1/2 opacity-45 z-0 pointer-events-none select-none mix-blend-multiply">
+            <img 
+              src="/lineart_flutter.jpg" 
+              alt="Project Beta Line-art" 
+              className="w-full h-full object-contain object-bottom"
+            />
+          </div>
+
+          <div className="relative z-10 pointer-events-none">
             <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE-02
             </span>
@@ -309,7 +327,7 @@ export default function BentoGrid() {
               PROJECT BETA
             </h3>
           </div>
-          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/50 leading-snug">
+          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/50 leading-snug relative z-10">
             WEBGL SHADERS & DISPLACEMENTS
           </span>
         </BentoCard>
