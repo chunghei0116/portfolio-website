@@ -192,8 +192,8 @@ export default function BentoGrid() {
   }, []);
 
   return (
-    <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24 select-none">
-      <div className="grid grid-cols-12 gap-6 auto-rows-min">
+    <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24 select-none overflow-x-auto pb-16">
+      <div className="grid grid-cols-12 gap-6 auto-rows-min min-w-[1000px] lg:min-w-0">
         
         {/* Card A: GITHUB - 3D Landscape Stat (col-span-4) */}
         <div className="col-span-4 min-w-0 brutalist-border bg-[#0D1117] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] text-white min-h-[240px] brutalist-shadow brutalist-hover-lift flex flex-col justify-between relative overflow-hidden">
