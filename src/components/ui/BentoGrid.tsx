@@ -169,36 +169,6 @@ function GithubCoinsScene() {
 export default function BentoGrid() {
   const [githubCount, setGithubCount] = useState<string>("4.8K+");
   const [contributions, setContributions] = useState<Day[][]>([]);
-  const [scale, setScale] = useState(1);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [gridHeight, setGridHeight] = useState<number | string>("auto");
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (!gridRef.current) return;
-      const width = window.innerWidth;
-      const targetWidth = 1200; // Match desktop bento grid layout
-      const padding = 48; // px-6 on both sides (24 * 2)
-      
-      if (width < targetWidth + padding) {
-        const factor = (width - padding) / targetWidth;
-        setScale(factor);
-        setGridHeight(gridRef.current.scrollHeight * factor);
-      } else {
-        setScale(1);
-        setGridHeight("auto");
-      }
-    };
-
-    handleResize();
-    const timer = setTimeout(handleResize, 150);
-    
-    window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     fetch("/api/github")
@@ -223,36 +193,14 @@ export default function BentoGrid() {
 
   return (
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24 select-none">
-      {/* Outer scaling wrapper to adjust height and clip bounds */}
-      <div 
-        style={{ 
-          height: gridHeight !== "auto" ? `${gridHeight}px` : "auto", 
-          overflow: "hidden" 
-        }} 
-        className="w-full relative"
-      >
-        {/* Inner scaled grid */}
-        <div 
-          ref={gridRef}
-          className="grid grid-cols-12 gap-6 auto-rows-min"
-          style={
-            scale !== 1 
-              ? { 
-                  transform: `scale(${scale})`, 
-                  transformOrigin: "top left", 
-                  width: "1200px",
-                  maxWidth: "none"
-                } 
-              : {}
-          }
-        >
+      <div className="grid grid-cols-12 gap-6 auto-rows-min">
         
         {/* Card A: GITHUB - 3D Landscape Stat (col-span-4) */}
-        <div className="col-span-4 min-w-0 brutalist-border bg-[#0D1117] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] text-white aspect-[4/3] brutalist-shadow brutalist-hover-lift flex flex-col justify-between relative overflow-hidden">
+        <div className="col-span-12 md:col-span-4 min-w-0 brutalist-border bg-[#0D1117] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] text-white min-h-[220px] md:min-h-[240px] brutalist-shadow brutalist-hover-lift flex flex-col justify-between relative overflow-hidden">
           
           {/* Background 3D Rotating Contribution Scene */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
-            <Canvas camera={{ position: [2.4, 2.0, 2.4], fov: 36 }}>
+            <Canvas camera={{ position: [3, 2.5, 3], fov: 40 }}>
               <ambientLight intensity={0.6} />
               <directionalLight position={[10, 12, 10]} intensity={12.0} />
               <pointLight position={[2, 3, 2]} intensity={8.0} />
@@ -263,13 +211,13 @@ export default function BentoGrid() {
 
           <div className="p-5 sm:p-7 relative z-10 pointer-events-none w-full">
             <div className="border-b-2 border-white/10 pb-2.5">
-              <span className="font-mono text-sm font-bold tracking-[0.15em] uppercase text-white/85">
+              <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] uppercase text-white/85">
                 GITHUB CONTRIBUTIONS
               </span>
             </div>
 
             <div className="mt-5">
-              <h3 className="text-6xl font-sans font-punchy tracking-[-0.05em] leading-none uppercase text-white">
+              <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-punchy tracking-[-0.05em] leading-none uppercase text-white">
                 {githubCount}
               </h3>
             </div>
@@ -280,7 +228,7 @@ export default function BentoGrid() {
               href="https://github.com/chunghei0116"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between font-mono text-xs font-black uppercase tracking-widest text-[#39D353]/90 border-t border-white/10 pt-3 group hover:text-[#39D353]"
+              className="flex items-center justify-between font-mono text-[9px] md:text-xs font-black uppercase tracking-widest text-[#39D353]/90 border-t border-white/10 pt-3 group hover:text-[#39D353]"
             >
               <span className="group-hover:underline">VIEW PROFILE</span>
               <svg className="w-3.5 h-3.5 fill-current transform transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24">
@@ -291,47 +239,47 @@ export default function BentoGrid() {
         </div>
 
         {/* Card B: PROJECT ALPHA - Massive Heading (col-span-8) */}
-        <BentoCard className="col-span-8 flex flex-col justify-between aspect-[8/3]">
+        <BentoCard className="col-span-12 md:col-span-8 flex flex-col justify-between min-h-[160px] md:min-h-[200px]">
           <div>
-            <span className="font-mono text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase">
+            <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase">
               ROUTE-01
             </span>
-            <h3 className="text-5xl font-sans font-punchy tracking-[-0.04em] leading-tight uppercase mt-4 text-foreground">
+            <h3 className="text-2xl sm:text-3xl md:text-5xl font-sans font-punchy tracking-[-0.04em] leading-tight uppercase mt-4 text-foreground">
               PROJECT ALPHA
             </h3>
           </div>
-          <span className="font-mono text-xs font-bold uppercase tracking-widest text-foreground/50">
+          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/50">
             3D CANVAS VISUALIZATION
           </span>
         </BentoCard>
 
         {/* Card C: ROUTE LOG / TIMELINE (col-span-3, row-span-2) */}
-        <BentoCard className="col-span-3 row-span-2 flex flex-col justify-between aspect-[3/4.5]">
+        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[240px] md:min-h-[380px]">
           <div>
-            <span className="font-mono text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
+            <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE LOG
             </span>
-            <h3 className="text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
               2026
             </h3>
-            <div className="flex flex-col gap-5 mt-6 font-sans font-bold text-base leading-none text-foreground uppercase tracking-tight">
+            <div className="flex flex-col gap-5 mt-6 font-sans font-bold text-[10px] sm:text-xs md:text-base leading-none text-foreground uppercase tracking-tight">
               <div>Q1 SYNC</div>
-              <div>Q2 BRIDGE</div>
+              <div className="text-accent-blue">Q2 BRIDGE</div>
               <div className="text-foreground/40">Q3 STABLE</div>
             </div>
           </div>
-          <span className="font-mono text-xs font-bold uppercase tracking-widest text-foreground/40">
+          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/40">
             PROGRESS ARCHIVE
           </span>
         </BentoCard>
 
         {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with static 3D City background and giant Swiss typography */}
         <div 
-          className="col-span-6 row-span-2 min-w-0 flex flex-col justify-end aspect-[6/4.5] bg-white/45 border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[280px] md:min-h-[380px] bg-white/45 border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         >
           {/* Static Background 3D City Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
-            <Canvas camera={{ position: [0, 0.4, 2.3], fov: 44 }}>
+            <Canvas camera={{ position: [0, 0.5, 2.8], fov: 50 }}>
               <ambientLight intensity={1.5} />
               <pointLight position={[5, 5, 5]} intensity={2} />
               <CityEnvironment isExpanded={false} />
@@ -340,11 +288,11 @@ export default function BentoGrid() {
           </div>
 
           <div className="relative z-10 pointer-events-none w-full flex flex-col justify-end">
-            <h3 className="text-6xl font-sans font-punchy tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
+            <h3 className="text-3xl sm:text-4xl md:text-6xl font-sans font-punchy tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
               CHUNG HEI
             </h3>
             <div className="border-t border-black/5 pt-4 mt-6">
-              <h4 className="text-2xl font-sans font-punchy tracking-tight uppercase leading-none text-foreground">
+              <h4 className="text-base sm:text-lg md:text-2xl font-sans font-punchy tracking-tight uppercase leading-none text-foreground">
                 DEVOPS & MOBILE
               </h4>
             </div>
@@ -352,26 +300,26 @@ export default function BentoGrid() {
         </div>
 
         {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
-        <BentoCard className="col-span-3 row-span-2 flex flex-col justify-between aspect-[3/4.5]">
+        <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[240px] md:min-h-[380px]">
           <div>
-            <span className="font-mono text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
+            <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
               ROUTE-02
             </span>
-            <h3 className="text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase mt-6 text-foreground">
               PROJECT BETA
             </h3>
           </div>
-          <span className="font-mono text-xs font-bold uppercase tracking-widest text-foreground/50 leading-snug">
+          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/50 leading-snug">
             WEBGL SHADERS & DISPLACEMENTS
           </span>
         </BentoCard>
 
         {/* Card F: GITOPS PIPELINE (col-span-8) */}
-        <div className="col-span-8 min-w-0 brutalist-border bg-accent-blue text-white p-5 sm:p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between aspect-[8/3] relative overflow-hidden">
+        <div className="col-span-12 md:col-span-8 min-w-0 brutalist-border bg-accent-blue text-white p-5 sm:p-8 brutalist-shadow brutalist-hover-lift flex flex-col justify-between min-h-[280px] md:min-h-[240px] relative overflow-hidden">
           
           {/* Absolute Background 3D Flowing Pipeline Canvas */}
           <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
-            <Canvas camera={{ position: [0, 0, 1.45], fov: 44 }}>
+            <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>
               <ambientLight intensity={1.5} />
               <PipelineScene />
             </Canvas>
@@ -382,10 +330,10 @@ export default function BentoGrid() {
 
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 w-full relative z-10 pointer-events-none">
             <div>
-              <span className="font-mono text-sm font-bold tracking-[0.15em] text-white/85 uppercase border-b border-white/20 pb-1.5 inline-block">
+              <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-white/85 uppercase border-b border-white/20 pb-1.5 inline-block">
                 SYSTEM DEPLOYMENTS
               </span>
-              <h3 className="text-4xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase text-white mt-4">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-sans font-punchy tracking-[-0.04em] leading-none uppercase text-white mt-4">
                 DEVOPS CORE
               </h3>
             </div>
@@ -400,8 +348,8 @@ export default function BentoGrid() {
                 <path d="M12 2v20M3.5 7l17 10M3.5 17l17-10" />
                 <circle cx="12" cy="12" r="3" fill="currentColor" fillOpacity="0.2" />
               </svg>
-              <span className="font-sans font-punchy text-sm uppercase text-white tracking-tight block mb-1">01 / KUBERNETES</span>
-              <span className="font-mono text-[11px] uppercase tracking-wide text-white/60">ArgoCD, GitOps loops, Helm, EKS cluster deploys</span>
+              <span className="font-sans font-punchy text-[10px] sm:text-xs md:text-sm uppercase text-white tracking-tight block mb-1">01 / KUBERNETES</span>
+              <span className="font-mono text-[8px] sm:text-[9px] md:text-[11px] uppercase tracking-wide text-white/60">ArgoCD, GitOps loops, Helm, EKS cluster deploys</span>
             </div>
             <div className="flex flex-col items-start">
               {/* Docker/Hypervisor isometric container stack icon (Emerald to match middle branch) */}
@@ -411,8 +359,8 @@ export default function BentoGrid() {
                 <path d="M2 12l10 5 10-5" />
                 <path d="M2 7v10M12 12v10M22 7v10" />
               </svg>
-              <span className="font-sans font-punchy text-sm uppercase text-white tracking-tight block mb-1">02 / HYPERVISOR</span>
-              <span className="font-mono text-[11px] uppercase tracking-wide text-white/60">Docker containers, multi-stage hermetic builds</span>
+              <span className="font-sans font-punchy text-[10px] sm:text-xs md:text-sm uppercase text-white tracking-tight block mb-1">02 / HYPERVISOR</span>
+              <span className="font-mono text-[8px] sm:text-[9px] md:text-[11px] uppercase tracking-wide text-white/60">Docker containers, multi-stage hermetic builds</span>
             </div>
             <div className="flex flex-col items-start">
               {/* Bare-Metal Server Rack icon (Amber/Orange to match lower branch) */}
@@ -423,17 +371,17 @@ export default function BentoGrid() {
                 <path d="M6 5.5h.01M6 13.5h.01M6 21.5h.01" strokeWidth="2.5" strokeLinecap="round" />
                 <path d="M17 5.5h2M17 13.5h2M17 21.5h2" strokeWidth="1.2" />
               </svg>
-              <span className="font-sans font-punchy text-sm uppercase text-white tracking-tight block mb-1">03 / BARE-METAL</span>
-              <span className="font-mono text-[11px] uppercase tracking-wide text-white/60">Linux systems, self-hosted homelabs, AWS cloud</span>
+              <span className="font-sans font-punchy text-[10px] sm:text-xs md:text-sm uppercase text-white tracking-tight block mb-1">03 / BARE-METAL</span>
+              <span className="font-mono text-[8px] sm:text-[9px] md:text-[11px] uppercase tracking-wide text-white/60">Linux systems, self-hosted homelabs, AWS cloud</span>
             </div>
           </div>
         </div>
 
         {/* Card G: Interactive Flutter Particle Canvas (col-span-4) */}
-        <BentoCard className="col-span-4 min-w-0 aspect-[4/3] relative overflow-hidden !bg-[radial-gradient(circle_at_center,rgba(57,206,253,0.15)_0%,rgba(255,255,255,1)_70%)]">
+        <BentoCard className="col-span-12 md:col-span-4 min-w-0 min-h-[180px] md:min-h-[240px] relative overflow-hidden !bg-[radial-gradient(circle_at_center,rgba(57,206,253,0.15)_0%,rgba(255,255,255,1)_70%)]">
           {/* Background Interactive Flutter Particle Canvas */}
           <div className="absolute inset-0 z-0 opacity-100 select-none">
-            <Canvas camera={{ position: [0, 0, 1.4], fov: 44 }}>
+            <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>
               <ambientLight intensity={1.5} />
               <SodaBubbles />
               <FlutterParticles />
@@ -441,7 +389,6 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
-      </div>
       </div>
     </section>
   );
