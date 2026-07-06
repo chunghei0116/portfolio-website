@@ -169,6 +169,36 @@ function GithubCoinsScene() {
 export default function BentoGrid() {
   const [githubCount, setGithubCount] = useState<string>("4.8K+");
   const [contributions, setContributions] = useState<Day[][]>([]);
+  const [scale, setScale] = useState(1);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [gridHeight, setGridHeight] = useState<number | string>("auto");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (!gridRef.current) return;
+      const width = window.innerWidth;
+      const targetWidth = 1200; // Match desktop bento grid layout
+      const padding = 48; // px-6 on both sides (24 * 2)
+      
+      if (width < targetWidth + padding) {
+        const factor = (width - padding) / targetWidth;
+        setScale(factor);
+        setGridHeight(gridRef.current.scrollHeight * factor);
+      } else {
+        setScale(1);
+        setGridHeight("auto");
+      }
+    };
+
+    handleResize();
+    const timer = setTimeout(handleResize, 150);
+    
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     fetch("/api/github")
@@ -193,7 +223,29 @@ export default function BentoGrid() {
 
   return (
     <section id="projects" className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 scroll-mt-24 select-none">
-      <div className="grid grid-cols-12 gap-6 auto-rows-min">
+      {/* Outer scaling wrapper to adjust height and clip bounds */}
+      <div 
+        style={{ 
+          height: gridHeight !== "auto" ? `${gridHeight}px` : "auto", 
+          overflow: "hidden" 
+        }} 
+        className="w-full relative"
+      >
+        {/* Inner scaled grid */}
+        <div 
+          ref={gridRef}
+          className="grid grid-cols-12 gap-6 auto-rows-min"
+          style={
+            scale !== 1 
+              ? { 
+                  transform: `scale(${scale})`, 
+                  transformOrigin: "top left", 
+                  width: "1200px",
+                  maxWidth: "none"
+                } 
+              : {}
+          }
+        >
         
         {/* Card A: GITHUB - 3D Landscape Stat (col-span-4) */}
         <div className="col-span-4 min-w-0 brutalist-border bg-[#0D1117] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] text-white aspect-[4/3] brutalist-shadow brutalist-hover-lift flex flex-col justify-between relative overflow-hidden">
@@ -389,6 +441,7 @@ export default function BentoGrid() {
           </div>
         </BentoCard>
 
+      </div>
       </div>
     </section>
   );
