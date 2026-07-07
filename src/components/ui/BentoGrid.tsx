@@ -7,6 +7,7 @@ import BentoCard from "./BentoCard";
 import { CityEnvironment, CameraController } from "../canvas/CityEnvironment";
 import PipelineScene from "../canvas/PipelineScene";
 import FlutterParticles, { SodaBubbles } from "../canvas/FlutterParticles";
+import TerrainScene from "../canvas/TerrainScene";
 
 const projects = [
   {
@@ -240,8 +241,16 @@ export default function BentoGrid() {
 
         {/* Card B: PROJECT ALPHA - Massive Heading (col-span-8) */}
         <BentoCard className="col-span-12 md:col-span-8 flex flex-col justify-between min-h-[160px] md:min-h-[200px] relative overflow-hidden">
-          {/* Background Line-art illustration */}
-          <div className="absolute right-0 bottom-0 top-0 w-full sm:w-1/2 opacity-35 z-0 pointer-events-none select-none mix-blend-multiply">
+          {/* Background Interactive 3D Canvas */}
+          <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
+            <Canvas camera={{ position: [0, 0, 1.8], fov: 50 }}>
+              <ambientLight intensity={1.5} />
+              <TerrainScene />
+            </Canvas>
+          </div>
+
+          {/* Background Line-art illustration overlay */}
+          <div className="absolute right-0 bottom-0 top-0 w-full sm:w-1/2 opacity-20 z-[2] pointer-events-none select-none mix-blend-multiply">
             <img 
               src="/lineart_tauri.jpg" 
               alt="Project Alpha Line-art" 
