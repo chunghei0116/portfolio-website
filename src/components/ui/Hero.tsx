@@ -1,61 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
-import React, { useRef, Suspense } from "react";
-
-function HeroMechObject() {
-  const groupRef = useRef<THREE.Group>(null!);
-  const { mouse, viewport } = useThree();
-
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    if (groupRef.current) {
-      groupRef.current.rotation.y = time * 0.04;
-      groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -mouse.y * 0.15, 0.06);
-      groupRef.current.rotation.z = time * 0.015;
-    }
-  });
-
-  const isMobile = viewport.width < 7;
-  const posX = isMobile ? 0 : 1.8;
-  const posY = isMobile ? 1.0 : 0;
-  const posZ = isMobile ? -2.5 : -2;
-  const scaleVal = isMobile ? 1.4 : 2.2;
-
-  return (
-    <group ref={groupRef} position={[posX, posY, posZ]} scale={[scaleVal, scaleVal, scaleVal]}>
-      {/* Heavy Mech HUD outer ring */}
-      <mesh>
-        <torusGeometry args={[1.5, 0.012, 8, 64]} />
-        <meshBasicMaterial color="#0A5CFF" wireframe transparent opacity={0.06} />
-      </mesh>
-
-      {/* Target scanning circle */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[1.1, 1.1, 0.05, 12, 1, true]} />
-        <meshBasicMaterial color="#000000" wireframe transparent opacity={0.04} />
-      </mesh>
-
-      {/* Sphere core */}
-      <mesh>
-        <sphereGeometry args={[0.7, 10, 10]} />
-        <meshBasicMaterial color="#0A5CFF" wireframe transparent opacity={0.03} />
-      </mesh>
-
-      {/* Target crosshair lines */}
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[3.2, 0.008, 0.008]} />
-        <meshBasicMaterial color="#000000" transparent opacity={0.05} />
-      </mesh>
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[0.008, 2.2, 0.008]} />
-        <meshBasicMaterial color="#000000" transparent opacity={0.05} />
-      </mesh>
-    </group>
-  );
-}
+import React from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -83,26 +29,8 @@ const lineVariants = {
 export default function Hero() {
   return (
     <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-6 sm:px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
-      {/* Premium Cybernetic Network Background Image */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.72] pointer-events-none select-none"
-        style={{ backgroundImage: "url('/light_cyber_mesh_bg.jpg')" }}
-      />
-      {/* Light vignette gradient overlay for the image */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/30 via-transparent to-background pointer-events-none" />
-
-      {/* 3D Hero Background Canvas underlay (Only contains the heavy mech HUD crosshairs) */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 60 }}
-          dpr={[1, 1.5]}
-          gl={{ antialias: true, alpha: true }}
-        >
-          <Suspense fallback={null}>
-            <HeroMechObject />
-          </Suspense>
-        </Canvas>
-      </div>
+      {/* Simple, clean dot-grid background with no shadow overlay */}
+      <div className="absolute inset-0 z-0 dot-grid pointer-events-none select-none opacity-40" />
 
       {/* Absolute Survey Header bar */}
       <div className="absolute top-28 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider text-neutral-500 opacity-80 select-none z-10">
@@ -127,7 +55,7 @@ export default function Hero() {
         >
           <h1 className="swiss-massive-heading text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.5rem]">
             <motion.span variants={lineVariants} className="block">
-              CHUNG HEI
+              JONES TSE
             </motion.span>
             <motion.span variants={lineVariants} className="block">
               ENGINEERING

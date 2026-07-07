@@ -298,7 +298,7 @@ export default function BentoGrid() {
 
           <div className="relative z-10 pointer-events-none w-full flex flex-col justify-end">
             <h3 className="text-3xl sm:text-4xl md:text-6xl font-sans font-punchy tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
-              CHUNG HEI
+              JONES TSE
             </h3>
             <div className="border-t border-black/5 pt-4 mt-6">
               <h4 className="text-base sm:text-lg md:text-2xl font-sans font-punchy tracking-tight uppercase leading-none text-foreground">
