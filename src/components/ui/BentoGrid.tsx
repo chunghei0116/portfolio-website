@@ -291,19 +291,21 @@ export default function BentoGrid() {
           </span>
         </BentoCard>
 
-        {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with static 3D City background and giant Swiss typography */}
+        {/* Card D: WELCOME PROFILE - Center Focal Card (col-span-6, row-span-2) with ReenP-style illustration background and giant Swiss typography */}
         <div 
-          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[280px] md:min-h-[380px] bg-white/78 backdrop-blur-md border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="col-span-12 md:col-span-6 md:row-span-2 min-w-0 flex flex-col justify-end min-h-[280px] md:min-h-[380px] bg-white border border-black/5 shadow-xl shadow-black/5 hover:border-accent-blue/20 hover:shadow-accent-blue/5 hover:-translate-y-1 relative overflow-hidden p-5 sm:p-8 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         >
-          {/* Static Background 3D City Canvas */}
-          <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
-            <Canvas camera={{ position: [0, 0.5, 2.8], fov: 50 }}>
-              <ambientLight intensity={1.5} />
-              <pointLight position={[5, 5, 5]} intensity={2} />
-              <CityEnvironment isExpanded={false} />
-              <CameraController isExpanded={false} />
-            </Canvas>
+          {/* ReenP-style Background Avatar Illustration */}
+          <div className="absolute right-0 bottom-0 top-0 w-full sm:w-2/3 opacity-80 z-0 pointer-events-none select-none">
+            <img 
+              src="/jones_tse_avatar.jpg" 
+              alt="Jones Tse Illustration" 
+              className="w-full h-full object-cover object-right-bottom"
+            />
           </div>
+
+          {/* Vignette overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent z-[1] pointer-events-none" />
 
           <div className="relative z-10 pointer-events-none w-full flex flex-col justify-end">
             <h3 className="text-3xl sm:text-4xl md:text-6xl font-sans font-punchy tracking-[-0.05em] leading-[0.8] uppercase text-foreground">
