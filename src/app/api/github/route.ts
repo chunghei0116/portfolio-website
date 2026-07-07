@@ -13,6 +13,10 @@ export async function GET() {
   const username = "chunghei0116";
   const token = process.env.GITHUB_TOKEN;
 
+  // Private company GitHub contributions (2023 - 2026)
+  // 2023: 120, 2024: 1567, 2025: 1201, 2026: 1411
+  const companyContributions = 120 + 1567 + 1201 + 1411; // 4299
+
   // 1. Try official GitHub GraphQL API if token is provided
   if (token) {
     try {
@@ -66,7 +70,7 @@ export async function GET() {
           );
 
           return NextResponse.json({
-            count,
+            count: count + companyContributions,
             contributions,
             source: "graphql"
           });
@@ -87,7 +91,11 @@ export async function GET() {
       const count = data?.totalContributions;
       const contributions = data?.contributions;
       if (typeof count === "number" && Array.isArray(contributions)) {
-        return NextResponse.json({ count, contributions, source: "scraper" });
+        return NextResponse.json({ 
+          count: count + companyContributions, 
+          contributions, 
+          source: "scraper" 
+        });
       }
     }
   } catch (error) {
@@ -107,13 +115,21 @@ export async function GET() {
       const data = await response.json();
       const count = data?.total_count;
       if (typeof count === "number") {
-        return NextResponse.json({ count, contributions: [], source: "search_api" });
+        return NextResponse.json({ 
+          count: count + companyContributions, 
+          contributions: [], 
+          source: "search_api" 
+        });
       }
     }
   } catch (error) {
     console.error("GitHub Search API error:", error);
   }
 
-  // 4. Final static fallback
-  return NextResponse.json({ count: 353, contributions: [], source: "fallback" });
+  // 4. Final static fallback (public static: 353 + company: 4299)
+  return NextResponse.json({ 
+    count: 353 + companyContributions, 
+    contributions: [], 
+    source: "fallback" 
+  });
 }
