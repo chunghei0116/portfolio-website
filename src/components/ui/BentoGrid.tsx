@@ -249,14 +249,7 @@ export default function BentoGrid() {
             </Canvas>
           </div>
 
-          {/* Background Line-art illustration overlay */}
-          <div className="absolute right-0 bottom-0 top-0 w-full sm:w-1/2 opacity-20 z-[2] pointer-events-none select-none mix-blend-multiply">
-            <img 
-              src="/lineart_tauri.jpg" 
-              alt="Project Alpha Line-art" 
-              className="w-full h-full object-contain object-right-bottom"
-            />
-          </div>
+
 
           <div className="relative z-10 pointer-events-none">
             <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase">
@@ -321,14 +314,7 @@ export default function BentoGrid() {
 
         {/* Card E: PROJECT BETA - Small square project card (col-span-3, row-span-2) */}
         <BentoCard className="col-span-12 md:col-span-3 md:row-span-2 flex flex-col justify-between min-h-[240px] md:min-h-[380px] relative overflow-hidden">
-          {/* Background Line-art illustration */}
-          <div className="absolute inset-x-0 bottom-8 h-1/2 opacity-45 z-0 pointer-events-none select-none mix-blend-multiply">
-            <img 
-              src="/lineart_flutter.jpg" 
-              alt="Project Beta Line-art" 
-              className="w-full h-full object-contain object-bottom"
-            />
-          </div>
+
 
           <div className="relative z-10 pointer-events-none">
             <span className="font-mono text-[0.75rem] md:text-sm font-bold tracking-[0.15em] text-foreground/50 uppercase border-b border-black/5 pb-1.5 inline-block w-full">
