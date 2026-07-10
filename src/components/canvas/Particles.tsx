@@ -1,11 +1,12 @@
 "use client";
 
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 export default function Particles() {
   const pointsRef = useRef<THREE.Points>(null!);
+  const { mouse } = useThree();
 
   // Significantly increased grid dimensions for a denser, more intense particle sheet
   const cols = 90;
@@ -62,7 +63,7 @@ export default function Particles() {
       const waveParam = (x + 12) / 24 + (y + 8) / 16; 
       
       // Slim/Sharp wave displacement (using Math.pow to narrow the wave crest)
-      const amplitude = 1.2;
+      const amplitude = 1.6; // Increased amplitude for more intensity
       const frequency = 5.0; // Higher frequency for a tighter, slimmer wave front
       const speed = 2.5;
       
@@ -79,6 +80,11 @@ export default function Particles() {
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
+
+    // Apply a static tilted base perspective and add smooth dynamic mouse parallax
+    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -Math.PI / 3.2 - mouse.y * 0.12, 0.05);
+    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.12, 0.05);
+    pointsRef.current.rotation.z = THREE.MathUtils.lerp(pointsRef.current.rotation.z, Math.PI / 10, 0.05);
   });
 
   return (
@@ -88,11 +94,11 @@ export default function Particles() {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.055} // Smaller particles for a high-intensity, sharp vector texture
+        size={0.06} // Sharp vector texture
         vertexColors
         sizeAttenuation={true}
         transparent
-        opacity={0.5}
+        opacity={0.6}
         depthWrite={false}
       />
     </points>
