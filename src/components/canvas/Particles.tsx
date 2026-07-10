@@ -113,16 +113,48 @@ export default function Particles() {
     meshRef.current.geometry.computeVertexNormals();
   });
 
+  // Generate a procedural canvas-based noise texture to simulate fabric fibers and grain
+  const grainTexture = useMemo(() => {
+    if (typeof window === "undefined") return null;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d")!;
+    
+    // Create high-frequency noise representing cloth threads/grain
+    const imgData = ctx.createImageData(128, 128);
+    const data = imgData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const noise = (Math.random() - 0.5) * 90;
+      const val = Math.min(255, Math.max(0, 128 + noise));
+      data[i] = val;     // R
+      data[i + 1] = val; // G
+      data[i + 2] = val; // B
+      data[i + 3] = 255; // A
+    }
+    ctx.putImageData(imgData, 0, 0);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(40, 26); // Repeat the noise tightly for fine, detailed grain
+    return texture;
+  }, []);
+
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[24, 16, cols, rows]} />
       <meshStandardMaterial
         color="#D39E43" // Amber gold
-        roughness={0.65}
-        metalness={0.15}
+        roughness={0.8} // Highly matte Renaissance textile
+        metalness={0.12}
         transparent
         opacity={0.9}
         side={THREE.DoubleSide}
+        bumpMap={grainTexture || undefined}
+        bumpScale={0.06} // Tiny displacement for micro-fiber texture
+        roughnessMap={grainTexture || undefined}
       />
     </mesh>
   );
