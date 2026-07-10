@@ -142,62 +142,21 @@ export default function Particles() {
     return texture;
   }, []);
 
-  // Generate a premium Renaissance fresco/sketch placeholder image to place behind the cloth
-  const placeholderTexture = useMemo(() => {
+  // Load the generated Renaissance fresco image to place behind the cloth
+  const bgTexture = useMemo(() => {
     if (typeof window === "undefined") return null;
-
-    const canvas = document.createElement("canvas");
-    canvas.width = 512;
-    canvas.height = 512;
-    const ctx = canvas.getContext("2d")!;
-
-    // 1. Draw a deep warm terracotta/rust background representing aged plaster
-    ctx.fillStyle = "#5E2519"; 
-    ctx.fillRect(0, 0, 512, 512);
-
-    // 2. Draw golden Renaissance-style geometric/architectural sketches
-    ctx.strokeStyle = "rgba(229, 193, 88, 0.4)"; // Gold outline
-    ctx.lineWidth = 2;
-    
-    // Concentric circles representing celestial/harmonic proportions
-    ctx.beginPath();
-    ctx.arc(256, 256, 180, 0, Math.PI * 2);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(256, 256, 120, 0, Math.PI * 2);
-    ctx.stroke();
-
-    // Golden ratio diagonal grid lines
-    ctx.strokeStyle = "rgba(250, 246, 238, 0.25)"; // Ivory lines
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(512, 512);
-    ctx.moveTo(512, 0);
-    ctx.lineTo(0, 512);
-    ctx.moveTo(256, 0);
-    ctx.lineTo(256, 512);
-    ctx.moveTo(0, 256);
-    ctx.lineTo(512, 256);
-    ctx.stroke();
-
-    // Central circular seal representation
-    ctx.fillStyle = "rgba(197, 139, 60, 0.3)"; // Ochre fill
-    ctx.beginPath();
-    ctx.arc(256, 256, 50, 0, Math.PI * 2);
-    ctx.fill();
-
-    const texture = new THREE.CanvasTexture(canvas);
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load("/images/renaissance_fresco.jpg");
     return texture;
   }, []);
 
   return (
     <group>
-      {/* Background placeholder image mesh positioned under the waving cloth */}
-      {placeholderTexture && (
+      {/* Background image mesh positioned under the waving cloth */}
+      {bgTexture && (
         <mesh position={[0, -3.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[22, 14]} />
-          <meshBasicMaterial map={placeholderTexture} />
+          <meshBasicMaterial map={bgTexture} />
         </mesh>
       )}
 
