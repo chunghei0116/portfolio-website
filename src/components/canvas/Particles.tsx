@@ -35,8 +35,8 @@ export default function Particles() {
         const x = (c / cols - 0.5) * width;
         const y = (r / rows - 0.5) * height;
         
-        // Pin the left (c = 0) and right (c = cols) edges by setting mass to 0
-        const isPinned = c === 0 || c === cols;
+        // Pin only the left edge (c = 0) like a flagpole, leaving the right edge free to wave and fold
+        const isPinned = c === 0;
 
         const body = new CANNON.Body({
           mass: isPinned ? 0 : mass,
