@@ -82,10 +82,10 @@ export default function Particles() {
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
-    // Set exact vertical top-down view (sheet is rotated exactly 90 degrees flat, looking straight down)
-    pointsRef.current.rotation.x = -Math.PI / 2;
-    pointsRef.current.rotation.y = 0;
-    pointsRef.current.rotation.z = 0;
+    // Set high-overhead top-to-bottom perspective (tilted to look down the sheet from the top)
+    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -Math.PI / 2.4 - mouse.y * 0.08, 0.05);
+    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.08, 0.05);
+    pointsRef.current.rotation.z = THREE.MathUtils.lerp(pointsRef.current.rotation.z, Math.PI / 16, 0.05);
   });
 
   return (
