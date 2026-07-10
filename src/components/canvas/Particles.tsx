@@ -82,10 +82,10 @@ export default function Particles() {
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
-    // Apply a static tilted base perspective and add smooth dynamic mouse parallax
-    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -Math.PI / 3.2 - mouse.y * 0.1, 0.05);
-    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.1, 0.05);
-    pointsRef.current.rotation.z = THREE.MathUtils.lerp(pointsRef.current.rotation.z, Math.PI / 10, 0.05);
+    // Apply a high overhead top-view perspective (tilted flat like a carpet viewed from above)
+    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -Math.PI / 2.3 - mouse.y * 0.08, 0.05);
+    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.08, 0.05);
+    pointsRef.current.rotation.z = THREE.MathUtils.lerp(pointsRef.current.rotation.z, Math.PI / 12, 0.05);
   });
 
   return (
