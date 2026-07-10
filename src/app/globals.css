@@ -1,28 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF9F6; /* Alabaster Cream */
-  --foreground: #0F172A; /* Slate Dark */
-  --card-bg: rgba(255, 255, 255, 0.82); /* Frosted White Glass */
-  --accent-blue: #2563EB; /* Premium Cobalt Blue */
-  --classic-red: #DC2626; /* Tech Red */
-  --antenna-yellow: #D97706; /* Tech Yellow */
-  --moss-shadow: #64748B; /* Smoke Grey */
-  --grid-color: rgba(15, 23, 42, 0.03);
-  --selection-bg: #2563EB;
-  --selection-text: #FFFFFF;
+  --background: #FAF6EE; /* Parchment Paper Cream */
+  --foreground: #2A201A; /* Sepia Ink Dark */
+  --card-bg: rgba(253, 251, 247, 0.85); /* Slightly lighter parchment */
+  --accent-gold: #C59B27; /* Renaissance Gold */
+  --accent-terracotta: #A9442A; /* Renaissance Red/Terracotta */
+  --sepia-dim: #7C6E65; /* Faded Ink Grey */
+  --grid-color: rgba(42, 32, 26, 0.03);
+  --selection-bg: #C59B27;
+  --selection-text: #FAF6EE;
 }
 
 @theme {
   --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
   
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card-bg: var(--card-bg);
-  --color-accent-blue: var(--accent-blue);
-  --color-classic-red: var(--classic-red);
-  --color-antenna-yellow: var(--antenna-yellow);
-  --color-moss-shadow: var(--moss-shadow);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-terracotta: var(--accent-terracotta);
+  --color-sepia-dim: var(--sepia-dim);
   
   --font-weight-punchy: 800;
   --font-weight-bold: 600;
@@ -38,91 +37,72 @@
     max-width: 100vw;
     overflow-x: hidden;
     background-color: transparent;
-    @apply text-foreground antialiased selection:bg-accent-blue selection:text-white;
+    @apply text-foreground antialiased selection:bg-accent-gold selection:text-background;
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
 }
 
 /* Massive Swiss Grotesque Headline style - Normal Case, elegant tracking */
-.swiss-massive-heading {
-  @apply font-sans font-punchy tracking-[-0.04em] leading-[1.05] normal-case text-foreground;
+/* Renaissance classical serif heading layout */
+.renaissance-heading {
+  @apply font-serif font-medium tracking-tight leading-[1.1] text-foreground;
 }
 
-/* Sleek premium glass borders instead of brutalist outlines */
-.brutalist-border {
-  @apply border border-black/8 rounded-2xl backdrop-blur-md;
+/* Elegant sketch outline / border styles */
+.parchment-border {
+  @apply border border-foreground/10 rounded-lg;
 }
 
-/* Ambient dark glow instead of solid flat shadows */
-.brutalist-shadow {
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
+/* Subtle parchment shading shadow */
+.parchment-shadow {
+  box-shadow: 0 4px 20px -2px rgba(42, 32, 26, 0.05);
 }
 
-/* Liquid Glass Capsule Effect */
-.liquid-glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 2px 0 rgba(255, 255, 255, 0.15),
-    0 4px 6px -1px rgba(15, 23, 42, 0.03),
-    0 12px 30px -10px rgba(15, 23, 42, 0.08),
-    0 0 0 1px rgba(15, 23, 42, 0.01);
+/* Double-border effect reminiscent of Renaissance books/frames */
+.renaissance-frame {
+  position: relative;
+  border: 1px solid rgba(42, 32, 26, 0.15);
+  padding: 2px;
+  background: var(--card-bg);
+}
+
+.renaissance-frame::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid rgba(42, 32, 26, 0.06);
+  pointer-events: none;
+}
+
+/* Hover effect */
+.renaissance-hover-lift {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.liquid-glass:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 2px 0 rgba(255, 255, 255, 0.2),
-    0 6px 12px -2px rgba(15, 23, 42, 0.04),
-    0 20px 40px -12px rgba(15, 23, 42, 0.12),
-    0 0 0 1px rgba(15, 23, 42, 0.02);
-}
-
-/* Premium smooth hover lift with spring physics response */
-.brutalist-hover-lift {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, border-color, box-shadow;
 }
-.brutalist-hover-lift:hover {
-  transform: translateY(-4px);
-  border-color: rgba(37, 99, 235, 0.2);
-  box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.08);
-}
-.brutalist-hover-lift:active {
-  transform: translateY(-1px) scale(0.995);
+
+.renaissance-hover-lift:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 12px 24px -10px rgba(197, 155, 39, 0.15);
 }
 
-/* Monospaced alpine tag typography */
-.text-alpine-mono {
-  @apply font-mono text-[0.75rem] font-bold tracking-[0.12em] uppercase text-moss-shadow;
+.renaissance-hover-lift:active {
+  transform: translateY(0) scale(0.995);
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Monospaced tag typography */
+.text-sepia-mono {
+  @apply font-mono text-[0.7rem] font-bold tracking-[0.15em] uppercase text-sepia-dim;
 }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-  display: flex;
-  width: max-content;
-  will-change: transform;
+/* Sketch paper grid (blueprint pattern) */
+.sketch-grid {
+  background-image: 
+    linear-gradient(to right, rgba(42, 32, 26, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42, 32, 26, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
-  }
-}
-
-/* Subtle dot grid overlay for depth */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
-}

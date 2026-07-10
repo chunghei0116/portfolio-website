@@ -15,12 +15,12 @@ const containerVariants = {
 };
 
 const lineVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.8,
       ease: [0.16, 1, 0.3, 1],
     },
   },
@@ -28,24 +28,24 @@ const lineVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[85vh] w-full flex-col justify-end px-6 sm:px-8 md:px-16 pt-32 pb-16 overflow-hidden bg-transparent">
-      {/* Simple, clean dot-grid background with no shadow overlay */}
-      <div className="absolute inset-0 z-0 dot-grid pointer-events-none select-none opacity-40" />
+    <section className="relative flex min-h-[90vh] w-full flex-col justify-end px-6 sm:px-8 md:px-16 pt-32 pb-20 overflow-hidden bg-transparent">
+      {/* Renaissance sketch blueprint grid background */}
+      <div className="absolute inset-0 z-0 sketch-grid pointer-events-none select-none opacity-45" />
 
-      {/* Absolute Survey Header bar */}
-      <div className="absolute top-28 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[10px] tracking-wider text-neutral-500 opacity-80 select-none z-10">
-        <span>ROUTE DIRECTORY v4 // EXPEDITION ACTIVE</span>
-        <span className="hidden sm:inline">DAVOS, GRISONS, CH</span>
+      {/* Classical Header bar */}
+      <div className="absolute top-28 left-0 w-full flex justify-between items-center px-6 sm:px-8 md:px-16 font-mono text-[8px] sm:text-[9px] tracking-[0.2em] text-sepia-dim opacity-70 select-none z-10">
+        <span>CODEX APOCRYPHA // LIBER PRIMUS</span>
+        <span className="hidden sm:inline">FLORENCE, TUSCANY</span>
       </div>
 
-      {/* Gundam Blue Trail Marker Segment [Blue | White | Blue] */}
-      <div className="relative z-10 flex h-[8px] w-[60px] border border-black/5 rounded-full overflow-hidden mb-6 bg-white/40 backdrop-blur-xs">
-        <div className="flex-1 bg-accent-blue" />
-        <div className="flex-1 bg-black/10" />
-        <div className="flex-1 bg-accent-blue" />
+      {/* Terracotta and Gold Accent Marker [Red | Gold | Red] */}
+      <div className="relative z-10 flex h-[6px] w-[50px] mb-8 overflow-hidden rounded-sm border border-foreground/10 bg-card-bg">
+        <div className="flex-1 bg-accent-terracotta" />
+        <div className="flex-1 bg-accent-gold" />
+        <div className="flex-1 bg-accent-terracotta" />
       </div>
 
-      {/* Giant Deconstructed Swiss Grotesque Headline */}
+      {/* Giant Renaissance Serif Headline */}
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
@@ -53,42 +53,42 @@ export default function Hero() {
           animate="visible"
           className="flex flex-col"
         >
-          <h1 className="swiss-massive-heading text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.5rem]">
-            <motion.span variants={lineVariants} className="block">
-              JONES TSE
+          <h1 className="renaissance-heading text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8rem]">
+            <motion.span variants={lineVariants} className="block text-foreground/90">
+              Jones Tse
             </motion.span>
-            <motion.span variants={lineVariants} className="block">
-              ENGINEERING
+            <motion.span variants={lineVariants} className="block italic text-accent-terracotta">
+              Engineering
             </motion.span>
-            <motion.span variants={lineVariants} className="block text-accent-blue">
-              ROBUST SYSTEMS
+            <motion.span variants={lineVariants} className="block text-foreground/95">
+              Robust Systems
             </motion.span>
           </h1>
 
           {/* Subtext describing core expertise */}
           <motion.p
             variants={lineVariants}
-            className="mt-6 font-mono text-[0.8rem] md:text-sm font-bold uppercase tracking-wide text-moss-shadow max-w-[65ch] leading-relaxed"
+            className="mt-8 font-serif italic text-base md:text-lg text-sepia-dim max-w-[60ch] leading-relaxed"
           >
-            DEVOPS INFRASTRUCTURE &amp; MOBILE APPLICATIONS. I BUILD SCALABLE AUTOMATION SYSTEMS AND CROSS-PLATFORM NATIVE PRODUCTS.
+            DevOps Infrastructure &amp; Mobile Applications. Architecting scalable, elegant automation engines and native digital crafts.
           </motion.p>
 
-          {/* Premium Neo-Brutalist CTAs */}
+          {/* Elegant Renaissance CTAs */}
           <motion.div
             variants={lineVariants}
-            className="mt-8 flex flex-wrap gap-4 items-center"
+            className="mt-10 flex flex-wrap gap-5 items-center"
           >
             <a
               href="#projects"
-              className="bg-accent-blue text-white border border-black/5 px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_15px_30px_-5px_rgba(37,99,235,0.3)] rounded-full active:translate-y-[-1px] active:scale-[0.98]"
+              className="bg-accent-terracotta text-background px-8 py-3.5 font-mono text-[9px] font-bold uppercase tracking-widest transition-all duration-300 hover:bg-accent-gold hover:-translate-y-[2px] renaissance-hover-lift rounded-sm"
             >
-              EXPLORE PROJECTS
+              Explore Studies
             </a>
             <a
               href="#contact"
-              className="bg-white/80 text-neutral-900 border border-black/10 px-6 py-3 font-mono text-[0.75rem] font-bold uppercase transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.05)] rounded-full active:translate-y-[-1px] active:scale-[0.98] backdrop-blur-xs"
+              className="bg-card-bg text-foreground border border-foreground/15 px-8 py-3.5 font-mono text-[9px] font-bold uppercase tracking-widest transition-all duration-300 hover:border-accent-gold hover:-translate-y-[2px] renaissance-hover-lift rounded-sm"
             >
-              CONTACT ME
+              Send Message
             </a>
           </motion.div>
         </motion.div>

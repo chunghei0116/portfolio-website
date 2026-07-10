@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Inter_Tight, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Scene from "@/components/canvas/Scene";
@@ -11,9 +11,16 @@ const interTight = Inter_Tight({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
-  title: "JONES TSE // DEVOPS & MOBILE ENGINEER",
-  description: "Minimalist tech portfolio — DevOps infrastructure, Flutter & Tauri development. Built with Next.js.",
+  title: "JONES TSE // RENAISSANCE ENGINEERING",
+  description: "DevOps infrastructure and mobile engineering portfolio.",
 };
 
 export default function RootLayout({
@@ -22,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} h-full antialiased scroll-smooth`}>
+    <html lang="en" className={`${interTight.variable} ${cormorant.variable} h-full antialiased scroll-smooth`}>
       <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-blue selection:text-white">
         {/* Persistent 3D Background Scene */}
         <Scene />

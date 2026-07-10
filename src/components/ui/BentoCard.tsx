@@ -13,7 +13,7 @@ export default function BentoCard({ children, className = "", disableHover = fal
   return (
     <div
       onClick={onClick}
-      className={`brutalist-border bg-card-bg p-5 sm:p-8 brutalist-shadow ${disableHover ? "" : "brutalist-hover-lift"} ${className}`}
+      className={`renaissance-frame bg-card-bg p-5 sm:p-8 parchment-shadow ${disableHover ? "" : "renaissance-hover-lift"} ${className}`}
     >
       {children}
     </div>

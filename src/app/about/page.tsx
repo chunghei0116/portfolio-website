@@ -5,25 +5,28 @@ import GitOpsPipeline from "@/components/ui/GitOpsPipeline";
 
 export default function AboutPage() {
   return (
-    <div className="relative w-full min-h-screen px-6 py-32">
-      <main className="max-w-7xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-3">
+    <div className="relative w-full min-h-screen px-6 py-32 bg-transparent">
+      {/* Renaissance background grid */}
+      <div className="absolute inset-0 z-0 sketch-grid pointer-events-none select-none opacity-30" />
+
+      <main className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 gap-8 md:grid-cols-3">
         {/* Page Header */}
-        <div className="col-span-1 md:col-span-3 bg-white/70 border border-black/5 rounded-3xl shadow-xl p-8 md:p-12 mb-4 backdrop-blur-md">
-          <span className="text-[10px] font-mono font-bold tracking-widest bg-accent-blue/5 text-accent-blue px-3 py-1 rounded-full border border-black/5">
-            BIOGRAPHY // OVERVIEW
+        <div className="col-span-1 md:col-span-3 renaissance-frame bg-card-bg parchment-shadow p-8 md:p-12 mb-4">
+          <span className="text-sepia-mono border border-foreground/10 px-3 py-1 bg-foreground/[0.02]">
+            BIOGRAPHY // ARCHIVE
           </span>
-          <h1 className="mt-6 font-sans font-punchy text-6xl md:text-8xl uppercase leading-none tracking-tight">
-            ABOUT ME
+          <h1 className="mt-6 font-serif italic text-5xl md:text-7xl text-accent-terracotta leading-none font-medium">
+            About the Architect
           </h1>
         </div>
 
         {/* Bio Section */}
-        <BentoCard className="col-span-1 md:col-span-2 min-h-[300px] flex flex-col justify-center">
-          <h2 className="text-3xl font-punchy uppercase text-foreground">
-            CRAFTING SCALABLE INFRASTRUCTURE & APPS
+        <BentoCard className="col-span-1 md:col-span-2 min-h-[300px] flex flex-col justify-center bg-card-bg">
+          <h2 className="font-serif text-2xl sm:text-3xl text-foreground/90 font-medium">
+            Crafting Scalable Infrastructures &amp; Digital Instruments
           </h2>
-          <p className="mt-6 text-base font-semibold leading-relaxed text-neutral-600">
-            I am a developer operating at the intersection of DevOps, mobile ecosystems, and interactive interfaces. I engineer automated deployment pipelines and cross-platform desktop/mobile apps designed to be highly secure, reliable, and smooth to use.
+          <p className="mt-6 font-serif text-base leading-relaxed text-sepia-dim">
+            Operating at the intersection of automation architectures and interactive software craftsmanship. I design resilient container pipelines and performant user engines tailored with high precision, speed, and logical geometry.
           </p>
         </BentoCard>
 
@@ -33,64 +36,66 @@ export default function AboutPage() {
         </div>
 
         {/* Timeline / Experience */}
-        <BentoCard className="col-span-1 md:col-span-3 min-h-[300px]">
-          <h3 className="text-2xl font-punchy uppercase mb-4 border-b border-black/5 pb-2">
-            TIMELINE // WORK RECORD
+        <BentoCard className="col-span-1 md:col-span-3 min-h-[300px] bg-card-bg" disableHover>
+          <h3 className="font-serif text-xl sm:text-2xl text-foreground/90 border-b border-foreground/10 pb-4 mb-6">
+            Chronological Account &amp; Work Records
           </h3>
-          <div className="flex flex-col divide-y divide-black/5 w-full max-w-full">
-            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
+          <div className="flex flex-col divide-y divide-foreground/10 w-full max-w-full">
+            
+            <div className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
               <div className="min-w-[150px]">
-                <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white text-neutral-700 border border-black/5 px-2.5 py-1.5 rounded-full select-none shadow-xs">
-                  [ 2025 — PRES ]
+                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent-gold border border-accent-gold/20 bg-accent-gold/[0.03] px-3 py-1.5 rounded-sm">
+                  1500 — Present
                 </span>
               </div>
               <div className="flex-1 min-w-0 w-full max-w-full">
                 <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
-                  <h4 className="font-punchy text-sm uppercase text-foreground break-words">Mobile Application Developer</h4>
-                  <span className="hidden md:inline text-black/20 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-semibold text-accent-blue uppercase tracking-wider">AS Watson Group</span>
+                  <h4 className="font-serif text-base font-medium text-foreground/90 break-words">Mobile Application Developer</h4>
+                  <span className="hidden md:inline text-foreground/20 font-mono text-xs select-none">&rarr;</span>
+                  <span className="font-mono text-[10px] font-bold text-accent-terracotta uppercase tracking-wider">AS Watson Group</span>
                 </div>
-                <p className="mt-2 text-xs font-semibold leading-relaxed text-neutral-500">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                <p className="mt-3 font-serif text-sm leading-relaxed text-sepia-dim">
+                  Architecting mobile application layers. Standardizing native layout orchestration, low-latency client data interfaces, and automation pipelines.
                 </p>
               </div>
             </div>
 
-            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
+            <div className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
               <div className="min-w-[150px]">
-                <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white text-neutral-700 border border-black/5 px-2.5 py-1.5 rounded-full select-none shadow-xs">
-                  [ 2023 — 2025 ]
+                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent-gold border border-accent-gold/20 bg-accent-gold/[0.03] px-3 py-1.5 rounded-sm">
+                  1497 — 1500
                 </span>
               </div>
               <div className="flex-1 min-w-0 w-full max-w-full">
                 <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
-                  <h4 className="font-punchy text-sm uppercase text-foreground break-words">Programmer</h4>
-                  <span className="hidden md:inline text-black/20 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-semibold text-accent-blue uppercase tracking-wider">Asia Allied Infrastructure Group</span>
+                  <h4 className="font-serif text-base font-medium text-foreground/90 break-words">Programmer</h4>
+                  <span className="hidden md:inline text-foreground/20 font-mono text-xs select-none">&rarr;</span>
+                  <span className="font-mono text-[10px] font-bold text-accent-terracotta uppercase tracking-wider">Asia Allied Infrastructure Group</span>
                 </div>
-                <p className="mt-2 text-xs font-semibold leading-relaxed text-neutral-500">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+                <p className="mt-3 font-serif text-sm leading-relaxed text-sepia-dim">
+                  Developed web engines and server orchestrations. Constructed continuous deployment loops and automated cloud telemetry aggregates.
                 </p>
               </div>
             </div>
 
-            <div className="py-5 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
+            <div className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 w-full max-w-full">
               <div className="min-w-[150px]">
-                <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white text-neutral-700 border border-black/5 px-2.5 py-1.5 rounded-full select-none shadow-xs">
-                  [ 2021 ]
+                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent-gold border border-accent-gold/20 bg-accent-gold/[0.03] px-3 py-1.5 rounded-sm">
+                  1495
                 </span>
               </div>
               <div className="flex-1 min-w-0 w-full max-w-full">
                 <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full max-w-full">
-                  <h4 className="font-punchy text-sm uppercase text-foreground break-words">Summer Intern</h4>
-                  <span className="hidden md:inline text-black/20 font-mono text-xs select-none">&mdash;&gt;</span>
-                  <span className="font-mono text-xs font-semibold text-accent-blue uppercase tracking-wider">EMSD HKSAR</span>
+                  <h4 className="font-serif text-base font-medium text-foreground/90 break-words">Summer Apprentice</h4>
+                  <span className="hidden md:inline text-foreground/20 font-mono text-xs select-none">&rarr;</span>
+                  <span className="font-mono text-[10px] font-bold text-accent-terracotta uppercase tracking-wider">EMSD HKSAR</span>
                 </div>
-                <p className="mt-2 text-xs font-semibold leading-relaxed text-neutral-500">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mollis nunc sed id semper risus in hendrerit gravida rutrum.
+                <p className="mt-3 font-serif text-sm leading-relaxed text-sepia-dim">
+                  Aggregated telemetry data and automated signal analysis using math script structures.
                 </p>
               </div>
             </div>
+
           </div>
         </BentoCard>
       </main>
