@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF6EE; /* Parchment Paper Cream */
-  --foreground: #2A201A; /* Sepia Ink Dark */
-  --card-bg: rgba(253, 251, 247, 0.85); /* Slightly lighter parchment */
-  --accent-gold: #C59B27; /* Renaissance Gold */
-  --accent-terracotta: #A9442A; /* Renaissance Red/Terracotta */
+  --background: #0E0C0A; /* Dark charcoal/ink black */
+  --foreground: #FAF6EE; /* Parchment Paper Cream */
+  --card-bg: rgba(20, 18, 16, 0.85); /* Dark card background */
+  --accent-gold: #E5C158; /* Renaissance Gold */
+  --accent-terracotta: #C58B3C; /* Warm Ochre */
   --sepia-dim: #7C6E65; /* Faded Ink Grey */
-  --grid-color: rgba(42, 32, 26, 0.03);
-  --selection-bg: #C59B27;
-  --selection-text: #FAF6EE;
+  --grid-color: rgba(250, 246, 238, 0.03);
+  --selection-bg: #E5C158;
+  --selection-text: #0E0C0A;
 }
 
 @theme {
