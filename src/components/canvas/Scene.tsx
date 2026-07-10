@@ -54,13 +54,22 @@ const Scene = () => {
         onCreated={handleCreated}
         frameloop="always"
       >
-        <ambientLight intensity={0.08} color="#FAF6EE" />
+        <ambientLight intensity={0.15} color="#FAF6EE" />
+        {/* Main dramatic key spotlight from the top-left side */}
         <spotLight
-          position={[0, 9, 0]}
-          intensity={25}
+          position={[-10, 8, -5]}
+          intensity={90}
           angle={Math.PI / 4.5}
-          penumbra={0.9}
+          penumbra={0.6}
           color="#E5C158"
+        />
+        {/* Fill spotlight from the bottom-right side to illuminate folds */}
+        <spotLight
+          position={[10, 7, 5]}
+          intensity={45}
+          angle={Math.PI / 4}
+          penumbra={0.8}
+          color="#C58B3C"
         />
         <Suspense fallback={null}>
           <CameraController isMobile={isMobile} />
