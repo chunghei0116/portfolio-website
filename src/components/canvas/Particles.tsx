@@ -62,22 +62,22 @@ export default function Particles() {
       // Coordinate parameter for diagonal wave propagation on X-Z plane
       const waveParam = (x + 12) / 24 + (z + 8) / 16; 
       
-      // Primary smooth diagonal wave (like a broad wind gust rippling through fabric)
-      const primaryFreq = 3.5;
-      const primarySpeed = 1.2;
-      const primaryWave = Math.sin(waveParam * primaryFreq - time * primarySpeed) * 1.1;
+      // Broad, slow primary diagonal wave (chill wind blowing through hanging cloth)
+      const primaryFreq = 2.2;
+      const primarySpeed = 0.45; // Slowed down speed for a calm feel
+      const primaryWave = Math.sin(waveParam * primaryFreq - time * primarySpeed) * 0.85;
 
-      // Secondary perpendicular ripple (creates the folding and fluttering texture of cloth)
-      const secondaryFreq = 0.22;
-      const secondarySpeed = 2.4;
-      const secondaryWave = Math.cos((x - z) * secondaryFreq - time * secondarySpeed) * 0.35;
+      // Gentle secondary ripple for soft fluttering folds
+      const secondaryFreq = 0.14;
+      const secondarySpeed = 0.9; // Slowed down speed
+      const secondaryWave = Math.cos((x - z) * secondaryFreq - time * secondarySpeed) * 0.22;
 
       // Total displacement on the Y-axis (height displacement viewed from above)
       pos[i3 + 1] = primaryWave + secondaryWave;
 
-      // Micro-sway in X & Z for organic fabric flexibility
-      pos[i3] = x + Math.sin(time * 0.3 + z) * 0.04;
-      pos[i3 + 2] = z + Math.cos(time * 0.3 + x) * 0.04;
+      // Gentle micro-sway in X & Z for slow organic flexibility
+      pos[i3] = x + Math.sin(time * 0.15 + z) * 0.04;
+      pos[i3 + 2] = z + Math.cos(time * 0.15 + x) * 0.04;
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
