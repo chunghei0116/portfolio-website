@@ -8,9 +8,9 @@ export default function Particles() {
   const pointsRef = useRef<THREE.Points>(null!);
   const { mouse } = useThree();
 
-  // Significantly increased grid dimensions for a denser, more intense particle sheet
-  const cols = 90;
-  const rows = 65;
+  // Significantly increased grid dimensions for a denser, more intense particle sheet (approx. 12,350 particles)
+  const cols = 130;
+  const rows = 95;
   const count = cols * rows;
 
   const [positions, colors, initialData] = useMemo(() => {
@@ -62,28 +62,28 @@ export default function Particles() {
       // Normalized coordinates: wave travels from bottom-left to top-right
       const waveParam = (x + 12) / 24 + (y + 8) / 16; 
       
-      // Slim/Sharp wave displacement (using Math.pow to narrow the wave crest)
-      const amplitude = 1.6; // Increased amplitude for more intensity
-      const frequency = 5.0; // Higher frequency for a tighter, slimmer wave front
-      const speed = 2.5;
+      // Slim/Sharp wave displacement (using a lower exponent and speed for smoother movement)
+      const amplitude = 1.3; 
+      const frequency = 4.2; // Tighter wave front
+      const speed = 1.3; // Slower speed to remove the sudden "shock feel"
       
       const rawWave = Math.sin(waveParam * frequency - time * speed);
-      // Math.pow of positive part makes the wave peaks very sharp/slim
-      const zDisplacement = Math.pow(Math.max(0, rawWave), 3.5) * amplitude;
+      // Math.pow of 2.2 keeps the peak slim but makes the transition much smoother
+      const zDisplacement = Math.pow(Math.max(0, rawWave), 2.2) * amplitude;
 
       // Update Z coordinate
       pos[i3 + 2] = zDisplacement;
 
       // Micro-sway in X & Y for organic fluidity
-      pos[i3] = x + Math.sin(time * 0.4 + y) * 0.03;
-      pos[i3 + 1] = y + Math.cos(time * 0.4 + x) * 0.03;
+      pos[i3] = x + Math.sin(time * 0.3 + y) * 0.03;
+      pos[i3 + 1] = y + Math.cos(time * 0.3 + x) * 0.03;
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
     // Apply a static tilted base perspective and add smooth dynamic mouse parallax
-    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -Math.PI / 3.2 - mouse.y * 0.12, 0.05);
-    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.12, 0.05);
+    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -Math.PI / 3.2 - mouse.y * 0.1, 0.05);
+    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.1, 0.05);
     pointsRef.current.rotation.z = THREE.MathUtils.lerp(pointsRef.current.rotation.z, Math.PI / 10, 0.05);
   });
 
@@ -94,11 +94,11 @@ export default function Particles() {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.06} // Sharp vector texture
+        size={0.04} // Smaller particles for a high-density dust appearance
         vertexColors
         sizeAttenuation={true}
         transparent
-        opacity={0.6}
+        opacity={0.65}
         depthWrite={false}
       />
     </points>
