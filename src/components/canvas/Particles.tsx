@@ -1,99 +1,86 @@
 "use client";
 
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-interface ParticleMetadata {
-  x: number;
-  y: number;
-  speedY: number;
-  wobbleSpeed: number;
-  wobbleForce: number;
-}
-
 export default function Particles() {
   const pointsRef = useRef<THREE.Points>(null!);
-  const { mouse, viewport } = useThree();
-  const count = 180; // Reduced to 180 for an extremely clean, minimal, and premium look
 
-  const [positions, colors, metadata] = useMemo(() => {
+  // Grid dimensions for the particle sheet
+  const cols = 45;
+  const rows = 30;
+  const count = cols * rows;
+
+  const [positions, colors, initialData] = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    const cols = new Float32Array(count * 3);
-    const meta: ParticleMetadata[] = [];
+    const colsArray = new Float32Array(count * 3);
+    const data: { x: number; y: number; index: number }[] = [];
 
-    const colorBlue = new THREE.Color("#1F438A");
-    const colorBlack = new THREE.Color("#373C42");
+    // Renaissance color palette: warm gold, sienna, cream, and terracotta tones
+    const colorsList = [
+      new THREE.Color("#E5C158"), // Gold
+      new THREE.Color("#D39E43"), // Warm Amber
+      new THREE.Color("#C58B3C"), // Ochre
+      new THREE.Color("#EDE6D6"), // Parchment Cream
+    ];
 
-    for (let i = 0; i < count; i++) {
-      // Staggered initial coordinates distributed evenly
-      const x = (Math.random() - 0.5) * 22;
-      const y = (Math.random() - 0.5) * 14;
-      const z = (Math.random() - 0.5) * 6;
+    let idx = 0;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        // Map grid coordinates to 3D space
+        // X ranges from -12 to 12, Y ranges from -8 to 8
+        const x = ((c / (cols - 1)) - 0.5) * 24;
+        const y = ((r / (rows - 1)) - 0.5) * 16;
+        const z = 0;
 
-      pos[i * 3] = x;
-      pos[i * 3 + 1] = y;
-      pos[i * 3 + 2] = z;
+        pos[idx * 3] = x;
+        pos[idx * 3 + 1] = y;
+        pos[idx * 3 + 2] = z;
 
-      // 40% Ebikawa Blue, 60% Phantom Grey
-      const isBlue = Math.random() < 0.40;
-      const activeColor = isBlue ? colorBlue : colorBlack;
-      cols[i * 3] = activeColor.r;
-      cols[i * 3 + 1] = activeColor.g;
-      cols[i * 3 + 2] = activeColor.b;
+        // Assign a warm Renaissance color
+        const color = colorsList[Math.floor(Math.random() * colorsList.length)];
+        colsArray[idx * 3] = color.r;
+        colsArray[idx * 3 + 1] = color.g;
+        colsArray[idx * 3 + 2] = color.b;
 
-      meta.push({
-        x,
-        y,
-        speedY: 0.006 + Math.random() * 0.014,
-        wobbleSpeed: 0.25 + Math.random() * 0.5,
-        wobbleForce: 0.02 + Math.random() * 0.04,
-      });
+        data.push({ x, y, index: idx });
+        idx++;
+      }
     }
 
-    return [pos, cols, meta];
-  }, []);
+    return [pos, colsArray, data];
+  }, [cols, rows, count]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     const pos = pointsRef.current.geometry.attributes.position.array as Float32Array;
 
-    const mx = (mouse.x * viewport.width) / 2;
-    const my = (mouse.y * viewport.height) / 2;
-
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      const m = metadata[i];
+      const { x, y } = initialData[i];
 
-      // Float upwards
-      pos[i3 + 1] += m.speedY;
-      // Soft horizontal wave sway
-      pos[i3] = m.x + Math.sin(time * m.wobbleSpeed + i) * m.wobbleForce;
+      // Wave starting from bottom-left (low x, low y) to top-right (high x, high y)
+      // We align the wave wave-front along the line X + Y = constant
+      // Scaling factor coordinates: X ranges from -12 to 12, Y from -8 to 8
+      const waveParam = (x + 12) / 24 + (y + 8) / 16; 
+      
+      // Calculate wave displacement (Z-axis ripple)
+      // Wave travels in the direction of increasing waveParam (bottom-left to top-right)
+      const amplitude = 0.8;
+      const frequency = 4.0;
+      const speed = 2.0;
+      const zDisplacement = Math.sin(waveParam * frequency - time * speed) * amplitude;
 
-      // Mouse repulsion (horizontal-only parting like water to prevent mid-air trapping)
-      const dx = pos[i3] - mx;
-      const dy = pos[i3 + 1] - my;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      // Update Z coordinate
+      pos[i3 + 2] = zDisplacement;
 
-      if (dist < 2.5) {
-        const force = (2.5 - dist) / 2.5;
-        // Push left or right cleanly on the X-axis
-        pos[i3] += (dx / (dist || 0.1)) * force * 0.15;
-      }
-
-      // Recycle particles with dynamic Y-jitter to prevent bottom-stacking/bunching
-      if (pos[i3 + 1] > 7) {
-        pos[i3 + 1] = -7 - Math.random() * 4; // Jitter entry height
-        pos[i3] = (Math.random() - 0.5) * 22;
-        m.x = pos[i3];
-      }
+      // Add a tiny, subtle idle sway to X and Y for a natural organic feel
+      pos[i3] = x + Math.sin(time * 0.5 + y) * 0.05;
+      pos[i3 + 1] = y + Math.cos(time * 0.5 + x) * 0.05;
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
-
-    // Soft parallax rotation based on mouse coordinates
-    pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, -mouse.y * 0.08, 0.05);
-    pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, mouse.x * 0.08, 0.05);
   });
 
   return (
@@ -103,12 +90,14 @@ export default function Particles() {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.10} // Reduced to 0.10 for sharp, tiny, minimalist vector dots
+        size={0.12}
         vertexColors
         sizeAttenuation={true}
         transparent
-        opacity={0.65}
+        opacity={0.4}
+        depthWrite={false}
       />
     </points>
   );
 }
+
