@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter_Tight, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
 import Scene from "@/components/canvas/Scene";
-import PageTransition from "@/components/ui/PageTransition";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -19,8 +17,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "JONES TSE // RENAISSANCE ENGINEERING",
-  description: "DevOps infrastructure and mobile engineering portfolio.",
+  title: "Renaissance Particle Canvas",
+  description: "Bespoke Renaissance particle sheet wave visualization.",
 };
 
 export default function RootLayout({
@@ -30,18 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${interTight.variable} ${cormorant.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-blue selection:text-white">
+      <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-gold selection:text-background bg-background">
         {/* Persistent 3D Background Scene */}
         <Scene />
         
-        {/* Floating Brutalist Navbar */}
-        <Navbar />
-        
         <main className="relative min-h-screen flex flex-col">
-          {/* Animated Route Transitions */}
-          <PageTransition>
-            {children}
-          </PageTransition>
+          {children}
         </main>
       </body>
     </html>
