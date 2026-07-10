@@ -59,24 +59,25 @@ export default function Particles() {
       const i3 = i * 3;
       const { x, y } = initialData[i];
 
-      // Normalized coordinates: wave travels from bottom-left to top-right
+      // Coordinate parameter for diagonal wave propagation
       const waveParam = (x + 12) / 24 + (y + 8) / 16; 
       
-      // Slim/Sharp wave displacement (using a lower exponent and speed for smoother movement)
-      const amplitude = 1.3; 
-      const frequency = 4.2; // Tighter wave front
-      const speed = 1.3; // Slower speed to remove the sudden "shock feel"
-      
-      const rawWave = Math.sin(waveParam * frequency - time * speed);
-      // Math.pow of 2.2 keeps the peak slim but makes the transition much smoother
-      const zDisplacement = Math.pow(Math.max(0, rawWave), 2.2) * amplitude;
+      // Primary smooth diagonal wave (like a broad wind gust rippling through fabric)
+      const primaryFreq = 3.5;
+      const primarySpeed = 1.2;
+      const primaryWave = Math.sin(waveParam * primaryFreq - time * primarySpeed) * 1.1;
 
-      // Update Z coordinate
-      pos[i3 + 2] = zDisplacement;
+      // Secondary perpendicular ripple (creates the folding and fluttering texture of cloth)
+      const secondaryFreq = 0.22;
+      const secondarySpeed = 2.4;
+      const secondaryWave = Math.cos((x - y) * secondaryFreq - time * secondarySpeed) * 0.35;
 
-      // Micro-sway in X & Y for organic fluidity
-      pos[i3] = x + Math.sin(time * 0.3 + y) * 0.03;
-      pos[i3 + 1] = y + Math.cos(time * 0.3 + x) * 0.03;
+      // Total displacement on the Z-axis (continuous, symmetric wave without sharp clamping)
+      pos[i3 + 2] = primaryWave + secondaryWave;
+
+      // Micro-sway in X & Y for organic fabric flexibility
+      pos[i3] = x + Math.sin(time * 0.3 + y) * 0.04;
+      pos[i3 + 1] = y + Math.cos(time * 0.3 + x) * 0.04;
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
