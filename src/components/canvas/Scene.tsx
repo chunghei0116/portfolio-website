@@ -28,7 +28,7 @@ const Scene = () => {
   return (
     <div className="fixed inset-0 -z-10 w-screen h-screen pointer-events-none bg-background select-none overflow-hidden">
       <Canvas
-        camera={{ position: [0, 0, 6], fov: 60 }}
+        camera={{ position: [0, 10, 0], fov: 60, up: [0, 0, -1] }}
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         onCreated={handleCreated}

@@ -16,7 +16,7 @@ export default function Particles() {
   const [positions, colors, initialData] = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const colsArray = new Float32Array(count * 3);
-    const data: { x: number; y: number; index: number }[] = [];
+    const data: { x: number; z: number; index: number }[] = [];
 
     // Warm gold, sienna, and ivory tones
     const colorsList = [
@@ -29,10 +29,10 @@ export default function Particles() {
     let idx = 0;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        // Map grid coordinates to 3D space
+        // Map grid coordinates to X-Z plane
         const x = ((c / (cols - 1)) - 0.5) * 24;
-        const y = ((r / (rows - 1)) - 0.5) * 16;
-        const z = 0;
+        const y = 0;
+        const z = ((r / (rows - 1)) - 0.5) * 16;
 
         pos[idx * 3] = x;
         pos[idx * 3 + 1] = y;
@@ -43,7 +43,7 @@ export default function Particles() {
         colsArray[idx * 3 + 1] = color.g;
         colsArray[idx * 3 + 2] = color.b;
 
-        data.push({ x, y, index: idx });
+        data.push({ x, z, index: idx });
         idx++;
       }
     }
@@ -57,10 +57,10 @@ export default function Particles() {
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      const { x, y } = initialData[i];
+      const { x, z } = initialData[i];
 
-      // Coordinate parameter for diagonal wave propagation
-      const waveParam = (x + 12) / 24 + (y + 8) / 16; 
+      // Coordinate parameter for diagonal wave propagation on X-Z plane
+      const waveParam = (x + 12) / 24 + (z + 8) / 16; 
       
       // Primary smooth diagonal wave (like a broad wind gust rippling through fabric)
       const primaryFreq = 3.5;
@@ -70,19 +70,19 @@ export default function Particles() {
       // Secondary perpendicular ripple (creates the folding and fluttering texture of cloth)
       const secondaryFreq = 0.22;
       const secondarySpeed = 2.4;
-      const secondaryWave = Math.cos((x - y) * secondaryFreq - time * secondarySpeed) * 0.35;
+      const secondaryWave = Math.cos((x - z) * secondaryFreq - time * secondarySpeed) * 0.35;
 
-      // Total displacement on the Z-axis (continuous, symmetric wave without sharp clamping)
-      pos[i3 + 2] = primaryWave + secondaryWave;
+      // Total displacement on the Y-axis (height displacement viewed from above)
+      pos[i3 + 1] = primaryWave + secondaryWave;
 
-      // Micro-sway in X & Y for organic fabric flexibility
-      pos[i3] = x + Math.sin(time * 0.3 + y) * 0.04;
-      pos[i3 + 1] = y + Math.cos(time * 0.3 + x) * 0.04;
+      // Micro-sway in X & Z for organic fabric flexibility
+      pos[i3] = x + Math.sin(time * 0.3 + z) * 0.04;
+      pos[i3 + 2] = z + Math.cos(time * 0.3 + x) * 0.04;
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
-    // Reset rotation to 0 to face the camera flat (preventing layout clipping/floating past the camera)
+    // Reset rotation to 0 since camera is positioned on Y-axis looking straight down at X-Z plane
     pointsRef.current.rotation.x = 0;
     pointsRef.current.rotation.y = 0;
     pointsRef.current.rotation.z = 0;
