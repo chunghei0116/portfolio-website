@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${interTight.variable} ${cormorant.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-gold selection:text-background bg-background">
+      <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-gold selection:text-background bg-transparent">
         {/* Persistent 3D Background Scene */}
         <Scene />
         
