@@ -152,26 +152,26 @@ export default function Particles() {
 
   return (
     <group>
-      {/* Background image mesh positioned under the waving cloth */}
+      {/* Background image mesh positioned under the waving cloth (acting as the wall/room background) */}
       {bgTexture && (
         <mesh position={[0, -3.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[22, 14]} />
+          <planeGeometry args={[26, 17.5]} />
           <meshBasicMaterial map={bgTexture} />
         </mesh>
       )}
 
-      {/* Main waving cloth mesh with reduced opacity for transparency */}
+      {/* Main waving cloth mesh (acting as a solid flag blowing in front of the wall) */}
       <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[24, 16, cols, rows]} />
+        <planeGeometry args={[19, 12, cols, rows]} />
         <meshStandardMaterial
           color="#D39E43" // Amber gold
-          roughness={0.8} // Highly matte Renaissance textile
-          metalness={0.12}
+          roughness={0.75} // Highly matte Renaissance textile
+          metalness={0.15}
           transparent
-          opacity={0.6} // Reduced opacity to allow viewing the background image through it
+          opacity={0.95} // Increased opacity so it behaves like a solid flag
           side={THREE.DoubleSide}
           bumpMap={grainTexture || undefined}
-          bumpScale={0.06} // Tiny displacement for micro-fiber texture
+          bumpScale={0.06} // Fine micro-fiber texture
           roughnessMap={grainTexture || undefined}
         />
       </mesh>
