@@ -54,6 +54,9 @@ const Scene = () => {
         onCreated={handleCreated}
         frameloop="always"
       >
+        <ambientLight intensity={0.7} color="#FAF6EE" />
+        <directionalLight position={[10, 15, -5]} intensity={1.8} color="#E5C158" />
+        <directionalLight position={[-10, 10, 5]} intensity={0.8} color="#C58B3C" />
         <Suspense fallback={null}>
           <CameraController isMobile={isMobile} />
           <Particles />

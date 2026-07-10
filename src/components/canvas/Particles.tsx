@@ -9,100 +9,71 @@ export default function Particles() {
   const { mouse } = useThree();
 
   // Significantly increased grid dimensions for a denser, more intense particle sheet (approx. 12,350 particles)
-  const cols = 130;
-  const rows = 95;
-  const count = cols * rows;
+  const cols = 120;
+  const rows = 80;
 
-  const [positions, colors, initialData] = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const colsArray = new Float32Array(count * 3);
-    const data: { x: number; z: number; index: number }[] = [];
-
-    // Warm gold, sienna, and ivory tones
-    const colorsList = [
-      new THREE.Color("#E5C158"), // Gold
-      new THREE.Color("#D39E43"), // Amber
-      new THREE.Color("#C58B3C"), // Ochre
-      new THREE.Color("#FAF6EE"), // Ivory / Parchment Cream
-    ];
+  // Store the initial vertex coordinates to calculate wave offsets accurately
+  const initialData = useMemo(() => {
+    const data: { x: number; y: number; index: number }[] = [];
+    const width = 24;
+    const height = 16;
 
     let idx = 0;
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        // Map grid coordinates to X-Z plane
-        const x = ((c / (cols - 1)) - 0.5) * 24;
-        const y = 0;
-        const z = ((r / (rows - 1)) - 0.5) * 16;
-
-        pos[idx * 3] = x;
-        pos[idx * 3 + 1] = y;
-        pos[idx * 3 + 2] = z;
-
-        const color = colorsList[Math.floor(Math.random() * colorsList.length)];
-        colsArray[idx * 3] = color.r;
-        colsArray[idx * 3 + 1] = color.g;
-        colsArray[idx * 3 + 2] = color.b;
-
-        data.push({ x, z, index: idx });
+    for (let r = 0; r <= rows; r++) {
+      for (let c = 0; c <= cols; c++) {
+        const x = (c / cols - 0.5) * width;
+        const y = (r / rows - 0.5) * height;
+        data.push({ x, y, index: idx });
         idx++;
       }
     }
-
-    return [pos, colsArray, data];
-  }, [cols, rows, count]);
+    return data;
+  }, [cols, rows]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
+    if (!pointsRef.current) return;
+
     const pos = pointsRef.current.geometry.attributes.position.array as Float32Array;
+    const count = pointsRef.current.geometry.attributes.position.count;
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      const { x, z } = initialData[i];
+      const { x, y } = initialData[i];
 
-      // Coordinate parameter for diagonal wave propagation on X-Z plane
-      const waveParam = (x + 12) / 24 + (z + 8) / 16; 
+      // Coordinate parameter for diagonal wave propagation on the plane
+      const waveParam = (x + 12) / 24 + (y + 8) / 16; 
       
-      // Broad, slow primary diagonal wave (chill wind blowing through hanging cloth)
+      // Broad, slow wind waves blowing across the cloth sheet
       const primaryFreq = 2.2;
-      const primarySpeed = 0.45; // Slowed down speed for a calm feel
+      const primarySpeed = 0.45;
       const primaryWave = Math.sin(waveParam * primaryFreq - time * primarySpeed) * 0.85;
 
-      // Gentle secondary ripple for soft fluttering folds
+      // Gentle secondary flutter for realistic fabric folds
       const secondaryFreq = 0.14;
-      const secondarySpeed = 0.9; // Slowed down speed
-      const secondaryWave = Math.cos((x - z) * secondaryFreq - time * secondarySpeed) * 0.22;
+      const secondarySpeed = 0.9;
+      const secondaryWave = Math.cos((x - y) * secondaryFreq - time * secondarySpeed) * 0.22;
 
-      // Total displacement on the Y-axis (height displacement viewed from above)
-      pos[i3 + 1] = primaryWave + secondaryWave;
-
-      // Gentle micro-sway in X & Z for slow organic flexibility
-      pos[i3] = x + Math.sin(time * 0.15 + z) * 0.04;
-      pos[i3 + 2] = z + Math.cos(time * 0.15 + x) * 0.04;
+      // Displace along the local Z-axis (which becomes Y height due to rotation)
+      pos[i3 + 2] = primaryWave + secondaryWave;
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
-
-    // Reset rotation to 0 since camera is positioned on Y-axis looking straight down at X-Z plane
-    pointsRef.current.rotation.x = 0;
-    pointsRef.current.rotation.y = 0;
-    pointsRef.current.rotation.z = 0;
+    pointsRef.current.geometry.computeVertexNormals();
   });
 
   return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.04} // Smaller particles for a high-density dust appearance
-        vertexColors
-        sizeAttenuation={true}
+    <mesh ref={pointsRef} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[24, 16, cols, rows]} />
+      <meshStandardMaterial
+        color="#D39E43" // Amber gold
+        roughness={0.6}
+        metalness={0.15}
         transparent
-        opacity={0.65}
-        depthWrite={false}
+        opacity={0.9}
+        side={THREE.DoubleSide}
       />
-    </points>
+    </mesh>
   );
 }
 
