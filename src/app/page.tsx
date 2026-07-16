@@ -11,9 +11,9 @@ export default function Home() {
   const [githubData, setGithubData] = useState<ContributionData | null>(null);
   
   // Variable font live controls
-  const [wght, setWght] = useState(340);
-  const [wdth, setWdth] = useState(90);
-  const [opsz, setOpsz] = useState(64);
+  const [wght, setWght] = useState(400);
+  const [wdth, setWdth] = useState(85);
+  const [opsz, setOpsz] = useState(48);
 
   // Form interactive state
   const [email, setEmail] = useState("");
@@ -126,7 +126,7 @@ export default function Home() {
             </p>
 
             <h1 className="font-serif text-[clamp(2.5rem,7.5vw,5.5rem)] leading-[1.0] font-normal tracking-tight max-w-4xl my-8" id="hero-h">
-              A layout is a <span className="font-sans font-extrabold text-accent">verb</span>, not a <span className="font-serif italic font-light">noun</span>.
+              A system is a <span className="font-sans font-extrabold text-accent">verb</span>, not a <span className="font-serif italic font-light">noun</span>.
             </h1>
 
             {/* Specimen Live Control Panel */}
@@ -139,7 +139,7 @@ export default function Home() {
                   }}
                   aria-hidden="true"
                 >
-                  Restless
+                  Render
                 </span>
               </div>
               <figcaption className="specimen-live__panel" id="live-cap">
@@ -187,7 +187,7 @@ export default function Home() {
                     />
                   </div>
                   <p className="axis__help">
-                    Pull the axes. The word reads <em className="font-serif">Restless</em> by design — variables configured in real-time.
+                    Pull the axes. The word reads <em className="font-serif">Render</em> by design — variables configured in real-time.
                   </p>
                 </div>
               </figcaption>
@@ -205,29 +205,29 @@ export default function Home() {
           <section className="proof-sheet" id="weights" aria-labelledby="weights-h">
             <header className="plate-head">
               <p className="plate-head__no" aria-hidden="true">Plate 01</p>
-              <h2 className="plate-head__title" id="weights-h">Quaternary Grotesque Stack</h2>
+              <h2 className="plate-head__title" id="weights-h">Systems &amp; Architecture Stack</h2>
               <p className="plate-head__sub">
-                Three system masters on one typography system, set here at the size they do work at. Checked for responsive contrast guidelines.
+                Core technologies and architectures deployed at production scale. Checked for low-latency guidelines and high typographic hierarchy.
               </p>
             </header>
 
-            <ol className="list-none p-0 flex flex-col gap-6" aria-label="Weights, light to bold">
+            <ol className="list-none p-0 flex flex-col gap-6" aria-label="Capabilities and frameworks">
               <li className="border-b border-proof-rule pb-4">
-                <span className="font-mono text-xs text-proof-accent block mb-1">Thin · 200</span>
+                <span className="font-mono text-xs text-proof-accent block mb-1">01 · WebGPU &amp; GLSL</span>
                 <p className="font-sans font-light text-[clamp(1.5rem,4vw,2.5rem)] leading-none text-proof-ink">
-                  Hairlines hold at billboard sizes.
+                  High-performance shader structures running natively in the browser.
                 </p>
               </li>
               <li className="border-b border-proof-rule pb-4">
-                <span className="font-mono text-xs text-proof-accent block mb-1">Regular · 400</span>
+                <span className="font-mono text-xs text-proof-accent block mb-1">02 · Next.js &amp; Server Architectures</span>
                 <p className="font-sans font-normal text-[clamp(1.5rem,4vw,2.5rem)] leading-none text-proof-ink">
-                  Reads quiet in a paragraph, loud on a wall.
+                  Low-latency Next.js routers, server actions, and incremental regeneration.
                 </p>
               </li>
               <li className="pb-4">
-                <span className="font-mono text-xs text-proof-accent block mb-1">Black · 800</span>
+                <span className="font-mono text-xs text-proof-accent block mb-1">03 · React Three Fiber &amp; Three.js</span>
                 <p className="font-sans font-extrabold text-[clamp(1.5rem,4vw,2.5rem)] leading-none text-proof-ink">
-                  Set it once. Let it shout.
+                  Tactile 3D solvers and mathematical particle simulations.
                 </p>
               </li>
             </ol>
@@ -237,31 +237,31 @@ export default function Home() {
           <section className="py-16 md:py-24" id="concrete" aria-labelledby="concrete-h">
             <header className="plate-head">
               <p className="plate-head__no" aria-hidden="true">Plate 02</p>
-              <h2 className="plate-head__title" id="concrete-h">Concrete Poetry</h2>
+              <h2 className="plate-head__title" id="concrete-h">Telemetry Flow</h2>
               <p className="plate-head__sub">
-                The shape carries the meaning. Below: <em className="font-serif">“Rain on the Lee,”</em> set so the lines fall the way the rain does — typography as the picture, not its caption.
+                Data configured into shapes. Below: <em className="font-serif">“Cache Pool,”</em> set so the statements flow the way packets move down the wire — code as the picture, not its description.
               </p>
             </header>
 
             <figure className="poem" aria-labelledby="poem-cap">
               <div className="poem__field" aria-hidden="true">
-                <span className="poem__w" style={{ transform: "rotate(-4deg) translateY(12px)", fontWeight: 300 }}>slow</span>
-                <span className="poem__w" style={{ transform: "rotate(-7deg) translateY(15px)", fontWeight: 320 }}>at</span>
-                <span className="poem__w" style={{ transform: "rotate(-5deg) translateY(14px)", fontWeight: 340 }}>first</span>
+                <span className="poem__w" style={{ transform: "rotate(-4deg) translateY(12px)", fontWeight: 300 }}>data</span>
+                <span className="poem__w" style={{ transform: "rotate(-7deg) translateY(15px)", fontWeight: 320 }}>flows</span>
+                <span className="poem__w" style={{ transform: "rotate(-5deg) translateY(14px)", fontWeight: 340 }}>down</span>
                 <span className="poem__w" style={{ transform: "rotate(-9deg) translateY(24px)", fontWeight: 360 }}>the</span>
-                <span className="poem__w" style={{ transform: "rotate(-8deg) translateY(22px)", fontWeight: 380 }}>grey</span>
-                <span className="poem__w" style={{ transform: "rotate(-6deg) translateY(20px)", fontWeight: 360 }}>comes</span>
-                <span className="poem__w" style={{ transform: "rotate(-11deg) translateY(36px)", fontWeight: 420 }}>down</span>
-                <span className="poem__w" style={{ transform: "rotate(-10deg) translateY(34px)", fontWeight: 440 }}>the</span>
-                <span className="poem__w" style={{ transform: "rotate(-9deg) translateY(32px)", fontWeight: 420 }}>quays</span>
-                <span className="poem__w" style={{ transform: "rotate(-13deg) translateY(48px)", fontWeight: 520 }}>harder</span>
+                <span className="poem__w" style={{ transform: "rotate(-8deg) translateY(22px)", fontWeight: 380 }}>wire</span>
+                <span className="poem__w" style={{ transform: "rotate(-6deg) translateY(20px)", fontWeight: 360 }}>into</span>
+                <span className="poem__w" style={{ transform: "rotate(-11deg) translateY(36px)", fontWeight: 420 }}>the</span>
+                <span className="poem__w" style={{ transform: "rotate(-10deg) translateY(34px)", fontWeight: 440 }}>ring</span>
+                <span className="poem__w" style={{ transform: "rotate(-9deg) translateY(32px)", fontWeight: 420 }}>buffer</span>
+                <span className="poem__w" style={{ transform: "rotate(-13deg) translateY(48px)", fontWeight: 520 }}>faster</span>
                 <span className="poem__w" style={{ transform: "rotate(-12deg) translateY(46px)", fontWeight: 540 }}>now</span>
-                <span className="poem__w" style={{ transform: "rotate(-15deg) translateY(60px)", fontWeight: 640 }}>faster</span>
-                <span className="poem__w" style={{ transform: "rotate(-14deg) translateY(58px)", fontWeight: 660 }}>heavier</span>
-                <span className="poem__w poem__w--pool">river</span>
+                <span className="poem__w" style={{ transform: "rotate(-15deg) translateY(60px)", fontWeight: 640 }}>pooling</span>
+                <span className="poem__w" style={{ transform: "rotate(-14deg) translateY(58px)", fontWeight: 660 }}>instantly</span>
+                <span className="poem__w poem__w--pool">cache</span>
               </div>
               <figcaption className="text-center font-mono text-xs text-muted mt-8" id="poem-cap">
-                Rain on the Lee · Quaternary Grotesque · set by hand, 2026
+                Telemetry Stream · WebGL Pipe · set programmatically, 2026
               </figcaption>
             </figure>
           </section>
@@ -270,15 +270,15 @@ export default function Home() {
           <section className="py-16 md:py-24 border-t border-rule" id="poster" aria-labelledby="poster-h">
             <header className="plate-head">
               <p className="plate-head__no" aria-hidden="true">Plate 03</p>
-              <h2 className="plate-head__title" id="poster-h">Broken Grid Poster</h2>
+              <h2 className="plate-head__title" id="poster-h">Graphics Symposium Poster</h2>
               <p className="plate-head__sub">
-                A twelve-column grid is a promise. I keep it just long enough that breaking it means something. One element always crosses the line on purpose.
+                A twelve-column layout is a promise. I keep it just long enough that breaking it means something. One element always crosses the line on purpose.
               </p>
             </header>
 
             <figure className="poster" aria-labelledby="poster-cap">
               <div className="poster__plate">
-                <span className="poster__kicker">Lent Series · Triskel</span>
+                <span className="poster__kicker">Tech Series · Hong Kong</span>
                 <h3 className="poster__title">
                   <span className="poster__word">OFF</span>
                   <span className="poster__word">THE</span>
@@ -286,12 +286,12 @@ export default function Home() {
                 </h3>
                 <div>
                   <p className="poster__line">Fri 14 March · 8pm</p>
-                  <p className="poster__line">Triskel Arts Centre, Tobin Street</p>
+                  <p className="poster__line">Computing Symposium, Core 01</p>
                 </div>
-                <span className="poster__bleed" aria-hidden="true">14</span>
+                <span className="poster__bleed" aria-hidden="true">HK</span>
               </div>
               <figcaption className="text-center font-mono text-[0.65rem] text-muted mt-4" id="poster-cap">
-                The numeral bleeds past the right margin — the only element allowed to cross.
+                The region signature bleeds past the right margin — the only element allowed to cross.
               </figcaption>
             </figure>
           </section>
@@ -300,7 +300,7 @@ export default function Home() {
           <section className="py-16 md:py-24 border-t border-rule" id="work" aria-labelledby="work-h">
             <header className="plate-head">
               <p className="plate-head__no" aria-hidden="true">Index</p>
-              <h2 className="plate-head__title" id="work-h">Selected Work</h2>
+              <h2 className="plate-head__title" id="work-h">Selected Ledger</h2>
               <p className="plate-head__sub">
                 A structured registry of systems architected and interactive graphics pipelines deployed.
               </p>
@@ -310,21 +310,21 @@ export default function Home() {
               <li className="ledger__row">
                 <span className="ledger__year">2026</span>
                 <span className="ledger__name">Telemetry Canvas</span>
-                <span className="ledger__kind">High-performance particle streams · self-released</span>
+                <span className="ledger__kind">High-performance particle streams · WebGPU &amp; TS</span>
               </li>
               <li className="ledger__row">
                 <span className="ledger__year">2025</span>
-                <span className="ledger__name">Distillery Wordmark</span>
-                <span className="ledger__kind">Interactive SVG fluid mechanics · Cork Midsummer</span>
+                <span className="ledger__name">Tauri Native Shell</span>
+                <span className="ledger__kind">Low-latency rust wrapper · CoreLogic telemetry</span>
               </li>
               <li className="ledger__row">
                 <span className="ledger__year">2025</span>
-                <span className="ledger__name">Off the Grid series</span>
-                <span className="ledger__kind">Variable typography layout system · Triskel Arts</span>
+                <span className="ledger__name">React Fabric Physics</span>
+                <span className="ledger__kind">Real-time Cannon.js cloth solver · Apex Creative</span>
               </li>
               <li className="ledger__row">
                 <span className="ledger__year">2024</span>
-                <span className="ledger__name">Telemetry Spec Sheet</span>
+                <span className="ledger__name">Aether Spec UI</span>
                 <span className="ledger__kind">Next.js 16 WebGL graphics pipeline · Aether Lab</span>
               </li>
             </ol>
@@ -345,14 +345,14 @@ export default function Home() {
           {/* Studio Close & Contact Form */}
           <section className="py-16 md:py-24 border-t border-rule" id="studio" aria-labelledby="studio-h">
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink mb-6" id="studio-h">
-              Set by hand, in Cork.
+              Developed with care, in Hong Kong.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <p className="font-serif text-md text-muted leading-relaxed">
-                I draw type, set code into shapes, and make interfaces that argue with their own grid.
-                Most of it starts on tracing paper and ends as one variable file. I take a few
-                commissions a year — identities that need a face nobody else has, and systems
-                that want to be read across a room.
+                I write code, build low-latency rendering pipelines, and develop systems that argue with their own grid.
+                Most of it starts on tracing paper and ends as one production deploy. I take a few
+                commissions a year — architectures that need a visual presence nobody else has, and systems
+                that want to run at 120fps.
               </p>
 
               {/* Form as CTA (C2) */}
@@ -396,13 +396,13 @@ export default function Home() {
 
         {/* Ft1 · Mast-headed Footer */}
         <footer className="mt-20 pt-8 border-t border-rule" role="contentinfo">
-          <p className="font-sans font-bold text-sm uppercase tracking-widest text-ink">Press Quaternary</p>
+          <p className="font-sans font-bold text-sm uppercase tracking-widest text-ink">Jones Tse</p>
           <p className="font-serif text-xs text-muted mt-1">
-            The studio of Jones Tse — type, systems, and layouts, set against the grid.
+            The systems of Jones Tse — type, layout, and engines, set against the grid.
           </p>
           <p className="font-mono text-[0.65rem] text-muted mt-6 leading-relaxed">
             Set in Bricolage Grotesque &amp; Fraunces, with JetBrains Mono for the margins.<br />
-            Proofed in Cork. · © 2026 Jones Tse.
+            Built in Hong Kong. · © 2026 Jones Tse.
           </p>
         </footer>
       </div>
