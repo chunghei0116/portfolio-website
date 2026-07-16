@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface ContributionData {
   count: number;
@@ -132,17 +133,29 @@ export default function Home() {
           {/* Hero Section — Book I: The Slogan */}
           <section className="min-h-[85dvh] flex flex-col justify-between pt-8 pb-16" id="book1" aria-labelledby="hero-h">
             <p className="font-mono text-xs uppercase tracking-widest text-accent max-w-md">
-              Book I — Sing in me, Muse, of the graphics pipeline and the low-latency thread solver, whose steps refuse to hold still.
+              Book I — Sing in me, Muse, of the graphics pipeline and the low-latency solver.
             </p>
 
-            <h1 className="font-sans text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.0] font-extrabold tracking-display text-ink uppercase max-w-4xl my-8" id="hero-h">
-              Sing in me, <span className="font-serif italic font-light text-accent">Muse</span>, of the code that won&apos;t sit <span className="text-accent-2">still.</span>
-            </h1>
-
-            <div className="max-w-2xl">
-              <p className="font-serif text-lg leading-relaxed text-ink-2 drop-cap">
-                The architecture of Jones Tse is forged against the digital template. An epic of WebGPU shader loops, memory-mapped buffers, and compilation pipelines. Correctness is proven under strict type rules, and viewports render at the rate of classical wind.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-8">
+              <div>
+                <h1 className="font-sans text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.0] font-extrabold tracking-display text-ink uppercase mb-6" id="hero-h">
+                  Sing in me, <span className="font-serif italic font-light text-accent">Muse</span>, of the code that won&apos;t sit <span className="text-accent-2">still.</span>
+                </h1>
+                <p className="font-serif text-lg leading-relaxed text-ink-2 drop-cap">
+                  The architecture of Jones Tse is forged against the template. An epic of WebGPU shaders, memory buffers, and low-overhead pipelines. Correctness is proven under strict type constraints, and viewports render at the rate of classical wind.
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <div className="border-4 border-double border-rule p-2 max-w-[280px] sm:max-w-[320px] bg-paper-2">
+                  <Image
+                    src="/helmet.jpg"
+                    alt="Classical Greek helmet illustration"
+                    width={320}
+                    height={320}
+                    className="w-full grayscale contrast-125"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="scroll-divider" aria-hidden="true">
@@ -170,19 +183,19 @@ export default function Home() {
             <ol className="list-none p-0 flex flex-col gap-8" aria-label="Planks, of computations and proof">
               <li className="border-b border-rule pb-6">
                 <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">Plank I · Volcanic Shaders (WebGPU &amp; GLSL)</span>
-                <p className="font-serif text-[clamp(1.25rem,3vw,2rem)] leading-snug text-ink-2">
+                <p className="font-serif text-[clamp(1.15rem,2.5vw,1.75rem)] leading-snug text-ink-2">
                   We launch GPU compute pipelines natively from the browser, pulling thread calculations from raw vertex coordinates.
                 </p>
               </li>
               <li className="border-b border-rule pb-6">
                 <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">Plank II · Safe Proofs (TypeScript &amp; Rust)</span>
-                <p className="font-serif text-[clamp(1.25rem,3vw,2rem)] leading-snug text-ink-2">
+                <p className="font-serif text-[clamp(1.15rem,2.5vw,1.75rem)] leading-snug text-ink-2">
                   No cycles are left unverified. We use typing rules as strict mathematical proofs of compiler safety before deployment.
                 </p>
               </li>
               <li className="pb-6">
                 <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">Plank III · Kinetic Viewports (WebGL)</span>
-                <p className="font-serif text-[clamp(1.25rem,3vw,2rem)] leading-snug text-ink-2">
+                <p className="font-serif text-[clamp(1.15rem,2.5vw,1.75rem)] leading-snug text-ink-2">
                   The graphics respond instantly. Stately particle systems and solvers that animate under the touch of the user.
                 </p>
               </li>
@@ -194,9 +207,6 @@ export default function Home() {
             <header className="plate-head">
               <p className="plate-head__no" aria-hidden="true">Book III</p>
               <h2 className="plate-head__title" id="lyric-h">The Telemetry Lyric</h2>
-              <p className="plate-head__sub">
-                A choral translation of data streams. Written as a strophe/antistrophe to celebrate packet execution.
-              </p>
             </header>
 
             <div className="lyric-box" aria-hidden="true">
@@ -211,7 +221,7 @@ export default function Home() {
             </div>
             
             <p className="text-center font-mono text-[0.7rem] text-muted uppercase tracking-wider mt-8">
-              Telemetry Strophe · WebGPU Engine · set programmatically, 2026
+              Telemetry Strophe · WebGPU Engine · 2026
             </p>
           </section>
 
@@ -220,9 +230,6 @@ export default function Home() {
             <header className="plate-head">
               <p className="plate-head__no" aria-hidden="true">Book IV</p>
               <h2 className="plate-head__title" id="exploits-h">Selected Exploits</h2>
-              <p className="plate-head__sub">
-                A Registry of projects deployed and graphics pipelines shipped across the network.
-              </p>
             </header>
 
             <ol className="ledger" aria-label="Selected work, newest first">
@@ -269,7 +276,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <p className="font-serif text-lg text-ink-2 leading-relaxed">
                 I configure rendering engines, build memory pipelines, and design scroll layouts that argue with their own margins.
-                Most of it is forged on drawing boards and deployed as a single asset file. I accept a small number of commissions per season — low-latency architectures that require a stately visual signature.
+                I accept a small number of commissions per season — low-latency architectures that require a stately visual signature.
               </p>
 
               {/* Form as CTA */}
