@@ -10,11 +10,6 @@ interface ContributionData {
 export default function Home() {
   const [githubData, setGithubData] = useState<ContributionData | null>(null);
   
-  // Variable font live controls
-  const [wght, setWght] = useState(400);
-  const [wdth, setWdth] = useState(85);
-  const [opsz, setOpsz] = useState(48);
-  const [isGrabbed, setIsGrabbed] = useState(false);
 
   // Form interactive state
   const [email, setEmail] = useState("");
@@ -150,80 +145,14 @@ export default function Home() {
               A system is a <span className="font-sans font-extrabold text-accent">verb</span>, not a <span className="font-serif italic font-light">noun</span>.
             </h1>
 
-            {/* Specimen Live Control Panel */}
-            <figure className="specimen-live" data-grabbed={isGrabbed ? "true" : "false"} aria-labelledby="live-cap">
+            {/* Colossal Specimen */}
+            <div className="specimen-live">
               <div className="specimen-live__stage">
-                <span
-                  className="specimen-live__word"
-                  style={
-                    isGrabbed
-                      ? { fontVariationSettings: `'wght' ${wght}, 'wdth' ${wdth}, 'opsz' ${opsz}` }
-                      : undefined
-                  }
-                  aria-hidden="true"
-                >
-                  Render
+                <span className="specimen-live__word" aria-hidden="true">
+                  Compute
                 </span>
               </div>
-              <figcaption className="specimen-live__panel" id="live-cap">
-                <div className="axis">
-                  <div className="axis__row">
-                    <label className="axis__label" htmlFor="axWght">
-                      Weight<span className="axis__val">{wght}</span>
-                    </label>
-                    <input
-                      className="axis__range"
-                      id="axWght"
-                      type="range"
-                      min="200"
-                      max="800"
-                      value={wght}
-                      onChange={(e) => {
-                        setWght(Number(e.target.value));
-                        setIsGrabbed(true);
-                      }}
-                    />
-                  </div>
-                  <div className="axis__row">
-                    <label className="axis__label" htmlFor="axWdth">
-                      Width<span className="axis__val">{wdth}</span>
-                    </label>
-                    <input
-                      className="axis__range"
-                      id="axWdth"
-                      type="range"
-                      min="75"
-                      max="100"
-                      value={wdth}
-                      onChange={(e) => {
-                        setWdth(Number(e.target.value));
-                        setIsGrabbed(true);
-                      }}
-                    />
-                  </div>
-                  <div className="axis__row">
-                    <label className="axis__label" htmlFor="axOpsz">
-                      Optical<span className="axis__val">{opsz}</span>
-                    </label>
-                    <input
-                      className="axis__range"
-                      id="axOpsz"
-                      type="range"
-                      min="12"
-                      max="96"
-                      value={opsz}
-                      onChange={(e) => {
-                        setOpsz(Number(e.target.value));
-                        setIsGrabbed(true);
-                      }}
-                    />
-                  </div>
-                  <p className="axis__help">
-                    Pull the axes. The word reads <em className="font-serif">Render</em> by design — variables configured in real-time.
-                  </p>
-                </div>
-              </figcaption>
-            </figure>
+            </div>
 
             <a className="link-arrow self-start" href="#work">
               <span>See the ledger</span>
