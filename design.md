@@ -1,56 +1,46 @@
-# Design — Press Quaternary Portfolio
+# Design — Classical Homeric Folio Portfolio
 
-A locked design system for this app, extracted from the studied DNA of `press-01`. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
+A locked design system for this app, inspired by the style of Homeric Epics. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
 
 ## Genre
 editorial
 
 ## Macrostructure family
-Specimen (Plate-led Specimen layout with left-margin navigation and colossal text specimens).
+Folio-Manuscript (Book-led classical manuscript layout with left-margin Roman numeral navigation, strophe poetry layers, and antique double rules).
 
-- Marketing/Portfolio page: Specimen (with N3 side-rail, F3 tabular ledgers, and interactive slider specimens).
-- Content/Proof pages: Specimen (inverted warm bone paper styling).
+- Portfolio page: Folio-Manuscript (with N3 side-rail styled as classical Book indexes, double borders, drop caps, and centered strophe translated layouts).
 
 ## System
-- Display: "Bricolage Grotesque", weight 200–800
-- Body: "Fraunces", weight 300–600, normal & italic
+- Display: "Cinzel", weight 400–800 (stately Roman letterforms)
+- Body: "Cormorant Garamond", weight 300–700, normal & italic (classic manuscript serif)
 - Mono: "JetBrains Mono", weight 400–500
 
 ## Provenance
-- Source mode: url
-- URL: https://www.usehallmark.com/examples/press-01/
+- Source mode: custom-concept (Homeric Epic layout)
 - Date: 2026-07-16
-- Confidence: Tokens are exact (extracted from source CSS). Fonts are exact (extracted from source font declarations). Rhythm is unknown — HTML alone can't judge density.
+- Spacing: 4-point spacing scale
 
 ## Tokens
 
-### tokens.css
+### tokens
 ```css
 :root {
-  --color-paper:      oklch(13%  0.014 25);   /* ink-black warm ground */
-  --color-paper-2:    oklch(17%  0.018 25);
-  --color-paper-3:    oklch(22%  0.022 24);
-  --color-rule:       oklch(32%  0.020 24);
-  --color-rule-2:     oklch(44%  0.024 22);
-  --color-muted:      oklch(64%  0.020 26);
-  --color-neutral:    oklch(74%  0.016 28);
-  --color-ink-2:      oklch(86%  0.012 30);
-  --color-ink:        oklch(95%  0.010 32);   /* warm bone text */
-  --color-accent:     oklch(60%  0.21  25);   /* signal red */
-  --color-accent-ink: oklch(97%  0.012 30);
-  --color-focus:      oklch(72%  0.19  25);
+  --color-paper:      oklch(94%  0.015 88);   /* aged Greek papyrus */
+  --color-paper-2:    oklch(90%  0.018 84);   /* toned segments */
+  --color-paper-3:    oklch(86%  0.022 80);
+  --color-rule:       oklch(60%  0.08  85);   /* copper rules */
+  --color-rule-2:     oklch(48%  0.10  82);   /* antique bronze rules */
+  --color-muted:      oklch(48%  0.012 70);   /* ash grey annotations */
+  --color-ink-2:      oklch(32%  0.012 40);   /* charcoal body */
+  --color-ink:        oklch(18%  0.008 30);   /* volcanic ash display ink */
+  
+  --color-accent:     oklch(64%  0.14  85);   /* Greek gold/bronze */
+  --color-accent-2:   oklch(38%  0.12  245);  /* Aegean deep blue */
+  --color-accent-ink: oklch(96%  0.010 88);
+  --color-focus:      oklch(38%  0.12  245);
 
-  --proof-paper:      oklch(93%  0.020 70);   /* warm bone proof stock */
-  --proof-paper-2:    oklch(89%  0.024 68);
-  --proof-rule:       oklch(74%  0.024 60);
-  --proof-rule-2:     oklch(48%  0.020 45);
-  --proof-muted:      oklch(46%  0.018 40);
-  --proof-ink-2:      oklch(28%  0.020 35);
-  --proof-ink:        oklch(17%  0.024 32);   /* near-black ink */
-  --proof-accent:     oklch(52%  0.20  25);
-
-  --font-display: "Bricolage Grotesque", sans-serif;
-  --font-body:    "Fraunces", serif;
+  --font-display: "Cinzel", serif;
+  --font-body:    "Cormorant Garamond", serif;
   --font-mono:    "JetBrains Mono", monospace;
 
   --space-3xs: 0.125rem;
@@ -75,21 +65,12 @@ Specimen (Plate-led Specimen layout with left-margin navigation and colossal tex
 
 ## Microinteractions stance
 - Snappy hover scaling and translation responses.
-- Mechanical press feedback: active states translate 1px down.
+- Stately press feedback: active states translate 1px down.
 
 ## CTA voice
-- Primary CTA: mechanical press buttons (`.btn-specimen`), monospace uppercase labels.
+- Primary CTA: classical double-bordered button `.btn-specimen`.
 - Secondary CTA: typographic links with animated arrow glyph.
 
 ## Per-page allowances
-- Portfolio page MAY use concrete poetry layout grids.
-- Inverted proof sheet sections MUST keep square borders and tabular layouts.
-
-## What pages MUST share
-- The side-rail N3 layout framework.
-- The dual dark-press-ground / bone-proof-stock contrast sections.
-- Bricolage Grotesque and Fraunces type scales.
-
-## Notes
-- Do NOT use card-in-card patterns or pill-rounded borders; edge-based styling and hairlines only.
-- Suppress generic icon grids; use semantic typographic labels.
+- Portfolios MUST use chapter-based "Books".
+- Choral strophes may be used to structure code or telemetry logs.

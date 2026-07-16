@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Bricolage_Grotesque({
+const displayFont = Cinzel({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "700", "800"],
 });
 
-const bodyFont = Fraunces({
+const bodyFont = Cormorant_Garamond({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
@@ -22,8 +22,8 @@ const monoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jones Tse — Full-Stack Engineer & Graphics Specialist",
-  description: "Mechanical precision, tactile layout, and low-latency interactive systems. Ported to the press-01 design system.",
+  title: "Jones Tse — Systems & Graphics Folio",
+  description: "A classical Homeric Greek Folio documenting low-latency computation and WebGPU graphic pipelines.",
 };
 
 export default function RootLayout({
@@ -35,7 +35,6 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} h-full antialiased scroll-smooth`}
-      data-theme="press"
     >
       <body className="min-h-full font-sans antialiased text-foreground bg-background">
         <main className="relative min-h-screen flex flex-col">
