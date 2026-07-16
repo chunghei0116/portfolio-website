@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+
+const NetworkCanvas = dynamic(() => import("../components/NetworkCanvas"), {
+  ssr: false,
+});
 
 export default function Home() {
   // Form interactive state
@@ -72,31 +77,35 @@ export default function Home() {
           
           {/* 01 · Hero Section (Dashboard Split) */}
           <section className="pt-8 hero-layout min-h-[70dvh] items-center" id="hero" aria-labelledby="hero-title">
-            
-            {/* System Telemetry Console Well */}
-            <div className="console-well w-full flex flex-col gap-3">
-              <div className="console-header">
-                <span className="text-[10px] text-muted">TERMINAL_INSTANCE: AGY-01</span>
-                <div className="flex gap-1.5 items-center">
-                  <span className="console-dot"></span>
-                  <span className="console-dot"></span>
-                  <span className="console-dot"></span>
+                       {/* Left Column: Console status + 3D interactive nodes */}
+            <div className="flex flex-col gap-4 w-full">
+              <NetworkCanvas />
+              
+              {/* System Telemetry Console Well */}
+              <div className="console-well w-full flex flex-col gap-3">
+                <div className="console-header">
+                  <span className="text-[10px] text-muted">TERMINAL_INSTANCE: AGY-01</span>
+                  <div className="flex gap-1.5 items-center">
+                    <span className="console-dot"></span>
+                    <span className="console-dot"></span>
+                    <span className="console-dot"></span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col gap-1 text-[11px] leading-relaxed">
-                <p className="text-muted">// PIPELINE STATUS</p>
-                <div className="flex items-center gap-2">
-                  <span>DEPLOYMENT:</span>
-                  <span className="status-pill is-active">ONLINE</span>
+                <div className="flex flex-col gap-1 text-[11px] leading-relaxed">
+                  <p className="text-muted">// PIPELINE STATUS</p>
+                  <div className="flex items-center gap-2">
+                    <span>DEPLOYMENT:</span>
+                    <span className="status-pill is-active">ONLINE</span>
+                  </div>
+                  <p>RUNS: 1,482 builds compiled successfully</p>
+                  <p className="text-muted mt-2">// INFRASTRUCTURE DEFINITION</p>
+                  <p>OS Target: iOS (Swift/UIKit/SwiftUI) · Android (Kotlin/Jetpack Compose)</p>
+                  <p>Cloud & CI: AWS · Kubernetes · Terraform · GitHub Actions · GitLab CI</p>
+                  <p className="text-muted mt-2">// RECENT TELEMETRY</p>
+                  <p className="text-accent">✓ iOS build fastlane-release {"->"} App Store (Success)</p>
+                  <p className="text-accent">✓ Android gradle-assemble {"->"} Google Play (Success)</p>
+                  <p className="text-accent">✓ Terraform apply (Production VPS Cluster) {"->"} 0 errors</p>
                 </div>
-                <p>RUNS: 1,482 builds compiled successfully</p>
-                <p className="text-muted mt-2">// INFRASTRUCTURE DEFINITION</p>
-                <p>OS Target: iOS (Swift/UIKit/SwiftUI) · Android (Kotlin/Jetpack Compose)</p>
-                <p>Cloud & CI: AWS · Kubernetes · Terraform · GitHub Actions · GitLab CI</p>
-                <p className="text-muted mt-2">// RECENT TELEMETRY</p>
-                <p className="text-accent">✓ iOS build fastlane-release {"->"} App Store (Success)</p>
-                <p className="text-accent">✓ Android gradle-assemble {"->"} Google Play (Success)</p>
-                <p className="text-accent">✓ Terraform apply (Production VPS Cluster) {"->"} 0 errors</p>
               </div>
             </div>
 
