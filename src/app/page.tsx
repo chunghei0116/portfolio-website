@@ -38,6 +38,26 @@ export default function Home() {
       });
   }, []);
 
+  // Intersection observer to animate ledger rows when scrolled into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const rows = document.querySelectorAll(".ledger__row");
+    rows.forEach((row) => observer.observe(row));
+
+    return () => observer.disconnect();
+  }, []);
+
   // Monitor scrolling to highlight nav dots
   useEffect(() => {
     const handleScroll = () => {
