@@ -510,6 +510,25 @@ const milestones: Milestone[] = [
 
 export default function Home() {
   const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(null);
+  const yearColors: Record<number, string> = {
+    2019: "mobile",
+    2020: "cicd",
+    2021: "infra",
+    2022: "security",
+    2023: "mobile",
+    2024: "cicd",
+    2025: "infra",
+    2026: "security"
+  };
+
+  const getSymbol = (name: string) => {
+    if (name.toUpperCase().startsWith("AWS")) return "Aw";
+    const cleaned = name.replace(/[^a-zA-Z0-9]/g, "");
+    if (cleaned.length >= 2) {
+      return cleaned[0].toUpperCase() + cleaned[1].toLowerCase();
+    }
+    return name.substring(0, 2);
+  };
   const [isSwapping, setIsSwapping] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -591,11 +610,11 @@ export default function Home() {
 
           <div className="catalog__grid-wrap">
             {/* Legend */}
-            <ul className="legend" id="reading" aria-label="Discipline groups">
-              <li><span className="legend__chip legend__chip--mobile" aria-hidden="true"></span>Mobile</li>
-              <li><span className="legend__chip legend__chip--cicd" aria-hidden="true"></span>DevOps</li>
-              <li><span className="legend__chip legend__chip--infra" aria-hidden="true"></span>Cloud</li>
-              <li><span className="legend__chip legend__chip--security" aria-hidden="true"></span>Personal Development</li>
+            <ul className="legend" id="reading" aria-label="Year segments">
+              <li><span className="legend__chip legend__chip--mobile" aria-hidden="true"></span>2019 / 2023</li>
+              <li><span className="legend__chip legend__chip--cicd" aria-hidden="true"></span>2020 / 2024</li>
+              <li><span className="legend__chip legend__chip--infra" aria-hidden="true"></span>2021 / 2025</li>
+              <li><span className="legend__chip legend__chip--security" aria-hidden="true"></span>2022 / 2026</li>
             </ul>
 
             {/* Timeline Headers */}
@@ -616,14 +635,14 @@ export default function Home() {
                 <button
                   key={m.id}
                   className="cell"
-                  data-fam={m.fam}
+                  data-fam={yearColors[m.year]}
                   style={{ "--col": m.col, "--row": m.row } as React.CSSProperties}
                   role="listitem"
                   aria-pressed={selectedMilestone?.id === m.id}
                   onClick={() => selectMilestone(m)}
                 >
                   <span className="cell__num">{m.year}</span>
-                  <span className="cell__sym">{m.sym}</span>
+                  <span className="cell__sym">{getSymbol(m.name)}</span>
                   <span className="cell__name">{m.name}</span>
                   <span className="cell__stat">{m.metric}</span>
                 </button>
@@ -670,7 +689,7 @@ export default function Home() {
                 </p>
 
                 <div className="assay__plate" aria-hidden="true">
-                  <span className="assay__sym">{selectedMilestone.sym}</span>
+                  <span className="assay__sym">{getSymbol(selectedMilestone.name)}</span>
                 </div>
 
                 <h3 className="assay__name" id="assay-name">{selectedMilestone.name}</h3>
