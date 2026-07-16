@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Oswald, Fraunces, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Bricolage_Grotesque({
+const displayFont = Oswald({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
 });
 
 const bodyFont = Fraunces({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 
-const monoFont = JetBrains_Mono({
+const monoFont = Spline_Sans_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Jones Tse — Full-Stack Engineer & Graphics Specialist",
-  description: "Mechanical precision, tactile layout, and low-latency interactive systems. Ported to the press-01 design system.",
+  title: "Jones Tse — Systems & Graphics Engineering",
+  description: "A tactile developer sheet printed in two off-register riso passes. Set by hand in Hong Kong.",
 };
 
 export default function RootLayout({
@@ -35,7 +35,6 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} h-full antialiased scroll-smooth`}
-      data-theme="press"
     >
       <body className="min-h-full font-sans antialiased text-foreground bg-background">
         <main className="relative min-h-screen flex flex-col">
