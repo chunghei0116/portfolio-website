@@ -24,16 +24,24 @@
   --color-accent-soft: oklch(88% 0.045 40);   /* faint accent wash          */
   --color-focus:       oklch(48% 0.15 250);   /* cool blue ring             */
 
-  /* ---- Discipline Tints ---------------------------------------------- */
-  --fam-mobile:   oklch(95.5% 0.008 95);  /* Mobile Client — pale grass */
-  --fam-cicd:     oklch(95% 0.022 140);   /* CI/CD — cool leaf          */
-  --fam-infra:    oklch(95% 0.028 75);    /* Infrastructure — amber     */
-  --fam-security: oklch(93% 0.022 40);    /* Security — warm rust       */
+  /* ---- Chronological Year Tints -------------------------------------- */
+  --year-2019: oklch(95% 0.015 160);    /* Sage Green */
+  --year-2020: oklch(95% 0.025 130);    /* Mint Green */
+  --year-2021: oklch(94.5% 0.02 95);    /* Warm Olive */
+  --year-2022: oklch(95% 0.03 75);      /* Muted Amber */
+  --year-2023: oklch(94.5% 0.028 55);    /* Faint Coral/Apricot */
+  --year-2024: oklch(93.5% 0.025 35);    /* Apothecary Rust */
+  --year-2025: oklch(94% 0.02 5);        /* Dusty Rose */
+  --year-2026: oklch(94% 0.02 280);      /* Lavender Blue */
 
-  --fam-mobile-hi:   oklch(92% 0.012 95);
-  --fam-cicd-hi:     oklch(91.5% 0.03 140);
-  --fam-infra-hi:    oklch(91.5% 0.038 75);
-  --fam-security-hi: oklch(89% 0.03 40);
+  --year-2019-hi: oklch(92% 0.025 160);
+  --year-2020-hi: oklch(92% 0.035 130);
+  --year-2021-hi: oklch(91.5% 0.03 95);
+  --year-2022-hi: oklch(92% 0.04 75);
+  --year-2023-hi: oklch(91.5% 0.038 55);
+  --year-2024-hi: oklch(90.5% 0.035 35);
+  --year-2025-hi: oklch(91% 0.03 5);
+  --year-2026-hi: oklch(91% 0.03 280);
 
   /* ---- Status indicators --------------------------------------------- */
   --color-status-deploying: oklch(55% 0.13 45);
@@ -357,10 +365,14 @@
   border: 1px solid var(--color-line-2);
 }
 
-.legend__chip--mobile   { background: var(--fam-mobile); }
-.legend__chip--cicd     { background: var(--fam-cicd); }
-.legend__chip--infra    { background: var(--fam-infra); }
-.legend__chip--security { background: var(--fam-security); }
+.legend__chip--2019 { background: var(--year-2019); }
+.legend__chip--2020 { background: var(--year-2020); }
+.legend__chip--2021 { background: var(--year-2021); }
+.legend__chip--2022 { background: var(--year-2022); }
+.legend__chip--2023 { background: var(--year-2023); }
+.legend__chip--2024 { background: var(--year-2024); }
+.legend__chip--2025 { background: var(--year-2025); }
+.legend__chip--2026 { background: var(--year-2026); }
 
 /* Timeline Grid Table */
 .ptable {
@@ -409,10 +421,14 @@
               border-color var(--dur) var(--ease-out);
 }
 
-.cell[data-fam="mobile"]   { --cell-bg: var(--fam-mobile);   --cell-bg-hi: var(--fam-mobile-hi); }
-.cell[data-fam="cicd"]     { --cell-bg: var(--fam-cicd);     --cell-bg-hi: var(--fam-cicd-hi); }
-.cell[data-fam="infra"]    { --cell-bg: var(--fam-infra);    --cell-bg-hi: var(--fam-infra-hi); }
-.cell[data-fam="security"] { --cell-bg: var(--fam-security);  --cell-bg-hi: var(--fam-security-hi); }
+.cell[data-year="2019"] { --cell-bg: var(--year-2019); --cell-bg-hi: var(--year-2019-hi); }
+.cell[data-year="2020"] { --cell-bg: var(--year-2020); --cell-bg-hi: var(--year-2020-hi); }
+.cell[data-year="2021"] { --cell-bg: var(--year-2021); --cell-bg-hi: var(--year-2021-hi); }
+.cell[data-year="2022"] { --cell-bg: var(--year-2022); --cell-bg-hi: var(--year-2022-hi); }
+.cell[data-year="2023"] { --cell-bg: var(--year-2023); --cell-bg-hi: var(--year-2023-hi); }
+.cell[data-year="2024"] { --cell-bg: var(--year-2024); --cell-bg-hi: var(--year-2024-hi); }
+.cell[data-year="2025"] { --cell-bg: var(--year-2025); --cell-bg-hi: var(--year-2025-hi); }
+.cell[data-year="2026"] { --cell-bg: var(--year-2026); --cell-bg-hi: var(--year-2026-hi); }
 
 .cell:hover {
   background: var(--cell-bg-hi);

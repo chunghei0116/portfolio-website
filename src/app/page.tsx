@@ -41,7 +41,7 @@ const milestones: Milestone[] = [
     name: "Socket Sync Engine",
     year: 2020,
     col: 2,
-    row: 1,
+    row: 2,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
@@ -56,7 +56,7 @@ const milestones: Milestone[] = [
     name: "Unified App Client",
     year: 2021,
     col: 3,
-    row: 1,
+    row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
@@ -86,7 +86,7 @@ const milestones: Milestone[] = [
     name: "Fastlane CD Pipelines",
     year: 2023,
     col: 5,
-    row: 1,
+    row: 2,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
@@ -101,7 +101,7 @@ const milestones: Milestone[] = [
     name: "Native Telemetry Client",
     year: 2024,
     col: 6,
-    row: 1,
+    row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Active",
@@ -163,7 +163,7 @@ const milestones: Milestone[] = [
     name: "Docker Build Agent Farm",
     year: 2020,
     col: 2,
-    row: 2,
+    row: 3,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Complete",
@@ -178,7 +178,7 @@ const milestones: Milestone[] = [
     name: "AWS Multi-Region Transit",
     year: 2021,
     col: 3,
-    row: 2,
+    row: 4,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Complete",
@@ -193,7 +193,7 @@ const milestones: Milestone[] = [
     name: "Terraform Infrastructure",
     year: 2022,
     col: 4,
-    row: 2,
+    row: 3,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Complete",
@@ -208,7 +208,7 @@ const milestones: Milestone[] = [
     name: "Kubernetes Orchestration",
     year: 2023,
     col: 5,
-    row: 2,
+    row: 3,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Complete",
@@ -223,7 +223,7 @@ const milestones: Milestone[] = [
     name: "Zero-Trust Mesh Networks",
     year: 2024,
     col: 6,
-    row: 2,
+    row: 4,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Active",
@@ -270,7 +270,7 @@ const milestones: Milestone[] = [
     name: "CI Cache Layer",
     year: 2019,
     col: 1,
-    row: 3,
+    row: 4,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -285,7 +285,7 @@ const milestones: Milestone[] = [
     name: "VM Android Emulator Host",
     year: 2020,
     col: 2,
-    row: 3,
+    row: 5,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -300,7 +300,7 @@ const milestones: Milestone[] = [
     name: "VPC Transit Peering",
     year: 2021,
     col: 3,
-    row: 3,
+    row: 5,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -315,7 +315,7 @@ const milestones: Milestone[] = [
     name: "IaC Staging Pre-flight",
     year: 2022,
     col: 4,
-    row: 3,
+    row: 4,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -330,7 +330,7 @@ const milestones: Milestone[] = [
     name: "CDN Asset Edge",
     year: 2023,
     col: 5,
-    row: 3,
+    row: 5,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -345,7 +345,7 @@ const milestones: Milestone[] = [
     name: "DB Read-Replica Router",
     year: 2024,
     col: 6,
-    row: 3,
+    row: 5,
     fam: "infra",
     famLabel: "Cloud",
     status: "Active",
@@ -360,7 +360,7 @@ const milestones: Milestone[] = [
     name: "GitOps ArgoCD Stack",
     year: 2025,
     col: 7,
-    row: 3,
+    row: 4,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -392,7 +392,7 @@ const milestones: Milestone[] = [
     name: "Android Developer Cert",
     year: 2019,
     col: 1,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -407,7 +407,7 @@ const milestones: Milestone[] = [
     name: "Open Source FASTLANE",
     year: 2020,
     col: 2,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -422,7 +422,7 @@ const milestones: Milestone[] = [
     name: "Engineering Mentorship",
     year: 2021,
     col: 3,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -437,7 +437,7 @@ const milestones: Milestone[] = [
     name: "AWS Solutions Architect",
     year: 2022,
     col: 4,
-    row: 4,
+    row: 5,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -452,7 +452,7 @@ const milestones: Milestone[] = [
     name: "DevOps Community Speaker",
     year: 2023,
     col: 5,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -467,7 +467,7 @@ const milestones: Milestone[] = [
     name: "Kubernetes Administrator",
     year: 2024,
     col: 6,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -482,7 +482,7 @@ const milestones: Milestone[] = [
     name: "Zero-Trust Tech Author",
     year: 2025,
     col: 7,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Complete",
@@ -497,7 +497,7 @@ const milestones: Milestone[] = [
     name: "Engineering Deliverables Lead",
     year: 2026,
     col: 8,
-    row: 4,
+    row: 6,
     fam: "security",
     famLabel: "Personal Development",
     status: "Deploying",
@@ -621,10 +621,14 @@ export default function Home() {
           <div className="catalog__grid-wrap">
             {/* Legend */}
             <ul className="legend" id="reading" aria-label="Year segments">
-              <li><span className="legend__chip legend__chip--mobile" aria-hidden="true"></span>2019 / 2023</li>
-              <li><span className="legend__chip legend__chip--cicd" aria-hidden="true"></span>2020 / 2024</li>
-              <li><span className="legend__chip legend__chip--infra" aria-hidden="true"></span>2021 / 2025</li>
-              <li><span className="legend__chip legend__chip--security" aria-hidden="true"></span>2022 / 2026</li>
+              <li><span className="legend__chip legend__chip--2019" aria-hidden="true"></span>2019</li>
+              <li><span className="legend__chip legend__chip--2020" aria-hidden="true"></span>2020</li>
+              <li><span className="legend__chip legend__chip--2021" aria-hidden="true"></span>2021</li>
+              <li><span className="legend__chip legend__chip--2022" aria-hidden="true"></span>2022</li>
+              <li><span className="legend__chip legend__chip--2023" aria-hidden="true"></span>2023</li>
+              <li><span className="legend__chip legend__chip--2024" aria-hidden="true"></span>2024</li>
+              <li><span className="legend__chip legend__chip--2025" aria-hidden="true"></span>2025</li>
+              <li><span className="legend__chip legend__chip--2026" aria-hidden="true"></span>2026</li>
             </ul>
 
             {/* Timeline Headers */}
@@ -645,7 +649,7 @@ export default function Home() {
                 <button
                   key={m.id}
                   className="cell"
-                  data-fam={yearColors[m.year]}
+                  data-year={m.year}
                   style={{ "--col": m.col, "--row": m.row } as React.CSSProperties}
                   role="listitem"
                   aria-pressed={selectedMilestone?.id === m.id}
