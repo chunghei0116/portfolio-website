@@ -732,9 +732,20 @@
   }
 
   .assay {
-    position: sticky;
-    top: 64px;
-    order: -1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+    width: calc(100vw - var(--space-lg) * 2);
+    max-width: 26rem;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-panel);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas:
@@ -786,7 +797,6 @@
   .wordmark__sub { display: none; }
   .wordmark { grid-template-rows: auto; }
   .wordmark__name { font-size: var(--text-base); }
-  .assay { top: 56px; }
   .ptable { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 

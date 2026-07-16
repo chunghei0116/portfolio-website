@@ -633,64 +633,77 @@ export default function Home() {
 
           {/* Assay Sidebar Panel */}
           {selectedMilestone ? (
-            <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
-              <button 
-                className="absolute top-4 right-4 font-mono text-xs text-muted hover:text-accent cursor-pointer"
-                onClick={(e) => {
-                  e.stopPropagation();
+            <>
+              {/* Mobile Backdrop */}
+              <div 
+                className="fixed inset-0 bg-[oklch(25.5%_0.018_50_/_0.4)] backdrop-blur-sm z-[450] lg:hidden"
+                onClick={() => {
                   setIsSwapping(true);
                   setTimeout(() => {
                     setSelectedMilestone(null);
                     setIsSwapping(false);
                   }, 180);
                 }}
-                aria-label="Close details"
-              >
-                [✕]
-              </button>
+              />
+              <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
+                <button 
+                  className="absolute top-4 right-4 font-mono text-xs text-muted hover:text-accent cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsSwapping(true);
+                    setTimeout(() => {
+                      setSelectedMilestone(null);
+                      setIsSwapping(false);
+                    }, 180);
+                  }}
+                  aria-label="Close details"
+                >
+                  [✕]
+                </button>
 
-              <p className="assay__eyebrow">
-                <span className="assay__index">{selectedMilestone.year} Log</span>
-                <span className="assay__fam">{selectedMilestone.famLabel}</span>
-              </p>
+                <p className="assay__eyebrow">
+                  <span className="assay__index">{selectedMilestone.year} Log</span>
+                  <span className="assay__fam">{selectedMilestone.famLabel}</span>
+                </p>
 
-              <div className="assay__plate" aria-hidden="true">
-                <span className="assay__sym">{selectedMilestone.sym}</span>
-              </div>
-
-              <h3 className="assay__name" id="assay-name">{selectedMilestone.name}</h3>
-              <p className="assay__origin">{selectedMilestone.platform}</p>
-
-              <dl className="assay__stats">
-                <div>
-                  <dt>Primary Metric</dt>
-                  <dd><span className="assay__caf">{selectedMilestone.metric}</span> <span className="assay__caf-note">{selectedMilestone.metricLabel}</span></dd>
+                <div className="assay__plate" aria-hidden="true">
+                  <span className="assay__sym">{selectedMilestone.sym}</span>
                 </div>
-                <div>
-                  <dt>Log Status</dt>
-                  <dd
-                    style={{
-                      color:
-                        selectedMilestone.status === "Deploying"
-                          ? "var(--color-status-deploying)"
-                          : selectedMilestone.status === "Active"
-                          ? "var(--color-status-active)"
-                          : "var(--color-status-complete)"
-                    }}
-                  >
-                    {selectedMilestone.status}
-                  </dd>
-                </div>
-              </dl>
 
-              <p className="assay__notes">
-                {selectedMilestone.notes}
-              </p>
+                <h3 className="assay__name" id="assay-name">{selectedMilestone.name}</h3>
+                <p className="assay__origin">{selectedMilestone.platform}</p>
 
-              <p className="assay__hint">Select any cell in the table to load its telemetry dossier.</p>
-            </aside>
+                <dl className="assay__stats">
+                  <div>
+                    <dt>Primary Metric</dt>
+                    <dd><span className="assay__caf">{selectedMilestone.metric}</span> <span className="assay__caf-note">{selectedMilestone.metricLabel}</span></dd>
+                  </div>
+                  <div>
+                    <dt>Log Status</dt>
+                    <dd
+                      style={{
+                        color:
+                          selectedMilestone.status === "Deploying"
+                            ? "var(--color-status-deploying)"
+                            : selectedMilestone.status === "Active"
+                            ? "var(--color-status-active)"
+                            : "var(--color-status-complete)"
+                      }}
+                    >
+                      {selectedMilestone.status}
+                    </dd>
+                  </div>
+                </dl>
+
+                <p className="assay__notes">
+                  {selectedMilestone.notes}
+                </p>
+
+                <p className="assay__hint">Select any cell in the table to load its telemetry dossier.</p>
+              </aside>
+            </>
           ) : (
-            <aside className="assay hidden md:block" id="assay" aria-live="polite">
+            <aside className="assay hidden lg:block" id="assay" aria-live="polite">
               <p className="assay__hint" style={{ borderTop: "none", paddingTop: 0 }}>
                 Select any cell in the table to load its telemetry dossier.
               </p>
