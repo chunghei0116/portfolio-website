@@ -1,13 +1,12 @@
 "use client";
 
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import * as CANNON from "cannon-es";
 
 export default function Particles() {
   const meshRef = useRef<THREE.Mesh>(null!);
-  const { mouse } = useThree();
 
   // Resolution for physics grid (optimized for 60fps performance on all devices)
   const cols = 32;
@@ -22,8 +21,6 @@ export default function Particles() {
     const list: CANNON.Body[][] = [];
     const width = 24;
     const height = 16;
-    const dx = width / cols;
-    const dy = height / rows;
     const mass = 0.8;
     const particleShape = new CANNON.Particle();
 
@@ -125,8 +122,14 @@ export default function Particles() {
     // Create high-frequency noise representing cloth threads/grain
     const imgData = ctx.createImageData(128, 128);
     const data = imgData.data;
+    let seed = 42;
+    const lcg = () => {
+      seed = (seed * 1664525 + 1013904223) % 4294967296;
+      return seed / 4294967296;
+    };
+
     for (let i = 0; i < data.length; i += 4) {
-      const noise = (Math.random() - 0.5) * 90;
+      const noise = (lcg() - 0.5) * 90;
       const val = Math.min(255, Math.max(0, 128 + noise));
       data[i] = val;     // R
       data[i + 1] = val; // G

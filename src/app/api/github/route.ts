@@ -3,10 +3,14 @@ import { NextResponse } from "next/server";
 // Cache duration: 1 hour (3600 seconds)
 export const revalidate = 3600;
 
-interface Day {
+interface ContributionDay {
   color: string;
   contributionCount: number;
   date: string;
+}
+
+interface ContributionWeek {
+  contributionDays: ContributionDay[];
 }
 
 export async function GET() {
@@ -58,11 +62,11 @@ export async function GET() {
         const calendarData = data?.data?.user?.contributionsCollection?.contributionCalendar;
         if (calendarData) {
           const count = calendarData.totalContributions;
-          const rawWeeks = calendarData.weeks || [];
+          const rawWeeks: ContributionWeek[] = calendarData.weeks || [];
           
           // Map GraphQL format to standardized days structure
-          const contributions = rawWeeks.map((w: any) => 
-            (w.contributionDays || []).map((d: any) => ({
+          const contributions = rawWeeks.map((w: ContributionWeek) => 
+            (w.contributionDays || []).map((d: ContributionDay) => ({
               color: d.color,
               contributionCount: d.contributionCount,
               date: d.date,
