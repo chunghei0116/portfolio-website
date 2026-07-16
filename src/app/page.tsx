@@ -509,14 +509,21 @@ const milestones: Milestone[] = [
 ];
 
 export default function Home() {
-  const [selectedMilestone, setSelectedMilestone] = useState<Milestone>(milestones[5]); // Default to Tc (Telemetry Client)
+  const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(null);
   const [isSwapping, setIsSwapping] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState<"default" | "loading" | "success" | "error">("default");
 
   const selectMilestone = (m: Milestone) => {
-    if (m.id === selectedMilestone.id) return;
+    if (selectedMilestone && m.id === selectedMilestone.id) {
+      setIsSwapping(true);
+      setTimeout(() => {
+        setSelectedMilestone(null);
+        setIsSwapping(false);
+      }, 180);
+      return;
+    }
     setIsSwapping(true);
     setTimeout(() => {
       setSelectedMilestone(m);
@@ -612,7 +619,7 @@ export default function Home() {
                   data-fam={m.fam}
                   style={{ "--col": m.col, "--row": m.row } as React.CSSProperties}
                   role="listitem"
-                  aria-pressed={selectedMilestone.id === m.id}
+                  aria-pressed={selectedMilestone?.id === m.id}
                   onClick={() => selectMilestone(m)}
                 >
                   <span className="cell__num">{m.year}</span>
@@ -625,47 +632,70 @@ export default function Home() {
           </div>
 
           {/* Assay Sidebar Panel */}
-          <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
-            <p className="assay__eyebrow">
-              <span className="assay__index">{selectedMilestone.year} Log</span>
-              <span className="assay__fam">{selectedMilestone.famLabel}</span>
-            </p>
+          {selectedMilestone ? (
+            <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
+              <button 
+                className="absolute top-4 right-4 font-mono text-xs text-muted hover:text-accent cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsSwapping(true);
+                  setTimeout(() => {
+                    setSelectedMilestone(null);
+                    setIsSwapping(false);
+                  }, 180);
+                }}
+                aria-label="Close details"
+              >
+                [✕]
+              </button>
 
-            <div className="assay__plate" aria-hidden="true">
-              <span className="assay__sym">{selectedMilestone.sym}</span>
-            </div>
+              <p className="assay__eyebrow">
+                <span className="assay__index">{selectedMilestone.year} Log</span>
+                <span className="assay__fam">{selectedMilestone.famLabel}</span>
+              </p>
 
-            <h3 className="assay__name" id="assay-name">{selectedMilestone.name}</h3>
-            <p className="assay__origin">{selectedMilestone.platform}</p>
-
-            <dl className="assay__stats">
-              <div>
-                <dt>Primary Metric</dt>
-                <dd><span className="assay__caf">{selectedMilestone.metric}</span> <span className="assay__caf-note">{selectedMilestone.metricLabel}</span></dd>
+              <div className="assay__plate" aria-hidden="true">
+                <span className="assay__sym">{selectedMilestone.sym}</span>
               </div>
-              <div>
-                <dt>Log Status</dt>
-                <dd
-                  style={{
-                    color:
-                      selectedMilestone.status === "Deploying"
-                        ? "var(--color-status-deploying)"
-                        : selectedMilestone.status === "Active"
-                        ? "var(--color-status-active)"
-                        : "var(--color-status-complete)"
-                  }}
-                >
-                  {selectedMilestone.status}
-                </dd>
-              </div>
-            </dl>
 
-            <p className="assay__notes">
-              {selectedMilestone.notes}
-            </p>
+              <h3 className="assay__name" id="assay-name">{selectedMilestone.name}</h3>
+              <p className="assay__origin">{selectedMilestone.platform}</p>
 
-            <p className="assay__hint">Select any cell in the table to load its telemetry dossier.</p>
-          </aside>
+              <dl className="assay__stats">
+                <div>
+                  <dt>Primary Metric</dt>
+                  <dd><span className="assay__caf">{selectedMilestone.metric}</span> <span className="assay__caf-note">{selectedMilestone.metricLabel}</span></dd>
+                </div>
+                <div>
+                  <dt>Log Status</dt>
+                  <dd
+                    style={{
+                      color:
+                        selectedMilestone.status === "Deploying"
+                          ? "var(--color-status-deploying)"
+                          : selectedMilestone.status === "Active"
+                          ? "var(--color-status-active)"
+                          : "var(--color-status-complete)"
+                    }}
+                  >
+                    {selectedMilestone.status}
+                  </dd>
+                </div>
+              </dl>
+
+              <p className="assay__notes">
+                {selectedMilestone.notes}
+              </p>
+
+              <p className="assay__hint">Select any cell in the table to load its telemetry dossier.</p>
+            </aside>
+          ) : (
+            <aside className="assay hidden md:block" id="assay" aria-live="polite">
+              <p className="assay__hint" style={{ borderTop: "none", paddingTop: 0 }}>
+                Select any cell in the table to load its telemetry dossier.
+              </p>
+            </aside>
+          )}
         </section>
 
         {/* Closing statement */}
