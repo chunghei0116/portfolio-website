@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-07-16",
+    "macrostructure": "dashboard-split",
+    "theme": "custom",
+    "theme_axes": "light / geometric-sans / cool",
+    "vibe": "devops precision, mobile architecture, tactile terminal",
+    "enrichment": "none",
+    "brief": "DevOps and Mobile engineering portfolio, utilitarian and austere."
+  },
+  {
+    "date": "2026-07-16",
     "macrostructure": "Marquee Hero",
     "theme": "Carnival (Pressroom drop)",
     "enrichment": "none",

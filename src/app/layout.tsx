@@ -1,29 +1,28 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Cinzel({
+const displayFont = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const bodyFont = Cormorant_Garamond({
+const bodyFont = Geist({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const monoFont = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Jones Tse — Systems & Graphics Folio",
-  description: "A classical Homeric Greek Folio documenting low-latency computation and WebGPU graphic pipelines.",
+  title: "Jones Tse — Mobile & DevOps Engineer Folio",
+  description: "Systems portfolio showcasing low-latency infrastructure, mobile apps, CI/CD telemetry, and cloud automation.",
 };
 
 export default function RootLayout({

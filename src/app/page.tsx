@@ -5,15 +5,16 @@ import { useEffect, useState } from "react";
 export default function Home() {
   // Form interactive state
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState<"default" | "loading" | "success" | "error">("default");
   
   // Active nav dot state
-  const [activeSection, setActiveSection] = useState("top-section");
+  const [activeSection, setActiveSection] = useState("hero");
 
-  // Monitor scrolling to highlight nav dots
+  // Monitor scrolling to highlight nav links
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["top-section", "catalogue", "programme", "workshops", "visit"];
+      const sections = ["hero", "experience", "projects", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -33,29 +34,9 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Intersection observer to animate ledger/card rows when scrolled into view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const animateElements = document.querySelectorAll(".riso-card, .ledger__row");
-    animateElements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes("@")) {
+    if (!email || !email.includes("@") || !message.trim()) {
       setFormStatus("error");
       return;
     }
@@ -63,285 +44,269 @@ export default function Home() {
     setTimeout(() => {
       setFormStatus("success");
       setEmail("");
+      setMessage("");
     }, 1200);
   };
 
   return (
     <>
-      {/* N3 · Side-rail Navigation (Greek Books) */}
-      <nav className="rail" aria-label="Folio Books">
-        <a className="rail__mark" href="#top">
-          <span className="rail__name">Off-Register</span>
-          <span className="rail__role" aria-hidden="true">Riso Print Fair</span>
+      {/* N5 · Floating Navigation Pill */}
+      <nav className="nav-floating" aria-label="Main Navigation">
+        <a href="#hero" className={`nav-link ${activeSection === "hero" ? "is-active" : ""}`}>
+          [01] SYSTEM
         </a>
-        <ul className="rail__dots" aria-label="Sections">
-          <li>
-            <a href="#top-section" className={activeSection === "top-section" ? "is-active" : ""} aria-label="Top">
-              <span className="rail__dot">I</span>
-            </a>
-          </li>
-          <li>
-            <a href="#catalogue" className={activeSection === "catalogue" ? "is-active" : ""} aria-label="Exhibitors">
-              <span className="rail__dot">II</span>
-            </a>
-          </li>
-          <li>
-            <a href="#programme" className={activeSection === "programme" ? "is-active" : ""} aria-label="Programme">
-              <span className="rail__dot">III</span>
-            </a>
-          </li>
-          <li>
-            <a href="#workshops" className={activeSection === "workshops" ? "is-active" : ""} aria-label="Workshops">
-              <span className="rail__dot">IV</span>
-            </a>
-          </li>
-          <li>
-            <a href="#visit" className={activeSection === "visit" ? "is-active" : ""} aria-label="Visit">
-              <span className="rail__dot">V</span>
-            </a>
-          </li>
-        </ul>
-        <a className="rail__year" href="#visit">GLA · MMXXVI</a>
+        <a href="#experience" className={`nav-link ${activeSection === "experience" ? "is-active" : ""}`}>
+          [02] LOGS
+        </a>
+        <a href="#projects" className={`nav-link ${activeSection === "projects" ? "is-active" : ""}`}>
+          [03] STACK
+        </a>
+        <a href="#contact" className={`nav-link ${activeSection === "contact" ? "is-active" : ""}`}>
+          [04] SIGNAL
+        </a>
       </nav>
 
-      {/* Main Page Content */}
-      <div className="shell" id="top">
-        <main className="flex flex-col gap-24 md:gap-36">
-          {/* Hero Section */}
-          <section className="min-h-[80dvh] flex flex-col justify-between pt-4" id="top-section" aria-labelledby="hero-h">
-            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-              Edition 04 · Govanhill · 18–19 October 2026 · Free entry
-            </span>
-
-            <div className="my-auto max-w-4xl">
-              <h1 className="font-sans text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] font-extrabold tracking-display text-ink uppercase mb-6" id="hero-h">
-                Off-Register<br />
-                A Risograph <span className="font-serif italic font-light text-accent">Print Fair</span>
-              </h1>
-              <p className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] leading-relaxed text-ink-2 mb-8 max-w-[34ch] drop-cap">
-                Two days · One drum at a time. Design like print: warm, off-register, intentional. For one weekend the Pulp Yard fills with spot colour — Greek bronze that won&apos;t sit still, Aegean deep blue that bleeds a hair past its edge, paper you can smell. Come turn the drum.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a className="btn-specimen" href="#visit">Plan your visit</a>
-                <a className="link-arrow self-center" href="#catalogue">
-                  <span>Read the exhibitor list</span>
-                  <svg className="link-arrow__glyph" viewBox="0 0 24 12" width="32" height="16" aria-hidden="true">
-                    <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" />
-                  </svg>
-                </a>
+      {/* Main Page Layout */}
+      <div className="max-w-[var(--page-max)] mx-auto px-[var(--page-gutter)] py-[var(--space-2xl)]">
+        <main className="flex flex-col gap-[var(--space-3xl)] md:gap-[var(--space-4xl)]">
+          
+          {/* 01 · Hero Section (Dashboard Split) */}
+          <section className="pt-8 hero-layout min-h-[70dvh] items-center" id="hero" aria-labelledby="hero-title">
+            
+            {/* System Telemetry Console Well */}
+            <div className="console-well w-full flex flex-col gap-3">
+              <div className="console-header">
+                <span className="text-[10px] text-muted">TERMINAL_INSTANCE: AGY-01</span>
+                <div className="flex gap-1.5 items-center">
+                  <span className="console-dot"></span>
+                  <span className="console-dot"></span>
+                  <span className="console-dot"></span>
+                </div>
+              </div>
+              <div className="flex flex-col gap-1 text-[11px] leading-relaxed">
+                <p className="text-muted">// PIPELINE STATUS</p>
+                <div className="flex items-center gap-2">
+                  <span>DEPLOYMENT:</span>
+                  <span className="status-pill is-active">ONLINE</span>
+                </div>
+                <p>RUNS: 1,482 builds compiled successfully</p>
+                <p className="text-muted mt-2">// INFRASTRUCTURE DEFINITION</p>
+                <p>OS Target: iOS (Swift/UIKit/SwiftUI) · Android (Kotlin/Jetpack Compose)</p>
+                <p>Cloud & CI: AWS · Kubernetes · Terraform · GitHub Actions · GitLab CI</p>
+                <p className="text-muted mt-2">// RECENT TELEMETRY</p>
+                <p className="text-accent">✓ iOS build fastlane-release {"->"} App Store (Success)</p>
+                <p className="text-accent">✓ Android gradle-assemble {"->"} Google Play (Success)</p>
+                <p className="text-accent">✓ Terraform apply (Production VPS Cluster) {"->"} 0 errors</p>
               </div>
             </div>
 
-            <div className="scroll-divider" aria-hidden="true">
-              <span className="scroll-divider__glyph">❦</span>
+            {/* Profile Intro */}
+            <div className="flex flex-col gap-6">
+              <span className="mono-label">[ SYSTEMS DESIGN &amp; DEPLOYMENT ]</span>
+              <h1 className="display-title text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.05]" id="hero-title">
+                Jones Tse
+              </h1>
+              <p className="font-sans text-md md:text-lg text-ink-2 leading-relaxed max-w-[55ch]">
+                Mobile and DevOps Engineer bridging native client applications with automated cloud delivery. Specialized in low-latency CI/CD pipelines, high-density build infrastructure, and scalable system provisioning.
+              </p>
+              <div className="flex flex-wrap gap-4 mt-2">
+                <a className="btn btn-primary" href="#contact">Hire/Contact</a>
+                <a className="btn btn-secondary" href="#experience">View Logs</a>
+              </div>
             </div>
+
           </section>
 
-          {/* Catalogue / Exhibitors Section */}
-          <section className="pt-8" id="catalogue" aria-labelledby="catalogue-h">
-            <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">02</p>
-              <h2 className="plate-head__title" id="catalogue-h">Exhibitors</h2>
-              <p className="plate-head__sub">Thirty-four studios · Hall A &amp; the Mezzanine · updated 2 Oct</p>
-            </header>
+          {/* 02 · Experience Section (Step Ledger) */}
+          <section className="pt-4 border-t border-rule" id="experience" aria-labelledby="exp-title">
+            <div className="flex flex-col gap-2 mb-8">
+              <span className="mono-label">[ RUNNING LOGS ]</span>
+              <h2 className="display-title text-2xl" id="exp-title">Working Experience</h2>
+            </div>
+
+            <ol className="ledger" aria-label="Employment records">
+              <li className="ledger-item">
+                <span className="font-mono text-xs text-muted">2024 — PRESENT</span>
+                <div>
+                  <h3 className="font-display font-medium text-lg text-ink">Senior Mobile DevOps Engineer</h3>
+                  <p className="text-sm text-neutral mb-2">Automated Platform Group</p>
+                  <p className="text-sm text-ink-2 max-w-[65ch]">
+                    Designed multi-platform runner pools using custom virtual machines, shortening iOS/Android test cycles. Managed cloud environments with Terraform, orchestrating Kubernetes pods to support high-density development runtimes.
+                  </p>
+                </div>
+                <span className="status-pill is-active">ACTIVE</span>
+              </li>
+              <li className="ledger-item">
+                <span className="font-mono text-xs text-muted">2021 — 2024</span>
+                <div>
+                  <h3 className="font-display font-medium text-lg text-ink">DevOps Engineer</h3>
+                  <p className="text-sm text-neutral mb-2">Infrastructure &amp; Delivery</p>
+                  <p className="text-sm text-ink-2 max-w-[65ch]">
+                    Engineered Dockerized deployment templates, migrated legacy servers to AWS container tasks, and maintained Git-driven configuration pipelines. Handled server monitoring and zero-downtime database upgrades.
+                  </p>
+                </div>
+                <span className="status-pill">RESOLVED</span>
+              </li>
+              <li className="ledger-item">
+                <span className="font-mono text-xs text-muted">2019 — 2021</span>
+                <div>
+                  <h3 className="font-display font-medium text-lg text-ink">Mobile Application Developer</h3>
+                  <p className="text-sm text-neutral mb-2">Native Client Studio</p>
+                  <p className="text-sm text-ink-2 max-w-[65ch]">
+                    Shipped production native applications for iOS (Swift) and Android (Kotlin). Implemented local data stores, push-notification frameworks, and modular UI patterns linked to REST/GraphQL APIs.
+                  </p>
+                </div>
+                <span className="status-pill">RESOLVED</span>
+              </li>
+            </ol>
+          </section>
+
+          {/* 03 · Projects Section (Bento Grid) */}
+          <section className="pt-4 border-t border-rule" id="projects" aria-labelledby="proj-title">
+            <div className="flex flex-col gap-2 mb-8">
+              <span className="mono-label">[ STATIC ASSETS ]</span>
+              <h2 className="display-title text-2xl" id="proj-title">Technical Projects</h2>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Card 1 */}
-              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <span className="font-mono text-[0.65rem] text-accent uppercase block mb-1">Working press · Stand A1</span>
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Brae &amp; Drum</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    A live two-colour MZ. Pull a print, keep it wet.
+              
+              {/* Project 1 */}
+              <div className="tech-card min-h-[220px]">
+                <div className="flex flex-col gap-3">
+                  <span className="font-mono text-[10px] text-accent uppercase tracking-wider">Mobile CI/CD Orchestrator</span>
+                  <h3 className="font-display font-medium text-lg text-ink">Local Runner Daemon</h3>
+                  <p className="font-sans text-sm text-ink-2 leading-relaxed">
+                    A lightweight Go daemon executing mobile test suites locally on bare-metal Mac Studio clusters, cutting third-party cloud runtime dependencies.
                   </p>
                 </div>
-              </div>
-              {/* Card 2 */}
-              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <span className="font-mono text-[0.65rem] text-accent-2 uppercase block mb-1">Zines · Stand A4</span>
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Saltmarket Editions</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    Perfect-bound photo zines, two spot colours, no black.
-                  </p>
+                <div className="pt-4 flex justify-between items-center border-t border-rule-2">
+                  <span className="font-mono text-[10px] text-muted">GO · SWIFT · SHELL</span>
+                  <a href="https://github.com" className="font-mono text-[10px] text-accent font-semibold hover:underline" target="_blank" rel="noopener noreferrer">
+                    CODEBASE ↳
+                  </a>
                 </div>
               </div>
-              {/* Card 3 */}
-              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <span className="font-mono text-[0.65rem] text-accent uppercase block mb-1">Posters · Stand A6</span>
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Mono No Aware Press</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    A2 gig posters. Bronze ink that glows under the museum strip lights.
+
+              {/* Project 2 */}
+              <div className="tech-card min-h-[220px]">
+                <div className="flex flex-col gap-3">
+                  <span className="font-mono text-[10px] text-muted uppercase tracking-wider">Cloud Infrastructure</span>
+                  <h3 className="font-display font-medium text-lg text-ink">Zero-Trust K8s Operators</h3>
+                  <p className="font-sans text-sm text-ink-2 leading-relaxed">
+                    Custom Kubernetes controller dynamically managing developer test sandboxes on AWS EKS, enforcing network policies and automated environment expiry.
                   </p>
                 </div>
-              </div>
-              {/* Card 4 */}
-              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <span className="font-mono text-[0.65rem] text-accent-2 uppercase block mb-1">Comics · Stand A9</span>
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Tenement Comics</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    Riso-printed shorts about the close, the bin store, the No. 6 bus.
-                  </p>
+                <div className="pt-4 flex justify-between items-center border-t border-rule-2">
+                  <span className="font-mono text-[10px] text-muted">TERRAFORM · K8S</span>
+                  <a href="https://github.com" className="font-mono text-[10px] text-accent font-semibold hover:underline" target="_blank" rel="noopener noreferrer">
+                    MANIFESTS ↳
+                  </a>
                 </div>
               </div>
-              {/* Card 5 */}
-              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <span className="font-mono text-[0.65rem] text-accent uppercase block mb-1">Zines · Stand A11</span>
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Verdigris &amp; Co</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    Botanical risographs on grey speckle stock. Aegean blue on blue.
+
+              {/* Project 3 */}
+              <div className="tech-card min-h-[220px]">
+                <div className="flex flex-col gap-3">
+                  <span className="font-mono text-[10px] text-accent uppercase tracking-wider">Native Android/iOS</span>
+                  <h3 className="font-display font-medium text-lg text-ink">Telemetry Monitor App</h3>
+                  <p className="font-sans text-sm text-ink-2 leading-relaxed">
+                    A cross-platform app providing real-time notification alerts, server logs, and pipeline completion statuses direct to mobile devices.
                   </p>
                 </div>
-              </div>
-              {/* Card 6 */}
-              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <span className="font-mono text-[0.65rem] text-accent-2 uppercase block mb-1">Posters · Stand A13</span>
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Halftone Social Club</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    Big dot screens, on purpose. Bring a loupe.
-                  </p>
+                <div className="pt-4 flex justify-between items-center border-t border-rule-2">
+                  <span className="font-mono text-[10px] text-muted">KOTLIN · SWIFTUI</span>
+                  <a href="https://github.com" className="font-mono text-[10px] text-accent font-semibold hover:underline" target="_blank" rel="noopener noreferrer">
+                    REPOSITORY ↳
+                  </a>
                 </div>
               </div>
+
             </div>
-            
-            <p className="font-serif text-sm text-muted italic mt-8 text-center">
-              … and twenty-five more, from Govan Letterpress to Fluoro Bakery.
-            </p>
           </section>
 
-          {/* Programme Section */}
-          <section className="pt-8" id="programme" aria-labelledby="programme-h">
-            <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">03</p>
-              <h2 className="plate-head__title" id="programme-h">Programme</h2>
-              <p className="plate-head__sub">Talks on the Mezzanine · printing in Hall A · all free, drop in</p>
-            </header>
-
-            <ol className="ledger" aria-label="Scheduled fair program">
-              <li className="ledger__row">
-                <span className="ledger__year">8:30 PM</span>
-                <span className="ledger__name">Opening Keynote</span>
-                <span className="ledger__kind">A short talk on printing under constraint. Twelve minutes.</span>
-              </li>
-              <li className="ledger__row">
-                <span className="ledger__year">9:00 PM</span>
-                <span className="ledger__name">Live Launch · 01</span>
-                <span className="ledger__kind">A new way to map layout coordinates. Embargo lifts at the door.</span>
-              </li>
-              <li className="ledger__row">
-                <span className="ledger__year">9:45 PM</span>
-                <span className="ledger__name">Spot coding demonstration</span>
-                <span className="ledger__kind">Live overprint generation · no slides. Forty-five minutes.</span>
-              </li>
-              <li className="ledger__row">
-                <span className="ledger__year">11:30 PM</span>
-                <span className="ledger__name">Live Launch · 02</span>
-                <span className="ledger__kind">Open-source print solver. Bring a laptop to follow along.</span>
-              </li>
-            </ol>
-          </section>
-
-          {/* Workshops Section */}
-          <section className="pt-8" id="workshops" aria-labelledby="workshops-h">
-            <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">04</p>
-              <h2 className="plate-head__title" id="workshops-h">Workshops</h2>
-              <p className="plate-head__sub">Small groups · materials included · book at the door</p>
-            </header>
-
-            <ol className="list-none p-0 flex flex-col gap-6" aria-label="Scheduled workshops">
-              <li className="riso-card p-4 border border-rule bg-paper-2 grid grid-cols-1 md:grid-cols-4 gap-4 items-baseline">
-                <span className="font-mono text-xs text-accent font-bold">Sat 13:00 · 90 min · £18</span>
-                <div className="md:col-span-3">
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-1">Make a one-colour mini-zine</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    Draw it, fold it, run it through the press, staple it. You leave with twenty copies of an eight-page zine and ink under at least one fingernail.
-                  </p>
-                </div>
-              </li>
-              <li className="riso-card p-4 border border-rule bg-paper-2 grid grid-cols-1 md:grid-cols-4 gap-4 items-baseline">
-                <span className="font-mono text-xs text-accent-2 font-bold">Sat 15:30 · 2 hrs · £26</span>
-                <div className="md:col-span-3">
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-1">Two-colour overprint &amp; offset</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    The whole point of riso is the misregister. We&apos;ll layer Aegean blue over bronze, shift the paper a few millimetres on purpose, and chase the green you can only get by accident.
-                  </p>
-                </div>
-              </li>
-              <li className="riso-card p-4 border border-rule bg-paper-2 grid grid-cols-1 md:grid-cols-4 gap-4 items-baseline">
-                <span className="font-mono text-xs text-accent font-bold">Sun 15:00 · 60 min · Free</span>
-                <div className="md:col-span-3">
-                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-1">Kids&apos; print hour</h3>
-                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
-                    One colour, big shapes, no precious objects. Little ones cut a stencil and pull their own poster to take home. Aprons supplied.
-                  </p>
-                </div>
-              </li>
-            </ol>
-          </section>
-
-          {/* Visit Section */}
-          <section className="pt-8" id="visit" aria-labelledby="visit-h">
-            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">05 · Visit</span>
-            <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink uppercase mb-6" id="visit-h">
-              Plan Your Visit
+          {/* 04 · Contact Section (Minimalist Form) */}
+          <section className="pt-4 border-t border-rule" id="contact" aria-labelledby="contact-title">
+            <span className="mono-label">[ ESTABLISH SIGNAL ]</span>
+            <h2 className="display-title text-[clamp(1.75rem,4vw,2.75rem)] leading-none mt-2 mb-6" id="contact-title">
+              Start Project / Hire
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-              <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[38ch]">
-                Free entry, both days. No ticket needed — but leave your email and we&apos;ll send the floor plan, the full A–Z of studios, and a heads-up when workshop places open. One message, the week before. Nothing after.
-              </p>
 
-              {/* Form as CTA */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+              <div className="flex flex-col gap-4">
+                <p className="font-sans text-md text-ink-2 leading-relaxed">
+                  Looking to optimize your mobile development loops, automate container delivery, or deploy clean cloud architecture? Transmission open. Reach out via the terminal link or drop your details.
+                </p>
+                <div className="flex flex-col gap-2 font-mono text-xs text-neutral">
+                  <p>EMAIL: jones.tse@example.dev</p>
+                  <p>LOC: remote / HKSTP</p>
+                </div>
+              </div>
+
+              {/* High contrast minimal form */}
               <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-                <label className="font-mono text-[0.65rem] uppercase tracking-widest text-accent" htmlFor="enq-email">
-                  Get updates
-                </label>
-                <div className="flex flex-col sm:flex-row gap-2">
+                <div className="flex flex-col gap-1">
+                  <label className="font-mono text-[10px] uppercase text-muted" htmlFor="form-email">
+                    Your transmission email
+                  </label>
                   <input
-                    className="input-specimen"
-                    id="enq-email"
+                    className="input-text"
+                    id="form-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="ink@studio.com"
+                    placeholder="name@organization.com"
                     disabled={formStatus === "loading" || formStatus === "success"}
                     required
                   />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="font-mono text-[10px] uppercase text-muted" htmlFor="form-message">
+                    Project parameters / Message
+                  </label>
+                  <textarea
+                    className="input-text min-h-[100px] resize-y"
+                    id="form-message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Describe build requirements or role description..."
+                    disabled={formStatus === "loading" || formStatus === "success"}
+                    required
+                  />
+                </div>
+                <div>
                   <button
-                    className="btn-specimen whitespace-nowrap"
+                    className="btn btn-primary w-full sm:w-auto"
                     type="submit"
                     disabled={formStatus === "loading" || formStatus === "success"}
                   >
-                    {formStatus === "loading" ? "SENDING..." : formStatus === "success" ? "SENT" : "SUBSCRIBE"}
+                    {formStatus === "loading" ? "TRANSMITTING..." : formStatus === "success" ? "TRANSMITTED" : "SEND MESSAGE"}
                   </button>
                 </div>
+                
                 {formStatus === "success" && (
-                  <p className="font-mono text-[0.7rem] uppercase tracking-wider text-accent">
-                    Subscription active. Floor maps will arrive in October.
+                  <p className="font-mono text-xs text-accent mt-2">
+                    ✓ Signal established. Response pending.
                   </p>
                 )}
                 {formStatus === "error" && (
-                  <p className="font-mono text-[0.7rem] uppercase tracking-wider text-accent">
-                    Please specify a valid email address.
+                  <p className="font-mono text-xs text-red-500 mt-2">
+                    ⚠ Input validation failed. Please specify a valid email and description.
                   </p>
                 )}
               </form>
             </div>
           </section>
+
         </main>
 
-        {/* Footer */}
-        <footer className="mt-24 pt-8 border-t border-rule" role="contentinfo">
-          <p className="font-sans font-bold text-sm uppercase tracking-widest text-ink">OFF-REGISTER</p>
-          <p className="font-serif text-sm text-ink-2 mt-1">
-            A risograph print fair, run by volunteers from the Govanhill print room since 2022.
-          </p>
-          <p className="font-mono text-[0.65rem] text-muted mt-6 leading-relaxed">
-            The Pulp Yard · 31 Calder Street, Glasgow G42 7RA. © 2026 the fair &amp; its makers.
+        {/* Footer (Ft2 Inline Single Line) */}
+        <footer className="mt-24 pt-8 border-t border-rule flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral" role="contentinfo">
+          <div className="flex items-center gap-2">
+            <span className="font-mono font-bold text-ink">[JONESTSE]</span>
+            <span className="text-[10px] uppercase tracking-wider">· BUILD: MMXXVI</span>
+          </div>
+          <p className="font-mono text-[10px]">
+            © 2026. Provisioned on secure local cluster. All metrics subject to client validation.
           </p>
         </footer>
       </div>

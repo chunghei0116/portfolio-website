@@ -1,45 +1,48 @@
-# Design — Off-Register Risograph Fair (Greek Folio)
+# Design — DevOps & Mobile Engineering Portfolio (Austere Terminal)
 
-A locked design system for this app, inspired by the riso-01 print fair layout and Homeric Epic color theme. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
+A locked design system for this app, inspired by technical spec sheets, command-line interfaces, and clinical engineering layouts. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
 
 ## Genre
-editorial
+modern-minimal
 
-Risograph-Folio (Double margins, staggered catalogue exhibitor cards, timed ledger columns, and spot color overprint aesthetics).
+## Theme
+custom
 
-- Main page: Split grid card catalogs, timetable lists, double border highlights, and clean subscription footer form.
+- vibe: "devops precision, mobile architecture, tactile terminal"
+- main page: split dashboard layout, tabular telemetry headers, structural card grids, and high-contrast minimal contact form.
 
-## System
-- Display: "Cinzel", weight 400–800 (stately Roman letterforms)
-- Body: "Cormorant Garamond", weight 300–700, normal & italic (classic manuscript serif)
-- Mono: "JetBrains Mono", weight 400–500
+## System (Fonts)
+- Display: "Space Grotesk", weight 300–700 (structured, geometric geometric-sans)
+- Body: "Geist", weight 300–800 (clean, readable sans-serif)
+- Mono: "JetBrains Mono", weight 400–700 (tactile monospaced code)
 
 ## Provenance
-- Source mode: custom-concept (Homeric Epic layout)
+- Source mode: custom-concept (Austere Tech layout)
 - Date: 2026-07-16
 - Spacing: 4-point spacing scale
+- Axes: light / geometric-sans / cool
 
 ## Tokens
 
 ### tokens
 ```css
 :root {
-  --color-paper:      oklch(94%  0.015 88);   /* aged Greek papyrus */
-  --color-paper-2:    oklch(90%  0.018 84);   /* toned segments */
-  --color-paper-3:    oklch(86%  0.022 80);
-  --color-rule:       oklch(60%  0.08  85);   /* copper rules */
-  --color-rule-2:     oklch(48%  0.10  82);   /* antique bronze rules */
-  --color-muted:      oklch(48%  0.012 70);   /* ash grey annotations */
-  --color-ink-2:      oklch(32%  0.012 40);   /* charcoal body */
-  --color-ink:        oklch(18%  0.008 30);   /* volcanic ash display ink */
+  --color-paper:      oklch(98.5% 0.003 240);   /* clinical, cool near-white */
+  --color-paper-2:    oklch(96%   0.005 240);   /* elevation step 1 / cards */
+  --color-paper-3:    oklch(93%   0.006 240);   /* elevation step 2 / headers */
+  --color-rule:       oklch(82%   0.008 240);   /* clean hairline rule */
+  --color-rule-2:     oklch(89%   0.006 240);   /* secondary faint rule */
+  --color-muted:      oklch(54%   0.006 240);   /* muted labels / secondary text */
+  --color-neutral:    oklch(44%   0.006 240);   /* gray metadata */
+  --color-ink-2:      oklch(34%   0.006 240);   /* body copy ink */
+  --color-ink:        oklch(16%   0.008 240);   /* display headers ink */
   
-  --color-accent:     oklch(64%  0.14  85);   /* Greek gold/bronze */
-  --color-accent-2:   oklch(38%  0.12  245);  /* Aegean deep blue */
-  --color-accent-ink: oklch(96%  0.010 88);
-  --color-focus:      oklch(38%  0.12  245);
+  --color-accent:     oklch(58%   0.16  245);   /* electric cobalt blue */
+  --color-accent-ink: oklch(98%   0.003 240);   /* light text over cobalt background */
+  --color-focus:      oklch(54%   0.20  245);   /* focus ring color */
 
-  --font-display: "Cinzel", serif;
-  --font-body:    "Cormorant Garamond", serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body:    "Geist", sans-serif;
   --font-mono:    "JetBrains Mono", monospace;
 
   --space-3xs: 0.125rem;
@@ -59,17 +62,14 @@ Risograph-Folio (Double margins, staggered catalogue exhibitor cards, timed ledg
 
 ## Motion
 - Easings: cubic-bezier(0.16, 1, 0.3, 1) named `--ease-out`
-- Reveal pattern: CSS-based fade-up stagger
-- Reduced-motion fallback: opacity-only, ≤ 150 ms.
+- Reveal pattern: minimal opacity fades, immediate transitions (≤ 150 ms) to align with austere utility.
+- Reduced-motion fallback: opacity-only, ≤ 100 ms.
 
 ## Microinteractions stance
-- Snappy hover scaling and translation responses.
-- Stately press feedback: active states translate 1px down.
+- Zero-bounce, high-fidelity responsive click states.
+- Active click state moves elements 1px down vertically.
+- Focus visible indicator is a clear 2px cobalt ring with offset.
 
 ## CTA voice
-- Primary CTA: classical double-bordered button `.btn-specimen`.
-- Secondary CTA: typographic links with animated arrow glyph.
-
-## Per-page allowances
-- Portfolios MUST use chapter-based "Books".
-- Choral strophes may be used to structure code or telemetry logs.
+- Primary CTA: Solid cobalt block with white monospace labels.
+- Secondary CTA: Minimal text with terminal-style arrow glyph (`->` or `↳`).
