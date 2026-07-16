@@ -1,24 +1,29 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Cormorant_Garamond } from "next/font/google";
+import { Bricolage_Grotesque, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Scene from "@/components/canvas/Scene";
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+const displayFont = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const bodyFont = Fraunces({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
 });
 
+const monoFont = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
-  title: "Renaissance Particle Canvas",
-  description: "Bespoke Renaissance particle sheet wave visualization.",
+  title: "Jones Tse — Full-Stack Engineer & Graphics Specialist",
+  description: "Mechanical precision, tactile layout, and low-latency interactive systems. Ported to the press-01 design system.",
 };
 
 export default function RootLayout({
@@ -27,11 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} ${cormorant.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full font-sans antialiased text-foreground selection:bg-accent-gold selection:text-background bg-transparent">
-        {/* Persistent 3D Background Scene */}
-        <Scene />
-        
+    <html
+      lang="en"
+      className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} h-full antialiased scroll-smooth`}
+      data-theme="press"
+    >
+      <body className="min-h-full font-sans antialiased text-foreground bg-background">
         <main className="relative min-h-screen flex flex-col">
           {children}
         </main>
