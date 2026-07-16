@@ -17,6 +17,21 @@ export interface Milestone {
 export const milestones: Milestone[] = [
   // ---- 2023 (Row 1) ----
   {
+    id: "cuhk",
+    sym: "Ch",
+    name: "Graduate from CUHK",
+    year: 2023,
+    col: 3,
+    row: 1,
+    fam: "security",
+    famLabel: "Personal Development",
+    status: "Complete",
+    platform: "CUHK",
+    metric: "B.Eng",
+    metricLabel: "Computer Science",
+    notes: "Graduated from The Chinese University of Hong Kong (CUHK) with a Bachelor of Engineering in Computer Science."
+  },
+  {
     id: "vr",
     sym: "Vr",
     name: "Medical VR Project",
@@ -184,6 +199,21 @@ export const milestones: Milestone[] = [
     metric: "1M+ MAU",
     metricLabel: "Active Users",
     notes: "Core developer of the high-traffic AS Watson CRM app supporting over a million monthly active users."
+  },
+  {
+    id: "saa",
+    sym: "Sa",
+    name: "AWS SAA Certificate",
+    year: 2025,
+    col: 4,
+    row: 3,
+    fam: "security",
+    famLabel: "Personal Development",
+    status: "Complete",
+    platform: "AWS Certification",
+    metric: "SAA-C03",
+    metricLabel: "Certified",
+    notes: "Earned the AWS Certified Solutions Architect – Associate (SAA-C03) credential, validating cloud architecture and transit routing design competence."
   },
   {
     id: "opt",
