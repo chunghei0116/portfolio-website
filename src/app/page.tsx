@@ -243,59 +243,203 @@ export default function Home() {
 
         {/* Skills Section */}
         <section className="skills-section" id="skills" aria-labelledby="skills-title">
-          <div className="text-center mb-8">
-            <h2 id="skills-title" className="font-display text-xl font-semibold mb-2">Technical Registry</h2>
-            <p className="text-sm font-serif text-ink-2">Classification of system competencies, platforms, and operational tools mapped across disciplines.</p>
+          <div className="skills-header mb-12">
+            <span className="eyebrow">Inventory of Disciplines</span>
+            <h2 id="skills-title" className="font-display text-2xl font-semibold mt-2 mb-3">Technical Registry</h2>
+            <p className="text-sm font-serif text-ink-2 max-w-prose">
+              A categorized ledger recording active competencies, frameworks, systems engineering protocols, and environment run-times.
+            </p>
           </div>
 
-          <div className="skills-grid">
-            <div className="skills-card">
-              <h3 className="skills-card__title">DevOps &amp; Infrastructure</h3>
-              <ul className="skills-list">
-                <li><span className="skills-badge">Docker</span></li>
-                <li><span className="skills-badge">Kubernetes</span></li>
-                <li><span className="skills-badge">ArgoCD / GitOps</span></li>
-                <li><span className="skills-badge">GitLab / GitHub</span></li>
-                <li><span className="skills-badge">ELK Stack</span></li>
-                <li><span className="skills-badge">AWS Cloud</span></li>
-                <li><span className="skills-badge">CKAD (Interest)</span></li>
-              </ul>
+          <div className="skills-ledger">
+            {/* Category 1 */}
+            <div className="skills-ledger__group">
+              <div className="skills-ledger__meta">
+                <span className="skills-ledger__num">01 /</span>
+                <h3 className="skills-ledger__cat font-display">DevOps &amp; Infrastructure</h3>
+              </div>
+              <div className="skills-ledger__list">
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-DKR</span>
+                  <span className="skills-item__name">Docker</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Core Container</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-K8S</span>
+                  <span className="skills-item__name">Kubernetes</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Orchestration</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-GOP</span>
+                  <span className="skills-item__name">ArgoCD / GitOps</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Delivery Sync</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-PIPE</span>
+                  <span className="skills-item__name">GitLab / GitHub CI</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Automation</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-ELK</span>
+                  <span className="skills-item__name">ELK Stack</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Telemetry</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-AWS</span>
+                  <span className="skills-item__name">AWS Cloud</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Infrastructure</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">SYS-CKAD</span>
+                  <span className="skills-item__name">CKAD Interest</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono text-muted">Certification</span>
+                </div>
+              </div>
             </div>
 
-            <div className="skills-card">
-              <h3 className="skills-card__title">Mobile Systems</h3>
-              <ul className="skills-list">
-                <li><span className="skills-badge">Flutter</span></li>
-                <li><span className="skills-badge">Shorebird (OTA)</span></li>
-                <li><span className="skills-badge">Firebase FCM</span></li>
-                <li><span className="skills-badge">iOS Development</span></li>
-                <li><span className="skills-badge">Android Native</span></li>
-                <li><span className="skills-badge">Tauri (Interest)</span></li>
-              </ul>
+            {/* Category 2 */}
+            <div className="skills-ledger__group">
+              <div className="skills-ledger__meta">
+                <span className="skills-ledger__num">02 /</span>
+                <h3 className="skills-ledger__cat font-display">Mobile Architecture</h3>
+              </div>
+              <div className="skills-ledger__list">
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">MOB-FLT</span>
+                  <span className="skills-item__name">Flutter</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Primary SDK</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">MOB-SHD</span>
+                  <span className="skills-item__name">Shorebird</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">OTA Hotpatching</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">MOB-FCM</span>
+                  <span className="skills-item__name">Firebase FCM</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Messaging</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">MOB-IOS</span>
+                  <span className="skills-item__name">iOS Dev</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Platform Native</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">MOB-AND</span>
+                  <span className="skills-item__name">Android Native</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Platform Native</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">MOB-TAU</span>
+                  <span className="skills-item__name">Tauri Interest</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono text-muted">Desktop Native</span>
+                </div>
+              </div>
             </div>
 
-            <div className="skills-card">
-              <h3 className="skills-card__title">Web &amp; Languages</h3>
-              <ul className="skills-list">
-                <li><span className="skills-badge">React</span></li>
-                <li><span className="skills-badge">Next.js</span></li>
-                <li><span className="skills-badge">TypeScript</span></li>
-                <li><span className="skills-badge">JavaScript</span></li>
-                <li><span className="skills-badge">HTML5 / CSS3</span></li>
-                <li><span className="skills-badge">SCSS / Sass</span></li>
-              </ul>
+            {/* Category 3 */}
+            <div className="skills-ledger__group">
+              <div className="skills-ledger__meta">
+                <span className="skills-ledger__num">03 /</span>
+                <h3 className="skills-ledger__cat font-display">Web &amp; Core Languages</h3>
+              </div>
+              <div className="skills-ledger__list">
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">WEB-RCT</span>
+                  <span className="skills-item__name">React</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Component View</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">WEB-NXT</span>
+                  <span className="skills-item__name">Next.js</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">SSR Engine</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">LAN-TS</span>
+                  <span className="skills-item__name">TypeScript</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Static Typings</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">LAN-JS</span>
+                  <span className="skills-item__name">JavaScript</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Dynamic Script</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">WEB-STD</span>
+                  <span className="skills-item__name">HTML5 / CSS3</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Web Standard</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">WEB-SASS</span>
+                  <span className="skills-item__name">SCSS / Sass</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Preprocessor</span>
+                </div>
+              </div>
             </div>
 
-            <div className="skills-card">
-              <h3 className="skills-card__title">Data &amp; Operations</h3>
-              <ul className="skills-list">
-                <li><span className="skills-badge">PostgreSQL</span></li>
-                <li><span className="skills-badge">MongoDB</span></li>
-                <li><span className="skills-badge">SQL Server</span></li>
-                <li><span className="skills-badge">Linux (CLI)</span></li>
-                <li><span className="skills-badge">VS Code / VS</span></li>
-                <li><span className="skills-badge">macOS / Windows</span></li>
-              </ul>
+            {/* Category 4 */}
+            <div className="skills-ledger__group">
+              <div className="skills-ledger__meta">
+                <span className="skills-ledger__num">04 /</span>
+                <h3 className="skills-ledger__cat font-display">Data Store &amp; Hosts</h3>
+              </div>
+              <div className="skills-ledger__list">
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">DAT-PG</span>
+                  <span className="skills-item__name">PostgreSQL</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">SQL Relational</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">DAT-MNG</span>
+                  <span className="skills-item__name">MongoDB</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">JSON Document</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">DAT-MSS</span>
+                  <span className="skills-item__name">SQL Server</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Relational</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">ENV-LNX</span>
+                  <span className="skills-item__name">Linux CLI</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Terminal Scripting</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">ENV-IDE</span>
+                  <span className="skills-item__name">VS Code / VS</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Development IDE</span>
+                </div>
+                <div className="skills-item">
+                  <span className="skills-item__code font-mono">ENV-OS</span>
+                  <span className="skills-item__name">macOS / Windows</span>
+                  <span className="skills-item__dots"></span>
+                  <span className="skills-item__level font-mono">Host Systems</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
