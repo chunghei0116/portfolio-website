@@ -14,6 +14,7 @@ export default function Home() {
   const [wght, setWght] = useState(400);
   const [wdth, setWdth] = useState(85);
   const [opsz, setOpsz] = useState(48);
+  const [isGrabbed, setIsGrabbed] = useState(false);
 
   // Form interactive state
   const [email, setEmail] = useState("");
@@ -130,13 +131,15 @@ export default function Home() {
             </h1>
 
             {/* Specimen Live Control Panel */}
-            <figure className="specimen-live" aria-labelledby="live-cap">
+            <figure className="specimen-live" data-grabbed={isGrabbed ? "true" : "false"} aria-labelledby="live-cap">
               <div className="specimen-live__stage">
                 <span
                   className="specimen-live__word"
-                  style={{
-                    fontVariationSettings: `'wght' ${wght}, 'wdth' ${wdth}, 'opsz' ${opsz}`,
-                  }}
+                  style={
+                    isGrabbed
+                      ? { fontVariationSettings: `'wght' ${wght}, 'wdth' ${wdth}, 'opsz' ${opsz}` }
+                      : undefined
+                  }
                   aria-hidden="true"
                 >
                   Render
@@ -155,7 +158,10 @@ export default function Home() {
                       min="200"
                       max="800"
                       value={wght}
-                      onChange={(e) => setWght(Number(e.target.value))}
+                      onChange={(e) => {
+                        setWght(Number(e.target.value));
+                        setIsGrabbed(true);
+                      }}
                     />
                   </div>
                   <div className="axis__row">
@@ -169,7 +175,10 @@ export default function Home() {
                       min="75"
                       max="100"
                       value={wdth}
-                      onChange={(e) => setWdth(Number(e.target.value))}
+                      onChange={(e) => {
+                        setWdth(Number(e.target.value));
+                        setIsGrabbed(true);
+                      }}
                     />
                   </div>
                   <div className="axis__row">
@@ -183,7 +192,10 @@ export default function Home() {
                       min="12"
                       max="96"
                       value={opsz}
-                      onChange={(e) => setOpsz(Number(e.target.value))}
+                      onChange={(e) => {
+                        setOpsz(Number(e.target.value));
+                        setIsGrabbed(true);
+                      }}
                     />
                   </div>
                   <p className="axis__help">

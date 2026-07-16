@@ -227,6 +227,25 @@
   text-align: center;
   color: var(--color-ink);
   will-change: font-variation-settings;
+  /* off-register CMYK misprint — the kinetic, press-y signature */
+  text-shadow:
+    0.045em 0 0 var(--ghost-red),
+    -0.045em 0.012em 0 var(--ghost-cyan);
+  animation: breathe var(--dur-breathe) var(--ease-out) infinite alternate;
+}
+
+/* Stop breathe animation when grabbed by sliders */
+.specimen-live[data-grabbed="true"] .specimen-live__word {
+  animation: none;
+}
+
+@keyframes breathe {
+  from {
+    font-variation-settings: 'wght' 280, 'wdth' 100, 'opsz' 48;
+  }
+  to {
+    font-variation-settings: 'wght' 600, 'wdth' 80, 'opsz' 48;
+  }
 }
 
 .specimen-live__panel {
