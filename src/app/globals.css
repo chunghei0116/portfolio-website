@@ -335,6 +335,25 @@
   color: var(--color-muted);
 }
 
+/* Riso Card Grid Layouts */
+.riso-card {
+  border: var(--rule-hair) solid var(--color-rule);
+  transition: transform var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+  /* Entrance stagger baseline */
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+}
+
+.riso-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.riso-card:hover {
+  border-color: var(--color-accent-2);
+}
+
 /* Input Fields State */
 .input-specimen {
   width: 100%;

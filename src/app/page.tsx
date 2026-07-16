@@ -56,7 +56,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Intersection observer to animate ledger rows when scrolled into view
+  // Intersection observer to animate ledger/card rows when scrolled into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -70,8 +70,8 @@ export default function Home() {
       { threshold: 0.1 }
     );
 
-    const rows = document.querySelectorAll(".ledger__row");
-    rows.forEach((row) => observer.observe(row));
+    const animateElements = document.querySelectorAll(".riso-card, .ledger__row");
+    animateElements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -104,12 +104,12 @@ export default function Home() {
             </a>
           </li>
           <li>
-            <a href="#book2" className={activeSection === "book2" ? "is-active" : ""} aria-label="Book II: Planks">
+            <a href="#book2" className={activeSection === "book2" ? "is-active" : ""} aria-label="Book II: Capabilities">
               <span className="rail__dot">II</span>
             </a>
           </li>
           <li>
-            <a href="#book3" className={activeSection === "book3" ? "is-active" : ""} aria-label="Book III: Choral Lyric">
+            <a href="#book3" className={activeSection === "book3" ? "is-active" : ""} aria-label="Book III: Sessions">
               <span className="rail__dot">III</span>
             </a>
           </li>
@@ -132,16 +132,16 @@ export default function Home() {
         <main className="flex flex-col gap-24 md:gap-36">
           {/* Hero Section — Book I: The Slogan */}
           <section className="min-h-[80dvh] flex flex-col justify-between pt-4" id="book1" aria-labelledby="hero-h">
-            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">01 · Book I · The Slogan</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">Edition 04 · Govanhill · Free Entry</span>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center my-auto">
               <div className="flex flex-col justify-center">
                 <h1 className="font-sans text-[clamp(2.5rem,7.5vw,5.5rem)] leading-[0.95] font-extrabold tracking-display text-ink uppercase mb-6" id="hero-h">
-                  Sing in me, <span className="font-serif italic font-light text-accent">Muse</span>,<br />
+                  Sing in me, <span className="font-serif italic font-light text-accent text-shadow-offset">Muse</span>,<br />
                   of the code that won&apos;t sit <span className="text-accent-2">still.</span>
                 </h1>
                 <p className="font-serif text-lg leading-relaxed text-ink-2 max-w-[38ch]">
-                  The architecture of Jones Tse. An epic of WebGPU shader pipelines and low-overhead thread calculations built on a grid broken on purpose.
+                  The low-latency architecture of Jones Tse. Spot colour WebGPU calculations that bleed a hair past their edge, compiled one drum at a time.
                 </p>
               </div>
               <div className="flex justify-center lg:justify-end">
@@ -159,86 +159,110 @@ export default function Home() {
             </div>
 
             <a className="link-arrow self-start mt-8" href="#book2">
-              <span>Next Book</span>
+              <span>Read the Catalogue →</span>
               <svg className="link-arrow__glyph" viewBox="0 0 24 12" width="32" height="16" aria-hidden="true">
                 <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" />
               </svg>
             </a>
           </section>
 
-          {/* Book II: The Capability Planks */}
+          {/* Book II: Capability Catalogue (Riso-01 Cards) */}
           <section className="pt-8" id="book2" aria-labelledby="planks-h">
             <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">02 · Book II</p>
-              <h2 className="plate-head__title" id="planks-h">Capabilities</h2>
+              <p className="plate-head__no" aria-hidden="true">Book II</p>
+              <h2 className="plate-head__title" id="planks-h">Capability Catalogue</h2>
+              <p className="plate-head__sub">Three key pipelines deployed inside the spot-colour viewport grid.</p>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-              <div>
-                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">I · Volcanic Shaders</span>
-                <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[25ch]">
-                  Native browser GPU threads pulled from raw vertex coordinate arrays.
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1 */}
+              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[180px]">
+                <div>
+                  <span className="font-mono text-[0.65rem] text-accent uppercase block mb-1">WebGPU · Stand A1</span>
+                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Volcanic Shaders</h3>
+                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
+                    Native browser GPU compute pipelines pulling thread calculations from raw coordinate sheets.
+                  </p>
+                </div>
               </div>
-              <div>
-                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">II · Safe Proofs</span>
-                <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[25ch]">
-                  TypeScript &amp; Rust compiling under strict safety checks.
-                </p>
+              {/* Card 2 */}
+              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[180px]">
+                <div>
+                  <span className="font-mono text-[0.65rem] text-accent-2 uppercase block mb-1">Rust &amp; TS · Stand A4</span>
+                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Safe Proofs</h3>
+                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
+                    Zero raw errors. TypeScript types and Rust shells functioning as strict mathematical safety proofs.
+                  </p>
+                </div>
               </div>
-              <div>
-                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">III · Kinetic Solvers</span>
-                <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[25ch]">
-                  Interactive physics solvers responding natively to scroll and pointer coordinates.
-                </p>
+              {/* Card 3 */}
+              <div className="riso-card p-4 border border-rule bg-paper-2 flex flex-col justify-between min-h-[180px]">
+                <div>
+                  <span className="font-mono text-[0.65rem] text-accent uppercase block mb-1">WebGL · Stand A6</span>
+                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-2">Kinetic Solvers</h3>
+                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
+                    Interactive cloth and particle dynamics responding seamlessly to layout boundaries and touch coordinates.
+                  </p>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Book III: The Telemetry Lyric */}
+          {/* Book III: Workshops & Telemetry Sessions (Riso-01 Timetable) */}
           <section className="pt-8" id="book3" aria-labelledby="lyric-h">
             <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">03 · Book III</p>
-              <h2 className="plate-head__title" id="lyric-h">The Telemetry Lyric</h2>
+              <p className="plate-head__no" aria-hidden="true">Book III</p>
+              <h2 className="plate-head__title" id="lyric-h">Inky Sessions</h2>
+              <p className="plate-head__sub">Technical workshop segments scheduled for live code execution.</p>
             </header>
 
-            <div className="lyric-box max-w-lg" aria-hidden="true">
-              <div className="lyric-box__strophe">
-                <p className="italic">“Down the dark copper wire the message flows,”</p>
-                <p className="italic">“Pooling into registers where volcanic fire glows.”</p>
-              </div>
-              <div className="lyric-box__antistrophe">
-                <p className="italic">“Through the ring buffers of the Aegean Sea,”</p>
-                <p className="italic">“The graphics compile, safe and forever free.”</p>
-              </div>
-            </div>
+            <ol className="list-none p-0 flex flex-col gap-6" aria-label="Scheduled print and code sessions">
+              <li className="riso-card p-4 border border-rule bg-paper-2 grid grid-cols-1 md:grid-cols-4 gap-4 items-baseline">
+                <span className="font-mono text-xs text-accent font-bold">Sat 13:00 · 90 min · Free</span>
+                <div className="md:col-span-3">
+                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-1">Two-Color Overprint &amp; Shift</h3>
+                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
+                    We layer Aegean deep blue over bronze, shift the layout coordinates a few pixels on purpose, and chase the visual green you only find by accident.
+                  </p>
+                </div>
+              </li>
+              <li className="riso-card p-4 border border-rule bg-paper-2 grid grid-cols-1 md:grid-cols-4 gap-4 items-baseline">
+                <span className="font-mono text-xs text-accent-2 font-bold">Sat 15:30 · 2 hrs · Commission</span>
+                <div className="md:col-span-3">
+                  <h3 className="font-sans font-bold text-lg text-ink uppercase mb-1">Volcanic Shader Compilation</h3>
+                  <p className="font-serif text-sm text-ink-2 leading-relaxed">
+                    A live compute pipeline setup. Run raw GLSL stencils through compiler drums while you watch. Bring a layout drawing or use one of ours.
+                  </p>
+                </div>
+              </li>
+            </ol>
           </section>
 
-          {/* Book IV: Selected Exploits */}
+          {/* Book IV: Selected Exploits (Exhibitor List Style) */}
           <section className="pt-8" id="book4" aria-labelledby="exploits-h">
             <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">04 · Book IV</p>
-              <h2 className="plate-head__title" id="exploits-h">Selected Exploits</h2>
+              <p className="plate-head__no" aria-hidden="true">Book IV</p>
+              <h2 className="plate-head__title" id="exploits-h">Selected Catalogue</h2>
             </header>
 
             <ol className="ledger" aria-label="Selected work, newest first">
               <li className="ledger__row">
-                <span className="ledger__year">2026</span>
+                <span className="ledger__year">WebGPU · Stand A9</span>
                 <span className="ledger__name">Telemetry Canvas</span>
-                <span className="ledger__kind">High-performance WebGPU stream solver</span>
+                <span className="ledger__kind">High-performance canvas spot-colour solver</span>
               </li>
               <li className="ledger__row">
-                <span className="ledger__year">2025</span>
+                <span className="ledger__year">Rust Shell · Stand A11</span>
                 <span className="ledger__name">Tauri Native Wrapper</span>
-                <span className="ledger__kind">Low-latency rust telemetry wrapper</span>
+                <span className="ledger__kind">Low-latency engine shell integration</span>
               </li>
               <li className="ledger__row">
-                <span className="ledger__year">2025</span>
+                <span className="ledger__year">Zines · Mezzanine M2</span>
                 <span className="ledger__name">Aegean Solver Layout</span>
-                <span className="ledger__kind">Tactile Classical Broadside layout</span>
+                <span className="ledger__kind">Tactile classical broadside specimen</span>
               </li>
               <li className="ledger__row">
-                <span className="ledger__year">2024</span>
+                <span className="ledger__year">WebGL · Mezzanine M5</span>
                 <span className="ledger__name">Aether Compute Engine</span>
                 <span className="ledger__kind">Next.js WebGL graphics pipeline</span>
               </li>
@@ -246,7 +270,7 @@ export default function Home() {
 
             {githubData && (
               <div className="mt-8 p-4 bg-paper-2 border border-rule max-w-xs">
-                <p className="font-mono text-[0.65rem] text-muted uppercase tracking-wider">GitHub ledger</p>
+                <p className="font-mono text-[0.65rem] text-muted uppercase tracking-wider">GitHub contributions ledger</p>
                 <p className="text-[2.25rem] font-bold font-sans tracking-tight text-accent mt-1 leading-none">
                   {githubData.count.toLocaleString()}
                 </p>
@@ -259,13 +283,13 @@ export default function Home() {
 
           {/* Book V: Commission Colophon */}
           <section className="pt-8" id="book5" aria-labelledby="colophon-h">
-            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">05 · Book V · Colophon</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">Book V · Colophon</span>
             <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink uppercase mb-6" id="colophon-h">
               Commission
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[38ch]">
-                Configuring low-overhead graphics engines and memory pipelines that require a stately visual signature. I accept a small number of commissions per season.
+                Leave your coordinates and we&apos;ll send a heads-up when commissions open. One message, when the queue is clear. Nothing after.
               </p>
 
               {/* Form as CTA */}
@@ -314,7 +338,7 @@ export default function Home() {
             Built using Cormorant Garamond and Cinzel on aged papyrus newsprint.
           </p>
           <p className="font-mono text-[0.65rem] text-muted mt-6 leading-relaxed">
-            Hong Kong · © 2026 Jones Tse. All rights reserved.
+            Govanhill Print Room · © 2026 the folio &amp; its makers.
           </p>
         </footer>
       </div>
