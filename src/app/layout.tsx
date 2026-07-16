@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Geist, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Space_Grotesk({
+const displayFont = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "700", "800"],
 });
 
-const bodyFont = Geist({
+const bodyFont = Newsreader({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
 });
 
 const monoFont = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Jones Tse — Mobile & DevOps Engineer Folio",
-  description: "Systems portfolio showcasing low-latency infrastructure, mobile apps, CI/CD telemetry, and cloud automation.",
+  title: "Jones Tse — Mobile & DevOps Engineer",
+  description: "Trips, set in motion. Infrastructure built for native mobile apps and scalable cloud operations.",
 };
 
 export default function RootLayout({

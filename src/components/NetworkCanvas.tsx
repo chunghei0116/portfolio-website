@@ -120,7 +120,7 @@ function NodeNetwork() {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#3b72f6" // Cobalt Accent
+          color="#ef4444" // Bleed Red Accent
           size={0.16}
           sizeAttenuation={true}
           transparent={true}
@@ -140,9 +140,9 @@ function NodeNetwork() {
           />
         </bufferGeometry>
         <lineBasicMaterial
-          color="#3b72f6"
+          color="#ef4444"
           transparent={true}
-          opacity={0.2}
+          opacity={0.25}
           linewidth={1}
         />
       </lineSegments>
