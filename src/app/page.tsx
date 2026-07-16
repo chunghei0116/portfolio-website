@@ -529,6 +529,16 @@ export default function Home() {
     }
     return name.substring(0, 2);
   };
+
+  const getCategoryAbbr = (fam: string) => {
+    switch (fam) {
+      case "mobile": return "MOB";
+      case "cicd": return "DEVOPS";
+      case "infra": return "CLOUD";
+      case "security": return "GROWTH";
+      default: return "";
+    }
+  };
   const [isSwapping, setIsSwapping] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -641,10 +651,10 @@ export default function Home() {
                   aria-pressed={selectedMilestone?.id === m.id}
                   onClick={() => selectMilestone(m)}
                 >
-                  <span className="cell__num">{m.year}</span>
+                  <span className="cell__num">{getCategoryAbbr(m.fam)}</span>
                   <span className="cell__sym">{getSymbol(m.name)}</span>
                   <span className="cell__name">{m.name}</span>
-                  <span className="cell__stat">{m.metric}</span>
+                  <span className="cell__stat">{m.year}</span>
                 </button>
               ))}
             </div>
