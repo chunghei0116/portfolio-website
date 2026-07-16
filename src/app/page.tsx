@@ -73,6 +73,7 @@ export default function Home() {
           <nav className="masthead__nav" aria-label="Primary">
             <a href="#reading">How to read the grid</a>
             <a href="#table">Milestone Index</a>
+            <a href="#skills">Technical Registry</a>
             <a href="#contact">Signal Terminal</a>
           </nav>
         </div>
@@ -233,11 +234,70 @@ export default function Home() {
         {/* Closing statement */}
         <section className="coda" aria-labelledby="coda-title">
           <h2 className="coda__title" id="coda-title">
-            Thirty-two modules, compiled and secure.
+            Fifteen modules, compiled and secure.
           </h2>
           <p className="coda__line">
             Infrastructure operations are not built on luck. They are built on automated gates, modular architecture, and deterministic deployment workflows.
           </p>
+        </section>
+
+        {/* Skills Section */}
+        <section className="skills-section" id="skills" aria-labelledby="skills-title">
+          <div className="text-center mb-8">
+            <h2 id="skills-title" className="font-display text-xl font-semibold mb-2">Technical Registry</h2>
+            <p className="text-sm font-serif text-ink-2">Classification of system competencies, platforms, and operational tools mapped across disciplines.</p>
+          </div>
+
+          <div className="skills-grid">
+            <div className="skills-card">
+              <h3 className="skills-card__title">DevOps &amp; Infrastructure</h3>
+              <ul className="skills-list">
+                <li><span className="skills-badge">Docker</span></li>
+                <li><span className="skills-badge">Kubernetes</span></li>
+                <li><span className="skills-badge">ArgoCD / GitOps</span></li>
+                <li><span className="skills-badge">GitLab / GitHub</span></li>
+                <li><span className="skills-badge">ELK Stack</span></li>
+                <li><span className="skills-badge">AWS Cloud</span></li>
+                <li><span className="skills-badge">CKAD (Interest)</span></li>
+              </ul>
+            </div>
+
+            <div className="skills-card">
+              <h3 className="skills-card__title">Mobile Systems</h3>
+              <ul className="skills-list">
+                <li><span className="skills-badge">Flutter</span></li>
+                <li><span className="skills-badge">Shorebird (OTA)</span></li>
+                <li><span className="skills-badge">Firebase FCM</span></li>
+                <li><span className="skills-badge">iOS Development</span></li>
+                <li><span className="skills-badge">Android Native</span></li>
+                <li><span className="skills-badge">Tauri (Interest)</span></li>
+              </ul>
+            </div>
+
+            <div className="skills-card">
+              <h3 className="skills-card__title">Web &amp; Languages</h3>
+              <ul className="skills-list">
+                <li><span className="skills-badge">React</span></li>
+                <li><span className="skills-badge">Next.js</span></li>
+                <li><span className="skills-badge">TypeScript</span></li>
+                <li><span className="skills-badge">JavaScript</span></li>
+                <li><span className="skills-badge">HTML5 / CSS3</span></li>
+                <li><span className="skills-badge">SCSS / Sass</span></li>
+              </ul>
+            </div>
+
+            <div className="skills-card">
+              <h3 className="skills-card__title">Data &amp; Operations</h3>
+              <ul className="skills-list">
+                <li><span className="skills-badge">PostgreSQL</span></li>
+                <li><span className="skills-badge">MongoDB</span></li>
+                <li><span className="skills-badge">SQL Server</span></li>
+                <li><span className="skills-badge">Linux (CLI)</span></li>
+                <li><span className="skills-badge">VS Code / VS</span></li>
+                <li><span className="skills-badge">macOS / Windows</span></li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         {/* Contact Form */}
