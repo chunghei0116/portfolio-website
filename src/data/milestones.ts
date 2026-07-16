@@ -2,9 +2,9 @@ export interface Milestone {
   id: string;
   sym: string;
   name: string;
-  year: number; // 2019 - 2026
-  col: number;  // 1 - 8
-  row: number;  // 1 - 6
+  year: number; // 2023 - 2026
+  col: number;  // 1 - 8 (Spring 1-2, Summer 3-4, Fall 5-6, Winter 7-8)
+  row: number;  // 1 - 4 (2023, 2024, 2025, 2026)
   fam: "mobile" | "cicd" | "infra" | "security";
   famLabel: string;
   status: "Deploying" | "Active" | "Complete";
@@ -15,7 +15,7 @@ export interface Milestone {
 }
 
 export const milestones: Milestone[] = [
-  // ---- 2023 ----
+  // ---- 2023 (Row 1) ----
   {
     id: "vr",
     sym: "Vr",
@@ -36,8 +36,8 @@ export const milestones: Milestone[] = [
     sym: "Pg",
     name: "First Programmer Role",
     year: 2023,
-    col: 5,
-    row: 3,
+    col: 6,
+    row: 1,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Complete",
@@ -47,14 +47,14 @@ export const milestones: Milestone[] = [
     notes: "Started first full-time role focused on K8s and DevOps. Containerized legacy platforms into Docker and migrated them to Kubernetes."
   },
 
-  // ---- 2024 ----
+  // ---- 2024 (Row 2) ----
   {
     id: "sa",
     sym: "St",
     name: "In-house Staff App",
     year: 2024,
-    col: 6,
-    row: 1,
+    col: 1,
+    row: 2,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
@@ -68,7 +68,7 @@ export const milestones: Milestone[] = [
     sym: "Cd",
     name: "App Store CI/CD",
     year: 2024,
-    col: 6,
+    col: 2,
     row: 2,
     fam: "cicd",
     famLabel: "DevOps",
@@ -83,8 +83,8 @@ export const milestones: Milestone[] = [
     sym: "Go",
     name: "ArgoCD GitOps Setup",
     year: 2024,
-    col: 6,
-    row: 4,
+    col: 3,
+    row: 2,
     fam: "infra",
     famLabel: "Cloud",
     status: "Complete",
@@ -98,8 +98,8 @@ export const milestones: Milestone[] = [
     sym: "Bg",
     name: "Blue-Green Deployment",
     year: 2024,
-    col: 6,
-    row: 5,
+    col: 5,
+    row: 2,
     fam: "cicd",
     famLabel: "DevOps",
     status: "Complete",
@@ -109,14 +109,14 @@ export const milestones: Milestone[] = [
     notes: "Designed Kubernetes blue-green deployment pipelines integrated with a secure private Harbor container registry."
   },
 
-  // ---- 2025 ----
+  // ---- 2025 (Row 3) ----
   {
     id: "asw",
     sym: "As",
     name: "AS Watson Mobile Dev",
     year: 2025,
-    col: 7,
-    row: 1,
+    col: 1,
+    row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
@@ -126,12 +126,27 @@ export const milestones: Milestone[] = [
     notes: "Joined AS Watson group as a Mobile Application Developer, taking ownership of customer-facing mobile applications."
   },
   {
+    id: "aws",
+    sym: "Aw",
+    name: "AWS Essentials",
+    year: 2025,
+    col: 2,
+    row: 3,
+    fam: "security",
+    famLabel: "Personal Development",
+    status: "Complete",
+    platform: "Amazon Web Services",
+    metric: "AWS",
+    metricLabel: "Competency",
+    notes: "Built core competency in Amazon Web Services infrastructure, networking, and serverless compute paradigms."
+  },
+  {
     id: "crm",
     sym: "Cr",
     name: "Million-User CRM App",
     year: 2025,
-    col: 7,
-    row: 2,
+    col: 3,
+    row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Active",
@@ -155,30 +170,15 @@ export const milestones: Milestone[] = [
     metricLabel: "App Performance",
     notes: "Conducted extensive performance profiling and memory leak optimization on the million-user active app."
   },
-  {
-    id: "aws",
-    sym: "Aw",
-    name: "AWS Essentials",
-    year: 2025,
-    col: 7,
-    row: 5,
-    fam: "security",
-    famLabel: "Personal Development",
-    status: "Complete",
-    platform: "Amazon Web Services",
-    metric: "AWS",
-    metricLabel: "Competency",
-    notes: "Built core competency in Amazon Web Services infrastructure, networking, and serverless compute paradigms."
-  },
 
-  // ---- 2026 ----
+  // ---- 2026 (Row 4) ----
   {
     id: "ai",
     sym: "Ai",
     name: "AI Workflow Integration",
     year: 2026,
-    col: 8,
-    row: 6,
+    col: 1,
+    row: 4,
     fam: "security",
     famLabel: "Personal Development",
     status: "Deploying",

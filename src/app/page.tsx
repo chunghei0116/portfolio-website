@@ -83,20 +83,20 @@ export default function Home() {
         <section className="intro" aria-labelledby="intro-title">
           <p className="eyebrow">The Career Log &amp; Milestones</p>
           <h1 className="intro__title" id="intro-title">
-            Eight years of pipelines, systems, and code in one grid.
+            A structured timeline of systems, platforms, and code.
           </h1>
           <p className="intro__lede">
-            I don't write my resume as a chronological list of bullet points. A list flattens complex engineering decisions — scaling clusters, writing compilers, automated certs, and debugging network sockets — into a single line of text. Here is the grid: rows by system discipline, columns by year. Select a block to read its telemetry log.
+            I don't write my resume as a chronological list of bullet points. A list flattens complex engineering decisions — scaling clusters, writing compilers, automated certs, and debugging network sockets — into a single line of text. Here is the grid: rows by year, columns by season. Select a block to read its telemetry log.
           </p>
 
           <dl className="axes" aria-label="How the table is arranged">
             <div className="axes__row">
               <dt>Down the rows</dt>
-              <dd>Discipline, from client-facing Mobile down to Cloud, DevOps, and Personal Development layers.</dd>
+              <dd>Timeline, from 2023 at the top row down to the current 2026 deployment window.</dd>
             </div>
             <div className="axes__row">
               <dt>Across the columns</dt>
-              <dd>Timeline, from 2019 to the current 2026 deployment window.</dd>
+              <dd>Chronological seasons, split into Spring, Summer, Fall, and Winter columns.</dd>
             </div>
           </dl>
         </section>
@@ -108,10 +108,6 @@ export default function Home() {
           <div className="catalog__grid-wrap">
             {/* Legend */}
             <ul className="legend" id="reading" aria-label="Year segments">
-              <li><span className="legend__chip legend__chip--2019" aria-hidden="true"></span>2019</li>
-              <li><span className="legend__chip legend__chip--2020" aria-hidden="true"></span>2020</li>
-              <li><span className="legend__chip legend__chip--2021" aria-hidden="true"></span>2021</li>
-              <li><span className="legend__chip legend__chip--2022" aria-hidden="true"></span>2022</li>
               <li><span className="legend__chip legend__chip--2023" aria-hidden="true"></span>2023</li>
               <li><span className="legend__chip legend__chip--2024" aria-hidden="true"></span>2024</li>
               <li><span className="legend__chip legend__chip--2025" aria-hidden="true"></span>2025</li>
@@ -119,15 +115,21 @@ export default function Home() {
             </ul>
 
             {/* Timeline Headers */}
-            <div className="ptable-headers" aria-hidden="true">
-              <div>2019</div>
-              <div>2020</div>
-              <div>2021</div>
-              <div>2022</div>
-              <div>2023</div>
-              <div>2024</div>
-              <div>2025</div>
-              <div>2026</div>
+            <div className="ptable-headers-main" aria-hidden="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(8, minmax(0, 1fr))', gap: 'var(--space-2xs)', borderBottom: '1px solid var(--color-line-2)', paddingBottom: '4px', textTransform: 'uppercase', fontSize: 'var(--text-2xs)', fontFamily: 'var(--font-mono)', color: 'var(--color-muted)', letterSpacing: '0.04em' }}>
+              <div style={{ gridColumn: 'span 2', textAlign: 'center' }}>Spring</div>
+              <div style={{ gridColumn: 'span 2', textAlign: 'center' }}>Summer</div>
+              <div style={{ gridColumn: 'span 2', textAlign: 'center' }}>Fall</div>
+              <div style={{ gridColumn: 'span 2', textAlign: 'center' }}>Winter</div>
+            </div>
+            <div className="ptable-headers" aria-hidden="true" style={{ marginTop: '4px' }}>
+              <div>SP I</div>
+              <div>SP II</div>
+              <div>SU I</div>
+              <div>SU II</div>
+              <div>FA I</div>
+              <div>FA II</div>
+              <div>WI I</div>
+              <div>WI II</div>
             </div>
 
             {/* Periodic Table / Timeline */}
