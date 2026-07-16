@@ -126,7 +126,7 @@ export const milestones: Milestone[] = [
   {
     id: "cis",
     sym: "Cs",
-    name: "CIS JSpreadsheet Editor",
+    name: "Contractor Platform",
     year: 2024,
     col: 6,
     row: 2,
@@ -136,24 +136,24 @@ export const milestones: Milestone[] = [
     platform: "React / JSpreadsheet",
     metric: "BQ / IP",
     metricLabel: "Finance Modules",
-    notes: "Built the Contractor Information System (CIS) frontend, implementing high-performance spreadsheet modules for Bill of Quantities (BQ) and payment assessments."
+    notes: "Built the frontend of the in-house contractor financial platform, implementing high-performance spreadsheet modules for Bill of Quantities (BQ) and payment assessments."
   },
 
   // ---- 2025 (Row 3) ----
   {
     id: "asw",
     sym: "As",
-    name: "Retail Group Mobile Dev",
+    name: "AS Watson Mobile Dev",
     year: 2025,
     col: 1,
     row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
-    platform: "Retail Group",
+    platform: "AS Watson",
     metric: "Join",
     metricLabel: "Mobile Developer",
-    notes: "Joined a global retail group as a Mobile Application Developer, transitioning to customer-facing ecommerce and CRM applications."
+    notes: "Joined AS Watson group as a Mobile Application Developer, transitioning to customer-facing ecommerce and CRM applications."
   },
   {
     id: "aws",
@@ -173,17 +173,17 @@ export const milestones: Milestone[] = [
   {
     id: "crm",
     sym: "Cr",
-    name: "Million-User CRM App",
+    name: "AS Watson CRM App",
     year: 2025,
     col: 3,
     row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Active",
-    platform: "CRM System",
+    platform: "AS Watson CRM",
     metric: "1M+ MAU",
     metricLabel: "Active Users",
-    notes: "Core developer of the high-traffic retail CRM app supporting over a million monthly active users."
+    notes: "Core developer of the high-traffic AS Watson CRM app supporting over a million monthly active users."
   },
   {
     id: "opt",
@@ -198,7 +198,7 @@ export const milestones: Milestone[] = [
     platform: "iOS & Android",
     metric: "Optimized",
     metricLabel: "App Performance",
-    notes: "Conducted extensive profiling and performance optimization, resolving critical memory leaks and UI lag on high-volume CRM apps."
+    notes: "Conducted extensive profiling and performance optimization, resolving critical memory leaks and UI lag on high-volume AS Watson CRM apps."
   },
 
   // ---- 2026 (Row 4) ----
