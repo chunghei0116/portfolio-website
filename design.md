@@ -1,13 +1,13 @@
-# Design — Classical Homeric Folio Portfolio
+# Design — Off-Register Risograph Fair (Greek Folio)
 
-A locked design system for this app, inspired by the style of Homeric Epics. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
+A locked design system for this app, inspired by the riso-01 print fair layout and Homeric Epic color theme. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
 
 ## Genre
 editorial
 
-Folio-Manuscript (Book-led classical manuscript layout cross-pollinated with the high-impact large typography and condensed copy structure of the Hyperlane developer summit specimen).
+Risograph-Folio (Double margins, staggered catalogue exhibitor cards, timed ledger columns, and spot color overprint aesthetics).
 
-- Portfolio page: Split-screen hero layout (left: colossal Cinzel typography, right: Greek helmet illustration frame), double rules, numeric markers, and short, highly scannable copy columns.
+- Main page: Split grid card catalogs, timetable lists, double border highlights, and clean subscription footer form.
 
 ## System
 - Display: "Cinzel", weight 400–800 (stately Roman letterforms)
