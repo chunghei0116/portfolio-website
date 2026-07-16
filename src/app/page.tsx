@@ -1,43 +1,528 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 
-const NetworkCanvas = dynamic(() => import("../components/NetworkCanvas"), {
-  ssr: false,
-});
+interface Milestone {
+  id: string;
+  sym: string;
+  name: string;
+  year: number; // 2019 - 2026
+  col: number;  // 1 - 8
+  row: number;  // 1 - 4
+  fam: "mobile" | "cicd" | "infra" | "security";
+  famLabel: string;
+  status: "Deploying" | "Active" | "Complete";
+  platform: string;
+  metric: string;
+  metricLabel: string;
+  notes: string;
+}
+
+const milestones: Milestone[] = [
+  // ---- Row 1: Mobile Client (mobile) ----
+  {
+    id: "kd",
+    sym: "Kd",
+    name: "Kotlin Offline Database",
+    year: 2019,
+    col: 1,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Complete",
+    platform: "Android (Kotlin)",
+    metric: "100%",
+    metricLabel: "Offline Sync",
+    notes: "Shipped native Kotlin offline storage engine with SQLite cache and bi-directional synchronizer."
+  },
+  {
+    id: "se",
+    sym: "Se",
+    name: "Socket Sync Engine",
+    year: 2020,
+    col: 2,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Complete",
+    platform: "iOS (Swift)",
+    metric: "<15ms",
+    metricLabel: "Socket Ping",
+    notes: "Designed low-latency real-time socket client in Swift, managing local thread pooling and thread-safe store updates."
+  },
+  {
+    id: "ui",
+    sym: "Ui",
+    name: "Unified App Client",
+    year: 2021,
+    col: 3,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Complete",
+    platform: "Swift / Kotlin",
+    metric: "0.01%",
+    metricLabel: "Crash Rate",
+    notes: "Redesigned native mobile client interface with offline failover logic, ensuring 99.99% crash-free sessions."
+  },
+  {
+    id: "nb",
+    sym: "Nb",
+    name: "JS-to-Native Bridge",
+    year: 2022,
+    col: 4,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Complete",
+    platform: "iOS & Android",
+    metric: "3.5x",
+    metricLabel: "Speedup",
+    notes: "Engineered high-performance interprocess message bridge allowing hybrid web modules to invoke hardware-accelerated APIs."
+  },
+  {
+    id: "fl",
+    sym: "Fl",
+    name: "Fastlane CD Pipelines",
+    year: 2023,
+    col: 5,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Complete",
+    platform: "Fastlane / Ruby",
+    metric: "10m",
+    metricLabel: "Release Time",
+    notes: "Automated mobile provisioning profiles and certificate syncs. Replaced manual releases with zero-touch Fastlane triggers."
+  },
+  {
+    id: "tc",
+    sym: "Tc",
+    name: "Native Telemetry Client",
+    year: 2024,
+    col: 6,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Active",
+    platform: "iOS & Android",
+    metric: "10M+",
+    metricLabel: "Events / Day",
+    notes: "Designed non-blocking telemetry tracer library compiling frame rates, CPU spikes, and stack traces directly to metrics clusters."
+  },
+  {
+    id: "mc",
+    sym: "Mc",
+    name: "Mac Studio Runner Farm",
+    year: 2025,
+    col: 7,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Complete",
+    platform: "macOS Cluster",
+    metric: "16 Nodes",
+    metricLabel: "Bare-Metal",
+    notes: "Provisioned and automated a hardware cluster of Mac Studios on-premises for high-density parallel iOS compilation."
+  },
+  {
+    id: "v26",
+    sym: "V26",
+    name: "Vol. 26 Delivery Framework",
+    year: 2026,
+    col: 8,
+    row: 1,
+    fam: "mobile",
+    famLabel: "Mobile Client",
+    status: "Deploying",
+    platform: "Unified App Spec",
+    metric: "1 click",
+    metricLabel: "Promotion",
+    notes: "Deploying standard compilation specifications for next-generation automated client-app delivery pipelines."
+  },
+
+  // ---- Row 2: CI/CD (cicd) ----
+  {
+    id: "gl",
+    sym: "Gl",
+    name: "GitLab Build Automation",
+    year: 2019,
+    col: 1,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Complete",
+    platform: "GitLab CI",
+    metric: "20 min",
+    metricLabel: "Build Time",
+    notes: "Set up the initial automated test and build pipeline for Android apk packaging, moving away from local manual exports."
+  },
+  {
+    id: "da",
+    sym: "Da",
+    name: "Docker Build Agent Farm",
+    year: 2020,
+    col: 2,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Complete",
+    platform: "Docker / Linux",
+    metric: "100%",
+    metricLabel: "Clean States",
+    notes: "Introduced isolated container-based compilers to eliminate artifacts and caching drift across build iterations."
+  },
+  {
+    id: "tg",
+    sym: "Tg",
+    name: "AWS Multi-Region Transit",
+    year: 2021,
+    col: 3,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Complete",
+    platform: "AWS Transit Gateway",
+    metric: "99.99%",
+    metricLabel: "Route Uptime",
+    notes: "Automated routing configurations across VPC meshes using automated pipeline deployments to ensure connectivity."
+  },
+  {
+    id: "tf",
+    sym: "Tf",
+    name: "Terraform Infrastructure",
+    year: 2022,
+    col: 4,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Complete",
+    platform: "Terraform / AWS",
+    metric: "150+",
+    metricLabel: "Resources",
+    notes: "Migrated whole cloud layout to reusable Terraform modules, guaranteeing repeatable staging and production stacks."
+  },
+  {
+    id: "ek",
+    sym: "Ek",
+    name: "Kubernetes Orchestration",
+    year: 2023,
+    col: 5,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Complete",
+    platform: "AWS EKS",
+    metric: "0s",
+    metricLabel: "Downtime",
+    notes: "Provisioned auto-scaling EKS cluster utilizing spot instances to balance costs and service resilience."
+  },
+  {
+    id: "zt",
+    sym: "Zt",
+    name: "Zero-Trust Mesh Networks",
+    year: 2024,
+    col: 6,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Active",
+    platform: "Boundary / Vault",
+    metric: "Zero",
+    metricLabel: "Static Keys",
+    notes: "Integrated Vault Dynamic Secrets inside GitLab execution jobs. Replaced static tokens with temporary AWS IAM roles."
+  },
+  {
+    id: "ko",
+    sym: "Ko",
+    name: "Ephemeral Sandbox Operator",
+    year: 2025,
+    col: 7,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Complete",
+    platform: "Go / Kubernetes API",
+    metric: "5 min",
+    metricLabel: "TTL Expiry",
+    notes: "Developed Go-based Kubernetes operator spinning up on-demand staging environments per PR and tearing them down after review."
+  },
+  {
+    id: "hc",
+    sym: "Hc",
+    name: "Hybrid Cloud Control",
+    year: 2026,
+    col: 8,
+    row: 2,
+    fam: "cicd",
+    famLabel: "CI/CD & Automation",
+    status: "Deploying",
+    platform: "K3s / Bare-Metal",
+    metric: "<5ms",
+    metricLabel: "Internal Latency",
+    notes: "Bridging AWS control panels with bare-metal on-premises Mac/Linux execution nodes through encrypted VPC tunnels."
+  },
+
+  // ---- Row 3: Infrastructure (infra) ----
+  {
+    id: "cc",
+    sym: "Cc",
+    name: "CI Cache Layer",
+    year: 2019,
+    col: 1,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Complete",
+    platform: "Docker Registry",
+    metric: "-40%",
+    metricLabel: "Build Time",
+    notes: "Optimized Docker layer caching and intermediate layer compression, cutting standard job execution time substantially."
+  },
+  {
+    id: "vh",
+    sym: "Vh",
+    name: "VM Android Emulator Host",
+    year: 2020,
+    col: 2,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Complete",
+    platform: "Linux KVM",
+    metric: "12 Nodes",
+    metricLabel: "Capacity",
+    notes: "Migrated Android virtualization workloads onto high-performance bare-metal servers for parallel test capability."
+  },
+  {
+    id: "vm",
+    sym: "Vm",
+    name: "VPC Transit Peering",
+    year: 2021,
+    col: 3,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Complete",
+    platform: "Terraform / AWS",
+    metric: "12 VPCs",
+    metricLabel: "Connected",
+    notes: "Automated peer-to-peer VPC transit networks and secure network boundaries via code pipeline integration."
+  },
+  {
+    id: "is",
+    sym: "Is",
+    name: "IaC Staging Pre-flight",
+    year: 2022,
+    col: 4,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Complete",
+    platform: "GitHub Actions",
+    metric: "100%",
+    metricLabel: "Plan Check",
+    notes: "Introduced automated Terraform plan reviews and security vulnerability linting via GHA PR comments."
+  },
+  {
+    id: "cn",
+    sym: "Cn",
+    name: "CDN Asset Edge",
+    year: 2023,
+    col: 5,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Complete",
+    platform: "CloudFront / S3",
+    metric: "99.98%",
+    metricLabel: "Cache Hit",
+    notes: "Deployed global multi-region asset caching CDN endpoints for mobile applications, reducing latency globally."
+  },
+  {
+    id: "ds",
+    sym: "Ds",
+    name: "DB Read-Replica Router",
+    year: 2024,
+    col: 6,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Active",
+    platform: "PostgreSQL / AWS",
+    metric: "0s",
+    metricLabel: "Failover TTL",
+    notes: "Automated read-replica routing and automated database failover states, protecting critical user session data pools."
+  },
+  {
+    id: "ac",
+    sym: "Ac",
+    name: "GitOps ArgoCD Stack",
+    year: 2025,
+    col: 7,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Complete",
+    platform: "ArgoCD / EKS",
+    metric: "10s",
+    metricLabel: "Sync Loop",
+    notes: "Implemented GitOps-driven application rollouts on EKS using ArgoCD, aligning live states to Git source repositories."
+  },
+  {
+    id: "co",
+    sym: "Co",
+    name: "Cloud Cost Pipeline",
+    year: 2026,
+    col: 8,
+    row: 3,
+    fam: "infra",
+    famLabel: "Infrastructure",
+    status: "Deploying",
+    platform: "AWS Cost API",
+    metric: "-35%",
+    metricLabel: "Spend Limit",
+    notes: "Deploying cost monitoring and automated cluster sleep timers saving monthly infrastructure expenditures."
+  },
+
+  // ---- Row 4: Security (security) ----
+  {
+    id: "ks",
+    sym: "Ks",
+    name: "Keystore HSM Vault",
+    year: 2019,
+    col: 1,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Complete",
+    platform: "AWS CloudHSM",
+    metric: "FIPS 3",
+    metricLabel: "Security Level",
+    notes: "Secured Android keystores and iOS developer cert profiles inside FIPS 140-2 Level 3 Hardware Security Modules."
+  },
+  {
+    id: "vt",
+    sym: "Vt",
+    name: "VPN Secure Boundary",
+    year: 2020,
+    col: 2,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Complete",
+    platform: "OpenVPN / IPsec",
+    metric: "100%",
+    metricLabel: "Encrypted",
+    notes: "Provisioned secure site-to-site tunnels connecting remote developers to local on-premises hardware build clusters."
+  },
+  {
+    id: "ia",
+    sym: "Ia",
+    name: "IAM Automated Audit",
+    year: 2021,
+    col: 3,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Complete",
+    platform: "AWS IAM / Lambda",
+    metric: "Weekly",
+    metricLabel: "Clean Rules",
+    notes: "Automated monthly IAM permission audit reports and access review loops via serverless scheduler scripts."
+  },
+  {
+    id: "cb",
+    sym: "Cb",
+    name: "Wildcard SSL Automator",
+    year: 2022,
+    col: 4,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Complete",
+    platform: "Let's Encrypt",
+    metric: "90 Days",
+    metricLabel: "Auto Refresh",
+    notes: "Automated Let's Encrypt wildcard certificate renewals across ingress controllers using Cloudflare API DNS challenges."
+  },
+  {
+    id: "vc",
+    sym: "Vc",
+    name: "Vault Central Secret",
+    year: 2023,
+    col: 5,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Complete",
+    platform: "HashiCorp Vault",
+    metric: "1h",
+    metricLabel: "Key Rotation",
+    notes: "Centralized application secret rotation and configuration pipelines inside cluster environments, eliminating env files."
+  },
+  {
+    id: "ip",
+    sym: "Ip",
+    name: "Ingest WAF Shield",
+    year: 2024,
+    col: 6,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Active",
+    platform: "Cloudflare WAF",
+    metric: "10k+",
+    metricLabel: "Blocks / Day",
+    notes: "Implemented dynamic WAF shielding and automated IP blacklisting metrics, securing development and API endpoints."
+  },
+  {
+    id: "zt2",
+    sym: "Zt",
+    name: "OIDC Zero-Trust Ingress",
+    year: 2025,
+    col: 7,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Complete",
+    platform: "Okta / Teleport",
+    metric: "100%",
+    metricLabel: "MFA Logins",
+    notes: "Enforced zero-trust console access for remote engineer CLI sessions with short-lived certificates and OIDC hooks."
+  },
+  {
+    id: "sc",
+    sym: "Sc",
+    name: "SOC2 Compliance Pipe",
+    year: 2026,
+    col: 8,
+    row: 4,
+    fam: "security",
+    famLabel: "Security & Ops",
+    status: "Deploying",
+    platform: "Compliance-as-Code",
+    metric: "Continuous",
+    metricLabel: "Vulnerability Scan",
+    notes: "Deploying SOC2 automated compliance validation audits, image scanning, and audit trails directly into code compilation."
+  }
+];
 
 export default function Home() {
-  // Form interactive state
+  const [selectedMilestone, setSelectedMilestone] = useState<Milestone>(milestones[5]); // Default to Tc (Telemetry Client)
+  const [isSwapping, setIsSwapping] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState<"default" | "loading" | "success" | "error">("default");
-  
-  // Active nav dot state
-  const [activeSection, setActiveSection] = useState("hero");
 
-  // Monitor scrolling to highlight nav links
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["hero", "experience", "projects", "contact"];
-      const scrollPos = window.scrollY + 200;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const selectMilestone = (m: Milestone) => {
+    if (m.id === selectedMilestone.id) return;
+    setIsSwapping(true);
+    setTimeout(() => {
+      setSelectedMilestone(m);
+      setIsSwapping(false);
+    }, 180);
+  };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,337 +540,209 @@ export default function Home() {
 
   return (
     <>
-      {/* ───── Top Ticker — Telemetry Marquee ───── */}
-      <div className="ticker" aria-hidden="true">
-        <div className="ticker-track">
-          <span><strong>SFO</strong> San Francisco 24ms</span>
-          <span><strong>LHR</strong> London 38ms</span>
-          <span><strong>HND</strong> Tokyo 12ms</span>
-          <span><strong>CDG</strong> Paris 42ms</span>
-          <span><strong>SIN</strong> Singapore 64ms</span>
-          <span><strong>HKG</strong> Hong Kong 8ms</span>
-          {/* duplicated track for seamless loop */}
-          <span><strong>SFO</strong> San Francisco 24ms</span>
-          <span><strong>LHR</strong> London 38ms</span>
-          <span><strong>HND</strong> Tokyo 12ms</span>
-          <span><strong>CDG</strong> Paris 42ms</span>
-          <span><strong>SIN</strong> Singapore 64ms</span>
-          <span><strong>HKG</strong> Hong Kong 8ms</span>
+      <header className="masthead" role="banner">
+        <div className="masthead__inner">
+          <a className="wordmark" href="#top" id="top">
+            <span className="wordmark__mark" aria-hidden="true">Jt</span>
+            <span className="wordmark__name">Jones Tse</span>
+            <span className="wordmark__sub">Mobile &amp; DevOps Engineering</span>
+          </a>
+          <nav className="masthead__nav" aria-label="Primary">
+            <a href="#reading">How to read the grid</a>
+            <a href="#table">Milestone Index</a>
+            <a href="#contact">Signal Terminal</a>
+          </nav>
         </div>
-      </div>
-
-      {/* ───── Masthead · N9 edge-aligned minimal ───── */}
-      <header className="shell">
-        <nav className="masthead" aria-label="Primary">
-          <a href="#" className="wordmark" aria-label="Jones Tse, home">JONESTSE</a>
-          <span className="masthead-meta">DevOps &amp; Mobile Spec &middot; MMXXVI</span>
-          <div className="masthead-links">
-            <a href="#hero" className={activeSection === "hero" ? "is-active" : ""}>System</a>
-            <a href="#experience" className={activeSection === "experience" ? "is-active" : ""}>Logs</a>
-            <a href="#projects" className={activeSection === "projects" ? "is-active" : ""}>Stack</a>
-            <a href="#contact" className={activeSection === "contact" ? "is-active" : ""}>Signal</a>
-          </div>
-        </nav>
       </header>
 
-      {/* ───── Main content ───── */}
-      <main>
-        
-        {/* ───── Hero · Marquee with departures board ───── */}
-        <section className="shell hero" id="hero" aria-labelledby="hero-title">
-          <div className="hero-strip" aria-hidden="false">
-            <span className="live">LIVE &middot; cluster status</span>
-            <span>All systems nominal</span>
-            <span>05 projects active</span>
-          </div>
+      <main id="main">
+        {/* Intro */}
+        <section className="intro" aria-labelledby="intro-title">
+          <p className="eyebrow">The Career Log &amp; Milestones</p>
+          <h1 className="intro__title" id="intro-title">
+            Eight years of pipelines, systems, and code in one grid.
+          </h1>
+          <p className="intro__lede">
+            I don't write my resume as a chronological list of bullet points. A list flattens complex engineering decisions — scaling clusters, writing compilers, automated certs, and debugging network sockets — into a single line of text. Here is the grid: rows by system discipline, columns by year. Select a block to read its telemetry log.
+          </p>
 
-          <div className="hero-composition">
-            <div>
-              <h1 id="hero-title" className="hero-title">
-                Deploy the code.<br />
-                <em>We&rsquo;ll scale the rest.</em><span className="tonk">↗ vol.26</span>
-              </h1>
-              <p className="hero-sub">
-                Jones Tse builds systems for mobile applications. Connecting native iOS/Android builds to containerized clusters and zero-trust cloud pipelines.
-              </p>
+          <dl className="axes" aria-label="How the table is arranged">
+            <div className="axes__row">
+              <dt>Down the rows</dt>
+              <dd>Discipline, from client-facing Mobile Client down to Infrastructure and Security layers.</dd>
             </div>
-
-            <aside className="hero-stamp" aria-label="Deployment stamp">
-              <span className="sm">Target Platform</span>
-              <span className="lg">HYBRID CLOUD</span>
-              <span className="sm">Provisioned with Terraform</span>
-              <span className="num">VOL. 26 &middot; 16.JUL.26</span>
-            </aside>
-          </div>
-
-          {/* Interactive 3D Nodes */}
-          <div className="mb-6">
-            <NetworkCanvas />
-          </div>
-
-          {/* Live Departures Board */}
-          <div className="board" role="table" aria-label="Infrastructure deployment states">
-            <div className="board-head" role="row">
-              <span role="columnheader" aria-label="Status icon"></span>
-              <span role="columnheader">ID</span>
-              <span role="columnheader">Infrastructure Environment</span>
-              <span role="columnheader">Provider</span>
-              <span role="columnheader">Status</span>
-              <span role="columnheader" style={{ textAlign: "right" }}>Ping</span>
+            <div className="axes__row">
+              <dt>Across the columns</dt>
+              <dd>Timeline, from 2019 to the current 2026 deployment window.</dd>
             </div>
-
-            <div className="board-row" data-status="boarding" role="row">
-              <svg className="board-glyph text-accent" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                <circle cx="8" cy="8" r="3" />
-                <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M12.8 3.2l-1.4 1.4M4.6 11.4l-1.4 1.4" strokeLinecap="round" />
-              </svg>
-              <span className="board-time" role="cell">06:42</span>
-              <span className="board-dest" role="cell">iOS Telemetry Client <small>&middot; Swift, automated fastlane releases</small></span>
-              <span className="board-code" role="cell">App Store</span>
-              <span className="board-status" role="cell">Deploying</span>
-              <span className="board-fare" role="cell">12ms <small>to apple.com</small></span>
-            </div>
-
-            <div className="board-row" data-status="ontime" role="row">
-              <svg className="board-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                <circle cx="8" cy="8" r="3" />
-                <path d="M8 1v2M8 13v2M1 8h2M13 8h2" strokeLinecap="round" />
-              </svg>
-              <span className="board-time" role="cell">09:15</span>
-              <span className="board-dest" role="cell">Zero-Trust Kubernetes <small>&middot; custom ingress, automated sandbox expiry</small></span>
-              <span className="board-code" role="cell">AWS EKS</span>
-              <span className="board-status" role="cell">On time</span>
-              <span className="board-fare" role="cell">24ms <small>to us-east</small></span>
-            </div>
-
-            <div className="board-row" data-status="ontime" role="row">
-              <svg className="board-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                <circle cx="8" cy="8" r="4" fill="currentColor" />
-              </svg>
-              <span className="board-time" role="cell">11:30</span>
-              <span className="board-dest" role="cell">Local Runner Daemon <small>&middot; bare-metal Mac Studio runner clusters</small></span>
-              <span className="board-code" role="cell">Orchestrator</span>
-              <span className="board-status" role="cell">On time</span>
-              <span className="board-fare" role="cell">2ms <small>local cluster</small></span>
-            </div>
-
-            <div className="board-row" data-status="open" role="row">
-              <svg className="board-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                <path d="M11 2.5A5.5 5.5 0 1 0 13.5 11 4.5 4.5 0 0 1 11 2.5Z" fill="currentColor" stroke="none" />
-              </svg>
-              <span className="board-time" role="cell">17:55</span>
-              <span className="board-dest" role="cell">Multi-region VPC Mesh <small>&middot; global VPN tunnel, site-to-site transit</small></span>
-              <span className="board-code" role="cell">Terraform</span>
-              <span className="board-status" role="cell">Standby</span>
-              <span className="board-fare" role="cell">38ms <small>to eu-west</small></span>
-            </div>
-          </div>
-
-          <div className="board-foot">
-            <span>All latency metrics are compiled in real-time.</span>
-            <span>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to interrupt.</span>
-          </div>
-
-          <div className="hero-cta">
-            <a href="#contact" className="btn">Request integration &middot; 15 min</a>
-            <a href="#projects" className="btn-ghost">Explore open source codebase</a>
-          </div>
+          </dl>
         </section>
 
-        {/* ───── Pitch ───── */}
-        <section className="shell pitch" aria-labelledby="pitch-label">
-          <div className="pitch-grid">
-            <p id="pitch-label" className="pitch-label">01 &mdash; Philosophy</p>
-            <div className="pitch-body">
-              <p>
-                Most delivery setups dump binaries into a folder and hope for the best. We do the opposite.
-                We construct <em>automated gates</em>. Custom runners, automated test execution, and deployment hooks that run smoothly before a single line lands on production.
-              </p>
-              <p>
-                You focus on writing features. We engineer the pipeline &mdash; container nodes, load balances, certificate authorities, and deployment scripts that respect the network. No manual builds, no SSH key chasing, no <em>it worked on my machine</em> excuses.
-              </p>
+        {/* Catalog */}
+        <section className="catalog" id="table" aria-labelledby="table-title">
+          <h2 className="visually-hidden" id="table-title">The Career Milestones</h2>
+
+          <div className="catalog__grid-wrap">
+            {/* Legend */}
+            <ul className="legend" id="reading" aria-label="Discipline groups">
+              <li><span className="legend__chip legend__chip--mobile" aria-hidden="true"></span>Mobile Client</li>
+              <li><span className="legend__chip legend__chip--cicd" aria-hidden="true"></span>CI/CD Pipelines</li>
+              <li><span className="legend__chip legend__chip--infra" aria-hidden="true"></span>Infrastructure</li>
+              <li><span className="legend__chip legend__chip--security" aria-hidden="true"></span>Security &amp; Ops</li>
+            </ul>
+
+            {/* Timeline Headers */}
+            <div className="ptable-headers" aria-hidden="true">
+              <div>2019</div>
+              <div>2020</div>
+              <div>2021</div>
+              <div>2022</div>
+              <div>2023</div>
+              <div>2024</div>
+              <div>2025</div>
+              <div>2026</div>
+            </div>
+
+            {/* Periodic Table / Timeline */}
+            <div className="ptable" role="list" aria-label="Career achievements by year and discipline">
+              {milestones.map((m) => (
+                <button
+                  key={m.id}
+                  className="cell"
+                  data-fam={m.fam}
+                  style={{ "--col": m.col, "--row": m.row } as React.CSSProperties}
+                  role="listitem"
+                  aria-pressed={selectedMilestone.id === m.id}
+                  onClick={() => selectMilestone(m)}
+                >
+                  <span className="cell__num">{m.year}</span>
+                  <span className="cell__sym">{m.sym}</span>
+                  <span className="cell__name">{m.name}</span>
+                  <span className="cell__stat">{m.metric}</span>
+                </button>
+              ))}
             </div>
           </div>
-        </section>
 
-        {/* ───── Picks / Experience Section ───── */}
-        <section className="shell picks" id="experience" aria-labelledby="exp-title">
-          <div className="picks-head">
-            <h2 id="exp-title">Experience <em>set in motion.</em></h2>
-            <span className="count">LogsMMXXVI &mdash; Spring &rsquo;26</span>
-          </div>
-
-          <div className="picks-grid">
-            <article className="pick">
-              <p className="pick-num"><span>ACTIVE</span><span>2024 — Pres</span></p>
-              <div className="pick-figure">
-                <span className="font-mono text-xl text-accent font-black">AWS / TERRAFORM</span>
-              </div>
-              <h3 className="pick-title">Senior DevOps <small>Mobile Platforms</small></h3>
-              <p className="pick-body">Automated mobile test runtimes using container orchestration, custom bare-metal virtual machines, and high-density build workflows.</p>
-              <p className="pick-meta"><span>Active</span><strong>0 errors</strong></p>
-            </article>
-
-            <article className="pick">
-              <p className="pick-num"><span>RESOLVED</span><span>2021 — 2024</span></p>
-              <div className="pick-figure">
-                <span className="font-mono text-xl text-ink font-black">DOCKER / CLOUD</span>
-              </div>
-              <h3 className="pick-title">DevOps Engineer <small>Delivery Infra</small></h3>
-              <p className="pick-body">Migrated legacy server suites to auto-scaling container configurations, enforcing zero-trust network gates and secrets isolation.</p>
-              <p className="pick-meta"><span>Complete</span><strong>100% migrated</strong></p>
-            </article>
-
-            <article className="pick">
-              <p className="pick-num"><span>RESOLVED</span><span>2019 — 2021</span></p>
-              <div className="pick-figure">
-                <span className="font-mono text-xl text-ink font-black">SWIFT / KOTLIN</span>
-              </div>
-              <h3 className="pick-title">App Developer <small>Native Client</small></h3>
-              <p className="pick-body">Shipped production native systems for iOS and Android, designing locally isolated storage engines and real-time socket connections.</p>
-              <p className="pick-meta"><span>Complete</span><strong>0.01% crash rate</strong></p>
-            </article>
-          </div>
-        </section>
-
-        {/* ───── Projects / Process ───── */}
-        <section className="process" id="projects" aria-labelledby="process-head">
-          <div className="process-shell">
-            <p id="process-head" className="process-head">02 &mdash; Deployment Loop</p>
-
-            <div className="process-grid">
-              <div className="stage">
-                <p className="stage-num">01<small>&middot; local compile</small></p>
-                <h3>Clean workspace.</h3>
-                <p>Run Fastlane, code sign certificates locally, compile gradle profiles, and package assets safely.</p>
-              </div>
-              <div className="stage">
-                <p className="stage-num">02<small>&middot; runner check</small></p>
-                <h3>Automated testing.</h3>
-                <p>Bare-metal Mac servers pick up tasks instantly. Parallel unit and UI tests complete within minutes.</p>
-              </div>
-              <div className="stage">
-                <p className="stage-num">03<small>&middot; zero downtime</small></p>
-                <h3>Global deployment.</h3>
-                <p>Terraform schedules container rollouts. Zero-downtime routing swaps traffic nodes, serving users with zero interruptions.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ───── Contact / Form Section ───── */}
-        <section className="shell final-cta" id="contact">
-          <div className="max-w-[700px] mx-auto text-center mb-10">
-            <h2 className="text-[clamp(1.75rem,5vw,3rem)] leading-none mb-6">
-              Next deployment window <em>in 47 hours.</em>
-            </h2>
-            <p className="font-serif text-ink-2 mb-8">
-              Transmission open. Reach out via the secure form below to optimize your native mobile delivery setups, secure your container structures, or scale cloud nodes.
+          {/* Assay Sidebar Panel */}
+          <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
+            <p className="assay__eyebrow">
+              <span className="assay__index">{selectedMilestone.year} Log</span>
+              <span className="assay__fam">{selectedMilestone.famLabel}</span>
             </p>
-          </div>
 
-          <div className="max-w-[500px] mx-auto">
-            <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
-              <div className="flex flex-col gap-1">
-                <label className="font-mono text-[10px] uppercase text-muted" htmlFor="form-email">
-                  TRANS_EMAIL
-                </label>
-                <input
-                  className="input-text"
-                  id="form-email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="operator@organization.net"
-                  disabled={formStatus === "loading" || formStatus === "success"}
-                  required
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="font-mono text-[10px] uppercase text-muted" htmlFor="form-message">
-                  MSG_DESCRIPTION
-                </label>
-                <textarea
-                  className="input-text min-h-[100px] resize-y"
-                  id="form-message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Describe your active pipeline issues or contract specifics..."
-                  disabled={formStatus === "loading" || formStatus === "success"}
-                  required
-                />
+            <div className="assay__plate" aria-hidden="true">
+              <span className="assay__sym">{selectedMilestone.sym}</span>
+            </div>
+
+            <h3 className="assay__name" id="assay-name">{selectedMilestone.name}</h3>
+            <p className="assay__origin">{selectedMilestone.platform}</p>
+
+            <dl className="assay__stats">
+              <div>
+                <dt>Primary Metric</dt>
+                <dd><span className="assay__caf">{selectedMilestone.metric}</span> <span className="assay__caf-note">{selectedMilestone.metricLabel}</span></dd>
               </div>
               <div>
-                <button
-                  className="btn w-full"
-                  type="submit"
-                  disabled={formStatus === "loading" || formStatus === "success"}
+                <dt>Log Status</dt>
+                <dd
+                  style={{
+                    color:
+                      selectedMilestone.status === "Deploying"
+                        ? "var(--color-status-deploying)"
+                        : selectedMilestone.status === "Active"
+                        ? "var(--color-status-active)"
+                        : "var(--color-status-complete)"
+                  }}
                 >
-                  {formStatus === "loading" ? "TRANSMITTING..." : formStatus === "success" ? "TRANSMITTED" : "ESTABLISH CONNECTION"}
-                </button>
+                  {selectedMilestone.status}
+                </dd>
               </div>
-              
-              {formStatus === "success" && (
-                <p className="font-mono text-xs text-accent mt-2 text-center">
-                  ✓ Connection established. Response pending on active log screen.
-                </p>
-              )}
-              {formStatus === "error" && (
-                <p className="font-mono text-xs text-accent mt-2 text-center">
-                  ⚠ Error establishing link. Validate transmission formats.
-                </p>
-              )}
-            </form>
-          </div>
+            </dl>
+
+            <p className="assay__notes">
+              {selectedMilestone.notes}
+            </p>
+
+            <p className="assay__hint">Select any cell in the table to load its telemetry dossier.</p>
+          </aside>
         </section>
 
+        {/* Closing statement */}
+        <section className="coda" aria-labelledby="coda-title">
+          <h2 className="coda__title" id="coda-title">
+            Thirty-two modules, compiled and secure.
+          </h2>
+          <p className="coda__line">
+            Infrastructure operations are not built on luck. They are built on automated gates, modular architecture, and deterministic deployment workflows.
+          </p>
+        </section>
+
+        {/* Contact Form */}
+        <section className="contact-section" id="contact" aria-labelledby="contact-title">
+          <div className="text-center mb-8">
+            <h2 id="contact-title" className="font-display text-xl font-semibold mb-2">Establish Connection</h2>
+            <p className="text-sm font-serif text-ink-2">Transmission channel is open. Reach out via the secure form below to optimize pipeline architecture or scale build systems.</p>
+          </div>
+
+          <form onSubmit={handleFormSubmit}>
+            <div className="form-group">
+              <label className="form-label" htmlFor="form-email">TRANS_EMAIL</label>
+              <input
+                className="form-input"
+                id="form-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="operator@organization.net"
+                disabled={formStatus === "loading" || formStatus === "success"}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="form-message">MSG_DESCRIPTION</label>
+              <textarea
+                className="form-input min-h-[100px] resize-y"
+                id="form-message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Describe your active pipeline issues or contract specifics..."
+                disabled={formStatus === "loading" || formStatus === "success"}
+                required
+              />
+            </div>
+            <button
+              className="btn-submit"
+              type="submit"
+              disabled={formStatus === "loading" || formStatus === "success"}
+            >
+              {formStatus === "loading" ? "TRANSMITTING..." : formStatus === "success" ? "✓ CONNECTION ESTABLISHED" : "ESTABLISH CONNECTION"}
+            </button>
+
+            {formStatus === "success" && (
+              <p className="font-mono text-2xs text-accent mt-3 text-center">
+                ✓ Connection established. Response pending on active log screen.
+              </p>
+            )}
+            {formStatus === "error" && (
+              <p className="font-mono text-2xs text-accent mt-3 text-center">
+                ⚠ Error establishing link. Validate transmission formats.
+              </p>
+            )}
+          </form>
+        </section>
       </main>
 
-      {/* ───── Footer · Ft4 dense colophon ───── */}
-      <footer className="shell colophon">
-        <div className="colophon-head">
-          <a href="#" className="wordmark">JONESTSE</a>
-          <em>Systems &amp; Mobile Infrastructure Automation. &mdash; Remote / HKSTP</em>
-        </div>
-
-        <dl className="colophon-grid">
-          <div className="col-block">
-            <dt>Focus Areas</dt>
-            <dd><a href="#hero">iOS &amp; Android CI/CD</a></dd>
-            <dd><a href="#hero">Infrastructure as Code</a></dd>
-            <dd><a href="#hero">Kubernetes Operators</a></dd>
-            <dd><a href="#hero">Bare-Metal Mac Runners</a></dd>
+      <footer className="site-footer" role="contentinfo">
+        <div className="max-w-[78rem] mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="site-footer__statement">
+            Jones Tse keeps the pipelines green and the clusters scaling.
+            <span className="site-footer__sub">Designed with Fraunces &amp; Newsreader. Built with Next.js &amp; Tailwind.</span>
+          </p>
+          <div className="flex gap-4 font-mono text-2xs uppercase tracking-wider text-muted">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent">LinkedIn</a>
           </div>
-
-          <div className="col-block">
-            <dt>Engineering Logs</dt>
-            <dd><a href="#experience">Active Positions</a></dd>
-            <dd><a href="#projects">Deployment Stages</a></dd>
-            <dd><a href="https://github.com" target="_blank" rel="noopener noreferrer">Open Source Modules</a></dd>
-            <dd><a href="https://github.com" target="_blank" rel="noopener noreferrer">Infrastructure Manifests</a></dd>
-          </div>
-
-          <div className="col-block">
-            <dt>Specifications</dt>
-            <dd>AWS Target Group</dd>
-            <dd>Zero-Trust Ingress</dd>
-            <dd>GitLab Runners</dd>
-            <dd>Fastlane Certs</dd>
-          </div>
-
-          <div className="col-block">
-            <dt>Secure Signals</dt>
-            <dd>jones.tse@example.dev</dd>
-            <dd>HKSTP, Shatin</dd>
-            <dd><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub Profile</a></dd>
-            <dd><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></dd>
-          </div>
-        </dl>
-
-        <div className="colophon-foot">
-          <span className="lead">&copy; 2026 Jones Tse.</span>
-          <span>Set in Bricolage Grotesque &amp; Newsreader. Built with Next.js &amp; Tailwind.</span>
-          <span>v2.6 &middot; Summer &rsquo;26</span>
         </div>
       </footer>
     </>

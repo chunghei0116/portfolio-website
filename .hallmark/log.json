@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-07-16",
+    "macrostructure": "custom-03",
+    "theme": "custom-03 studied-DNA",
+    "theme_axes": "light / characterful-soft-serif / hot-vermilion",
+    "vibe": "apothecary parchment, steeped brown ink, hot vermilion",
+    "enrichment": "none",
+    "brief": "studied custom-03 with interactive milestones timeline table"
+  },
+  {
+    "date": "2026-07-16",
     "macrostructure": "dashboard-split",
     "theme": "custom",
     "theme_axes": "light / geometric-sans / cool",

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Newsreader, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Newsreader, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Bricolage_Grotesque({
+const displayFont = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const bodyFont = Newsreader({
@@ -15,15 +15,15 @@ const bodyFont = Newsreader({
   style: ["normal", "italic"],
 });
 
-const monoFont = JetBrains_Mono({
+const monoFont = Space_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Jones Tse — Mobile & DevOps Engineer",
-  description: "Trips, set in motion. Infrastructure built for native mobile apps and scalable cloud operations.",
+  description: "Eight years of pipelines, code, and systems in one grid. Infrastructure built for native mobile apps and scalable cloud operations.",
 };
 
 export default function RootLayout({
@@ -37,9 +37,7 @@ export default function RootLayout({
       className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full font-sans antialiased text-foreground bg-background">
-        <main className="relative min-h-screen flex flex-col">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
