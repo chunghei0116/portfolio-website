@@ -316,9 +316,15 @@
   margin-inline: auto;
   padding: 0 var(--space-lg) var(--space-3xl);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 21rem;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: start;
+}
+
+@media (min-width: 60rem) {
+  .catalog.catalog--has-selection {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+  }
 }
 
 .catalog__grid-wrap {
@@ -733,22 +739,27 @@
 
   .assay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    transform: none;
     z-index: 500;
-    width: calc(100vw - var(--space-lg) * 2);
-    max-width: 26rem;
-    max-height: 85vh;
+    width: 100vw;
+    max-width: none;
+    max-height: 80vh;
     overflow-y: auto;
     background: var(--color-paper-2);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-md);
-    padding: var(--space-lg);
+    border: none;
+    border-top: 1px solid var(--color-line-2);
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg) calc(var(--space-lg) + env(safe-area-inset-bottom, 16px));
     box-shadow: var(--shadow-panel);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas:
+      "handle handle"
       "plate eyebrow"
       "plate name"
       "stats stats"
@@ -756,6 +767,25 @@
       "hint  hint";
     column-gap: var(--space-md);
     align-items: center;
+    
+    /* Bottom Sheet entry animation */
+    animation: slide-up var(--dur) var(--ease-out) forwards;
+  }
+
+  @keyframes slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .assay__handle {
+    grid-area: handle;
+    width: 3rem;
+    height: 0.25rem;
+    background: var(--color-line-2);
+    border-radius: 99px;
+    margin-inline: auto;
+    margin-bottom: var(--space-sm);
+    display: block;
   }
 
   .assay__eyebrow { grid-area: eyebrow; }
@@ -785,7 +815,7 @@
 
   .assay {
     grid-template-columns: 1fr;
-    grid-template-areas: "eyebrow" "plate" "name" "stats" "notes" "hint";
+    grid-template-areas: "handle" "eyebrow" "plate" "name" "stats" "notes" "hint";
     text-align: left;
   }
   .assay__plate { margin-bottom: var(--space-2xs); }

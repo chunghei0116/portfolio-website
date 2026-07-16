@@ -586,7 +586,7 @@ export default function Home() {
         </section>
 
         {/* Catalog */}
-        <section className="catalog" id="table" aria-labelledby="table-title">
+        <section className={`catalog ${selectedMilestone ? "catalog--has-selection" : ""}`} id="table" aria-labelledby="table-title">
           <h2 className="visually-hidden" id="table-title">The Career Milestones</h2>
 
           <div className="catalog__grid-wrap">
@@ -646,6 +646,9 @@ export default function Home() {
                 }}
               />
               <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
+                {/* Mobile Drag Handle */}
+                <div className="assay__handle" aria-hidden="true" />
+
                 <button 
                   className="absolute top-4 right-4 font-mono text-xs text-muted hover:text-accent cursor-pointer"
                   onClick={(e) => {
@@ -702,13 +705,7 @@ export default function Home() {
                 <p className="assay__hint">Select any cell in the table to load its telemetry dossier.</p>
               </aside>
             </>
-          ) : (
-            <aside className="assay hidden lg:block" id="assay" aria-live="polite">
-              <p className="assay__hint" style={{ borderTop: "none", paddingTop: 0 }}>
-                Select any cell in the table to load its telemetry dossier.
-              </p>
-            </aside>
-          )}
+          ) : null}
         </section>
 
         {/* Closing statement */}
