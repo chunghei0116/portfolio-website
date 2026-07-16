@@ -28,7 +28,7 @@ const milestones: Milestone[] = [
     col: 1,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Complete",
     platform: "Android (Kotlin)",
     metric: "100%",
@@ -43,7 +43,7 @@ const milestones: Milestone[] = [
     col: 2,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Complete",
     platform: "iOS (Swift)",
     metric: "<15ms",
@@ -58,7 +58,7 @@ const milestones: Milestone[] = [
     col: 3,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Complete",
     platform: "Swift / Kotlin",
     metric: "0.01%",
@@ -73,7 +73,7 @@ const milestones: Milestone[] = [
     col: 4,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Complete",
     platform: "iOS & Android",
     metric: "3.5x",
@@ -88,7 +88,7 @@ const milestones: Milestone[] = [
     col: 5,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Complete",
     platform: "Fastlane / Ruby",
     metric: "10m",
@@ -103,7 +103,7 @@ const milestones: Milestone[] = [
     col: 6,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Active",
     platform: "iOS & Android",
     metric: "10M+",
@@ -118,7 +118,7 @@ const milestones: Milestone[] = [
     col: 7,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Complete",
     platform: "macOS Cluster",
     metric: "16 Nodes",
@@ -133,7 +133,7 @@ const milestones: Milestone[] = [
     col: 8,
     row: 1,
     fam: "mobile",
-    famLabel: "Mobile Client",
+    famLabel: "Mobile",
     status: "Deploying",
     platform: "Unified App Spec",
     metric: "1 click",
@@ -141,7 +141,7 @@ const milestones: Milestone[] = [
     notes: "Deploying standard compilation specifications for next-generation automated client-app delivery pipelines."
   },
 
-  // ---- Row 2: CI/CD (cicd) ----
+  // ---- Row 2: DevOps (cicd) ----
   {
     id: "gl",
     sym: "Gl",
@@ -150,7 +150,7 @@ const milestones: Milestone[] = [
     col: 1,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Complete",
     platform: "GitLab CI",
     metric: "20 min",
@@ -165,7 +165,7 @@ const milestones: Milestone[] = [
     col: 2,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Complete",
     platform: "Docker / Linux",
     metric: "100%",
@@ -180,7 +180,7 @@ const milestones: Milestone[] = [
     col: 3,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Complete",
     platform: "AWS Transit Gateway",
     metric: "99.99%",
@@ -195,12 +195,12 @@ const milestones: Milestone[] = [
     col: 4,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Complete",
     platform: "Terraform / AWS",
     metric: "150+",
     metricLabel: "Resources",
-    notes: "Migrated whole cloud layout to reusable Terraform modules, guaranteeing repeatable staging and production stacks."
+    notes: "Migrating whole cloud layout to reusable Terraform modules, guaranteeing repeatable staging and production stacks."
   },
   {
     id: "ek",
@@ -210,7 +210,7 @@ const milestones: Milestone[] = [
     col: 5,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Complete",
     platform: "AWS EKS",
     metric: "0s",
@@ -225,7 +225,7 @@ const milestones: Milestone[] = [
     col: 6,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Active",
     platform: "Boundary / Vault",
     metric: "Zero",
@@ -240,7 +240,7 @@ const milestones: Milestone[] = [
     col: 7,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Complete",
     platform: "Go / Kubernetes API",
     metric: "5 min",
@@ -255,7 +255,7 @@ const milestones: Milestone[] = [
     col: 8,
     row: 2,
     fam: "cicd",
-    famLabel: "CI/CD & Automation",
+    famLabel: "DevOps",
     status: "Deploying",
     platform: "K3s / Bare-Metal",
     metric: "<5ms",
@@ -263,7 +263,7 @@ const milestones: Milestone[] = [
     notes: "Bridging AWS control panels with bare-metal on-premises Mac/Linux execution nodes through encrypted VPC tunnels."
   },
 
-  // ---- Row 3: Infrastructure (infra) ----
+  // ---- Row 3: Cloud (infra) ----
   {
     id: "cc",
     sym: "Cc",
@@ -272,7 +272,7 @@ const milestones: Milestone[] = [
     col: 1,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Complete",
     platform: "Docker Registry",
     metric: "-40%",
@@ -287,7 +287,7 @@ const milestones: Milestone[] = [
     col: 2,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Complete",
     platform: "Linux KVM",
     metric: "12 Nodes",
@@ -302,7 +302,7 @@ const milestones: Milestone[] = [
     col: 3,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Complete",
     platform: "Terraform / AWS",
     metric: "12 VPCs",
@@ -317,7 +317,7 @@ const milestones: Milestone[] = [
     col: 4,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Complete",
     platform: "GitHub Actions",
     metric: "100%",
@@ -332,7 +332,7 @@ const milestones: Milestone[] = [
     col: 5,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Complete",
     platform: "CloudFront / S3",
     metric: "99.98%",
@@ -347,7 +347,7 @@ const milestones: Milestone[] = [
     col: 6,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Active",
     platform: "PostgreSQL / AWS",
     metric: "0s",
@@ -362,7 +362,7 @@ const milestones: Milestone[] = [
     col: 7,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Complete",
     platform: "ArgoCD / EKS",
     metric: "10s",
@@ -377,7 +377,7 @@ const milestones: Milestone[] = [
     col: 8,
     row: 3,
     fam: "infra",
-    famLabel: "Infrastructure",
+    famLabel: "Cloud",
     status: "Deploying",
     platform: "AWS Cost API",
     metric: "-35%",
@@ -385,126 +385,126 @@ const milestones: Milestone[] = [
     notes: "Deploying cost monitoring and automated cluster sleep timers saving monthly infrastructure expenditures."
   },
 
-  // ---- Row 4: Security (security) ----
+  // ---- Row 4: Personal Development (security) ----
   {
-    id: "ks",
-    sym: "Ks",
-    name: "Keystore HSM Vault",
+    id: "ad",
+    sym: "Ad",
+    name: "Android Developer Cert",
     year: 2019,
     col: 1,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Complete",
-    platform: "AWS CloudHSM",
-    metric: "FIPS 3",
-    metricLabel: "Security Level",
-    notes: "Secured Android keystores and iOS developer cert profiles inside FIPS 140-2 Level 3 Hardware Security Modules."
+    platform: "Google Cert",
+    metric: "Pass",
+    metricLabel: "Credential",
+    notes: "Earned the official Associate Android Developer Certification from Google, validating native application design expertise."
   },
   {
-    id: "vt",
-    sym: "Vt",
-    name: "VPN Secure Boundary",
+    id: "os",
+    sym: "Os",
+    name: "Open Source FASTLANE",
     year: 2020,
     col: 2,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Complete",
-    platform: "OpenVPN / IPsec",
-    metric: "100%",
-    metricLabel: "Encrypted",
-    notes: "Provisioned secure site-to-site tunnels connecting remote developers to local on-premises hardware build clusters."
+    platform: "GitHub Contributions",
+    metric: "10+ PRs",
+    metricLabel: "Merged",
+    notes: "Contributed automation enhancements and build scripting features to Fastlane and community plugins."
   },
   {
-    id: "ia",
-    sym: "Ia",
-    name: "IAM Automated Audit",
+    id: "me",
+    sym: "Me",
+    name: "Engineering Mentorship",
     year: 2021,
     col: 3,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Complete",
-    platform: "AWS IAM / Lambda",
-    metric: "Weekly",
-    metricLabel: "Clean Rules",
-    notes: "Automated monthly IAM permission audit reports and access review loops via serverless scheduler scripts."
+    platform: "Internal Initiative",
+    metric: "5 Juniors",
+    metricLabel: "Mentored",
+    notes: "Established peer mentoring circles for junior mobile developers, accelerating onboarding and pipeline literacy."
   },
   {
-    id: "cb",
-    sym: "Cb",
-    name: "Wildcard SSL Automator",
+    id: "sa",
+    sym: "Sa",
+    name: "AWS Solutions Architect",
     year: 2022,
     col: 4,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Complete",
-    platform: "Let's Encrypt",
-    metric: "90 Days",
-    metricLabel: "Auto Refresh",
-    notes: "Automated Let's Encrypt wildcard certificate renewals across ingress controllers using Cloudflare API DNS challenges."
+    platform: "AWS Certification",
+    metric: "Pass",
+    metricLabel: "Credential",
+    notes: "Completed AWS Certified Solutions Architect Associate (SAA-C03) testing to formalize enterprise cloud system routing models."
   },
   {
-    id: "vc",
-    sym: "Vc",
-    name: "Vault Central Secret",
+    id: "sp",
+    sym: "Sp",
+    name: "DevOps Community Speaker",
     year: 2023,
     col: 5,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Complete",
-    platform: "HashiCorp Vault",
-    metric: "1h",
-    metricLabel: "Key Rotation",
-    notes: "Centralized application secret rotation and configuration pipelines inside cluster environments, eliminating env files."
+    platform: "HK DevOps Meetup",
+    metric: "150+",
+    metricLabel: "Attendees",
+    notes: "Presented a technical session on 'Scaling Bare-Metal Mac Studios for high-speed iOS build pipelines' at local meetup circles."
   },
   {
-    id: "ip",
-    sym: "Ip",
-    name: "Ingest WAF Shield",
+    id: "ck",
+    sym: "Ck",
+    name: "Kubernetes Administrator",
     year: 2024,
     col: 6,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
-    status: "Active",
-    platform: "Cloudflare WAF",
-    metric: "10k+",
-    metricLabel: "Blocks / Day",
-    notes: "Implemented dynamic WAF shielding and automated IP blacklisting metrics, securing development and API endpoints."
+    famLabel: "Personal Development",
+    status: "Complete",
+    platform: "CNCF Certification",
+    metric: "CKA",
+    metricLabel: "Certified",
+    notes: "Earned the Certified Kubernetes Administrator (CKA) designation to solidify orchestrator deployment expertise."
   },
   {
-    id: "zt2",
-    sym: "Zt",
-    name: "OIDC Zero-Trust Ingress",
+    id: "ta",
+    sym: "Ta",
+    name: "Zero-Trust Tech Author",
     year: 2025,
     col: 7,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Complete",
-    platform: "Okta / Teleport",
-    metric: "100%",
-    metricLabel: "MFA Logins",
-    notes: "Enforced zero-trust console access for remote engineer CLI sessions with short-lived certificates and OIDC hooks."
+    platform: "Medium / Dev.to",
+    metric: "25k+",
+    metricLabel: "Reads",
+    notes: "Authored detailed engineering guides analyzing cluster-level Dynamic Secrets and secure runner execution design architectures."
   },
   {
-    id: "sc",
-    sym: "Sc",
-    name: "SOC2 Compliance Pipe",
+    id: "tl",
+    sym: "Tl",
+    name: "Engineering Deliverables Lead",
     year: 2026,
     col: 8,
     row: 4,
     fam: "security",
-    famLabel: "Security & Ops",
+    famLabel: "Personal Development",
     status: "Deploying",
-    platform: "Compliance-as-Code",
-    metric: "Continuous",
-    metricLabel: "Vulnerability Scan",
-    notes: "Deploying SOC2 automated compliance validation audits, image scanning, and audit trails directly into code compilation."
+    platform: "Tech Governance",
+    metric: "Standard",
+    metricLabel: "Implementation",
+    notes: "Leading organizational steering committees to define secure and standard continuous integration guidelines for engineering groups."
   }
 ];
 
@@ -576,7 +576,7 @@ export default function Home() {
           <dl className="axes" aria-label="How the table is arranged">
             <div className="axes__row">
               <dt>Down the rows</dt>
-              <dd>Discipline, from client-facing Mobile Client down to Infrastructure and Security layers.</dd>
+              <dd>Discipline, from client-facing Mobile down to Cloud, DevOps, and Personal Development layers.</dd>
             </div>
             <div className="axes__row">
               <dt>Across the columns</dt>
@@ -592,10 +592,10 @@ export default function Home() {
           <div className="catalog__grid-wrap">
             {/* Legend */}
             <ul className="legend" id="reading" aria-label="Discipline groups">
-              <li><span className="legend__chip legend__chip--mobile" aria-hidden="true"></span>Mobile Client</li>
-              <li><span className="legend__chip legend__chip--cicd" aria-hidden="true"></span>CI/CD Pipelines</li>
-              <li><span className="legend__chip legend__chip--infra" aria-hidden="true"></span>Infrastructure</li>
-              <li><span className="legend__chip legend__chip--security" aria-hidden="true"></span>Security &amp; Ops</li>
+              <li><span className="legend__chip legend__chip--mobile" aria-hidden="true"></span>Mobile</li>
+              <li><span className="legend__chip legend__chip--cicd" aria-hidden="true"></span>DevOps</li>
+              <li><span className="legend__chip legend__chip--infra" aria-hidden="true"></span>Cloud</li>
+              <li><span className="legend__chip legend__chip--security" aria-hidden="true"></span>Personal Development</li>
             </ul>
 
             {/* Timeline Headers */}
