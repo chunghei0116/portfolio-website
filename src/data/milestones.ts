@@ -34,7 +34,7 @@ export const milestones: Milestone[] = [
   {
     id: "ft",
     sym: "Pg",
-    name: "K8s DevOps Programmer",
+    name: "Enterprise DevOps Role",
     year: 2023,
     col: 6,
     row: 1,
@@ -42,16 +42,16 @@ export const milestones: Milestone[] = [
     famLabel: "DevOps",
     status: "Complete",
     platform: "Docker & Kubernetes",
-    metric: "AAI/ChunWo",
+    metric: "Enterprise",
     metricLabel: "First Job",
-    notes: "Began first full-time role at Chun Wo. Containerized legacy enterprise platforms into Docker and initiated migration pipelines to Kubernetes clusters."
+    notes: "Began first full-time role at a major infrastructure group. Containerized legacy enterprise platforms into Docker and initiated migration pipelines to Kubernetes clusters."
   },
 
   // ---- 2024 (Row 2) ----
   {
     id: "sa",
     sym: "Sf",
-    name: "AAI Staff Portal App",
+    name: "Enterprise Staff App",
     year: 2024,
     col: 1,
     row: 2,
@@ -61,7 +61,7 @@ export const milestones: Milestone[] = [
     platform: "Flutter / iOS & Android",
     metric: "Primary",
     metricLabel: "Developer",
-    notes: "Served as the primary developer for the AAI Staff Portal App. Built robust native bridges and unified notifications using Firebase Cloud Messaging."
+    notes: "Served as the primary developer for the enterprise staff mobile application. Built robust native bridges and unified notifications using Firebase Cloud Messaging."
   },
   {
     id: "ci",
@@ -91,7 +91,7 @@ export const milestones: Milestone[] = [
     platform: "ArgoCD & Helm",
     metric: "UAT/Prod",
     metricLabel: "Sync Loops",
-    notes: "Set up GitOps pipelines via ArgoCD. Automated K8s application sync loops using customized Helm values templates."
+    notes: "Set up GitOps pipelines via ArgoCD. Automated Kubernetes application sync loops using customized Helm values templates."
   },
   {
     id: "sb",
@@ -143,17 +143,17 @@ export const milestones: Milestone[] = [
   {
     id: "asw",
     sym: "As",
-    name: "AS Watson Mobile Dev",
+    name: "Retail Group Mobile Dev",
     year: 2025,
     col: 1,
     row: 3,
     fam: "mobile",
     famLabel: "Mobile",
     status: "Complete",
-    platform: "AS Watson",
+    platform: "Retail Group",
     metric: "Join",
     metricLabel: "Mobile Developer",
-    notes: "Joined AS Watson group as a Mobile Application Developer, transitioning to customer-facing ecommerce and CRM applications."
+    notes: "Joined a global retail group as a Mobile Application Developer, transitioning to customer-facing ecommerce and CRM applications."
   },
   {
     id: "aws",
@@ -180,10 +180,10 @@ export const milestones: Milestone[] = [
     fam: "mobile",
     famLabel: "Mobile",
     status: "Active",
-    platform: "AS Watson CRM",
+    platform: "CRM System",
     metric: "1M+ MAU",
     metricLabel: "Active Users",
-    notes: "Core developer of the high-traffic AS Watson CRM app supporting over a million monthly active users."
+    notes: "Core developer of the high-traffic retail CRM app supporting over a million monthly active users."
   },
   {
     id: "opt",
