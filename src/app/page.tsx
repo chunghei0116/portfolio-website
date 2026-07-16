@@ -129,23 +129,22 @@ export default function Home() {
 
       {/* Main Page Content */}
       <div className="shell" id="top">
-        <main>
+        <main className="flex flex-col gap-24 md:gap-36">
           {/* Hero Section — Book I: The Slogan */}
-          <section className="min-h-[85dvh] flex flex-col justify-between pt-8 pb-16" id="book1" aria-labelledby="hero-h">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent max-w-md">
-              Book I — Sing in me, Muse, of the graphics pipeline and the low-latency solver.
-            </p>
+          <section className="min-h-[80dvh] flex flex-col justify-between pt-4" id="book1" aria-labelledby="hero-h">
+            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">01 · Book I · The Slogan</span>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-8">
-              <div>
-                <h1 className="font-sans text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.0] font-extrabold tracking-display text-ink uppercase mb-6" id="hero-h">
-                  Sing in me, <span className="font-serif italic font-light text-accent">Muse</span>, of the code that won&apos;t sit <span className="text-accent-2">still.</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center my-auto">
+              <div className="flex flex-col justify-center">
+                <h1 className="font-sans text-[clamp(2.5rem,7.5vw,5.5rem)] leading-[0.95] font-extrabold tracking-display text-ink uppercase mb-6" id="hero-h">
+                  Sing in me, <span className="font-serif italic font-light text-accent">Muse</span>,<br />
+                  of the code that won&apos;t sit <span className="text-accent-2">still.</span>
                 </h1>
-                <p className="font-serif text-lg leading-relaxed text-ink-2 drop-cap">
-                  The architecture of Jones Tse is forged against the template. An epic of WebGPU shaders, memory buffers, and low-overhead pipelines. Correctness is proven under strict type constraints, and viewports render at the rate of classical wind.
+                <p className="font-serif text-lg leading-relaxed text-ink-2 max-w-[38ch]">
+                  The architecture of Jones Tse. An epic of WebGPU shader pipelines and low-overhead thread calculations built on a grid broken on purpose.
                 </p>
               </div>
-              <div className="flex justify-center">
+              <div className="flex justify-center lg:justify-end">
                 <div className="border-4 border-double border-rule p-2 max-w-[280px] sm:max-w-[320px] bg-paper-2">
                   <Image
                     src="/helmet.jpg"
@@ -153,17 +152,14 @@ export default function Home() {
                     width={320}
                     height={320}
                     className="w-full grayscale contrast-125"
+                    priority
                   />
                 </div>
               </div>
             </div>
 
-            <div className="scroll-divider" aria-hidden="true">
-              <span className="scroll-divider__glyph">❦</span>
-            </div>
-
-            <a className="link-arrow self-start" href="#book4">
-              <span>Read the Selected Exploits</span>
+            <a className="link-arrow self-start mt-8" href="#book2">
+              <span>Next Book</span>
               <svg className="link-arrow__glyph" viewBox="0 0 24 12" width="32" height="16" aria-hidden="true">
                 <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" />
               </svg>
@@ -171,64 +167,57 @@ export default function Home() {
           </section>
 
           {/* Book II: The Capability Planks */}
-          <section className="py-16 md:py-24 border-t border-rule" id="book2" aria-labelledby="planks-h">
+          <section className="pt-8" id="book2" aria-labelledby="planks-h">
             <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">Book II</p>
-              <h2 className="plate-head__title" id="planks-h">The Capability Planks</h2>
-              <p className="plate-head__sub">
-                Three foundational anchors set into the parchment. The rules that govern low-latency computations and graphics shaders.
-              </p>
+              <p className="plate-head__no" aria-hidden="true">02 · Book II</p>
+              <h2 className="plate-head__title" id="planks-h">Capabilities</h2>
             </header>
 
-            <ol className="list-none p-0 flex flex-col gap-8" aria-label="Planks, of computations and proof">
-              <li className="border-b border-rule pb-6">
-                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">Plank I · Volcanic Shaders (WebGPU &amp; GLSL)</span>
-                <p className="font-serif text-[clamp(1.15rem,2.5vw,1.75rem)] leading-snug text-ink-2">
-                  We launch GPU compute pipelines natively from the browser, pulling thread calculations from raw vertex coordinates.
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              <div>
+                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">I · Volcanic Shaders</span>
+                <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[25ch]">
+                  Native browser GPU threads pulled from raw vertex coordinate arrays.
                 </p>
-              </li>
-              <li className="border-b border-rule pb-6">
-                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">Plank II · Safe Proofs (TypeScript &amp; Rust)</span>
-                <p className="font-serif text-[clamp(1.15rem,2.5vw,1.75rem)] leading-snug text-ink-2">
-                  No cycles are left unverified. We use typing rules as strict mathematical proofs of compiler safety before deployment.
+              </div>
+              <div>
+                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">II · Safe Proofs</span>
+                <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[25ch]">
+                  TypeScript &amp; Rust compiling under strict safety checks.
                 </p>
-              </li>
-              <li className="pb-6">
-                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">Plank III · Kinetic Viewports (WebGL)</span>
-                <p className="font-serif text-[clamp(1.15rem,2.5vw,1.75rem)] leading-snug text-ink-2">
-                  The graphics respond instantly. Stately particle systems and solvers that animate under the touch of the user.
+              </div>
+              <div>
+                <span className="font-sans text-xs text-accent font-bold uppercase tracking-widest block mb-2">III · Kinetic Solvers</span>
+                <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[25ch]">
+                  Interactive physics solvers responding natively to scroll and pointer coordinates.
                 </p>
-              </li>
-            </ol>
+              </div>
+            </div>
           </section>
 
           {/* Book III: The Telemetry Lyric */}
-          <section className="py-16 md:py-24 border-t border-rule" id="book3" aria-labelledby="lyric-h">
+          <section className="pt-8" id="book3" aria-labelledby="lyric-h">
             <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">Book III</p>
+              <p className="plate-head__no" aria-hidden="true">03 · Book III</p>
               <h2 className="plate-head__title" id="lyric-h">The Telemetry Lyric</h2>
             </header>
 
-            <div className="lyric-box" aria-hidden="true">
+            <div className="lyric-box max-w-lg" aria-hidden="true">
               <div className="lyric-box__strophe">
                 <p className="italic">“Down the dark copper wire the message flows,”</p>
-                <p className="italic">“Pooling into registers where volcanic fire glows,”</p>
+                <p className="italic">“Pooling into registers where volcanic fire glows.”</p>
               </div>
               <div className="lyric-box__antistrophe">
                 <p className="italic">“Through the ring buffers of the Aegean Sea,”</p>
                 <p className="italic">“The graphics compile, safe and forever free.”</p>
               </div>
             </div>
-            
-            <p className="text-center font-mono text-[0.7rem] text-muted uppercase tracking-wider mt-8">
-              Telemetry Strophe · WebGPU Engine · 2026
-            </p>
           </section>
 
           {/* Book IV: Selected Exploits */}
-          <section className="py-16 md:py-24 border-t border-rule" id="book4" aria-labelledby="exploits-h">
+          <section className="pt-8" id="book4" aria-labelledby="exploits-h">
             <header className="plate-head">
-              <p className="plate-head__no" aria-hidden="true">Book IV</p>
+              <p className="plate-head__no" aria-hidden="true">04 · Book IV</p>
               <h2 className="plate-head__title" id="exploits-h">Selected Exploits</h2>
             </header>
 
@@ -236,28 +225,28 @@ export default function Home() {
               <li className="ledger__row">
                 <span className="ledger__year">2026</span>
                 <span className="ledger__name">Telemetry Canvas</span>
-                <span className="ledger__kind">High-performance WebGPU stream solver · self-released</span>
+                <span className="ledger__kind">High-performance WebGPU stream solver</span>
               </li>
               <li className="ledger__row">
                 <span className="ledger__year">2025</span>
                 <span className="ledger__name">Tauri Native Wrapper</span>
-                <span className="ledger__kind">Low-latency rust telemetry integration · Apex</span>
+                <span className="ledger__kind">Low-latency rust telemetry wrapper</span>
               </li>
               <li className="ledger__row">
                 <span className="ledger__year">2025</span>
                 <span className="ledger__name">Aegean Solver Layout</span>
-                <span className="ledger__kind">Tactile Classical Broadside layout · Triskel</span>
+                <span className="ledger__kind">Tactile Classical Broadside layout</span>
               </li>
               <li className="ledger__row">
                 <span className="ledger__year">2024</span>
                 <span className="ledger__name">Aether Compute Engine</span>
-                <span className="ledger__kind">Next.js WebGL graphics pipeline · Aether Lab</span>
+                <span className="ledger__kind">Next.js WebGL graphics pipeline</span>
               </li>
             </ol>
 
             {githubData && (
-              <div className="mt-8 p-4 bg-paper-2 border border-rule max-w-sm">
-                <p className="font-mono text-xs text-muted uppercase tracking-wider">GitHub contributions ledger</p>
+              <div className="mt-8 p-4 bg-paper-2 border border-rule max-w-xs">
+                <p className="font-mono text-[0.65rem] text-muted uppercase tracking-wider">GitHub ledger</p>
                 <p className="text-[2.25rem] font-bold font-sans tracking-tight text-accent mt-1 leading-none">
                   {githubData.count.toLocaleString()}
                 </p>
@@ -269,19 +258,19 @@ export default function Home() {
           </section>
 
           {/* Book V: Commission Colophon */}
-          <section className="py-16 md:py-24 border-t border-rule" id="book5" aria-labelledby="colophon-h">
+          <section className="pt-8" id="book5" aria-labelledby="colophon-h">
+            <span className="font-mono text-xs uppercase tracking-widest text-accent mb-4">05 · Book V · Colophon</span>
             <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink uppercase mb-6" id="colophon-h">
-              Commission Colophon
+              Commission
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-              <p className="font-serif text-lg text-ink-2 leading-relaxed">
-                I configure rendering engines, build memory pipelines, and design scroll layouts that argue with their own margins.
-                I accept a small number of commissions per season — low-latency architectures that require a stately visual signature.
+              <p className="font-serif text-lg text-ink-2 leading-relaxed max-w-[38ch]">
+                Configuring low-overhead graphics engines and memory pipelines that require a stately visual signature. I accept a small number of commissions per season.
               </p>
 
               {/* Form as CTA */}
               <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-                <label className="font-mono text-xs uppercase tracking-widest text-accent" htmlFor="enq-email">
+                <label className="font-mono text-[0.65rem] uppercase tracking-widest text-accent" htmlFor="enq-email">
                   Start a conversation
                 </label>
                 <div className="flex flex-col sm:flex-row gap-2">
@@ -319,7 +308,7 @@ export default function Home() {
         </main>
 
         {/* Colophon Footer */}
-        <footer className="mt-20 pt-8 border-t border-rule" role="contentinfo">
+        <footer className="mt-24 pt-8 border-t border-rule" role="contentinfo">
           <p className="font-sans font-bold text-sm uppercase tracking-widest text-ink">Jones Tse — Systems &amp; Lyrics</p>
           <p className="font-serif text-sm text-ink-2 mt-1">
             Built using Cormorant Garamond and Cinzel on aged papyrus newsprint.

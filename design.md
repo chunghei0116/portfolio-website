@@ -5,10 +5,9 @@ A locked design system for this app, inspired by the style of Homeric Epics. Eve
 ## Genre
 editorial
 
-## Macrostructure family
-Folio-Manuscript (Book-led classical manuscript layout with left-margin Roman numeral navigation, strophe poetry layers, and antique double rules).
+Folio-Manuscript (Book-led classical manuscript layout cross-pollinated with the high-impact large typography and condensed copy structure of the Hyperlane developer summit specimen).
 
-- Portfolio page: Folio-Manuscript (with N3 side-rail styled as classical Book indexes, double borders, drop caps, and centered strophe translated layouts).
+- Portfolio page: Split-screen hero layout (left: colossal Cinzel typography, right: Greek helmet illustration frame), double rules, numeric markers, and short, highly scannable copy columns.
 
 ## System
 - Display: "Cinzel", weight 400–800 (stately Roman letterforms)
