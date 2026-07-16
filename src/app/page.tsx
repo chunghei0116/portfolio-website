@@ -352,16 +352,18 @@ export default function Home() {
               {formStatus === "loading" ? "TRANSMITTING..." : formStatus === "success" ? "✓ CONNECTION ESTABLISHED" : "ESTABLISH CONNECTION"}
             </button>
 
-            {formStatus === "success" && (
-              <p className="font-mono text-2xs text-accent mt-3 text-center">
-                ✓ Connection established. Response pending on active log screen.
-              </p>
-            )}
-            {formStatus === "error" && (
-              <p className="font-mono text-2xs text-accent mt-3 text-center">
-                ⚠ Error establishing link. Validate transmission formats.
-              </p>
-            )}
+            <div className="form-status-container" aria-live="polite">
+              {formStatus === "success" && (
+                <p className="font-mono text-2xs text-accent text-center animate-fade-in">
+                  ✓ Connection established. Response pending on active log screen.
+                </p>
+              )}
+              {formStatus === "error" && (
+                <p className="font-mono text-2xs text-accent text-center animate-fade-in">
+                  ⚠ Error establishing link. Validate transmission formats.
+                </p>
+              )}
+            </div>
           </form>
         </section>
       </main>
