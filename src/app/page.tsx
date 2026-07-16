@@ -251,9 +251,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="skills-shelves">
+          <div className="skills-bento">
             {/* Category 1 */}
-            <div className="skills-shelf">
+            <div className="skills-shelf skills-shelf--devops">
               <span className="skills-shelf__num">01 / DEVOPS</span>
               <h3 className="skills-shelf__cat font-display">DevOps &amp; Infrastructure</h3>
               <div className="skills-shelf__tags">
@@ -268,7 +268,7 @@ export default function Home() {
             </div>
 
             {/* Category 2 */}
-            <div className="skills-shelf">
+            <div className="skills-shelf skills-shelf--mobile">
               <span className="skills-shelf__num">02 / MOBILE</span>
               <h3 className="skills-shelf__cat font-display">Mobile Architecture</h3>
               <div className="skills-shelf__tags">
@@ -282,7 +282,7 @@ export default function Home() {
             </div>
 
             {/* Category 3 */}
-            <div className="skills-shelf">
+            <div className="skills-shelf skills-shelf--web">
               <span className="skills-shelf__num">03 / WEB</span>
               <h3 className="skills-shelf__cat font-display">Web &amp; Core Languages</h3>
               <div className="skills-shelf__tags">
@@ -296,7 +296,7 @@ export default function Home() {
             </div>
 
             {/* Category 4 */}
-            <div className="skills-shelf">
+            <div className="skills-shelf skills-shelf--data">
               <span className="skills-shelf__num">04 / DATA</span>
               <h3 className="skills-shelf__cat font-display">Data Store &amp; Hosts</h3>
               <div className="skills-shelf__tags">

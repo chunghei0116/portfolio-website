@@ -730,7 +730,7 @@
   padding-bottom: var(--space-xs);
 }
 
-.skills-shelves {
+.skills-bento {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
@@ -738,9 +738,25 @@
 }
 
 @media (min-width: 48rem) {
-  .skills-shelves {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
+  .skills-bento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .skills-shelf--devops {
+    grid-column: span 2;
+  }
+
+  .skills-shelf--mobile {
+    grid-column: span 1;
+  }
+
+  .skills-shelf--web {
+    grid-column: span 1;
+  }
+
+  .skills-shelf--data {
+    grid-column: span 2;
   }
 }
 
