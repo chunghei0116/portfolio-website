@@ -1,47 +1,48 @@
-/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V5 */
-/* Hallmark · genre: editorial · macrostructure: custom-03 · theme: custom · vibe: "apothecary parchment, steeped brown ink, hot vermilion" */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+/* Hallmark · design-system: design.md · genre: editorial · macrostructure: custom-03 · theme: custom · vibe: "bold airline late-night, automated departures, tactile ticket" */
 
 @import "tailwindcss";
 
 :root {
   /* ---- Fonts --------------------------------------------------------- */
-  --font-display: var(--font-display), "Fraunces", serif;
-  --font-body: var(--font-body), "Newsreader", serif;
-  --font-mono: var(--font-mono), "Space Mono", monospace;
+  --font-display: var(--font-display), "Bricolage Grotesque", sans-serif;
+  --font-body: var(--font-body), "Newsreader", Georgia, serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
 
-  /* ---- Colors -------------------------------------------------------- */
-  --color-paper:   oklch(95.5% 0.012 75);   /* warm parchment            */
-  --color-paper-2: oklch(97% 0.010 78);     /* lighter card / detail face */
-  --color-paper-3: oklch(93% 0.014 72);     /* recessed wells / footer    */
-  --color-ink:     oklch(25.5% 0.018 50);   /* steeped near-black brown   */
-  --color-ink-2:   oklch(34% 0.020 52);     /* secondary ink              */
-  --color-muted:   oklch(46% 0.020 55);     /* captions, labels           */
-  --color-line:    oklch(82% 0.016 70);     /* hairlines                  */
-  --color-line-2:  oklch(74% 0.018 68);     /* stronger rules             */
+  /* ---- Colors (design.md dark airline late-night palette) -------------- */
+  --color-paper:   oklch(13% 0.010 60);   /* dark-warm-near-black      */
+  --color-paper-2: oklch(18% 0.012 60);   /* elevated card wells       */
+  --color-paper-3: oklch(24% 0.014 60);   /* recessed panels / footer  */
+  --color-paper-4: oklch(30% 0.016 60);   /* highlighted surfaces      */
+  --color-ink:     oklch(96% 0.010 80);   /* warm off-white primary    */
+  --color-ink-2:   oklch(80% 0.012 80);   /* secondary copy            */
+  --color-muted:   oklch(62% 0.014 70);   /* captions, labels          */
+  --color-line:    oklch(38% 0.014 60);   /* dividers & borders        */
+  --color-line-2:  oklch(28% 0.012 60);   /* hairlines                 */
 
-  --color-accent:      oklch(52.5% 0.16 36);  /* hot steeped vermilion      */
-  --color-accent-ink:  oklch(97% 0.012 78);   /* text on accent fill        */
-  --color-accent-soft: oklch(88% 0.045 40);   /* faint accent wash          */
-  --color-focus:       oklch(48% 0.15 250);   /* cool blue ring             */
+  --color-accent:      oklch(66% 0.235 25);  /* bleed red accent          */
+  --color-accent-ink:  oklch(13% 0.010 60);  /* dark text on accent fill  */
+  --color-accent-soft: oklch(28% 0.080 25);  /* faint accent tint         */
+  --color-focus:       oklch(78% 0.180 70);  /* high-contrast focus ring  */
 
-  /* ---- Chronological Year Tints -------------------------------------- */
-  --year-2019: oklch(95% 0.015 160);    /* Sage Green */
-  --year-2020: oklch(95% 0.025 130);    /* Mint Green */
-  --year-2021: oklch(94.5% 0.02 95);    /* Warm Olive */
-  --year-2022: oklch(95% 0.03 75);      /* Muted Amber */
-  --year-2023: oklch(94.5% 0.028 55);    /* Faint Coral/Apricot */
-  --year-2024: oklch(93.5% 0.025 35);    /* Apothecary Rust */
-  --year-2025: oklch(94% 0.02 5);        /* Dusty Rose */
-  --year-2026: oklch(94% 0.02 280);      /* Lavender Blue */
+  /* ---- Chronological Year Tints (Dark Mode) --------------------------- */
+  --year-2019: oklch(21% 0.02 160);    /* Sage */
+  --year-2020: oklch(21% 0.02 130);    /* Mint */
+  --year-2021: oklch(21% 0.02 95);     /* Olive */
+  --year-2022: oklch(22% 0.025 75);    /* Amber */
+  --year-2023: oklch(22% 0.028 55);    /* Coral */
+  --year-2024: oklch(23% 0.03 35);     /* Rust */
+  --year-2025: oklch(23% 0.025 5);     /* Rose */
+  --year-2026: oklch(24% 0.03 280);    /* Lavender */
 
-  --year-2019-hi: oklch(92% 0.025 160);
-  --year-2020-hi: oklch(92% 0.035 130);
-  --year-2021-hi: oklch(91.5% 0.03 95);
-  --year-2022-hi: oklch(92% 0.04 75);
-  --year-2023-hi: oklch(91.5% 0.038 55);
-  --year-2024-hi: oklch(90.5% 0.035 35);
-  --year-2025-hi: oklch(91% 0.03 5);
-  --year-2026-hi: oklch(91% 0.03 280);
+  --year-2019-hi: oklch(27% 0.035 160);
+  --year-2020-hi: oklch(27% 0.04 130);
+  --year-2021-hi: oklch(27% 0.035 95);
+  --year-2022-hi: oklch(28% 0.045 75);
+  --year-2023-hi: oklch(28% 0.048 55);
+  --year-2024-hi: oklch(29% 0.05 35);
+  --year-2025-hi: oklch(29% 0.04 5);
+  --year-2026-hi: oklch(30% 0.05 280);
 
   /* ---- Status indicators --------------------------------------------- */
   --color-status-deploying: oklch(55% 0.13 45);
@@ -764,160 +765,371 @@ textarea.form-input {
   padding-bottom: var(--space-xs);
 }
 
-.skills-console {
+/* ===================================================================
+   Airport Split-Flap / Flip-Clock Technical Registry
+   =================================================================== */
+.airport-registry {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   margin-top: var(--space-lg);
 }
 
-.skills-tabs {
+.airport-registry__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px dashed var(--color-rule);
+}
+
+@media (min-width: 48rem) {
+  .airport-registry__header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.airport-registry__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.airport-registry__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-2xs);
+  color: var(--color-ink-mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.airport-registry__led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.airport-registry__led.is-blinking {
+  animation: airport-led-blink 0.4s infinite alternate ease-in-out;
+}
+
+@keyframes airport-led-blink {
+  from { opacity: 0.2; box-shadow: none; }
+  to { opacity: 1; box-shadow: 0 0 10px var(--color-accent); }
+}
+
+.airport-registry__heading {
+  font-size: var(--text-xl);
+  color: var(--color-ink);
+}
+
+.airport-registry__resync-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-paper-3);
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-2);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border-radius: var(--radius-xs);
+  transition: all var(--dur) var(--ease-out);
+}
+
+.airport-registry__resync-btn:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-paper-2);
+}
+
+.airport-registry__spin-icon.is-spinning {
+  display: inline-block;
+  animation: airport-resync-spin 0.6s linear infinite;
+}
+
+@keyframes airport-resync-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Tabs */
+.airport-tabs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-2xs);
 }
 
 @media (min-width: 48rem) {
-  .skills-tabs {
+  .airport-tabs {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-xs);
   }
 }
 
-.skills-tab {
-  font-family: var(--font-mono);
+.airport-tab {
+  position: relative;
+  font-family: "Courier Prime", "Special Elite", var(--font-mono), monospace;
   font-size: var(--text-2xs);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: var(--space-xs);
+  letter-spacing: 0.05em;
+  padding: var(--space-sm);
   background: var(--color-paper-2);
-  border: 1px solid var(--color-line-2);
-  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink-mute);
   cursor: pointer;
   text-align: left;
   display: flex;
   align-items: center;
-  gap: var(--space-3xs);
-  color: var(--color-ink-2);
-  transition: border-color var(--dur) var(--ease-out),
-              background-color var(--dur) var(--ease-out),
-              color var(--dur) var(--ease-out);
+  gap: var(--space-xs);
+  transition: all var(--dur) var(--ease-out);
 }
 
 @media (min-width: 48rem) {
-  .skills-tab {
+  .airport-tab {
     font-size: var(--text-xs);
-    padding: var(--space-sm);
   }
 }
 
-.skills-tab__num {
-  color: var(--color-muted);
-  font-weight: 700;
-  transition: color var(--dur) var(--ease-out);
-}
-
-.skills-tab:hover {
-  border-color: var(--color-accent);
-}
-
-.skills-tab.is-active {
-  border-color: var(--color-accent);
-  background: var(--color-paper-3);
-  color: var(--color-accent);
-}
-
-.skills-tab.is-active .skills-tab__num {
-  color: var(--color-accent);
-}
-
-.skills-display {
-  background: var(--color-paper-2);
-  border: 1px solid var(--color-line-2);
-  border-radius: var(--radius-sm);
-  padding: var(--space-md);
-  min-height: 8.5rem;
-  display: flex;
-  align-items: center;
-  box-shadow: var(--shadow-tile);
-}
-
-@media (min-width: 48rem) {
-  .skills-display {
-    min-height: 6rem;
-  }
-}
-
-.skills-display__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2xs);
-  width: 100%;
-  transition: opacity 150ms var(--ease-out);
-}
-
-.skills-display__tags.is-swapping {
-  opacity: 0;
-}
-
-.skills-tag {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  background: var(--color-paper-3);
-  color: var(--color-ink-2);
-  border: 1px solid var(--color-line-2);
-  border-radius: var(--radius-xs);
-  overflow: hidden;
-  line-height: 1;
-  cursor: help;
-  transition: border-color var(--dur) var(--ease-out);
-}
-
-.skills-tag__sym {
-  background: var(--color-line-2);
-  color: var(--color-ink-2);
-  padding: var(--space-3xs) var(--space-2xs);
-  font-weight: 700;
-  border-right: 1px solid var(--color-line-2);
-  text-transform: uppercase;
-  transition: background-color var(--dur) var(--ease-out),
-              color var(--dur) var(--ease-out),
-              border-color var(--dur) var(--ease-out);
-}
-
-.skills-tag:not(.skills-tag--interest) {
+.airport-tab:hover {
+  border-color: var(--color-accent-mute);
   color: var(--color-ink);
 }
 
-.skills-tag--interest {
+.airport-tab.is-active {
+  background: var(--color-paper-3);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: inset 2px 0 0 var(--color-accent);
+}
+
+.airport-tab__num {
+  font-weight: 700;
   opacity: 0.7;
 }
 
-.skills-tag:hover {
-  border-color: var(--color-accent);
-}
-
-.skills-tag:hover .skills-tag__sym {
-  background: var(--color-accent);
-  color: var(--color-accent-ink);
-  border-right-color: var(--color-accent);
-}
-
-.skills-console__readout {
-  border-top: 1px dashed var(--color-line-2);
-  padding-top: var(--space-xs);
-  font-size: var(--text-2xs);
-  color: var(--color-muted);
-  line-height: var(--lh-snug);
+/* Solari Board Wrapper */
+.solari-board {
+  background: var(--color-paper);
+  border: 2px solid var(--color-paper-4);
+  border-radius: var(--radius-xs);
+  padding: var(--space-md);
+  box-shadow: inset 0 0 16px rgba(0,0,0,0.8), 0 4px 12px rgba(0,0,0,0.4);
   display: flex;
-  gap: var(--space-3xs);
+  flex-direction: column;
+  gap: var(--space-xs);
+  overflow-x: clip;
 }
 
-.skills-console__prompt {
+.solari-board__header-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: 1px solid var(--color-rule);
+  color: var(--color-ink-mute);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.solari-col {
+  display: flex;
+  align-items: center;
+}
+.solari-col--num { width: 2.2rem; flex-shrink: 0; }
+.solari-col--sym { width: 3.5rem; flex-shrink: 0; }
+.solari-col--name { flex: 1; min-width: 0; }
+.solari-col--tag { width: 9.5rem; display: none; }
+.solari-col--status { width: 7.5rem; display: none; }
+
+@media (min-width: 48rem) {
+  .solari-col--tag { display: flex; }
+  .solari-col--status { display: flex; }
+}
+
+/* Rows */
+.solari-board__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.solari-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-2xs) var(--space-sm);
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-hairline);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 150ms ease, border-color 150ms ease;
+  outline: none;
+}
+
+.solari-row.is-hidden {
+  opacity: 0.2;
+  transform: translateY(4px);
+}
+
+.solari-row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.solari-row:hover,
+.solari-row.is-hovered,
+.solari-row:focus-visible {
+  background: var(--color-paper-3);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 10px rgba(220, 50, 50, 0.15);
+}
+
+.solari-row__num-box {
+  color: var(--color-ink-mute);
+  font-size: var(--text-2xs);
+  font-family: "Courier Prime", var(--font-mono), monospace;
+}
+
+.solari-row__tag-pill {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-2);
+  text-transform: uppercase;
+}
+
+.solari-row__status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-2);
+}
+
+.solari-row__status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent-2);
+}
+
+/* Single Flip Tile & Split-Flap Word */
+.split-flap-word {
+  display: inline-flex;
+  gap: 2px;
+  font-family: "Courier Prime", "Special Elite", "Courier New", var(--font-mono), monospace;
+  font-weight: 700;
+}
+
+.flip-tile {
+  position: relative;
+  display: inline-block;
+  width: 1.15rem;
+  height: 1.65rem;
+  background: #121110;
+  color: #f4f0e6;
+  border: 1px solid #282522;
+  border-radius: 2px;
+  font-size: 0.95rem;
+  line-height: 1.65rem;
+  text-align: center;
+  user-select: none;
+  perspective: 300px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.08), 0 2px 4px rgba(0,0,0,0.5);
+}
+
+@media (min-width: 48rem) {
+  .flip-tile {
+    width: 1.35rem;
+    height: 1.85rem;
+    font-size: 1.05rem;
+    line-height: 1.85rem;
+  }
+}
+
+.flip-tile__top,
+.flip-tile__bottom,
+.flip-tile__flap-top,
+.flip-tile__flap-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-tile__top {
+  top: 0;
+  height: 50%;
+  line-height: 1.65rem;
+  border-bottom: 1px solid #000;
+  background: #181614;
+}
+@media (min-width: 48rem) { .flip-tile__top { line-height: 1.85rem; } }
+
+.flip-tile__bottom {
+  bottom: 0;
+  height: 50%;
+  line-height: 0;
+  background: #121110;
+}
+
+.flip-tile__line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #000;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+  z-index: 5;
+}
+
+.flip-tile.is-flipping .flip-tile__top {
+  animation: flip-top-anim 0.12s ease-in forwards;
+}
+
+@keyframes flip-top-anim {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-90deg); }
+}
+
+/* Readout Console */
+.solari-board__readout {
+  margin-top: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-paper-2);
+  border-top: 1px dashed var(--color-rule);
+  color: var(--color-accent-2);
+  font-size: var(--text-2xs);
+  display: flex;
+  gap: var(--space-xs);
+  align-items: flex-start;
+  min-height: 2.2rem;
+  font-family: "Courier Prime", var(--font-mono), monospace;
+}
+
+.solari-board__readout-prompt {
   color: var(--color-accent);
   font-weight: 700;
+}
+
+.solari-board__readout-text {
+  color: var(--color-ink-2);
+  line-height: 1.4;
 }
 
 /* ===================================================================

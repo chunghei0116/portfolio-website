@@ -1,168 +1,167 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
+import React, { useRef, useEffect, useState } from "react";
 
-interface Point {
-  pos: THREE.Vector3;
-  velocity: THREE.Vector3;
-  originalPos: THREE.Vector3;
-}
-
-function NodeNetwork() {
-  const count = 40;
-  const maxDistance = 2.5;
-  const pointsRef = useRef<THREE.Points>(null);
-  const linesRef = useRef<THREE.LineSegments>(null);
-  const { pointer, viewport } = useThree();
-
-  // Create random points with velocities
-  const data = useMemo<Point[]>(() => {
-    const list: Point[] = [];
-    for (let i = 0; i < count; i++) {
-      const pos = new THREE.Vector3(
-        (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 3
-      );
-      list.push({
-        pos,
-        velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.015,
-          (Math.random() - 0.5) * 0.015,
-          (Math.random() - 0.5) * 0.01
-        ),
-        originalPos: pos.clone(),
-      });
-    }
-    return list;
-  }, []);
-
-  // Geometry attributes
-  const [positions, linePositions] = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const linePos = new Float32Array(count * count * 6); // Max possible connections
-    return [pos, linePos];
-  }, []);
-
-  useFrame(() => {
-    if (!pointsRef.current || !linesRef.current) return;
-
-    const pointerVec = new THREE.Vector3(
-      (pointer.x * viewport.width) / 2,
-      (pointer.y * viewport.height) / 2,
-      0
-    );
-
-    let lineIndex = 0;
-
-    // Update positions
-    data.forEach((p, idx) => {
-      // Idle drift
-      p.pos.add(p.velocity);
-
-      // Bounce limits
-      if (Math.abs(p.pos.x) > 4) p.velocity.x *= -1;
-      if (Math.abs(p.pos.y) > 4) p.velocity.y *= -1;
-      if (Math.abs(p.pos.z) > 2) p.velocity.z *= -1;
-
-      // Attract to pointer if close
-      const distToPointer = p.pos.distanceTo(pointerVec);
-      if (distToPointer < 2.0) {
-        const dir = new THREE.Vector3().subVectors(pointerVec, p.pos).normalize();
-        p.pos.addScaledVector(dir, 0.03); // pull to mouse
-      } else {
-        // Return slowly to original plane
-        const homeDir = new THREE.Vector3().subVectors(p.originalPos, p.pos);
-        p.pos.addScaledVector(homeDir, 0.002);
-      }
-
-      // Write to points attribute
-      positions[idx * 3] = p.pos.x;
-      positions[idx * 3 + 1] = p.pos.y;
-      positions[idx * 3 + 2] = p.pos.z;
-    });
-
-    pointsRef.current.geometry.attributes.position.needsUpdate = true;
-
-    // Connect close neighbors
-    for (let i = 0; i < count; i++) {
-      for (let j = i + 1; j < count; j++) {
-        const dist = data[i].pos.distanceTo(data[j].pos);
-        if (dist < maxDistance) {
-          linePositions[lineIndex++] = data[i].pos.x;
-          linePositions[lineIndex++] = data[i].pos.y;
-          linePositions[lineIndex++] = data[i].pos.z;
-
-          linePositions[lineIndex++] = data[j].pos.x;
-          linePositions[lineIndex++] = data[j].pos.y;
-          linePositions[lineIndex++] = data[j].pos.z;
-        }
-      }
-    }
-
-    linesRef.current.geometry.attributes.position.needsUpdate = true;
-    linesRef.current.geometry.setDrawRange(0, lineIndex / 3);
-  });
-
-  return (
-    <group>
-      {/* Node Vertices */}
-      <points ref={pointsRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[positions, 3]}
-            count={count}
-            array={positions}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#ef4444" // Bleed Red Accent
-          size={0.16}
-          sizeAttenuation={true}
-          transparent={true}
-          opacity={0.8}
-        />
-      </points>
-
-      {/* Network Edges */}
-      <lineSegments ref={linesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[linePositions, 3]}
-            count={linePositions.length / 3}
-            array={linePositions}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial
-          color="#ef4444"
-          transparent={true}
-          opacity={0.25}
-          linewidth={1}
-        />
-      </lineSegments>
-    </group>
-  );
+interface NodePoint {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
 }
 
 export default function NetworkCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [activeNodes, setActiveNodes] = useState<number>(18);
+  const [ping, setPing] = useState<number>(14);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let width = (canvas.width = container.clientWidth);
+    let height = (canvas.height = container.clientHeight);
+
+    const handleResize = () => {
+      if (!container || !canvas) return;
+      width = canvas.width = container.clientWidth;
+      height = canvas.height = container.clientHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Seed nodes
+    const nodeCount = 22;
+    const nodes: NodePoint[] = Array.from({ length: nodeCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.8,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 1.8 + 1.2,
+    }));
+
+    let mouseX = -1000;
+    let mouseY = -1000;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouseX = -1000;
+      mouseY = -1000;
+    };
+
+    container.addEventListener("mousemove", handleMouseMove);
+    container.addEventListener("mouseleave", handleMouseLeave);
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw grid lines
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+      ctx.lineWidth = 1;
+      const gridSize = 32;
+      for (let x = 0; x < width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+
+      // Update and draw nodes
+      for (let i = 0; i < nodeCount; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        // Mouse attraction
+        const dx = mouseX - n.x;
+        const dy = mouseY - n.y;
+        const distToMouse = Math.sqrt(dx * dx + dy * dy);
+        if (distToMouse < 120) {
+          n.x += (dx / distToMouse) * 0.6;
+          n.y += (dy / distToMouse) * 0.6;
+        }
+
+        // Draw node
+        ctx.fillStyle = "var(--color-accent)";
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Connect edges
+        for (let j = i + 1; j < nodeCount; j++) {
+          const n2 = nodes[j];
+          const ex = n.x - n2.x;
+          const ey = n.y - n2.y;
+          const edist = Math.sqrt(ex * ex + ey * ey);
+
+          if (edist < 100) {
+            const alpha = (1 - edist / 100) * 0.35;
+            ctx.strokeStyle = `rgba(235, 65, 45, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    // Interval for dynamic telemetry readout
+    const timer = setInterval(() => {
+      setPing(Math.floor(11 + Math.random() * 7));
+      setActiveNodes(18 + Math.floor(Math.random() * 5));
+    }, 2500);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      container.removeEventListener("mousemove", handleMouseMove);
+      container.removeEventListener("mouseleave", handleMouseLeave);
+      cancelAnimationFrame(animationFrameId);
+      clearInterval(timer);
+    };
+  }, []);
+
   return (
-    <div className="w-full h-[200px] border border-rule bg-paper-2 rounded-lg relative overflow-hidden">
-      <div className="absolute top-3 left-3 font-mono text-[9px] text-muted z-10 select-none pointer-events-none uppercase">
-        Live node telemetry cluster [Interactive]
+    <div
+      ref={containerRef}
+      className="w-full h-[180px] border border-[var(--color-line)] bg-[var(--color-paper-2)] rounded-md relative overflow-hidden select-none"
+    >
+      <div className="absolute top-3 left-3 flex items-center gap-3 font-mono text-[10px] text-[var(--color-muted)] z-10 uppercase tracking-wider">
+        <span className="flex items-center gap-1.5 text-[var(--color-ink)] font-semibold">
+          <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+          TELEMETRY_CLUSTER
+        </span>
+        <span className="hidden sm:inline">| NODES: {activeNodes}/22</span>
+        <span className="hidden sm:inline">| LATENCY: {ping}ms</span>
+        <span>| STATUS: ONLINE</span>
       </div>
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 60 }}
-        gl={{ antialias: true, alpha: true }}
-      >
-        <ambientLight intensity={1.5} />
-        <NodeNetwork />
-      </Canvas>
+
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
     </div>
   );
 }

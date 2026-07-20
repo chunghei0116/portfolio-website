@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Fraunces, Newsreader, Space_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Fraunces({
+const displayFont = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700", "800"],
 });
 
 const bodyFont = Newsreader({
@@ -15,10 +15,10 @@ const bodyFont = Newsreader({
   style: ["normal", "italic"],
 });
 
-const monoFont = Space_Mono({
+const monoFont = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
