@@ -105,16 +105,14 @@ function SingleFlapTile({ char, isFlipping }: { char: string; isFlipping: boolea
 function SplitFlapText({
   targetText,
   isFlipping,
-  maxLength = 14,
   staggerDelay = 0
 }: {
   targetText: string;
   isFlipping: boolean;
-  maxLength?: number;
   staggerDelay?: number;
 }) {
-  const paddedTarget = targetText.toUpperCase().padEnd(maxLength, " ").slice(0, maxLength);
-  const [currentChars, setCurrentChars] = useState<string[]>(paddedTarget.split(""));
+  const cleanTarget = targetText.toUpperCase();
+  const [currentChars, setCurrentChars] = useState<string[]>(cleanTarget.split(""));
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -126,12 +124,12 @@ function SplitFlapText({
         interval = setInterval(() => {
           stepCount++;
           if (stepCount >= maxSteps) {
-            setCurrentChars(paddedTarget.split(""));
+            setCurrentChars(cleanTarget.split(""));
             if (interval) clearInterval(interval);
           } else {
             setCurrentChars((prev) =>
               prev.map((_, idx) => {
-                if (paddedTarget[idx] === " ") return " ";
+                if (cleanTarget[idx] === " ") return " ";
                 const randIndex = Math.floor(Math.random() * CHAR_POOL.length);
                 return CHAR_POOL[randIndex];
               })
@@ -145,9 +143,9 @@ function SplitFlapText({
         if (interval) clearInterval(interval);
       };
     } else {
-      setCurrentChars(paddedTarget.split(""));
+      setCurrentChars(cleanTarget.split(""));
     }
-  }, [paddedTarget, isFlipping, staggerDelay]);
+  }, [cleanTarget, isFlipping, staggerDelay]);
 
   return (
     <span className="split-flap-word" aria-label={targetText}>
@@ -260,7 +258,6 @@ export default function TechRegistryFlipBoard() {
       <div className="solari-board" aria-live="polite">
         {/* Departure Table Headers */}
         <div className="solari-board__header-row" aria-hidden="true">
-          <span className="solari-col solari-col--num">LN</span>
           <span className="solari-col solari-col--name">TECHNOLOGY / SYSTEM</span>
           <span className="solari-col solari-col--tag">SPECIALTY FIELD</span>
           <span className="solari-col solari-col--status">STATUS</span>
@@ -293,17 +290,11 @@ export default function TechRegistryFlipBoard() {
                 }`}
                 style={{ "--row-index": index } as React.CSSProperties}
               >
-                {/* Line number */}
-                <div className="solari-col solari-col--num">
-                  <span className="solari-row__num-box">0{index + 1}</span>
-                </div>
-
                 {/* Tech Name Split Flap */}
                 <div className="solari-col solari-col--name">
                   <SplitFlapText
                     targetText={item.name}
                     isFlipping={isFlipping}
-                    maxLength={15}
                     staggerDelay={index * 50 + 20}
                   />
                 </div>
