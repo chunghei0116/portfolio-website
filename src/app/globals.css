@@ -919,13 +919,13 @@ textarea.form-input {
   opacity: 0.7;
 }
 
-/* Solari Board Wrapper */
+/* Solari Board Wrapper (Light Theme) */
 .solari-board {
-  background: var(--color-paper);
-  border: 2px solid var(--color-paper-4);
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-hairline);
   border-radius: var(--radius-xs);
   padding: var(--space-md);
-  box-shadow: inset 0 0 16px rgba(0,0,0,0.8), 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -938,7 +938,7 @@ textarea.form-input {
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-sm);
-  border-bottom: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-hairline);
   color: var(--color-ink-mute);
   font-size: var(--text-2xs);
   letter-spacing: 0.08em;
@@ -972,7 +972,7 @@ textarea.form-input {
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-2xs) var(--space-sm);
-  background: var(--color-paper-2);
+  background: var(--color-paper-3);
   border: 1px solid var(--color-hairline);
   border-radius: 2px;
   cursor: pointer;
@@ -993,9 +993,9 @@ textarea.form-input {
 .solari-row:hover,
 .solari-row.is-hovered,
 .solari-row:focus-visible {
-  background: var(--color-paper-3);
+  background: var(--color-paper);
   border-color: var(--color-accent);
-  box-shadow: 0 0 10px rgba(220, 50, 50, 0.15);
+  box-shadow: 0 2px 10px rgba(220, 50, 50, 0.1);
 }
 
 .solari-row__num-box {
@@ -1008,8 +1008,8 @@ textarea.form-input {
   font-size: 0.65rem;
   letter-spacing: 0.05em;
   padding: 2px 6px;
-  background: var(--color-paper);
-  border: 1px solid var(--color-rule);
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-hairline);
   color: var(--color-ink-2);
   text-transform: uppercase;
   font-family: var(--font-typewriter), "Courier Prime", monospace;
@@ -1021,7 +1021,7 @@ textarea.form-input {
   gap: 5px;
   font-size: 0.65rem;
   letter-spacing: 0.05em;
-  color: var(--color-accent-2);
+  color: var(--color-accent);
   font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
@@ -1029,10 +1029,10 @@ textarea.form-input {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--color-accent-2);
+  background-color: var(--color-accent);
 }
 
-/* Single Flip Tile & Split-Flap Word */
+/* Single Flip Tile & Split-Flap Word (LIGHT THEME) */
 .split-flap-word {
   display: inline-flex;
   gap: 2px;
@@ -1045,16 +1045,16 @@ textarea.form-input {
   display: inline-block;
   width: 1.15rem;
   height: 1.65rem;
-  background: #121110;
-  color: #f4f0e6;
-  border: 1px solid #282522;
+  background: #ffffff;
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
   border-radius: 2px;
   font-size: 0.95rem;
   line-height: 1.65rem;
   text-align: center;
   user-select: none;
   perspective: 300px;
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.08), 0 2px 4px rgba(0,0,0,0.5);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 2px 4px rgba(0,0,0,0.06);
 }
 
 @media (min-width: 48rem) {
@@ -1081,8 +1081,8 @@ textarea.form-input {
   top: 0;
   height: 50%;
   line-height: 1.65rem;
-  border-bottom: 1px solid #000;
-  background: #181614;
+  border-bottom: 1px solid var(--color-rule);
+  background: #f6f3eb;
 }
 @media (min-width: 48rem) { .flip-tile__top { line-height: 1.85rem; } }
 
@@ -1090,7 +1090,7 @@ textarea.form-input {
   bottom: 0;
   height: 50%;
   line-height: 0;
-  background: #121110;
+  background: #ffffff;
 }
 
 .flip-tile__line {
@@ -1099,8 +1099,8 @@ textarea.form-input {
   left: 0;
   right: 0;
   height: 1px;
-  background: #000;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+  background: var(--color-rule);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6);
   z-index: 5;
 }
 
@@ -1117,15 +1117,15 @@ textarea.form-input {
 .solari-board__readout {
   margin-top: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
-  background: var(--color-paper-2);
+  background: var(--color-paper-3);
   border-top: 1px dashed var(--color-rule);
-  color: var(--color-accent-2);
+  color: var(--color-ink-2);
   font-size: var(--text-2xs);
   display: flex;
   gap: var(--space-xs);
   align-items: flex-start;
   min-height: 2.2rem;
-  font-family: "Courier Prime", var(--font-mono), monospace;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .solari-board__readout-prompt {
@@ -1136,6 +1136,133 @@ textarea.form-input {
 .solari-board__readout-text {
   color: var(--color-ink-2);
   line-height: 1.4;
+}
+
+/* ===================================================================
+   Work Experience Section (Hallmark Light Editorial Design)
+   =================================================================== */
+.experience-section {
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  border-top: 1px solid var(--color-line);
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px double var(--color-line-2);
+}
+
+.experience-header__tag {
+  font-size: var(--text-2xs);
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.experience-header__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.experience-header__lede {
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+  max-width: 42rem;
+  line-height: var(--lh-relaxed);
+  font-style: italic;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.experience-card {
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xs);
+  padding: var(--space-md) var(--space-lg);
+  transition: all var(--dur) var(--ease-out);
+  border-left: 3px solid transparent;
+}
+
+.experience-card:hover {
+  border-color: var(--color-hairline);
+  border-left-color: var(--color-accent);
+  background: var(--color-paper-3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.experience-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px dashed var(--color-hairline);
+}
+
+.experience-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-2xs);
+  color: var(--color-ink-mute);
+  letter-spacing: 0.06em;
+}
+
+.experience-card__date {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.experience-card__type {
+  opacity: 0.7;
+}
+
+.experience-card__company {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.experience-card__role {
+  font-size: var(--text-xs);
+  color: var(--color-ink-2);
+  letter-spacing: 0.02em;
+}
+
+.experience-card__bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-card__bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: var(--text-xs);
+  color: var(--color-ink-2);
+  line-height: var(--lh-relaxed);
+}
+
+.bullet-glyph {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-accent);
+  font-weight: 700;
 }
 
 /* ===================================================================

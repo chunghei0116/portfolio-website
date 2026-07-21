@@ -233,47 +233,84 @@ export default function Home() {
 
         {/* Work Experience Section */}
         <section className="experience-section" id="experience" aria-labelledby="experience-title">
-          <div className="experience-header mb-8">
-            <h2 id="experience-title" className="font-display text-2xl font-semibold mb-3">Work Experience</h2>
-            <p className="text-sm font-serif text-ink-2 max-w-prose">
-              Operational track record scaling enterprise systems, automating deployment gates, and engineering mobile applications.
+          <div className="experience-header">
+            <div className="experience-header__tag font-typewriter">
+              <span>02 // CAREER RECORD</span>
+            </div>
+            <h2 id="experience-title" className="experience-header__title font-display">
+              Work Experience
+            </h2>
+            <p className="experience-header__lede font-serif">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
           </div>
 
           <div className="experience-list">
             {/* Job 1 */}
-            <div className="experience-item">
-              <div className="experience-item__meta">
-                <span className="experience-item__date font-mono">2025 – Present</span>
-                <h3 className="experience-item__company font-display">AS Watson Group</h3>
-                <span className="experience-item__role font-mono">Mobile Application Developer</span>
-              </div>
-              <div className="experience-item__details">
-                <ul className="experience-bullets font-serif text-sm text-ink-2">
-                  <li>Core Developer of the CRM mobile application supporting over 1 million active users (MAU).</li>
-                  <li>Conducted performance profiling and memory leak optimization on high-volume consumer apps.</li>
-                  <li>Integrated Firebase Cloud Messaging (FCM) templates and push delivery networks.</li>
-                  <li>Automated Shorebird OTA hot patching pipelines to bypass store reviews and fast-track fixes.</li>
+            <article className="experience-card">
+              <header className="experience-card__header">
+                <div className="experience-card__meta">
+                  <span className="experience-card__date font-typewriter">2025 – PRESENT</span>
+                  <span className="experience-card__type font-typewriter">FULL-TIME // HK</span>
+                </div>
+                <h3 className="experience-card__company font-display">AS Watson Group</h3>
+                <p className="experience-card__role font-typewriter">Mobile Application Developer</p>
+              </header>
+
+              <div className="experience-card__body">
+                <ul className="experience-card__bullets font-serif">
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                  </li>
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                  </li>
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit.
+                  </li>
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+                  </li>
                 </ul>
               </div>
-            </div>
+            </article>
 
             {/* Job 2 */}
-            <div className="experience-item">
-              <div className="experience-item__meta">
-                <span className="experience-item__date font-mono">2023 – 2025</span>
-                <h3 className="experience-item__company font-display">Major Infrastructure &amp; Construction Group</h3>
-                <span className="experience-item__role font-mono">Programmer (DevOps &amp; Infrastructure)</span>
-              </div>
-              <div className="experience-item__details">
-                <ul className="experience-bullets font-serif text-sm text-ink-2">
-                  <li>Containerized legacy enterprise systems into Docker and migrated hosting architecture to Kubernetes.</li>
-                  <li>Primary developer for in-house enterprise staff mobile app and contractor platform systems.</li>
-                  <li>Designed ArgoCD GitOps sync loops and Kubernetes Blue-Green automated rollout gates.</li>
-                  <li>Configured Fastlane and GitLab CI build gating for automated App Store and Google Play delivery.</li>
+            <article className="experience-card">
+              <header className="experience-card__header">
+                <div className="experience-card__meta">
+                  <span className="experience-card__date font-typewriter">2023 – 2025</span>
+                  <span className="experience-card__type font-typewriter">FULL-TIME // HK</span>
+                </div>
+                <h3 className="experience-card__company font-display">Major Infrastructure Group</h3>
+                <p className="experience-card__role font-typewriter">Programmer (DevOps &amp; Infrastructure)</p>
+              </header>
+
+              <div className="experience-card__body">
+                <ul className="experience-card__bullets font-serif">
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.
+                  </li>
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc.
+                  </li>
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet.
+                  </li>
+                  <li>
+                    <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
+                    Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+                  </li>
                 </ul>
               </div>
-            </div>
+            </article>
           </div>
         </section>
 
