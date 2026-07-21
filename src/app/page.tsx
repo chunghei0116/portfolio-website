@@ -139,34 +139,35 @@ export default function Home() {
       </header>
 
       <main id="main">
-        {/* Hallmark Playful Hero Section */}
-        <section className="intro hero-section hero-section--playful" aria-labelledby="intro-title">
+        {/* Clean, Simple & Fancy Hero Section */}
+        <section className="intro hero-section hero-section--clean-fancy" aria-labelledby="intro-title">
           <div className="hero-badge-row mb-4 flex-wrap gap-2">
-            <span className="playful-pill playful-pill--accent font-typewriter">
+            <span className="playful-pill playful-pill--accent font-sans">
               ✦ HONG KONG — MOBILE &amp; CLOUD ENGINEER
             </span>
-            <span className="playful-pill playful-pill--status font-typewriter">
+            <span className="playful-pill playful-pill--status font-sans">
               <span className="hero-status-dot" aria-hidden="true" />
-              OPERATIONAL // SHOREBIRD OTA &amp; K8S CLUSTER
+              OPERATIONAL // SHOREBIRD OTA &amp; K8S
             </span>
           </div>
 
-          <h1 className="intro__title intro__title--playful font-display" id="intro-title">
-            Building soft, fast &amp; resilient software.
+          <h1 className="intro__title intro__title--clean-fancy font-display" id="intro-title">
+            Building High-Performance Mobile Apps &amp; Cloud Pipelines.
           </h1>
 
-          <div className="hero-punchline hero-punchline--playful flex flex-wrap gap-2 my-4">
-            <span className="playful-tag-chip">⚡ 60 FPS FLUTTER</span>
-            <span className="playful-tag-chip">🚀 SHOREBIRD OTA</span>
-            <span className="playful-tag-chip">☸ KUBERNETES K8S</span>
-          </div>
-
-          <p className="intro__lede font-serif text-lg leading-relaxed max-w-2xl my-4">
-            Hey, I'm <strong className="text-ink font-bold">Jones Tse</strong>! I engineer high-performance cross-platform mobile apps, native Swift/Gradle bridges, and automated zero-downtime cloud infrastructure.
+          <p className="intro__lede font-sans text-base sm:text-lg leading-relaxed text-ink-2 max-w-xl my-4">
+            Jones Tse — Cross-platform Flutter developer and DevOps engineer scaling native iOS/Android apps and zero-downtime Kubernetes infrastructure.
           </p>
 
+          <div className="hero-punchline flex flex-wrap gap-2 my-5">
+            <span className="playful-tag-chip font-sans">⚡ 60 FPS FLUTTER</span>
+            <span className="playful-tag-chip font-sans">🚀 SHOREBIRD OTA</span>
+            <span className="playful-tag-chip font-sans">☸ KUBERNETES K8S</span>
+            <span className="playful-tag-chip font-sans">☁️ AWS CLOUD</span>
+          </div>
+
           {/* Action Row */}
-          <div className="hero-actions my-8">
+          <div className="hero-actions my-6">
             <a href="#table" className="btn-playful-primary font-display">
               <span>↳ Explore Milestones</span>
             </a>
@@ -176,22 +177,22 @@ export default function Home() {
           </div>
 
           {/* Micro Stat Proof Bar */}
-          <div className="hero-stats-bar playful-stats-bar grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-hairline my-8">
+          <div className="hero-stats-bar playful-stats-bar grid grid-cols-2 sm:grid-cols-4 gap-3 py-5 border-y border-hairline my-6">
             <div className="stat-card stat-card--playful">
-              <span className="stat-val font-display">8+ YRS</span>
-              <span className="stat-label font-typewriter">ENGINEERING EXP</span>
+              <span className="stat-val font-display text-xl sm:text-2xl font-bold text-ink">8+ YRS</span>
+              <span className="stat-label font-sans text-2xs text-muted uppercase tracking-wider">ENGINEERING EXP</span>
             </div>
             <div className="stat-card stat-card--playful">
-              <span className="stat-val font-display">60 FPS</span>
-              <span className="stat-label font-typewriter">NATIVE MOBILE UX</span>
+              <span className="stat-val font-display text-xl sm:text-2xl font-bold text-ink">60 FPS</span>
+              <span className="stat-label font-sans text-2xs text-muted uppercase tracking-wider">NATIVE MOBILE UX</span>
             </div>
             <div className="stat-card stat-card--playful">
-              <span className="stat-val font-display">100%</span>
-              <span className="stat-label font-typewriter">CI/CD PIPELINES</span>
+              <span className="stat-val font-display text-xl sm:text-2xl font-bold text-ink">100%</span>
+              <span className="stat-label font-sans text-2xs text-muted uppercase tracking-wider">CI/CD PIPELINES</span>
             </div>
             <div className="stat-card stat-card--playful">
-              <span className="stat-val font-display">ZERO</span>
-              <span className="stat-label font-typewriter">DOWNTIME RELEASES</span>
+              <span className="stat-val font-display text-xl sm:text-2xl font-bold text-ink">ZERO</span>
+              <span className="stat-label font-sans text-2xs text-muted uppercase tracking-wider">DOWNTIME RELEASES</span>
             </div>
           </div>
 

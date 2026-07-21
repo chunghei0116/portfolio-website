@@ -322,12 +322,18 @@
   color: var(--color-accent);
 }
 
-.intro__title--playful {
-  font-size: clamp(2.8rem, 6.8vw, 5.8rem);
-  line-height: 1.02;
+.intro__title--playful,
+.intro__title--clean-fancy {
+  font-size: clamp(2.4rem, 5.8vw, 4.6rem);
+  line-height: 1.05;
   letter-spacing: -0.03em;
   text-transform: none;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--color-ink);
+  max-width: 20ch;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  text-wrap: balance;
 }
 
 .playful-tag-chip {
