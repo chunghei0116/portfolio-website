@@ -95,22 +95,22 @@ export default function TechRegistryFlipBoard() {
   const activeTech = currentCategory.items.find((i) => i.id === selectedTechId) || currentCategory.items[0];
 
   return (
-    <div className="tech-registry font-sans">
-      {/* Header Section */}
-      <div className="tech-registry__header mb-8">
-        <div className="tech-registry__tag font-typewriter text-xs tracking-wider text-muted mb-2 uppercase">
-          <span>03 // SYSTEMS ARCHITECTURE &amp; REGISTRY</span>
+    <div className="compact-tech-registry font-sans max-w-full overflow-hidden">
+      {/* Compact Header */}
+      <div className="compact-header flex flex-col sm:flex-row sm:items-baseline justify-between mb-4 pb-2 border-b border-hairline gap-2">
+        <div>
+          <span className="font-typewriter text-2xs text-muted tracking-wider uppercase mr-3">03 // SKILLS</span>
+          <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-ink inline-block">
+            Technical Capabilities
+          </h2>
         </div>
-        <h2 className="tech-registry__title font-display text-3xl font-bold tracking-tight text-ink mb-3">
-          Technical Capabilities
-        </h2>
-        <p className="tech-registry__lede font-serif text-base text-ink-2 max-w-2xl leading-relaxed">
-          A catalog of engineering disciplines, production platforms, and system tools across eight years of DevOps, mobile development, and infrastructure operations.
-        </p>
+        <span className="font-typewriter text-2xs text-ink-2 bg-paper-2 px-2 py-0.5 border border-hairline rounded self-start sm:self-auto">
+          {currentCategory.activeCount} MODULES
+        </span>
       </div>
 
-      {/* Category Tabs */}
-      <div className="tech-tabs flex flex-wrap gap-2 mb-8 border-b border-hairline pb-4" role="tablist" aria-label="Technical categories">
+      {/* Category Pills Switcher */}
+      <div className="compact-tabs flex overflow-x-auto gap-2 mb-4 pb-2 no-scrollbar" role="tablist" aria-label="Categories">
         {(Object.keys(TECH_REGISTRY_DATA) as CategoryKey[]).map((catKey) => {
           const cat = TECH_REGISTRY_DATA[catKey];
           const isActive = activeCategory === catKey;
@@ -124,104 +124,73 @@ export default function TechRegistryFlipBoard() {
                 setActiveCategory(catKey);
                 setSelectedTechId(null);
               }}
-              className={`tech-tab px-4 py-2 text-xs font-typewriter uppercase tracking-wider rounded border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
+              className={`flex-shrink-0 px-3 py-1.5 text-xs font-typewriter uppercase tracking-wider rounded border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
                 isActive
-                  ? "bg-paper text-ink border-accent shadow-sm"
+                  ? "bg-paper text-ink border-accent font-bold shadow-xs"
                   : "bg-paper-2 text-muted border-hairline hover:text-ink hover:border-rule"
               }`}
             >
-              <span className="text-accent font-bold mr-2">{cat.num}</span>
+              <span className="text-accent font-bold mr-1.5">{cat.num}</span>
               <span>{cat.label}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Main Grid & Dossier Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Left Column: Category Intelligence Card */}
-        <div className="lg:col-span-4 bg-paper-2 border border-hairline rounded-sm p-6 shadow-sm">
-          <div className="flex justify-between items-center mb-4 pb-3 border-b border-hairline">
-            <span className="font-typewriter text-xs text-accent font-bold tracking-widest">
-              CATEGORY [{currentCategory.num}]
-            </span>
-            <span className="font-typewriter text-2xs px-2 py-0.5 bg-paper-3 text-ink-2 border border-hairline rounded">
-              {currentCategory.activeCount} MODULES
-            </span>
-          </div>
-
-          <h3 className="font-display text-xl font-bold text-ink mb-2">
-            {currentCategory.label}
-          </h3>
-          <p className="font-serif text-sm text-ink-2 leading-relaxed mb-6">
-            {currentCategory.description}
-          </p>
-
-          {/* Active Spotlight Dossier */}
-          {activeTech && (
-            <div className="active-dossier bg-paper p-4 border-l-2 border-accent border-hairline rounded-sm">
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-typewriter text-xs font-bold text-ink">
-                  {activeTech.name}
+      {/* Compact Interactive Chips Matrix */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mb-4">
+        {currentCategory.items.map((item) => {
+          const isSelected = activeTech.id === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setSelectedTechId(item.id)}
+              className={`flex items-center justify-between p-2 rounded border text-left transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
+                isSelected
+                  ? "bg-paper border-accent shadow-xs text-ink"
+                  : "bg-paper-3 border-hairline text-ink-2 hover:bg-paper hover:border-rule"
+              }`}
+            >
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="font-display text-xs font-bold px-1.5 py-0.5 bg-paper-2 border border-hairline rounded flex-shrink-0">
+                  {item.symbol}
                 </span>
-                <span className="font-typewriter text-2xs text-accent font-semibold">
-                  ● {activeTech.status}
-                </span>
-              </div>
-              <p className="font-typewriter text-xs text-muted leading-snug mb-3">
-                {activeTech.log}
-              </p>
-              {activeTech.metric && (
-                <div className="font-typewriter text-2xs text-ink-2 bg-paper-3 px-2 py-1 inline-block border border-hairline rounded">
-                  BENCHMARK: <span className="text-ink font-semibold">{activeTech.metric}</span>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* Right Column: Tech Cards Grid */}
-        <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {currentCategory.items.map((item) => {
-            const isSelected = activeTech.id === item.id;
-            return (
-              <div
-                key={item.id}
-                role="button"
-                tabIndex={0}
-                onClick={() => setSelectedTechId(item.id)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    setSelectedTechId(item.id);
-                  }
-                }}
-                className={`tech-card p-4 rounded-sm border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
-                  isSelected
-                    ? "bg-paper border-accent shadow-md translate-y-[-2px]"
-                    : "bg-paper-3 border-hairline hover:bg-paper hover:border-rule hover:shadow-sm"
-                }`}
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-display font-bold text-sm text-ink px-2 py-0.5 bg-paper-2 border border-hairline rounded">
-                    {item.symbol}
-                  </span>
-                  <span className="font-typewriter text-2xs text-muted tracking-wider uppercase">
-                    {item.categoryTag}
-                  </span>
-                </div>
-
-                <h4 className="font-display text-base font-semibold text-ink mb-1">
+                <span className="font-display text-xs font-semibold truncate">
                   {item.name}
-                </h4>
-
-                <p className="font-typewriter text-xs text-ink-2 line-clamp-2 leading-relaxed">
-                  {item.log}
-                </p>
+                </span>
               </div>
-            );
-          })}
-        </div>
+              <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ml-1 ${isSelected ? "bg-accent" : "bg-muted"}`} />
+            </button>
+          );
+        })}
       </div>
+
+      {/* Compact Inspection Telemetry Box */}
+      {activeTech && (
+        <div className="compact-inspector bg-paper-2 border border-hairline rounded p-3 text-left">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5 pb-1.5 border-b border-hairline">
+            <div className="flex items-center gap-2">
+              <span className="font-display text-sm font-bold text-ink">{activeTech.name}</span>
+              <span className="font-typewriter text-2xs px-1.5 py-0.5 bg-paper-3 text-muted border border-hairline rounded uppercase">
+                {activeTech.categoryTag}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              {activeTech.metric && (
+                <span className="font-typewriter text-2xs text-ink-2 bg-paper px-2 py-0.5 border border-hairline rounded font-semibold">
+                  {activeTech.metric}
+                </span>
+              )}
+              <span className="font-typewriter text-2xs text-accent font-semibold">
+                ● {activeTech.status}
+              </span>
+            </div>
+          </div>
+          <p className="font-typewriter text-xs text-ink-2 leading-relaxed">
+            {activeTech.log}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
