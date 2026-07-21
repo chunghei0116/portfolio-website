@@ -1,13 +1,20 @@
 /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 /* Hallmark · design-system: design.md · genre: editorial · macrostructure: custom-03 · theme: custom · vibe: "bold airline late-night, automated departures, tactile ticket" */
 
-@import "tailwindcss";
+@font-face {
+  font-family: "JMH Typewriter";
+  src: local("JMH Typewriter"), local("JMHTypewriter"), local("JMH Typewriter dry"), local("JMH Typewriter bold"), local("JMH Typewriter Regular");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* ---- Fonts --------------------------------------------------------- */
   --font-display: var(--font-display), "Bricolage Grotesque", sans-serif;
   --font-body: var(--font-body), "Newsreader", Georgia, serif;
   --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+  --font-typewriter: "JMH Typewriter", var(--font-typewriter), "Courier Prime", "Special Elite", "Courier New", monospace;
 
   /* ---- Colors (Light Editorial Paper Palette) ------------------------ */
   --color-paper:   oklch(98% 0.008 85);   /* warm light off-white paper #fdfcf8 */

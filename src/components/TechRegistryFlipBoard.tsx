@@ -211,7 +211,7 @@ export default function TechRegistryFlipBoard() {
       {/* Board Top Header / Control Station */}
       <div className="airport-registry__header">
         <div className="airport-registry__title-block">
-          <div className="airport-registry__badge font-mono">
+          <div className="airport-registry__badge font-typewriter">
             <span className={`airport-registry__led ${isFlipping ? "is-blinking" : "is-active"}`} />
             <span>TERMINAL 01 // DEPARTURES BOARD</span>
           </div>
@@ -222,7 +222,7 @@ export default function TechRegistryFlipBoard() {
         <button
           onClick={() => triggerFlipSequence(activeCategory)}
           disabled={isFlipping}
-          className="airport-registry__resync-btn font-mono"
+          className="airport-registry__resync-btn font-typewriter"
           title="Re-trigger Solari split-flap departure animation"
           aria-label="Resync split flap board"
         >
@@ -246,8 +246,8 @@ export default function TechRegistryFlipBoard() {
               disabled={isFlipping && isActive}
               className={`airport-tab ${isActive ? "is-active" : ""}`}
             >
-              <span className="airport-tab__num font-mono">{cat.num}</span>
-              <span className="airport-tab__label font-mono">{cat.label}</span>
+              <span className="airport-tab__num font-typewriter">{cat.num}</span>
+              <span className="airport-tab__label font-typewriter">{cat.label}</span>
               {isActive && <span className="airport-tab__indicator" aria-hidden="true" />}
             </button>
           );
