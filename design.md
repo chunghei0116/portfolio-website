@@ -1,52 +1,51 @@
-# Design — Playful Sans-Serif System (DevOps & Mobile Portfolio)
+# Design — Carnival Studied DNA (DevOps & Mobile Portfolio)
 
-A locked design system for this app, configured for Hallmark Playful genre with clean, simple, approachable sans-serif typography.
+A locked design system for this app, studied and extracted from https://www.usehallmark.com/examples/carnival-01/.
 
 ## Genre
-playful
+carnival
 
 ## Theme
-Hum / Clean Light Paper
+Carnival Showcase / Warm Poster Vintage
 
-- vibe: "clean, simple, soft pill cards, friendly sans-serif"
-- main page: playful hero, soft pill badges, spring hover microinteractions, clean typography.
+- vibe: "vintage poster typography, bold duo-tone oxblood & mustard, marquee ticker, N7 brutal slab nav"
+- main page: H1 Marquee word hero, horizontal infinite marquee ticker, duotone artist/job cards, tracklist catalog, Ft8 marquee scroll footer.
 
 ## System (Fonts)
-- Display: "Outfit", weight 400–800 (clean, simple, friendly geometric sans-serif)
-- Body: "Inter", weight 300–700 (clean, simple, ultra-legible sans-serif)
-- Mono: "JetBrains Mono", weight 400–600 (monospace labels & code)
+- Display: "Big Shoulders Display", weight 700–900 (heavy condensed display sans, uppercase tracking)
+- Body: "DM Sans", weight 400–700 (clean geometric body sans)
+- Mono: "JetBrains Mono", weight 400–700 (monospace metadata & captions)
 
 ## Provenance
-- Source mode: url-study (Wayfare reference)
+- Source mode: url-study (https://www.usehallmark.com/examples/carnival-01/)
 - Date: 2026-07-21
 - Spacing: 4-point spacing scale
-- Axes: light / geometric-sans / warm-red
+- Axes: light / heavy-condensed-sans / oxblood & mustard
 
 ## Tokens
 
 ### tokens
 ```css
 :root {
-  --color-paper:      oklch(98% 0.008 85);    /* warm off-white light paper */
-  --color-paper-2:    oklch(95% 0.010 85);    /* card backgrounds / elevated wells */
-  --color-paper-3:    oklch(91% 0.012 85);
-  --color-paper-4:    oklch(87% 0.014 85);
+  --color-paper:      #f0d9bc;    /* warm vintage cream paper */
+  --color-paper-2:    #e8ceae;    /* duotone elevated surface */
+  --color-paper-3:    #dcb88e;
 
-  --color-ink:        oklch(15% 0.015 60);    /* deep charcoal ink text */
-  --color-ink-2:      oklch(35% 0.018 60);    /* secondary copy */
-  --color-ink-mute:   oklch(55% 0.018 60);    /* muted text / captions */
-  --color-rule:       oklch(80% 0.014 85);    /* rules / dividers */
-  --color-hairline:   oklch(88% 0.012 85);
+  --color-ink:        #1a1816;    /* primary dark ink */
+  --color-ink-2:      #3e3933;    /* secondary copy */
+  --color-muted:      #786e62;    /* captions / metadata */
+  --color-rule:       #cbb08e;    /* dividers */
 
-  --color-accent:     oklch(56% 0.220 25);    /* crimson red accent */
-  --color-accent-2:   oklch(48% 0.200 25);
-  --color-accent-mute:oklch(78% 0.090 28);
-  --color-focus:      oklch(56% 0.220 25);
+  --color-accent:     #8b1e1e;    /* oxblood red accent */
+  --color-accent-soft:#e6a6a6;
+  --color-mustard:    #d4972e;    /* vintage mustard accent */
 
-  --font-display: "Bricolage Grotesque", sans-serif;
-  --font-body:    "Newsreader", Georgia, serif;
-  --font-italic:  "Newsreader", Georgia, serif;
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body:    "DM Sans", sans-serif;
   --font-mono:    "JetBrains Mono", monospace;
+  --font-typewriter: "JetBrains Mono", monospace;
+}
+```
 
   --space-2xs:  0.25rem;
   --space-xs:   0.5rem;

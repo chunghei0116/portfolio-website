@@ -1,29 +1,31 @@
-/* Hallmark · genre: playful · macrostructure: Playful Hero · theme: Hum / Clean Sans Paper · vibe: "clean, simple, soft pill cards, friendly sans-serif" */
+/* Hallmark · genre: carnival · macrostructure: Carnival Showcase · theme: Carnival Studied DNA · studied: yes · DNA-source: https://www.usehallmark.com/examples/carnival-01/ */
 
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* ---- Fonts (Clean & Simple Playful Sans-Serif Stack) ---------------- */
-  --font-display: var(--font-display), "Outfit", system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-body), "Inter", system-ui, -apple-system, sans-serif;
+  /* ---- Fonts (Carnival DNA: Big Shoulders Display + DM Sans + JetBrains Mono) ---- */
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body: var(--font-body), "DM Sans", sans-serif;
   --font-mono: var(--font-mono), "JetBrains Mono", monospace;
-  --font-typewriter: var(--font-body), "Inter", system-ui, -apple-system, sans-serif;
+  --font-typewriter: var(--font-mono), "JetBrains Mono", monospace;
 
-  /* ---- Colors (Light Editorial Paper Palette) ------------------------ */
-  --color-paper:   oklch(98% 0.008 85);   /* warm light off-white paper #fdfcf8 */
-  --color-paper-2: oklch(95% 0.010 85);   /* card backgrounds / wells #f5f3ec */
-  --color-paper-3: oklch(91% 0.012 85);   /* recessed panels / footer #eae6dc */
-  --color-paper-4: oklch(87% 0.014 85);   /* highlighted surfaces #dfd9cb */
-  --color-ink:     oklch(15% 0.015 60);   /* primary charcoal ink #1c1a17 */
-  --color-ink-2:   oklch(35% 0.018 60);   /* secondary copy #4a463e */
-  --color-muted:   oklch(55% 0.018 60);   /* captions, labels #7a7468 */
-  --color-line:    oklch(80% 0.014 85);   /* dividers & borders #cebfa5 */
-  --color-line-2:  oklch(88% 0.012 85);   /* hairlines #e3decb */
+  /* ---- Colors (Carnival Warm Vintage Palette) ------------------------ */
+  --color-paper:   #f0d9bc;   /* warm vintage cream paper */
+  --color-paper-2: #e8ceae;   /* duotone elevated surface */
+  --color-paper-3: #dcb88e;   /* recessed surface */
+  --color-paper-4: #cfaa7e;   /* highlighted surface */
+  --color-ink:     #1a1816;   /* primary dark ink */
+  --color-ink-2:   #3e3933;   /* secondary copy */
+  --color-muted:   #786e62;   /* captions / metadata */
+  --color-line:    #cbb08e;   /* dividers & borders */
+  --color-line-2:  #d8be9c;   /* hairlines */
 
-  --color-accent:      oklch(56% 0.220 25);  /* crimson red accent #d32f2f */
-  --color-accent-ink:  oklch(98% 0.008 85);  /* light text on accent fill */
-  --color-accent-soft: oklch(94% 0.040 25);  /* faint accent tint */
-  --color-focus:       oklch(56% 0.220 25);  /* focus ring */
+  --color-accent:      #8b1e1e;  /* oxblood red accent */
+  --color-accent-ink:  #ffffff;  /* light text on accent fill */
+  --color-accent-soft: #f7dcd5;  /* faint accent tint */
+  --color-mustard:     #d4972e;  /* vintage mustard accent */
+  --color-focus:       #8b1e1e;  /* focus ring */
 
   /* ---- Chronological Year Tints (Light Mode) ------------------------- */
   --year-2019: oklch(94% 0.02 160);    /* Sage */
@@ -334,6 +336,99 @@
   overflow-wrap: anywhere;
   min-width: 0;
   text-wrap: balance;
+}
+
+/* ---- Carnival Studied DNA Component Styles --------------------------- */
+.intro__title--carnival {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9.5vw, 7.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+.btn-carnival-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 26px;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-xs);
+  transition: transform var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+}
+
+.btn-carnival-primary:hover {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(-2px);
+}
+
+.btn-carnival-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 26px;
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-xs);
+  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+
+.btn-carnival-secondary:hover {
+  background: var(--color-mustard);
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+/* ---- Carnival Marquee Ticker ----------------------------------------- */
+.marquee-strip {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 10px 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-top: 2px solid var(--color-ink);
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.marquee-strip__track {
+  display: inline-flex;
+  gap: 2rem;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-strip__track {
+    animation: none;
+  }
 }
 
 .playful-tag-chip {

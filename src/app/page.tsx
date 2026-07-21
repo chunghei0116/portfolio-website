@@ -139,44 +139,62 @@ export default function Home() {
       </header>
 
       <main id="main">
-        {/* Ultra-Clean & Simple Hero Section */}
-        <section className="intro hero-section hero-section--clean-fancy" aria-labelledby="intro-title">
-          <div className="hero-badge-row mb-4">
-            <span className="playful-pill playful-pill--accent font-sans">
-              ✦ HONG KONG — MOBILE &amp; CLOUD ENGINEER
-            </span>
+        {/* Hallmark Carnival Studied DNA Hero Section */}
+        <section className="intro hero-section hero-section--carnival" aria-labelledby="intro-title">
+          <div className="hero-badge-row mb-3">
+            <p className="hero__eyebrow font-mono text-xs tracking-wider uppercase text-muted">
+              <span>◆</span>
+              <span> HONG KONG &nbsp;·&nbsp; DEPLOYMENT INDEX № 2026 &nbsp;·&nbsp; FLUTTER &amp; KUBERNETES</span>
+            </p>
           </div>
 
-          <h1 className="intro__title intro__title--clean-fancy font-display" id="intro-title">
-            Building High-Performance Mobile Apps &amp; Cloud Pipelines.
+          <h1 className="intro__title intro__title--carnival font-display uppercase tracking-tight" id="intro-title">
+            MOBILE &amp;<br />
+            <span className="text-accent">DEVOPS.</span>
           </h1>
 
           <p className="intro__lede font-sans text-base sm:text-lg leading-relaxed text-ink-2 max-w-xl my-4">
-            Jones Tse — Cross-platform Flutter developer and DevOps engineer scaling native iOS/Android apps and zero-downtime Kubernetes infrastructure.
+            Jones Tse — Cross-platform Flutter developer &amp; DevOps engineer scaling native iOS/Android apps and zero-downtime Kubernetes infrastructure.
           </p>
 
           {/* Action Row */}
           <div className="hero-actions my-6">
-            <a href="#table" className="btn-playful-primary font-display">
+            <a href="#table" className="btn-carnival-primary font-display">
               <span>↳ Explore Milestones</span>
             </a>
-            <a href="#contact" className="btn-playful-secondary font-display">
+            <a href="#contact" className="btn-carnival-secondary font-display">
               <span>✉ Establish Connection</span>
             </a>
           </div>
 
-          {/* Grid Axes Guide */}
-          <dl className="axes" aria-label="How the table is arranged">
-            <div className="axes__row">
-              <dt>Down the rows</dt>
-              <dd>Timeline, from 2023 at the top row down to the current 2026 deployment window.</dd>
+          {/* Definition List Metadata */}
+          <dl className="hero-meta-grid grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-line my-6 font-mono text-xs">
+            <div>
+              <dt className="text-muted uppercase">Focus</dt>
+              <dd className="font-bold text-ink">Flutter &amp; Cloud Infra</dd>
             </div>
-            <div className="axes__row">
-              <dt>Across the columns</dt>
-              <dd>Chronological seasons, split into Spring, Summer, Fall, and Winter columns.</dd>
+            <div>
+              <dt className="text-muted uppercase">Location</dt>
+              <dd className="font-bold text-ink">Hong Kong (GMT+8)</dd>
+            </div>
+            <div>
+              <dt className="text-muted uppercase">Experience</dt>
+              <dd className="font-bold text-ink">8+ Production Years</dd>
+            </div>
+            <div>
+              <dt className="text-muted uppercase">Status</dt>
+              <dd className="font-bold text-accent">● Active Deployment</dd>
             </div>
           </dl>
         </section>
+
+        {/* Carnival Marquee Ticker */}
+        <div className="marquee-strip my-8" role="presentation" aria-hidden="true">
+          <div className="marquee-strip__track">
+            <span>FLUTTER 60FPS <span className="text-accent">✱</span> SHOREBIRD OTA <span className="text-accent">✱</span> KUBERNETES K8S <span className="text-accent">✱</span> AWS CLOUD <span className="text-accent">✱</span> GITLAB CI <span className="text-accent">✱</span> SWIFT &amp; GRADLE BRIDGES <span className="text-accent">✱</span></span>
+            <span>FLUTTER 60FPS <span className="text-accent">✱</span> SHOREBIRD OTA <span className="text-accent">✱</span> KUBERNETES K8S <span className="text-accent">✱</span> AWS CLOUD <span className="text-accent">✱</span> GITLAB CI <span className="text-accent">✱</span> SWIFT &amp; GRADLE BRIDGES <span className="text-accent">✱</span></span>
+          </div>
+        </div>
 
         {/* Catalog */}
         <section className={`catalog ${selectedMilestone ? "catalog--has-selection" : ""}`} id="table" aria-labelledby="table-title">
