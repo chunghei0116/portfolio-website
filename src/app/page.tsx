@@ -139,53 +139,57 @@ export default function Home() {
       </header>
 
       <main id="main">
-        {/* Hallmark Light Editorial Hero Section */}
-        <section className="intro hero-section" aria-labelledby="intro-title">
-          <div className="hero-badge-row mb-4">
-            <span className="hero-eyebrow font-typewriter">01 // HONG KONG — MOBILE &amp; DEVOPS ENGINEERING</span>
-            <span className="hero-status-pill font-typewriter">
+        {/* Hallmark Playful Hero Section */}
+        <section className="intro hero-section hero-section--playful" aria-labelledby="intro-title">
+          <div className="hero-badge-row mb-4 flex-wrap gap-2">
+            <span className="playful-pill playful-pill--accent font-typewriter">
+              ✦ HONG KONG — MOBILE &amp; CLOUD ENGINEER
+            </span>
+            <span className="playful-pill playful-pill--status font-typewriter">
               <span className="hero-status-dot" aria-hidden="true" />
-              OPERATIONAL // SHOREBIRD OTA &amp; K8s CLUSTER
+              OPERATIONAL // SHOREBIRD OTA &amp; K8S CLUSTER
             </span>
           </div>
 
-          <h1 className="intro__title font-display" id="intro-title">
-            NATIVE MOBILE &amp; CLOUD DEVOPS.
+          <h1 className="intro__title intro__title--playful font-display" id="intro-title">
+            Building soft, fast &amp; resilient software.
           </h1>
 
-          <p className="hero-punchline font-display text-accent font-extrabold tracking-tight my-3">
-            BUILDING DETERMINISTIC SOFTWARE AT SCALE.
-          </p>
+          <div className="hero-punchline hero-punchline--playful flex flex-wrap gap-2 my-4">
+            <span className="playful-tag-chip">⚡ 60 FPS FLUTTER</span>
+            <span className="playful-tag-chip">🚀 SHOREBIRD OTA</span>
+            <span className="playful-tag-chip">☸ KUBERNETES K8S</span>
+          </div>
 
-          <p className="intro__lede font-serif">
-            Eight years engineering 60 FPS mobile apps, Shorebird OTA hotpatching, and zero-downtime Kubernetes infrastructure.
+          <p className="intro__lede font-serif text-lg leading-relaxed max-w-2xl my-4">
+            Hey, I'm <strong className="text-ink font-bold">Jones Tse</strong>! I engineer high-performance cross-platform mobile apps, native Swift/Gradle bridges, and automated zero-downtime cloud infrastructure.
           </p>
 
           {/* Action Row */}
           <div className="hero-actions my-8">
-            <a href="#table" className="btn-hero-primary font-typewriter">
-              <span>↳ EXPLORE CAREER MILESTONES</span>
+            <a href="#table" className="btn-playful-primary font-display">
+              <span>↳ Explore Milestones</span>
             </a>
-            <a href="#contact" className="btn-hero-secondary font-typewriter">
-              <span>✉ ESTABLISH CONNECTION</span>
+            <a href="#contact" className="btn-playful-secondary font-display">
+              <span>✉ Establish Connection</span>
             </a>
           </div>
 
           {/* Micro Stat Proof Bar */}
-          <div className="hero-stats-bar grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-hairline my-8">
-            <div className="stat-card">
+          <div className="hero-stats-bar playful-stats-bar grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-hairline my-8">
+            <div className="stat-card stat-card--playful">
               <span className="stat-val font-display">8+ YRS</span>
               <span className="stat-label font-typewriter">ENGINEERING EXP</span>
             </div>
-            <div className="stat-card">
+            <div className="stat-card stat-card--playful">
               <span className="stat-val font-display">60 FPS</span>
               <span className="stat-label font-typewriter">NATIVE MOBILE UX</span>
             </div>
-            <div className="stat-card">
+            <div className="stat-card stat-card--playful">
               <span className="stat-val font-display">100%</span>
               <span className="stat-label font-typewriter">CI/CD PIPELINES</span>
             </div>
-            <div className="stat-card">
+            <div className="stat-card stat-card--playful">
               <span className="stat-val font-display">ZERO</span>
               <span className="stat-label font-typewriter">DOWNTIME RELEASES</span>
             </div>

@@ -297,28 +297,115 @@
   box-shadow: 0 0 8px var(--color-accent);
 }
 
-.intro__title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3.2rem, 8.2vw, 7.2rem);
-  line-height: 0.94;
-  letter-spacing: -0.035em;
-  max-width: 18ch;
-  overflow-wrap: anywhere;
-  min-width: 0;
-  text-wrap: balance;
-  color: var(--color-ink);
+/* Playful Genre Components & Microinteractions */
+.playful-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  font-weight: 700;
+  transition: transform var(--dur) var(--ease-out);
 }
 
-.hero-punchline {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.4vw, 2.1rem);
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+.playful-pill--accent {
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink-2);
+}
+
+.playful-pill--status {
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent);
   color: var(--color-accent);
-  text-transform: uppercase;
+}
+
+.intro__title--playful {
+  font-size: clamp(2.8rem, 6.8vw, 5.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  font-weight: 800;
+}
+
+.playful-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: 0.04em;
+  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+
+.playful-tag-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.btn-playful-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-radius: 9999px;
+  border: 1px solid var(--color-ink);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--dur) var(--ease-out);
+}
+
+.btn-playful-primary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-playful-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color var(--dur) var(--ease-out);
+}
+
+.btn-playful-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.stat-card--playful {
+  background: var(--color-paper-2);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+
+.stat-card--playful:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-line);
 }
 
 .intro__lede {
