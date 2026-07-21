@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 
 import { milestones, type Milestone } from "../data/milestones";
-import TechRegistryFlipBoard from "../components/TechRegistryFlipBoard";
 
 export default function Home() {
   const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(null);
@@ -74,7 +73,7 @@ export default function Home() {
           <nav className="masthead__nav" aria-label="Primary">
             <a href="#reading">Grid Guide</a>
             <a href="#table">Milestones</a>
-            <a href="#skills">Registry</a>
+            <a href="#experience">Career</a>
             <a href="#contact">Terminal</a>
           </nav>
         </div>
@@ -352,11 +351,6 @@ export default function Home() {
               </div>
             </article>
           </div>
-        </section>
-
-        {/* Skills Section (Airport Split-Flap Departure Board) */}
-        <section className="skills-section" id="skills" aria-labelledby="skills-title">
-          <TechRegistryFlipBoard />
         </section>
 
         {/* Contact Form */}
