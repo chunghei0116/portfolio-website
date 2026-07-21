@@ -299,15 +299,26 @@
 
 .intro__title {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2.2rem, 5.5vw, 4.25rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  max-width: 24ch;
+  font-weight: 800;
+  font-size: clamp(3.2rem, 8.2vw, 7.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
   overflow-wrap: anywhere;
   min-width: 0;
   text-wrap: balance;
   color: var(--color-ink);
+  text-transform: uppercase;
+}
+
+.hero-punchline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.4vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--color-accent);
+  text-transform: uppercase;
 }
 
 .intro__lede {

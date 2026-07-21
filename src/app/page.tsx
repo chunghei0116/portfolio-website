@@ -150,11 +150,15 @@ export default function Home() {
           </div>
 
           <h1 className="intro__title font-display" id="intro-title">
-            Engineering Native Mobile Apps &amp; Scalable Cloud Operations.
+            NATIVE MOBILE &amp; CLOUD DEVOPS.
           </h1>
 
+          <p className="hero-punchline font-display text-accent font-extrabold tracking-tight my-3">
+            BUILDING DETERMINISTIC SOFTWARE AT SCALE.
+          </p>
+
           <p className="intro__lede font-serif">
-            Eight years of production pipelines, native mobile bridges, and automated cloud deployments. I construct deterministic software architectures — from zero-downtime Kubernetes clusters to 60 FPS Flutter cross-platform applications and instant Over-The-Air code pushes.
+            Eight years engineering 60 FPS mobile apps, Shorebird OTA hotpatching, and zero-downtime Kubernetes infrastructure.
           </p>
 
           {/* Action Row */}
