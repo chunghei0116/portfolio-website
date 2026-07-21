@@ -1,31 +1,31 @@
-/* Hallmark · genre: carnival · macrostructure: Carnival Showcase · theme: Carnival Studied DNA · studied: yes · DNA-source: https://www.usehallmark.com/examples/carnival-01/ */
+/* Hallmark · genre: industrial-brutalist · macrostructure: Concrete Showcase · theme: Raw Grey Concrete · vibe: "tactile grey concrete paper, graphite ink, safety orange accent" */
 
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* ---- Fonts (Carnival DNA: Big Shoulders Display + DM Sans + JetBrains Mono) ---- */
+  /* ---- Fonts (Concrete Brutalist: Big Shoulders Display + DM Sans + JetBrains Mono) ---- */
   --font-display: "Big Shoulders Display", sans-serif;
   --font-body: var(--font-body), "DM Sans", sans-serif;
   --font-mono: var(--font-mono), "JetBrains Mono", monospace;
   --font-typewriter: var(--font-mono), "JetBrains Mono", monospace;
 
-  /* ---- Colors (Carnival Warm Vintage Palette) ------------------------ */
-  --color-paper:   #f0d9bc;   /* warm vintage cream paper */
-  --color-paper-2: #e8ceae;   /* duotone elevated surface */
-  --color-paper-3: #dcb88e;   /* recessed surface */
-  --color-paper-4: #cfaa7e;   /* highlighted surface */
-  --color-ink:     #1a1816;   /* primary dark ink */
-  --color-ink-2:   #3e3933;   /* secondary copy */
-  --color-muted:   #786e62;   /* captions / metadata */
-  --color-line:    #cbb08e;   /* dividers & borders */
-  --color-line-2:  #d8be9c;   /* hairlines */
+  /* ---- Colors (Tactile Grey Concrete Palette) ------------------------ */
+  --color-paper:   #e2e2dd;   /* raw grey concrete paper */
+  --color-paper-2: #d6d6d0;   /* cast concrete card surface */
+  --color-paper-3: #cacac4;   /* recessed concrete well */
+  --color-paper-4: #bebeb8;   /* highlighted concrete panel */
+  --color-ink:     #181817;   /* deep graphite ink */
+  --color-ink-2:   #3e3e3b;   /* secondary charcoal copy */
+  --color-muted:   #6e6e69;   /* captions / metadata */
+  --color-line:    #b8b8b0;   /* concrete seam dividers & rules */
+  --color-line-2:  #c8c8c0;   /* hairline rules */
 
-  --color-accent:      #8b1e1e;  /* oxblood red accent */
-  --color-accent-ink:  #ffffff;  /* light text on accent fill */
-  --color-accent-soft: #f7dcd5;  /* faint accent tint */
-  --color-mustard:     #d4972e;  /* vintage mustard accent */
-  --color-focus:       #8b1e1e;  /* focus ring */
+  --color-accent:      #c83228;  /* industrial safety red accent */
+  --color-accent-ink:  #ffffff;  /* white text on accent fill */
+  --color-accent-soft: #f4d8d6;  /* faint accent tint */
+  --color-mustard:     #2b2b29;  /* dark graphite contrast */
+  --color-focus:       #c83228;  /* focus ring */
 
   /* ---- Chronological Year Tints (Light Mode) ------------------------- */
   --year-2019: oklch(94% 0.02 160);    /* Sage */

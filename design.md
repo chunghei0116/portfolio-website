@@ -1,15 +1,15 @@
-# Design — Carnival Studied DNA (DevOps & Mobile Portfolio)
+# Design — Industrial Brutalist Raw Grey Concrete (DevOps & Mobile Portfolio)
 
-A locked design system for this app, studied and extracted from https://www.usehallmark.com/examples/carnival-01/.
+A locked design system for this app, configured for the Industrial Brutalist Raw Grey Concrete theme with safety red accents.
 
 ## Genre
-carnival
+industrial-brutalist
 
 ## Theme
-Carnival Showcase / Warm Poster Vintage
+Raw Grey Concrete / Industrial
 
-- vibe: "vintage poster typography, bold duo-tone oxblood & mustard, marquee ticker, N7 brutal slab nav"
-- main page: H1 Marquee word hero, horizontal infinite marquee ticker, duotone artist/job cards, tracklist catalog, Ft8 marquee scroll footer.
+- vibe: "tactile grey concrete paper, deep graphite ink, industrial safety red accent, marquee ticker"
+- main page: H1 Marquee word hero, horizontal infinite marquee ticker, duotone concrete job cards, tracklist catalog, Ft8 marquee scroll footer.
 
 ## System (Fonts)
 - Display: "Big Shoulders Display", weight 700–900 (heavy condensed display sans, uppercase tracking)
@@ -17,28 +17,28 @@ Carnival Showcase / Warm Poster Vintage
 - Mono: "JetBrains Mono", weight 400–700 (monospace metadata & captions)
 
 ## Provenance
-- Source mode: url-study (https://www.usehallmark.com/examples/carnival-01/)
 - Date: 2026-07-21
 - Spacing: 4-point spacing scale
-- Axes: light / heavy-condensed-sans / oxblood & mustard
+- Axes: light / heavy-condensed-sans / raw-concrete-grey & safety-red
 
 ## Tokens
 
 ### tokens
 ```css
 :root {
-  --color-paper:      #f0d9bc;    /* warm vintage cream paper */
-  --color-paper-2:    #e8ceae;    /* duotone elevated surface */
-  --color-paper-3:    #dcb88e;
+  --color-paper:      #e2e2dd;    /* raw grey concrete paper */
+  --color-paper-2:    #d6d6d0;    /* cast concrete card surface */
+  --color-paper-3:    #cacac4;    /* recessed concrete well */
+  --color-paper-4:    #bebeb8;
 
-  --color-ink:        #1a1816;    /* primary dark ink */
-  --color-ink-2:      #3e3933;    /* secondary copy */
-  --color-muted:      #786e62;    /* captions / metadata */
-  --color-rule:       #cbb08e;    /* dividers */
+  --color-ink:        #181817;    /* deep graphite ink */
+  --color-ink-2:      #3e3e3b;    /* secondary copy */
+  --color-muted:      #6e6e69;    /* captions / metadata */
+  --color-rule:       #b8b8b0;    /* concrete seam dividers */
 
-  --color-accent:     #8b1e1e;    /* oxblood red accent */
-  --color-accent-soft:#e6a6a6;
-  --color-mustard:    #d4972e;    /* vintage mustard accent */
+  --color-accent:     #c83228;    /* industrial safety red accent */
+  --color-accent-soft:#f4d8d6;
+  --color-mustard:    #2b2b29;    /* dark graphite contrast */
 
   --font-display: "Big Shoulders Display", sans-serif;
   --font-body:    "DM Sans", sans-serif;
