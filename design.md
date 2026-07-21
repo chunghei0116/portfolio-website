@@ -18,30 +18,30 @@ custom
 
 ## Provenance
 - Source mode: url-study (Wayfare reference)
-- Date: 2026-07-16
+- Date: 2026-07-21
 - Spacing: 4-point spacing scale
-- Axes: dark / geometric-sans / warm-red
+- Axes: light / geometric-sans / warm-red
 
 ## Tokens
 
 ### tokens
 ```css
 :root {
-  --color-paper:      oklch(13% 0.010 60);    /* dark-warm-near-black */
-  --color-paper-2:    oklch(18% 0.012 60);    /* card backgrounds / elevated wells */
-  --color-paper-3:    oklch(24% 0.014 60);
-  --color-paper-4:    oklch(30% 0.016 60);
+  --color-paper:      oklch(98% 0.008 85);    /* warm off-white light paper */
+  --color-paper-2:    oklch(95% 0.010 85);    /* card backgrounds / elevated wells */
+  --color-paper-3:    oklch(91% 0.012 85);
+  --color-paper-4:    oklch(87% 0.014 85);
 
-  --color-ink:        oklch(96% 0.010 80);    /* warm off-white */
-  --color-ink-2:      oklch(80% 0.012 80);    /* secondary copy */
-  --color-ink-mute:   oklch(62% 0.014 70);    /* muted text / captions */
-  --color-rule:       oklch(38% 0.014 60);    /* rules / dividers */
-  --color-hairline:   oklch(28% 0.012 60);
+  --color-ink:        oklch(15% 0.015 60);    /* deep charcoal ink text */
+  --color-ink-2:      oklch(35% 0.018 60);    /* secondary copy */
+  --color-ink-mute:   oklch(55% 0.018 60);    /* muted text / captions */
+  --color-rule:       oklch(80% 0.014 85);    /* rules / dividers */
+  --color-hairline:   oklch(88% 0.012 85);
 
-  --color-accent:     oklch(66% 0.235 25);    /* bleed red accent */
-  --color-accent-2:   oklch(78% 0.180 70);
-  --color-accent-mute:oklch(38% 0.110 28);
-  --color-focus:      oklch(78% 0.180 70);
+  --color-accent:     oklch(56% 0.220 25);    /* crimson red accent */
+  --color-accent-2:   oklch(48% 0.200 25);
+  --color-accent-mute:oklch(78% 0.090 28);
+  --color-focus:      oklch(56% 0.220 25);
 
   --font-display: "Bricolage Grotesque", sans-serif;
   --font-body:    "Newsreader", Georgia, serif;

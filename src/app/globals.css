@@ -9,45 +9,45 @@
   --font-body: var(--font-body), "Newsreader", Georgia, serif;
   --font-mono: var(--font-mono), "JetBrains Mono", monospace;
 
-  /* ---- Colors (design.md dark airline late-night palette) -------------- */
-  --color-paper:   oklch(13% 0.010 60);   /* dark-warm-near-black      */
-  --color-paper-2: oklch(18% 0.012 60);   /* elevated card wells       */
-  --color-paper-3: oklch(24% 0.014 60);   /* recessed panels / footer  */
-  --color-paper-4: oklch(30% 0.016 60);   /* highlighted surfaces      */
-  --color-ink:     oklch(96% 0.010 80);   /* warm off-white primary    */
-  --color-ink-2:   oklch(80% 0.012 80);   /* secondary copy            */
-  --color-muted:   oklch(62% 0.014 70);   /* captions, labels          */
-  --color-line:    oklch(38% 0.014 60);   /* dividers & borders        */
-  --color-line-2:  oklch(28% 0.012 60);   /* hairlines                 */
+  /* ---- Colors (Light Editorial Paper Palette) ------------------------ */
+  --color-paper:   oklch(98% 0.008 85);   /* warm light off-white paper #fdfcf8 */
+  --color-paper-2: oklch(95% 0.010 85);   /* card backgrounds / wells #f5f3ec */
+  --color-paper-3: oklch(91% 0.012 85);   /* recessed panels / footer #eae6dc */
+  --color-paper-4: oklch(87% 0.014 85);   /* highlighted surfaces #dfd9cb */
+  --color-ink:     oklch(15% 0.015 60);   /* primary charcoal ink #1c1a17 */
+  --color-ink-2:   oklch(35% 0.018 60);   /* secondary copy #4a463e */
+  --color-muted:   oklch(55% 0.018 60);   /* captions, labels #7a7468 */
+  --color-line:    oklch(80% 0.014 85);   /* dividers & borders #cebfa5 */
+  --color-line-2:  oklch(88% 0.012 85);   /* hairlines #e3decb */
 
-  --color-accent:      oklch(66% 0.235 25);  /* bleed red accent          */
-  --color-accent-ink:  oklch(13% 0.010 60);  /* dark text on accent fill  */
-  --color-accent-soft: oklch(28% 0.080 25);  /* faint accent tint         */
-  --color-focus:       oklch(78% 0.180 70);  /* high-contrast focus ring  */
+  --color-accent:      oklch(56% 0.220 25);  /* crimson red accent #d32f2f */
+  --color-accent-ink:  oklch(98% 0.008 85);  /* light text on accent fill */
+  --color-accent-soft: oklch(94% 0.040 25);  /* faint accent tint */
+  --color-focus:       oklch(56% 0.220 25);  /* focus ring */
 
-  /* ---- Chronological Year Tints (Dark Mode) --------------------------- */
-  --year-2019: oklch(21% 0.02 160);    /* Sage */
-  --year-2020: oklch(21% 0.02 130);    /* Mint */
-  --year-2021: oklch(21% 0.02 95);     /* Olive */
-  --year-2022: oklch(22% 0.025 75);    /* Amber */
-  --year-2023: oklch(22% 0.028 55);    /* Coral */
-  --year-2024: oklch(23% 0.03 35);     /* Rust */
-  --year-2025: oklch(23% 0.025 5);     /* Rose */
-  --year-2026: oklch(24% 0.03 280);    /* Lavender */
+  /* ---- Chronological Year Tints (Light Mode) ------------------------- */
+  --year-2019: oklch(94% 0.02 160);    /* Sage */
+  --year-2020: oklch(94% 0.02 130);    /* Mint */
+  --year-2021: oklch(94% 0.02 95);     /* Olive */
+  --year-2022: oklch(94% 0.025 75);    /* Amber */
+  --year-2023: oklch(94% 0.028 55);    /* Coral */
+  --year-2024: oklch(94% 0.03 35);     /* Rust */
+  --year-2025: oklch(94% 0.025 5);     /* Rose */
+  --year-2026: oklch(94% 0.03 280);    /* Lavender */
 
-  --year-2019-hi: oklch(27% 0.035 160);
-  --year-2020-hi: oklch(27% 0.04 130);
-  --year-2021-hi: oklch(27% 0.035 95);
-  --year-2022-hi: oklch(28% 0.045 75);
-  --year-2023-hi: oklch(28% 0.048 55);
-  --year-2024-hi: oklch(29% 0.05 35);
-  --year-2025-hi: oklch(29% 0.04 5);
-  --year-2026-hi: oklch(30% 0.05 280);
+  --year-2019-hi: oklch(88% 0.035 160);
+  --year-2020-hi: oklch(88% 0.04 130);
+  --year-2021-hi: oklch(88% 0.035 95);
+  --year-2022-hi: oklch(88% 0.045 75);
+  --year-2023-hi: oklch(88% 0.048 55);
+  --year-2024-hi: oklch(88% 0.05 35);
+  --year-2025-hi: oklch(88% 0.04 5);
+  --year-2026-hi: oklch(88% 0.05 280);
 
   /* ---- Status indicators --------------------------------------------- */
-  --color-status-deploying: oklch(55% 0.13 45);
-  --color-status-active:    oklch(50% 0.10 120);
-  --color-status-complete:  oklch(40% 0.05 200);
+  --color-status-deploying: oklch(50% 0.18 45);
+  --color-status-active:    oklch(45% 0.15 120);
+  --color-status-complete:  oklch(40% 0.08 200);
 
   /* ---- Spacing Scale ------------------------------------------------- */
   --space-3xs: 0.25rem;  /* 4  */

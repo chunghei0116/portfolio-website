@@ -67,7 +67,7 @@ export default function NetworkCanvas() {
       ctx.clearRect(0, 0, width, height);
 
       // Draw grid lines
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.05)";
       ctx.lineWidth = 1;
       const gridSize = 32;
       for (let x = 0; x < width; x += gridSize) {
