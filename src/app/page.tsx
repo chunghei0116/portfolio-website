@@ -287,6 +287,7 @@ export default function Home() {
           <div className="experience-list">
             {/* Job 1 */}
             <article className="experience-card">
+              <img src="/images/as_watson_logo.svg" alt="" className="experience-card__watermark" aria-hidden="true" />
               <header className="experience-card__header">
                 <div className="experience-card__meta">
                   <span className="experience-card__date font-typewriter">2025 – PRESENT</span>
@@ -320,6 +321,7 @@ export default function Home() {
 
             {/* Job 2 */}
             <article className="experience-card">
+              <img src="/images/infra_group_logo.svg" alt="" className="experience-card__watermark" aria-hidden="true" />
               <header className="experience-card__header">
                 <div className="experience-card__meta">
                   <span className="experience-card__date font-typewriter">2023 – 2025</span>

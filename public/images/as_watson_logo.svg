@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+  <circle cx="100" cy="100" r="90" stroke-width="4" opacity="0.8"/>
+  <circle cx="100" cy="100" r="76" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+  <!-- AS Monogram Emblem -->
+  <path d="M60 145 L85 55 L110 145 M70 115 L100 115" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M100 145 L120 55 L140 145 L160 55" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="178" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="4" fill="currentColor" stroke="none">A.S. WATSON GROUP</text>
+</svg>
