@@ -1,14 +1,13 @@
-/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 · nav: N1 Minimal Sticky · footer: Ft5 Statement · contrast: pass (40–41) · honest: pass (46) · tokens: pass (48) · responsive: pass (49, 50–57) */
-/* Hallmark · design-system: design.md · genre: editorial · macrostructure: Marquee & Stat-Led Hero · theme: Light Editorial Paper · vibe: "tactile paper, editorial typography, company logo watermarks" */
+/* Hallmark · genre: playful · macrostructure: Playful Hero · theme: Hum / Clean Sans Paper · vibe: "clean, simple, soft pill cards, friendly sans-serif" */
 
 @import "tailwindcss";
 
 :root {
-  /* ---- Fonts --------------------------------------------------------- */
-  --font-display: var(--font-display), "Bricolage Grotesque", sans-serif;
-  --font-body: var(--font-body), "Newsreader", Georgia, serif;
+  /* ---- Fonts (Clean & Simple Playful Sans-Serif Stack) ---------------- */
+  --font-display: var(--font-display), "Outfit", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-body), "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-mono), "JetBrains Mono", monospace;
-  --font-typewriter: var(--font-typewriter), "Courier Prime", monospace;
+  --font-typewriter: var(--font-body), "Inter", system-ui, -apple-system, sans-serif;
 
   /* ---- Colors (Light Editorial Paper Palette) ------------------------ */
   --color-paper:   oklch(98% 0.008 85);   /* warm light off-white paper #fdfcf8 */

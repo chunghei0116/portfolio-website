@@ -1,19 +1,19 @@
-# Design — Wayfare Studied DNA (DevOps & Mobile Portfolio)
+# Design — Playful Sans-Serif System (DevOps & Mobile Portfolio)
 
-A locked design system for this app, extracted from the Wayfare design reference. Every page redesign reads this file before emitting code. Do not regenerate per page — extend or amend this file when the system needs to grow.
+A locked design system for this app, configured for Hallmark Playful genre with clean, simple, approachable sans-serif typography.
 
 ## Genre
-editorial
+playful
 
 ## Theme
-custom
+Hum / Clean Light Paper
 
-- vibe: "bold airline late-night, automated departures, tactile ticket"
-- main page: scrolling top ticker, minimal edge nav, marquee title, live terminal status board, and dense colophon footer.
+- vibe: "clean, simple, soft pill cards, friendly sans-serif"
+- main page: playful hero, soft pill badges, spring hover microinteractions, clean typography.
 
 ## System (Fonts)
-- Display: "Bricolage Grotesque", weight 400–900 (geometric-sans, display condensed bold/italic)
-- Body: "Newsreader", weight 300–500 (serif body, expressive italic)
+- Display: "Outfit", weight 400–800 (clean, simple, friendly geometric sans-serif)
+- Body: "Inter", weight 300–700 (clean, simple, ultra-legible sans-serif)
 - Mono: "JetBrains Mono", weight 400–600 (monospace labels & code)
 
 ## Provenance

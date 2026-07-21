@@ -1,35 +1,28 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Newsreader, JetBrains_Mono, Courier_Prime } from "next/font/google";
+import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Bricolage_Grotesque({
+const displayFont = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const bodyFont = Newsreader({
+const bodyFont = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const monoFont = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const typewriterFont = Courier_Prime({
-  variable: "--font-typewriter",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
   title: "Jones Tse — Mobile & DevOps Engineer",
-  description: "Eight years of pipelines, code, and systems in one grid. Infrastructure built for native mobile apps and scalable cloud operations.",
+  description: "Cross-platform mobile applications, Shorebird OTA hotpatching, and automated cloud infrastructure.",
 };
 
 export default function RootLayout({
@@ -40,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} ${typewriterFont.variable} h-full antialiased scroll-smooth`}
+      className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full font-sans antialiased text-foreground bg-background">
         {children}
