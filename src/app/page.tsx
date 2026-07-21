@@ -31,6 +31,21 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState<"default" | "loading" | "success" | "error">("default");
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  // Disable page scroll when element card / assay bottom sheet is opened
+  useEffect(() => {
+    if (selectedMilestone) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedMilestone]);
+
   const selectMilestone = (m: Milestone) => {
     if (selectedMilestone && m.id === selectedMilestone.id) {
       setIsSwapping(true);
@@ -45,6 +60,50 @@ export default function Home() {
       setSelectedMilestone(m);
       setIsSwapping(false);
     }, 180);
+  };
+
+  const navigateMilestone = (direction: "prev" | "next") => {
+    if (!selectedMilestone) return;
+    const currentIndex = milestones.findIndex((m) => m.id === selectedMilestone.id);
+    if (currentIndex === -1) return;
+
+    let targetIndex: number;
+    if (direction === "prev") {
+      targetIndex = (currentIndex - 1 + milestones.length) % milestones.length;
+    } else {
+      targetIndex = (currentIndex + 1) % milestones.length;
+    }
+
+    setIsSwapping(true);
+    setTimeout(() => {
+      setSelectedMilestone(milestones[targetIndex]);
+      setIsSwapping(false);
+    }, 140);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(null);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 45;
+
+    if (distance > minSwipeDistance) {
+      // Swiped left -> Go to Next element
+      navigateMilestone("next");
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right -> Go to Prev element
+      navigateMilestone("prev");
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -207,24 +266,51 @@ export default function Home() {
                   }, 180);
                 }}
               />
-              <aside className={`assay ${isSwapping ? "is-swapping" : ""}`} id="assay" aria-labelledby="assay-name" aria-live="polite">
+              <aside
+                className={`assay ${isSwapping ? "is-swapping" : ""}`}
+                id="assay"
+                aria-labelledby="assay-name"
+                aria-live="polite"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 {/* Mobile Drag Handle */}
                 <div className="assay__handle" aria-hidden="true" />
 
-                <button 
-                  className="absolute top-4 right-4 font-mono text-xs text-muted hover:text-accent cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsSwapping(true);
-                    setTimeout(() => {
-                      setSelectedMilestone(null);
-                      setIsSwapping(false);
-                    }, 180);
-                  }}
-                  aria-label="Close details"
-                >
-                  [✕]
-                </button>
+                {/* Navigation and Close Controls Row */}
+                <div className="absolute top-3 right-4 flex items-center gap-2 z-10">
+                  <button
+                    onClick={() => navigateMilestone("prev")}
+                    className="assay__nav-btn assay__nav-btn--prev font-typewriter"
+                    aria-label="Previous element"
+                    title="Previous element (Swipe Right)"
+                  >
+                    ←
+                  </button>
+                  <button
+                    onClick={() => navigateMilestone("next")}
+                    className="assay__nav-btn assay__nav-btn--next font-typewriter"
+                    aria-label="Next element"
+                    title="Next element (Swipe Left)"
+                  >
+                    →
+                  </button>
+                  <button 
+                    className="font-mono text-xs text-muted hover:text-accent cursor-pointer ml-1"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsSwapping(true);
+                      setTimeout(() => {
+                        setSelectedMilestone(null);
+                        setIsSwapping(false);
+                      }, 180);
+                    }}
+                    aria-label="Close details"
+                  >
+                    [✕]
+                  </button>
+                </div>
 
                 <p className="assay__eyebrow">
                   <span className="assay__index">{selectedMilestone.year} Log</span>

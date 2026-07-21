@@ -611,6 +611,54 @@
   box-shadow: var(--shadow-panel);
 }
 
+@keyframes float-horizontal-left {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-3px); }
+}
+
+@keyframes float-horizontal-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+.assay__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  background: var(--color-paper-3);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+
+.assay__nav-btn:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-color: var(--color-ink);
+}
+
+.assay__nav-btn--prev {
+  animation: float-horizontal-left 1.8s ease-in-out infinite;
+}
+
+.assay__nav-btn--next {
+  animation: float-horizontal-right 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assay__nav-btn--prev,
+  .assay__nav-btn--next {
+    animation: none;
+  }
+}
+
 .assay__eyebrow {
   display: flex;
   align-items: center;
