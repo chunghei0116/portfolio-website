@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Newsreader, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Newsreader, JetBrains_Mono, Courier_Prime } from "next/font/google";
 import "./globals.css";
 
 const displayFont = Bricolage_Grotesque({
@@ -21,6 +21,12 @@ const monoFont = JetBrains_Mono({
   weight: ["400", "500", "600", "700"],
 });
 
+const typewriterFont = Courier_Prime({
+  variable: "--font-typewriter",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Jones Tse — Mobile & DevOps Engineer",
   description: "Eight years of pipelines, code, and systems in one grid. Infrastructure built for native mobile apps and scalable cloud operations.",
@@ -34,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} h-full antialiased scroll-smooth`}
+      className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} ${typewriterFont.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full font-sans antialiased text-foreground bg-background">
         {children}

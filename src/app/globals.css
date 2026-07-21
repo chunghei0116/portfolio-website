@@ -773,6 +773,7 @@ textarea.form-input {
   flex-direction: column;
   gap: var(--space-md);
   margin-top: var(--space-lg);
+  font-family: var(--font-typewriter), "Courier Prime", "Special Elite", "Courier New", monospace;
 }
 
 .airport-registry__header {
@@ -806,6 +807,7 @@ textarea.form-input {
   color: var(--color-ink-mute);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .airport-registry__led {
@@ -842,6 +844,7 @@ textarea.form-input {
   letter-spacing: 0.06em;
   cursor: pointer;
   border-radius: var(--radius-xs);
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
   transition: all var(--dur) var(--ease-out);
 }
 
@@ -877,7 +880,7 @@ textarea.form-input {
 
 .airport-tab {
   position: relative;
-  font-family: "Courier Prime", "Special Elite", var(--font-mono), monospace;
+  font-family: var(--font-typewriter), "Courier Prime", "Special Elite", monospace;
   font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -927,6 +930,7 @@ textarea.form-input {
   flex-direction: column;
   gap: var(--space-xs);
   overflow-x: clip;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .solari-board__header-row {
@@ -939,6 +943,7 @@ textarea.form-input {
   font-size: var(--text-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .solari-col {
@@ -946,7 +951,6 @@ textarea.form-input {
   align-items: center;
 }
 .solari-col--num { width: 2.2rem; flex-shrink: 0; }
-.solari-col--sym { width: 3.5rem; flex-shrink: 0; }
 .solari-col--name { flex: 1; min-width: 0; }
 .solari-col--tag { width: 9.5rem; display: none; }
 .solari-col--status { width: 7.5rem; display: none; }
@@ -997,7 +1001,7 @@ textarea.form-input {
 .solari-row__num-box {
   color: var(--color-ink-mute);
   font-size: var(--text-2xs);
-  font-family: "Courier Prime", var(--font-mono), monospace;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .solari-row__tag-pill {
@@ -1008,6 +1012,7 @@ textarea.form-input {
   border: 1px solid var(--color-rule);
   color: var(--color-ink-2);
   text-transform: uppercase;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .solari-row__status-badge {
@@ -1017,6 +1022,7 @@ textarea.form-input {
   font-size: 0.65rem;
   letter-spacing: 0.05em;
   color: var(--color-accent-2);
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
 }
 
 .solari-row__status-dot {
@@ -1030,7 +1036,7 @@ textarea.form-input {
 .split-flap-word {
   display: inline-flex;
   gap: 2px;
-  font-family: "Courier Prime", "Special Elite", "Courier New", var(--font-mono), monospace;
+  font-family: var(--font-typewriter), "Courier Prime", "Special Elite", "Courier New", monospace;
   font-weight: 700;
 }
 

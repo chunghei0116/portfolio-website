@@ -259,9 +259,8 @@ export default function TechRegistryFlipBoard() {
       {/* Airport Solari Departure Board Container */}
       <div className="solari-board" aria-live="polite">
         {/* Departure Table Headers */}
-        <div className="solari-board__header-row font-mono" aria-hidden="true">
+        <div className="solari-board__header-row" aria-hidden="true">
           <span className="solari-col solari-col--num">LN</span>
-          <span className="solari-col solari-col--sym">CODE</span>
           <span className="solari-col solari-col--name">TECHNOLOGY / SYSTEM</span>
           <span className="solari-col solari-col--tag">SPECIALTY FIELD</span>
           <span className="solari-col solari-col--status">STATUS</span>
@@ -295,18 +294,8 @@ export default function TechRegistryFlipBoard() {
                 style={{ "--row-index": index } as React.CSSProperties}
               >
                 {/* Line number */}
-                <div className="solari-col solari-col--num font-mono">
+                <div className="solari-col solari-col--num">
                   <span className="solari-row__num-box">0{index + 1}</span>
-                </div>
-
-                {/* Symbol Split Flap */}
-                <div className="solari-col solari-col--sym">
-                  <SplitFlapText
-                    targetText={item.symbol}
-                    isFlipping={isFlipping}
-                    maxLength={2}
-                    staggerDelay={index * 50}
-                  />
                 </div>
 
                 {/* Tech Name Split Flap */}
@@ -314,18 +303,18 @@ export default function TechRegistryFlipBoard() {
                   <SplitFlapText
                     targetText={item.name}
                     isFlipping={isFlipping}
-                    maxLength={13}
-                    staggerDelay={index * 60 + 40}
+                    maxLength={15}
+                    staggerDelay={index * 50 + 20}
                   />
                 </div>
 
                 {/* Specialty Tag */}
-                <div className="solari-col solari-col--tag font-mono">
+                <div className="solari-col solari-col--tag">
                   <span className="solari-row__tag-pill">{item.categoryTag}</span>
                 </div>
 
                 {/* Status Indicator */}
-                <div className="solari-col solari-col--status font-mono">
+                <div className="solari-col solari-col--status">
                   <span className={`solari-row__status-badge status--${item.status.toLowerCase()}`}>
                     <span className="solari-row__status-dot" />
                     {item.status}
@@ -337,7 +326,7 @@ export default function TechRegistryFlipBoard() {
         </div>
 
         {/* Airport Readout Telemetry Footer */}
-        <div className="solari-board__readout font-mono">
+        <div className="solari-board__readout">
           <span className="solari-board__readout-prompt" aria-hidden="true">&gt;</span>
           <span className="solari-board__readout-text">{activeDisplayLog}</span>
         </div>
