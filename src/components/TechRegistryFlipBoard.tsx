@@ -315,12 +315,6 @@ export default function TechRegistryFlipBoard() {
             );
           })}
         </div>
-
-        {/* Airport Readout Telemetry Footer */}
-        <div className="solari-board__readout">
-          <span className="solari-board__readout-prompt" aria-hidden="true">&gt;</span>
-          <span className="solari-board__readout-text">{activeDisplayLog}</span>
-        </div>
       </div>
     </div>
   );

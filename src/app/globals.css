@@ -1,20 +1,14 @@
 /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 /* Hallmark · design-system: design.md · genre: editorial · macrostructure: custom-03 · theme: custom · vibe: "bold airline late-night, automated departures, tactile ticket" */
 
-@font-face {
-  font-family: "JMH Typewriter";
-  src: local("JMH Typewriter"), local("JMHTypewriter"), local("JMH Typewriter dry"), local("JMH Typewriter bold"), local("JMH Typewriter Regular");
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import "tailwindcss";
 
 :root {
   /* ---- Fonts --------------------------------------------------------- */
   --font-display: var(--font-display), "Bricolage Grotesque", sans-serif;
   --font-body: var(--font-body), "Newsreader", Georgia, serif;
   --font-mono: var(--font-mono), "JetBrains Mono", monospace;
-  --font-typewriter: "JMH Typewriter", var(--font-typewriter), "Courier Prime", "Special Elite", "Courier New", monospace;
+  --font-typewriter: var(--font-typewriter), "Courier Prime", monospace;
 
   /* ---- Colors (Light Editorial Paper Palette) ------------------------ */
   --color-paper:   oklch(98% 0.008 85);   /* warm light off-white paper #fdfcf8 */
@@ -1107,30 +1101,7 @@ textarea.form-input {
   100% { transform: rotateX(-90deg); }
 }
 
-/* Readout Console */
-.solari-board__readout {
-  margin-top: var(--space-xs);
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--color-paper-3);
-  border-top: 1px dashed var(--color-rule);
-  color: var(--color-ink-2);
-  font-size: var(--text-2xs);
-  display: flex;
-  gap: var(--space-xs);
-  align-items: flex-start;
-  min-height: 2.2rem;
-  font-family: var(--font-typewriter), "Courier Prime", monospace;
-}
 
-.solari-board__readout-prompt {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.solari-board__readout-text {
-  color: var(--color-ink-2);
-  line-height: 1.4;
-}
 
 /* ===================================================================
    Work Experience Section (Hallmark Light Editorial Design)
