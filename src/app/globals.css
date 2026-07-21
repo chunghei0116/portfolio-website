@@ -259,22 +259,51 @@
   padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+.hero-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
   margin-bottom: var(--space-md);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+}
+
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-accent);
+  border-radius: var(--radius-xs);
+}
+
+.hero-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
 }
 
 .intro__title {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--text-3xl);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.018em;
-  max-width: 20ch;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  max-width: 24ch;
   overflow-wrap: anywhere;
   min-width: 0;
   text-wrap: balance;
@@ -282,11 +311,84 @@
 }
 
 .intro__lede {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
   max-width: var(--maxw-prose);
   font-size: var(--text-md);
   color: var(--color-ink-2);
   line-height: var(--lh-body);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-ink);
+  transition: transform var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+}
+
+.btn-hero-primary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-hairline);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+
+.btn-hero-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-ink);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-typewriter), "Courier Prime", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
 }
 
 .axes {

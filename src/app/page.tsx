@@ -81,15 +81,55 @@ export default function Home() {
       </header>
 
       <main id="main">
-        {/* Intro */}
-        <section className="intro" aria-labelledby="intro-title">
-          <h1 className="intro__title" id="intro-title">
-            A structured timeline of systems, platforms, and code.
+        {/* Hallmark Light Editorial Hero Section */}
+        <section className="intro hero-section" aria-labelledby="intro-title">
+          <div className="hero-badge-row mb-4">
+            <span className="hero-eyebrow font-typewriter">01 // HONG KONG — MOBILE &amp; DEVOPS ENGINEERING</span>
+            <span className="hero-status-pill font-typewriter">
+              <span className="hero-status-dot" aria-hidden="true" />
+              OPERATIONAL // SHOREBIRD OTA &amp; K8s CLUSTER
+            </span>
+          </div>
+
+          <h1 className="intro__title font-display" id="intro-title">
+            Engineering Native Mobile Apps &amp; Scalable Cloud Operations.
           </h1>
-          <p className="intro__lede">
-            I don't write my resume as a chronological list of bullet points. A list flattens complex engineering decisions — scaling clusters, writing compilers, automated certs, and debugging network sockets — into a single line of text. Here is the grid: rows by year, columns by season. Select a block to read its telemetry log.
+
+          <p className="intro__lede font-serif">
+            Eight years of production pipelines, native mobile bridges, and automated cloud deployments. I construct deterministic software architectures — from zero-downtime Kubernetes clusters to 60 FPS Flutter cross-platform applications and instant Over-The-Air code pushes.
           </p>
 
+          {/* Action Row */}
+          <div className="hero-actions my-8">
+            <a href="#table" className="btn-hero-primary font-typewriter">
+              <span>↳ EXPLORE CAREER MILESTONES</span>
+            </a>
+            <a href="#contact" className="btn-hero-secondary font-typewriter">
+              <span>✉ ESTABLISH CONNECTION</span>
+            </a>
+          </div>
+
+          {/* Micro Stat Proof Bar */}
+          <div className="hero-stats-bar grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-hairline my-8">
+            <div className="stat-card">
+              <span className="stat-val font-display">8+ YRS</span>
+              <span className="stat-label font-typewriter">ENGINEERING EXP</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-val font-display">60 FPS</span>
+              <span className="stat-label font-typewriter">NATIVE MOBILE UX</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-val font-display">100%</span>
+              <span className="stat-label font-typewriter">CI/CD PIPELINES</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-val font-display">ZERO</span>
+              <span className="stat-label font-typewriter">DOWNTIME RELEASES</span>
+            </div>
+          </div>
+
+          {/* Grid Axes Guide */}
           <dl className="axes" aria-label="How the table is arranged">
             <div className="axes__row">
               <dt>Down the rows</dt>
