@@ -280,7 +280,7 @@ export default function Home() {
               Work Experience
             </h2>
             <p className="experience-header__lede font-serif">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+              A chronological log of production engineering roles, scaling cross-platform mobile applications and maintaining resilient cloud infrastructure.
             </p>
           </div>
 
@@ -301,19 +301,19 @@ export default function Home() {
                 <ul className="experience-card__bullets font-serif">
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    Architected and maintained enterprise retail mobile applications using Flutter and native Swift/Gradle MethodChannels for high-volume consumer traffic.
                   </li>
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                    Implemented Shorebird Over-The-Air (OTA) hotpatching, reducing critical patch deployment cycles from 3–5 app store approval days down to under 15 minutes.
                   </li>
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit.
+                    Optimized widget tree rendering pipelines and memory profiling, sustaining consistent 60 FPS animations across low-tier and mid-range devices.
                   </li>
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+                    Integrated Firebase Cloud Messaging (FCM) payload handlers and background messaging routines for targeted multi-region push notifications.
                   </li>
                 </ul>
               </div>
@@ -335,19 +335,19 @@ export default function Home() {
                 <ul className="experience-card__bullets font-serif">
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.
+                    Engineered declarative GitOps CI/CD delivery pipelines using GitLab CI and ArgoCD for automated multi-environment Kubernetes cluster deployments.
                   </li>
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc.
+                    Managed AWS cloud infrastructure (ECS, S3, Transit Gateway networking) and configured NGINX ingress controllers with SSL/TLS auto-renewal routines.
                   </li>
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet.
+                    Constructed centralized log stream telemetry pipelines using the ELK stack (Elasticsearch, Logstash, Kibana) for live application monitoring.
                   </li>
                   <li>
                     <span className="bullet-glyph font-typewriter" aria-hidden="true">↳</span>
-                    Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+                    Maintained high-availability PostgreSQL and SQL Server database schemas, tuning queries and automated backup policies for production systems.
                   </li>
                 </ul>
               </div>
@@ -357,9 +357,12 @@ export default function Home() {
 
         {/* Contact Form */}
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="text-center mb-8">
-            <h2 id="contact-title" className="font-display text-xl font-semibold mb-2">Establish Connection</h2>
-            <p className="text-sm font-serif text-ink-2">Transmission channel is open. Reach out via the secure form below to optimize pipeline architecture or scale build systems.</p>
+          <div className="contact-header mb-8">
+            <div className="font-typewriter text-xs text-accent tracking-widest uppercase mb-2">
+              03 // COMMUNICATIONS TERMINAL
+            </div>
+            <h2 id="contact-title" className="font-display text-2xl font-bold text-ink mb-2">Establish Connection</h2>
+            <p className="text-sm font-serif text-ink-2 max-w-xl">Transmission channel is open. Reach out via the secure form below to discuss mobile engineering, cloud infrastructure, or build pipeline optimization.</p>
           </div>
 
           <form onSubmit={handleFormSubmit}>
