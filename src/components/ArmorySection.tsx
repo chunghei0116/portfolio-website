@@ -42,17 +42,17 @@ export default function ArmorySection() {
   ];
 
   return (
-    <section id="armory" className="relative py-24 px-6 bg-[#09090D] border-t border-[#C59B27]/15">
+    <section id="armory" className="relative py-24 px-6 bg-[#F1ECE4] border-t border-[#B8860B]/20">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#C59B27]/30 bg-[#1A2B4C]/30 text-[#C59B27] text-xs font-mono tracking-widest uppercase mb-4">
-            The Armory
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#B8860B]/30 bg-[#FFFFFF]/80 text-[#B8860B] text-xs font-mono tracking-widest uppercase mb-4 font-bold shadow-sm">
+            04 · The Armory
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase text-white">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase text-[#0F172A]">
             WEAPONS OF HEPHAESTUS
           </h2>
-          <p className="mt-4 text-[#94A3B8] text-sm sm:text-base font-light">
+          <p className="mt-4 text-[#475569] text-sm sm:text-base font-normal">
             The modern technical stack and engineering instruments used to forge immersive 3D web experiences.
           </p>
         </div>
@@ -64,14 +64,14 @@ export default function ArmorySection() {
             return (
               <div
                 key={category.title}
-                className="bg-[#121218] border border-white/10 rounded-xl p-6 hover:border-[#C59B27]/40 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                className="bg-[#FFFFFF] border border-[#B8860B]/20 rounded-xl p-6 hover:border-[#B8860B]/50 transition-all duration-300 shadow-[0_4px_20px_rgba(15,23,42,0.04)]"
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
-                  <div className="w-9 h-9 rounded bg-[#1A2B4C] border border-[#C59B27]/40 flex items-center justify-center text-[#C59B27]">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                  <div className="w-9 h-9 rounded bg-[#F1ECE4] border border-[#B8860B]/30 flex items-center justify-center text-[#B8860B]">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <h3 className="text-sm font-mono font-bold tracking-wider text-white">
+                  <h3 className="text-sm font-mono font-bold tracking-wider text-[#0F172A]">
                     {category.title}
                   </h3>
                 </div>
@@ -81,10 +81,10 @@ export default function ArmorySection() {
                   {category.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="flex items-center justify-between p-2.5 rounded bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors"
+                      className="flex items-center justify-between p-2.5 rounded bg-[#FAF8F5] border border-slate-100 hover:bg-[#F1ECE4]/40 transition-colors"
                     >
-                      <span className="text-xs font-mono text-[#F8FAFC]">{skill.name}</span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1A2B4C]/50 text-[#C59B27] border border-[#C59B27]/20">
+                      <span className="text-xs font-mono text-[#0F172A] font-medium">{skill.name}</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FFFFFF] text-[#B8860B] border border-[#B8860B]/30 font-bold">
                         {skill.level}
                       </span>
                     </div>

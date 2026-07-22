@@ -26,47 +26,47 @@ export default function HyperlaneHero() {
 
       <div className="max-w-5xl mx-auto w-full relative z-10 my-auto">
         {/* Hero Announcement Rail */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#C59B27]/30 bg-[#1A2B4C]/40 backdrop-blur-md text-[#C59B27] text-xs font-mono tracking-wider uppercase mb-10">
-          <span className="w-2 h-2 rounded-full bg-[#C59B27] animate-ping" />
-          <span>OLYMPUS / 26 — A HOMERIC DIGITAL REALM · ORACLE ONLINE</span>
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#B8860B]/30 bg-[#FFFFFF]/80 backdrop-blur-md text-[#B8860B] text-xs font-mono tracking-wider uppercase mb-10 shadow-[0_4px_15px_rgba(184,134,11,0.12)]">
+          <span className="w-2 h-2 rounded-full bg-[#B8860B] animate-ping" />
+          <span>OLYMPUS / 26 — SUNLIT MARBLE DIGITAL REALM · ORACLE ONLINE</span>
         </div>
 
         {/* Hero Stacked Display Header */}
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-extrabold tracking-tight uppercase leading-[0.95] max-w-5xl text-white mb-12">
-          <span className="block text-white">FORGED FOR REALMS</span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] via-[#F3E5AB] to-[#C59B27]">
+        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-extrabold tracking-tight uppercase leading-[0.95] max-w-5xl text-[#0F172A] mb-12">
+          <span className="block text-[#0F172A]">FORGED FOR REALMS</span>
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#B8860B]">
             THAT SHINE
           </span>
-          <span className="block font-serif normal-case italic font-normal text-[#E2E8F0] tracking-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl mt-1">
-            after dark.
+          <span className="block font-serif normal-case italic font-normal text-[#334155] tracking-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl mt-1">
+            under golden sun.
           </span>
         </h1>
 
         {/* Hero Spec-Sheet Metadata Row (Hyperlane 3-cell pattern) */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 border-t border-b border-white/10 bg-[#121218]/60 backdrop-blur-md rounded-xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 border border-[#B8860B]/20 bg-[#FFFFFF]/90 backdrop-blur-md rounded-xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x divide-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
           <div className="p-5">
-            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#C59B27] mb-1">
+            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#B8860B] font-semibold mb-1">
               Architect
             </span>
-            <span className="block text-sm font-semibold text-white">
+            <span className="block text-sm font-bold text-[#0F172A]">
               Jones Tse · Creative Technologist
             </span>
           </div>
 
           <div className="p-5">
-            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#C59B27] mb-1">
+            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#B8860B] font-semibold mb-1">
               Realm Clock (UTC+8)
             </span>
-            <span className="block text-sm font-mono font-bold text-[#F3E5AB] tracking-widest">
+            <span className="block text-sm font-mono font-bold text-[#1D4ED8] tracking-widest">
               {timeString}
             </span>
           </div>
 
           <div className="p-5">
-            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#C59B27] mb-1">
+            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#B8860B] font-semibold mb-1">
               Coordinates
             </span>
-            <span className="block text-sm font-semibold text-white">
+            <span className="block text-sm font-bold text-[#0F172A]">
               Mount Olympus · 39.85° N, 22.35° E
             </span>
           </div>
@@ -74,9 +74,9 @@ export default function HyperlaneHero() {
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="relative z-10 max-w-5xl mx-auto w-full flex items-center justify-between pt-6 border-t border-white/10 text-xs font-mono text-[#94A3B8]">
+      <div className="relative z-10 max-w-5xl mx-auto w-full flex items-center justify-between pt-6 border-t border-slate-200 text-xs font-mono text-[#475569]">
         <span>Scroll to inspect labors</span>
-        <span className="text-[#C59B27]">↓ 01 · Virtues</span>
+        <span className="text-[#B8860B] font-semibold">↓ 01 · Virtues</span>
       </div>
     </section>
   );

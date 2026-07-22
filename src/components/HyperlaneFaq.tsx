@@ -4,7 +4,7 @@ export default function HyperlaneFaq() {
   const faqs = [
     {
       q: 'What is the Golden Starfield of Olympus?',
-      a: 'It is a custom 3D WebGL particle scene built with Three.js and @react-three/fiber. It renders 3,500+ glowing particles with smooth camera parallax physics while maintaining a solid 60fps performance across desktop and mobile devices.',
+      a: 'It is a custom 3D WebGL particle scene built with Three.js and @react-three/fiber. It renders 3,500+ glowing sunlit particles with smooth camera parallax physics while maintaining a solid 60fps performance across desktop and mobile devices.',
     },
     {
       q: 'What technologies are used in this portfolio?',
@@ -21,13 +21,13 @@ export default function HyperlaneFaq() {
   ];
 
   return (
-    <section id="faq" className="py-24 px-6 bg-[#09090D] border-t border-[#C59B27]/15">
+    <section id="faq" className="py-24 px-6 bg-[#F1ECE4] border-t border-[#B8860B]/20">
       <div className="max-w-4xl mx-auto">
         <header className="mb-12">
-          <p className="font-mono text-xs text-[#C59B27] uppercase tracking-widest mb-2">
-            <span className="font-bold">06</span> · Questions
+          <p className="font-mono text-xs text-[#B8860B] uppercase tracking-widest mb-2 font-bold">
+            <span>06</span> · Questions
           </p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase text-white">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase text-[#0F172A]">
             A few honest answers.
           </h2>
         </header>
@@ -36,15 +36,15 @@ export default function HyperlaneFaq() {
           {faqs.map((faq, idx) => (
             <details
               key={idx}
-              className="group bg-[#121218] border border-white/10 rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-[#C59B27]/40 transition-colors"
+              className="group bg-[#FFFFFF] border border-[#B8860B]/20 rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-[#B8860B]/50 transition-colors shadow-[0_2px_10px_rgba(15,23,42,0.02)]"
             >
-              <summary className="flex items-center justify-between font-bold text-sm sm:text-base text-white group-open:text-[#F3E5AB]">
+              <summary className="flex items-center justify-between font-bold text-sm sm:text-base text-[#0F172A] group-open:text-[#B8860B]">
                 <span>{faq.q}</span>
-                <span className="font-mono text-lg text-[#C59B27] group-open:rotate-45 transition-transform ml-4">
+                <span className="font-mono text-lg text-[#B8860B] group-open:rotate-45 transition-transform ml-4">
                   +
                 </span>
               </summary>
-              <div className="mt-3 text-xs sm:text-sm text-[#94A3B8] font-light leading-relaxed pt-3 border-t border-white/5">
+              <div className="mt-3 text-xs sm:text-sm text-[#475569] font-normal leading-relaxed pt-3 border-t border-slate-100">
                 <p>{faq.a}</p>
               </div>
             </details>

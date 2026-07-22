@@ -16,7 +16,7 @@ export default function HyperlaneProgram() {
       time: 'LABOR 02',
       type: 'Tactile Interface',
       title: 'Retro Flip Clock Engine',
-      sub: 'Precision physics-based flip clock animations, custom dark graphite themes, and millisecond time synchronization.',
+      sub: 'Precision physics-based flip clock animations, custom marble themes, and millisecond time synchronization.',
       name: 'Status: Open Source',
       link: 'https://github.com/chunghei0116/portfolio-website',
     },
@@ -39,16 +39,16 @@ export default function HyperlaneProgram() {
   ];
 
   return (
-    <section id="labors" className="py-24 px-6 bg-[#09090D] border-t border-[#C59B27]/15">
+    <section id="labors" className="py-24 px-6 bg-[#FAF8F5] border-t border-[#B8860B]/20">
       <div className="max-w-5xl mx-auto">
         <header className="mb-12">
-          <p className="font-mono text-xs text-[#C59B27] uppercase tracking-widest mb-2">
-            <span className="font-bold">03</span> · Labors · Wave 01
+          <p className="font-mono text-xs text-[#B8860B] uppercase tracking-widest mb-2 font-bold">
+            <span>03</span> · Labors · Wave 01
           </p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase text-white">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase text-[#0F172A]">
             Four active chronicles in the archive.
           </h2>
-          <p className="text-xs font-mono text-[#94A3B8] mt-2">
+          <p className="text-xs font-mono text-[#475569] mt-2">
             Wave 01 released · More labors added regularly
           </p>
         </header>
@@ -58,31 +58,31 @@ export default function HyperlaneProgram() {
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-[#121218] border border-white/10 rounded-xl p-6 hover:border-[#C59B27]/50 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-[#FFFFFF] border border-[#B8860B]/20 rounded-xl p-6 hover:border-[#B8860B]/60 transition-all duration-300 flex flex-col justify-between group shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_30px_rgba(184,134,11,0.1)]"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs font-bold text-[#C59B27] tracking-wider">
+                  <span className="font-mono text-xs font-bold text-[#B8860B] tracking-wider">
                     {card.time}
                   </span>
-                  <span className="px-2.5 py-1 rounded bg-[#1A2B4C]/50 border border-[#C59B27]/30 text-[10px] font-mono text-[#C59B27] uppercase">
+                  <span className="px-2.5 py-1 rounded bg-[#F1ECE4] border border-[#B8860B]/20 text-[10px] font-mono text-[#B8860B] font-semibold uppercase">
                     {card.type}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold uppercase text-white group-hover:text-[#F3E5AB] transition-colors mb-2">
+                <h3 className="text-xl font-bold uppercase text-[#0F172A] group-hover:text-[#B8860B] transition-colors mb-2">
                   {card.title}
                 </h3>
-                <p className="text-xs text-[#94A3B8] font-light leading-relaxed mb-6">
+                <p className="text-xs text-[#475569] font-normal leading-relaxed mb-6">
                   {card.sub}
                 </p>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-white/5 text-xs font-mono text-[#64748B]">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-mono text-[#64748B]">
                 <span>{card.name}</span>
                 <a
                   href={card.link}
-                  className="text-[#C59B27] hover:text-[#F3E5AB] transition-colors font-semibold"
+                  className="text-[#B8860B] hover:text-[#D4AF37] transition-colors font-bold"
                 >
                   Inspect →
                 </a>

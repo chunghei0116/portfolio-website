@@ -11,11 +11,11 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full bg-[#09090D] text-[#F8FAFC] overflow-x-clip selection:bg-[#C59B27] selection:text-[#09090D]">
+    <div className="relative min-h-screen w-full bg-[#FAF8F5] text-[#0F172A] overflow-x-clip selection:bg-[#B8860B] selection:text-[#FAF8F5]">
       {/* Floating Pill Nav (Hyperlane N5 archetype) */}
       <Navbar />
 
-      {/* Hero Section (Hyperlane Spec-sheet Hero + 3D Golden Starfield of Olympus) */}
+      {/* Hero Section (Hyperlane Spec-sheet Hero + 3D Sunlit Golden Starfield Canvas) */}
       <HyperlaneHero />
 
       {/* 01 · Craft Routine (Hyperlane Spec Sheet Schedule archetype) */}
