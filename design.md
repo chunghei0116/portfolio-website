@@ -33,7 +33,7 @@ Raw Grey Concrete / Industrial
 
   --color-ink:        #181817;    /* deep graphite ink */
   --color-ink-2:      #3e3e3b;    /* secondary copy */
-  --color-muted:      #6e6e69;    /* captions / metadata */
+  --color-muted:      #4e4e4a;    /* captions / metadata (adjusted for contrast) */
   --color-rule:       #b8b8b0;    /* concrete seam dividers */
 
   --color-accent:     #c83228;    /* industrial safety red accent */
@@ -44,18 +44,18 @@ Raw Grey Concrete / Industrial
   --font-body:    "DM Sans", sans-serif;
   --font-mono:    "JetBrains Mono", monospace;
   --font-typewriter: "JetBrains Mono", monospace;
-}
-```
 
-  --space-2xs:  0.25rem;
-  --space-xs:   0.5rem;
-  --space-sm:   0.75rem;
-  --space-md:   1rem;
-  --space-lg:   1.5rem;
-  --space-xl:   2.5rem;
+  --space-3xs:  0.25rem;
+  --space-2xs:  0.5rem;
+  --space-xs:   0.75rem;
+  --space-sm:   1rem;
+  --space-md:   1.5rem;
+  --space-lg:   2rem;
+  --space-xl:   3rem;
   --space-2xl:  4rem;
-  --space-3xl:  6.5rem;
-  --space-4xl:  10rem;
+  --space-3xl:  6rem;
+  --space-4xl:  8rem;
+  --space-5xl:  11rem;
 }
 ```
 

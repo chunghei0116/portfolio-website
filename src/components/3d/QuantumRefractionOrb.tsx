@@ -40,7 +40,7 @@ function CrystalGeometry() {
             distortionScale={0.3}
             temporalDistortion={0.2}
             color="#a855f7"
-            bg="#00f0ff"
+            background={new THREE.Color('#00f0ff')}
           />
         </mesh>
       </Float>

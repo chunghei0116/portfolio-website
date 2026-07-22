@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, FolderGit2 } from 'lucide-react';
+import { ExternalLink, FolderGit2 } from 'lucide-react';
 import { PROJECTS, Project } from '../../data/projects';
 
 export default function ProjectsSection() {
@@ -112,7 +112,7 @@ export default function ProjectsSection() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-white transition-colors"
                         >
-                          <Github className="w-3.5 h-3.5" /> Source Code
+                          <FolderGit2 className="w-3.5 h-3.5" /> Source Code
                         </a>
                       )}
                     </div>

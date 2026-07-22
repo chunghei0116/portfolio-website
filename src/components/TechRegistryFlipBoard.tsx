@@ -103,14 +103,11 @@ export default function TechRegistryFlipBoard() {
   const activeTech = ALL_TECH_ITEMS.find((i) => i.id === selectedTechId) || filteredItems[0];
 
   return (
-    <div className="fancy-tech-section font-sans max-w-full">
+    <div className="font-sans max-w-full">
       {/* Top Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-hairline gap-4">
         <div>
-          <div className="font-typewriter text-xs text-accent tracking-widest uppercase mb-2 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span>03 // SYSTEMS ARCHITECTURE &amp; CAPABILITIES</span>
-          </div>
+
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink">
             Production Tech Stack
           </h2>
@@ -120,7 +117,7 @@ export default function TechRegistryFlipBoard() {
         <div className="flex items-center gap-2 self-start md:self-auto bg-paper-2 p-1 border border-hairline rounded">
           <button
             onClick={() => setActiveView("grid")}
-            className={`px-3 py-1 text-xs font-typewriter uppercase tracking-wider rounded transition-all cursor-pointer ${
+            className={`px-3 py-1 text-xs font-typewriter uppercase tracking-wider rounded transition-colors duration-200 cursor-pointer ${
               activeView === "grid"
                 ? "bg-paper text-ink font-bold shadow-xs border border-hairline"
                 : "text-muted hover:text-ink"
@@ -130,7 +127,7 @@ export default function TechRegistryFlipBoard() {
           </button>
           <button
             onClick={() => setActiveView("pipeline")}
-            className={`px-3 py-1 text-xs font-typewriter uppercase tracking-wider rounded transition-all cursor-pointer ${
+            className={`px-3 py-1 text-xs font-typewriter uppercase tracking-wider rounded transition-colors duration-200 cursor-pointer ${
               activeView === "pipeline"
                 ? "bg-paper text-ink font-bold shadow-xs border border-hairline"
                 : "text-muted hover:text-ink"
@@ -150,7 +147,7 @@ export default function TechRegistryFlipBoard() {
             setActiveCategory("all");
             setSelectedTechId(null);
           }}
-          className={`flex-shrink-0 px-4 py-2 text-xs font-typewriter uppercase tracking-wider rounded border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
+          className={`flex-shrink-0 px-4 py-2 text-xs font-typewriter uppercase tracking-wider rounded border transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
             activeCategory === "all"
               ? "bg-paper text-ink border-accent font-bold shadow-xs"
               : "bg-paper-2 text-muted border-hairline hover:text-ink hover:border-rule"
@@ -171,7 +168,7 @@ export default function TechRegistryFlipBoard() {
                 setActiveCategory(catKey);
                 setSelectedTechId(null);
               }}
-              className={`flex-shrink-0 px-4 py-2 text-xs font-typewriter uppercase tracking-wider rounded border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
+              className={`flex-shrink-0 px-4 py-2 text-xs font-typewriter uppercase tracking-wider rounded border transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
                 isActive
                   ? "bg-paper text-ink border-accent font-bold shadow-xs"
                   : "bg-paper-2 text-muted border-hairline hover:text-ink hover:border-rule"
@@ -200,14 +197,12 @@ export default function TechRegistryFlipBoard() {
                     setSelectedTechId(item.id);
                   }
                 }}
-                className={`tech-card-fancy p-5 rounded border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden group ${
+                className={`p-5 rounded border transition-[background-color,border-color,transform,box-shadow] duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden group ${
                   isSelected
-                    ? "bg-paper border-accent shadow-md translate-y-[-2px]"
-                    : "bg-paper-2 border-hairline hover:bg-paper hover:border-rule hover:shadow-sm"
+                    ? "bg-paper-3 border-accent shadow-md translate-y-[-2px]"
+                    : "bg-paper-2 border-hairline hover:bg-paper-3 hover:border-rule hover:shadow-sm"
                 }`}
               >
-                {/* Accent Left Bar indicator */}
-                <div className={`absolute top-0 left-0 bottom-0 w-1 transition-all ${isSelected ? "bg-accent" : "bg-transparent group-hover:bg-rule"}`} />
 
                 {/* Top Badge & Status Row */}
                 <div className="flex items-center justify-between mb-3">

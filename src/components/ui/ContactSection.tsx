@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Copy, Check, Github, Linkedin, Twitter, Clock } from 'lucide-react';
+import { Mail, Copy, Check, Code2, Globe, Share2, Clock } from 'lucide-react';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -62,13 +62,13 @@ export default function ContactSection() {
           {/* Social Links */}
           <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
             <a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-[#00f0ff] transition-colors">
-              <Github className="w-4 h-4" /> GITHUB
+              <Code2 className="w-4 h-4" /> GITHUB
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-[#00f0ff] transition-colors">
-              <Linkedin className="w-4 h-4" /> LINKEDIN
+              <Globe className="w-4 h-4" /> LINKEDIN
             </a>
             <a href="https://twitter.com" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-[#00f0ff] transition-colors">
-              <Twitter className="w-4 h-4" /> TWITTER
+              <Share2 className="w-4 h-4" /> TWITTER
             </a>
           </div>
         </div>

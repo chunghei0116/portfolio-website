@@ -24,9 +24,4 @@ export default function Home() {
     </main>
   );
 }
- Shoulders Display &amp; DM Sans. Built with Next.js &amp; Tailwind.
-        </p>
-      </footer>
-    </div>
-  );
-}
+
