@@ -1,42 +1,30 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import HyperlaneHero from '@/components/HyperlaneHero';
-import HyperlaneFormat from '@/components/HyperlaneFormat';
-import HyperlaneWhy from '@/components/HyperlaneWhy';
-import HyperlaneProgram from '@/components/HyperlaneProgram';
-import ArmorySection from '@/components/ArmorySection';
-import HyperlaneRsvp from '@/components/HyperlaneRsvp';
-import HyperlaneFaq from '@/components/HyperlaneFaq';
+import MinimalHero from '@/components/MinimalHero';
+import MinimalLabors from '@/components/MinimalLabors';
+import MinimalStack from '@/components/MinimalStack';
+import MinimalContact from '@/components/MinimalContact';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full bg-[#FAF8F5] text-[#0F172A] overflow-x-clip selection:bg-[#B8860B] selection:text-[#FAF8F5]">
-      {/* Floating Pill Nav (Hyperlane N5 archetype) */}
+    <div className="relative min-h-screen w-full bg-[#FAF8F5] text-[#0F172A] selection:bg-[#B8860B] selection:text-[#FAF8F5]">
+      {/* Minimal Floating Nav */}
       <Navbar />
 
-      {/* Hero Section (Hyperlane Spec-sheet Hero + 3D Sunlit Golden Starfield Canvas) */}
-      <HyperlaneHero />
+      {/* Hero Section with 3D Canvas */}
+      <MinimalHero />
 
-      {/* 01 · Craft Routine (Hyperlane Spec Sheet Schedule archetype) */}
-      <HyperlaneFormat />
+      {/* Selected Labors / Works */}
+      <MinimalLabors />
 
-      {/* 02 · Codex & Why (Hyperlane Editorial Lead Block archetype) */}
-      <HyperlaneWhy />
+      {/* Technical Stack */}
+      <MinimalStack />
 
-      {/* 03 · Labors (Hyperlane Program Grid archetype) */}
-      <HyperlaneProgram />
+      {/* Contact Portal */}
+      <MinimalContact />
 
-      {/* 04 · Armory / Technical Arsenal */}
-      <ArmorySection />
-
-      {/* 05 · Oracle / Contact Form (Hyperlane RSVP archetype) */}
-      <HyperlaneRsvp />
-
-      {/* 06 · Delphic Questions / FAQ (Hyperlane Conversational Accordion archetype) */}
-      <HyperlaneFaq />
-
-      {/* Footer (Hyperlane Ft5 Statement archetype) */}
+      {/* Minimal Footer */}
       <Footer />
     </div>
   );

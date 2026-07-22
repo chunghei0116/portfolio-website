@@ -1,51 +1,33 @@
-# Design — Sunlit Marble Homeric Epic (3D WebGL Portfolio)
+# Design — Minimalist Sunlit Marble Homeric Epic
 
-A locked light design system for this app, configured for the Sunlit Marble & Ancient Greek Odyssey theme.
+A locked design system for this app, configured for the Minimalist Sunlit Marble & Olympian Gold theme.
 
 ## Genre
-editorial-mythic
+editorial-minimalist
 
 ## Theme
-Sunlit Marble & Olympian Gold / Light Odyssey
+Minimalist Sunlit Marble / Olympian Gold
 
-- vibe: "sunlit Aegean alabaster marble, warm ivory paper, deep navy slate typography, glowing Olympian gold accents, 3D WebGL wireframe column"
-- main page: Giant typography hero with light 3D particle canvas background, Hyperlane layout structure, 3-cell spec-sheet metadata row, format schedule, codex pitch block, labors program grid, and delphic FAQ.
+- vibe: "spacious sunlit alabaster ivory background, high typographic restraint, subtle gold accents, 3D WebGL particle hero"
+- page structure: 3 core sections (Hero -> Selected Labors -> Technical Arsenal -> Summon Portal) with generous whitespace and 0 information bloat.
 
 ## System (Fonts)
-- Display: "Syne", "Big Shoulders Display", "Space Grotesk", sans-serif (heavy condensed display sans, tracking-tight)
-- Body: "DM Sans", "Inter", sans-serif (clean soft geometric body sans)
-- Mono: "JetBrains Mono", monospace (monospace metadata & coordinates)
-
-## Provenance
-- Date: 2026-07-22
-- Spacing: 4-point spacing scale
-- Axes: light-mode / sunlit-marble / olympian-gold & aegean-sea-blue-accents
+- Display: "Syne", "Big Shoulders Display", sans-serif (tracking-tight display)
+- Body: "DM Sans", "Inter", sans-serif (clean minimal body)
+- Mono: "JetBrains Mono", monospace (clean metadata tags)
 
 ## Tokens
 
 ```css
 :root {
   --bg-surface:        #FAF8F5;    /* sunlit alabaster ivory base */
-  --bg-surface-card:   #FFFFFF;    /* crisp marble card surface */
-  --bg-surface-elev:   #F1ECE4;    /* elevated warm stone container */
-  --border-subtle:     rgba(0, 0, 0, 0.08);
-  --border-gold:       rgba(212, 175, 55, 0.35);
+  --bg-card:           #FFFFFF;    /* crisp marble card */
+  --border-subtle:     rgba(184, 134, 11, 0.2);
 
-  --color-text-main:   #0F172A;    /* deep navy slate main text */
-  --color-text-muted:  #475569;    /* warm slate body text */
-  --color-text-dim:    #64748B;    /* subtle caption text */
+  --color-text-main:   #0F172A;    /* deep navy slate */
+  --color-text-muted:  #475569;    /* warm slate */
 
-  --accent-gold:       #B8860B;    /* Olympian polished gold */
-  --accent-gold-light: #D4AF37;    /* bright Greek sun gold */
-  --accent-aegean:     #1D4ED8;    /* Aegean sea royal blue */
-  --accent-terracotta: #C2410C;    /* terracotta ceramic accent */
-
-  --font-display:      "Syne", "Big Shoulders Display", sans-serif;
-  --font-body:         "DM Sans", sans-serif;
-  --font-mono:         "JetBrains Mono", monospace;
+  --accent-gold:       #B8860B;    /* Olympian gold */
+  --accent-gold-light: #D4AF37;    /* sunlit gold glow */
 }
 ```
-
-## Microinteractions stance
-- Buttons feature tactile gold borders with warm sunlit glowing background shifts.
-- Subtle pointer parallax physics on 3D particles and Greek column.
