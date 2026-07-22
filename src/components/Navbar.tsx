@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Compass, Shield, Terminal, Mail, Menu, X } from 'lucide-react';
+import { Sparkles, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,97 +16,88 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Pillars', href: '#pantheon', icon: Shield },
-    { name: 'Odyssey', href: '#odyssey', icon: Compass },
-    { name: 'Armory', href: '#armory', icon: Terminal },
-    { name: 'Oracle', href: '#oracle', icon: Mail },
+    { name: '01 · Virtues', href: '#virtues' },
+    { name: '02 · Routine', href: '#routine' },
+    { name: '03 · Labors', href: '#labors' },
+    { name: '04 · Armory', href: '#armory' },
+    { name: '05 · Oracle', href: '#oracle' },
+    { name: '06 · FAQ', href: '#faq' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl transition-all duration-300 ${
         scrolled
-          ? 'bg-[#09090D]/85 backdrop-blur-xl border-b border-[#C59B27]/20 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent py-5'
+          ? 'bg-[#09090D]/90 backdrop-blur-xl border border-[#C59B27]/30 py-2.5 px-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
+          : 'bg-[#121218]/70 backdrop-blur-md border border-white/10 py-3 px-5 rounded-full'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <div className="flex items-center justify-between">
         {/* Brand Emblem */}
         <a
-          href="#"
-          className="group flex items-center gap-3 text-lg font-bold tracking-widest uppercase text-white hover:text-[#C59B27] transition-colors"
+          href="#top"
+          className="group flex items-center gap-2.5 font-mono text-xs tracking-wider uppercase text-white hover:text-[#C59B27] transition-colors"
         >
-          <div className="w-8 h-8 rounded-sm bg-[#1A2B4C] border border-[#C59B27]/40 flex items-center justify-center text-[#C59B27] group-hover:border-[#C59B27] group-hover:shadow-[0_0_15px_rgba(197,155,39,0.4)] transition-all">
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <span className="font-mono text-sm tracking-wider text-[#F8FAFC]">
-            OLYMPUS<span className="text-[#C59B27]">.DEV</span>
+          <span className="w-2 h-2 rounded-full bg-[#C59B27] animate-pulse" />
+          <span className="font-bold text-white group-hover:text-[#F3E5AB]">
+            OLYMPUS<span className="text-[#C59B27] font-normal">/26</span>
           </span>
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#121218]/60 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
-          {navLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                className="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono tracking-wider text-[#94A3B8] hover:text-white hover:bg-[#1A2B4C]/60 hover:border hover:border-[#C59B27]/30 transition-all duration-200"
-              >
-                <Icon className="w-3.5 h-3.5 text-[#C59B27]" />
-                {link.name}
-              </a>
-            );
-          })}
+        <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-xs font-mono text-[#94A3B8] hover:text-[#F3E5AB] transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
+        {/* Right CTA */}
+        <div className="hidden sm:flex items-center gap-3">
           <a
             href="#oracle"
-            className="px-4 py-2 rounded font-mono text-xs font-semibold tracking-wider text-[#09090D] bg-[#C59B27] hover:bg-[#F3E5AB] transition-all duration-300 shadow-[0_0_15px_rgba(197,155,39,0.3)] hover:scale-105"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full font-mono text-xs font-semibold text-[#09090D] bg-[#C59B27] hover:bg-[#F3E5AB] transition-all duration-200 shadow-[0_0_12px_rgba(197,155,39,0.3)] hover:scale-105"
           >
-            SUMMON ARCHITECT
+            <span>Summon</span>
+            <span aria-hidden="true">→</span>
           </a>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white p-2 rounded-md hover:bg-white/5 border border-white/10"
-          aria-label="Toggle Navigation Menu"
+          className="lg:hidden text-white p-1.5 rounded-full hover:bg-white/10 border border-white/10"
+          aria-label="Toggle Navigation"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#09090D]/95 backdrop-blur-2xl border-b border-[#C59B27]/20 px-6 py-6 transition-all">
-          <div className="flex flex-col gap-3">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-mono text-[#F8FAFC] bg-[#121218] border border-white/5 hover:border-[#C59B27]/40"
-                >
-                  <Icon className="w-4 h-4 text-[#C59B27]" />
-                  {link.name}
-                </a>
-              );
-            })}
+        <div className="lg:hidden mt-3 pt-4 border-t border-white/10 flex flex-col gap-2.5 bg-[#09090D]/95 p-4 rounded-2xl">
+          {navLinks.map((link) => (
             <a
-              href="#oracle"
+              key={link.name}
+              href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 text-center py-3 rounded font-mono text-xs font-bold text-[#09090D] bg-[#C59B27]"
+              className="px-3 py-2 rounded-lg text-xs font-mono text-[#F8FAFC] hover:bg-[#1A2B4C]/50 hover:text-[#C59B27]"
             >
-              SUMMON ARCHITECT
+              {link.name}
             </a>
-          </div>
+          ))}
+          <a
+            href="#oracle"
+            onClick={() => setMobileMenuOpen(false)}
+            className="mt-2 text-center py-2.5 rounded-full font-mono text-xs font-bold text-[#09090D] bg-[#C59B27]"
+          >
+            Summon Architect →
+          </a>
         </div>
       )}
     </header>
