@@ -9,11 +9,11 @@ const HeroScene = dynamic(() => import('./HeroScene'), { ssr: false });
 export function HeroGradientFallback() {
   return (
     <div
-      className="absolute inset-0 -z-10 bg-gradient-to-b from-[#FAF8F5] via-[#F1ECE4] to-[#FAF8F5] opacity-95 transition-opacity duration-1000"
+      className="absolute inset-0 -z-10 bg-[#09090b] transition-opacity duration-1000"
       aria-hidden="true"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(212,175,55,0.18),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(29,78,216,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.15),rgba(255,255,255,0))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_60%,rgba(0,240,255,0.08),rgba(255,255,255,0))]" />
     </div>
   );
 }
@@ -34,7 +34,7 @@ export default function HeroCanvas() {
       <HeroGradientFallback />
       <Suspense fallback={null}>
         <Canvas
-          camera={{ position: [0, 0.5, 6], fov: 50 }}
+          camera={{ position: [0, 0.2, 5.5], fov: 48 }}
           dpr={[1, 2]}
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           eventSource={typeof document !== 'undefined' ? (document.body as HTMLElement) : undefined}

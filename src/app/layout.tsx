@@ -1,9 +1,22 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
+const sans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'Senior Graphics & Full-Stack Architect | Portfolio',
-  description: '100% Graphic-Intensive 3D WebGL Portfolio featuring custom GLSL shaders, 3D physics, and high-end engineering.',
+  title: 'Jones Tse — Creative Technologist & Full-Stack Architect',
+  description: 'Clean, minimalist, and playful portfolio featuring interactive 3D WebGL experiences, clean React architectures, and high-performance web engineering.',
 };
 
 export default function RootLayout({
@@ -12,10 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="bg-[#030305] text-white selection:bg-[#00f0ff]/30 selection:text-[#00f0ff] antialiased">
+    <html lang="en" className={`${sans.variable} ${mono.variable} dark scroll-smooth`}>
+      <body className="bg-[#09090b] text-[#fafafa] selection:bg-[#10b981]/30 selection:text-[#34d399] font-sans antialiased">
         {children}
       </body>
     </html>
   );
 }
+
