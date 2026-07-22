@@ -1,98 +1,79 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Briefcase, Calendar, Award } from 'lucide-react';
-
-const EXPERIENCES = [
-  {
-    role: 'Lead Graphics & Full-Stack Engineer',
-    company: 'Vanguard Digital Lab',
-    period: '2024 — PRESENT',
-    description: 'Spearheaded WebGL shader engines and high-frequency React architecture for enterprise clients, cutting render bottlenecks by 45%.',
-    achievements: [
-      'Architected custom GLSL particle system handling 50k+ dynamic vertices',
-      'Led team of 6 engineers on Next.js redesign with 98+ Lighthouse performance score',
-      'Achieved 99.9% uptime SLA across distributed microservices',
-    ],
-  },
-  {
-    role: 'Senior Full-Stack Architect',
-    company: 'Apex Cloud Systems',
-    period: '2022 — 2024',
-    description: 'Designed containerized microservices and web application frontends handling millions of daily events.',
-    achievements: [
-      'Deployed Kubernetes observability pipeline tracking 10k+ container clusters',
-      'Integrated real-time WebSockets telemetry with < 15ms latency',
-      'Reduced initial bundle sizes by 35% via dynamic code-splitting and asset optimization',
-    ],
-  },
-  {
-    role: 'Software Engineer (Frontend / 3D)',
-    company: 'Nexus Interactive',
-    period: '2020 — 2022',
-    description: 'Built interactive 3D WebGL configurators and responsive web applications for global brands.',
-    achievements: [
-      'Created 3D product viewports using Three.js and custom PBR shaders',
-      'Published reusable design tokens system adopted across 4 product teams',
-      'Engineered accessible UI component library with Framer Motion micro-interactions',
-    ],
-  },
-];
+import { milestones } from '@/data/milestones';
+import { Briefcase, Award, CheckCircle2, Terminal, Clock } from 'lucide-react';
+import { audioEngine } from '@/utils/audio';
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-28 px-4 max-w-5xl mx-auto">
-      <div className="mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-[#10b981] uppercase tracking-widest mb-3">
-          <Award className="w-3.5 h-3.5 text-[#10b981]" />
-          <span>[ CAREER TIMELINE ]</span>
-        </div>
-        <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-          PROFESSIONAL EXPERIENCE
-        </h2>
-      </div>
-
-      <div className="relative border-l-2 border-[#00f0ff]/30 pl-6 md:pl-10 space-y-12 ml-4 md:ml-8">
-        {EXPERIENCES.map((exp, idx) => (
-          <motion.div
-            key={exp.company}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: idx * 0.15 }}
-            className="relative group"
+    <section id="experience" className="py-24 relative bg-[#07070a] border-t border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-[#f43f5e] bg-[#f43f5e]/10 border border-[#f43f5e]/20 mb-3">
+            <Clock className="w-3.5 h-3.5" />
+            <span>CAREER TRAJECTORY & MILESTONES</span>
+          </div>
+          <h2 
+            onMouseEnter={() => audioEngine.playGlitch()}
+            className="font-display text-4xl sm:text-6xl font-extrabold tracking-tight uppercase text-white glitch-text cursor-default"
+            data-text="ENGINEERING HISTORY"
           >
-            {/* Electric Cable Node */}
-            <div className="absolute -left-[31px] md:-left-[47px] top-6 w-4 h-4 rounded-full bg-[#030305] border-2 border-[#00f0ff] shadow-[0_0_10px_#00f0ff] group-hover:scale-125 transition-transform" />
+            ENGINEERING HISTORY
+          </h2>
+        </div>
 
-            <div className="double-bezel-outer">
-              <div className="double-bezel-inner p-7">
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-mono text-[#00f0ff] flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5" /> {exp.period}
+        {/* Timeline Grid */}
+        <div className="relative border-l border-white/10 ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8">
+          {milestones.map((m) => (
+            <div
+              key={m.id}
+              onMouseEnter={() => audioEngine.playClick(750, 0.02)}
+              className="soft-card relative p-6 border border-white/10 bg-[#0e0e15]/80 hover:border-[#00f0ff]/40 transition-all"
+            >
+              {/* Timeline Bullet Node */}
+              <div className="absolute -left-[31px] sm:-left-[39px] top-7 w-4 h-4 rounded-full bg-[#09090d] border-2 border-[#00f0ff] flex items-center justify-center">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-ping" />
+              </div>
+
+              {/* Card Content Header */}
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div className="flex items-center gap-2 font-mono text-xs text-[#00f0ff]">
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#00f0ff]/10 border border-[#00f0ff]/20 font-bold">
+                    {m.year}
                   </span>
-                  <span className="text-xs font-mono text-slate-400">{exp.company}</span>
+                  <span>[{m.famLabel.toUpperCase()}]</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-[#a855f7] inline" />
-                  {exp.role}
-                </h3>
-                <p className="text-slate-300 text-sm font-mono leading-relaxed mb-4">{exp.description}</p>
+                <div className="flex items-center gap-2 text-xs font-mono">
+                  <span className="text-slate-400">{m.platform}</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    {m.status}
+                  </span>
+                </div>
+              </div>
 
-                <ul className="space-y-1.5">
-                  {exp.achievements.map((ach) => (
-                    <li key={ach} className="text-xs font-mono text-slate-400 flex items-start gap-2">
-                      <span className="text-[#00f0ff] shrink-0">▹</span>
-                      <span>{ach}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Title & Notes */}
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2">
+                {m.name}
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed font-light mb-4">
+                {m.notes}
+              </p>
+
+              {/* Metric Footer */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#00f0ff]" />
+                <span className="text-white font-bold">{m.metric}</span>
+                <span className="text-slate-500">•</span>
+                <span className="text-slate-400">{m.metricLabel}</span>
               </div>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+
       </div>
     </section>
   );

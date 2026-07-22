@@ -1,76 +1,53 @@
-# Design — Industrial Brutalist Raw Grey Concrete (DevOps & Mobile Portfolio)
+# Design — Soft Utilitarian Playful Cyber (3D GLSL Portfolio)
 
-A locked design system for this app, configured for the Industrial Brutalist Raw Grey Concrete theme with safety red accents.
+A locked design system for this app, configured for the Soft Utilitarian & Playful 3D Shader theme.
 
 ## Genre
-industrial-brutalist
+playful-atmospheric
 
 ## Theme
-Raw Grey Concrete / Industrial
+Soft Utilitarian Cyber Clay / Kinetic 3D Shader
 
-- vibe: "tactile grey concrete paper, deep graphite ink, industrial safety red accent, marquee ticker"
-- main page: H1 Marquee word hero, horizontal infinite marquee ticker, duotone concrete job cards, tracklist catalog, Ft8 marquee scroll footer.
+- vibe: "soft graphite clay paper, big condensed display typography, electric glitch accents, 3D WebGL shader runtime"
+- main page: Giant typography hero with GLSL shader canvas background, interactive shader parameter controller, dual-CTA action bar, graphic-intensive 3D project cards, soft utilitarian grid layout, interactive web audio feedback.
 
 ## System (Fonts)
-- Display: "Big Shoulders Display", weight 700–900 (heavy condensed display sans, uppercase tracking)
-- Body: "DM Sans", weight 400–700 (clean geometric body sans)
-- Mono: "JetBrains Mono", weight 400–700 (monospace metadata & captions)
+- Display: "Syne", "Big Shoulders Display", "Space Grotesk", sans-serif (heavy condensed display sans, tracking-tight)
+- Body: "DM Sans", "Inter", sans-serif (clean soft geometric body sans)
+- Mono: "JetBrains Mono", monospace (monospace metadata, coordinates & glitch captions)
 
 ## Provenance
-- Date: 2026-07-21
+- Date: 2026-07-22
 - Spacing: 4-point spacing scale
-- Axes: light / heavy-condensed-sans / raw-concrete-grey & safety-red
+- Axes: dark-mode / heavy-condensed-sans / soft-clay-graphite & electric-glitch-accents
 
 ## Tokens
 
-### tokens
 ```css
 :root {
-  --color-paper:      #e2e2dd;    /* raw grey concrete paper */
-  --color-paper-2:    #d6d6d0;    /* cast concrete card surface */
-  --color-paper-3:    #cacac4;    /* recessed concrete well */
-  --color-paper-4:    #bebeb8;
+  --bg-surface:        #09090d;    /* deep soft graphite base */
+  --bg-surface-card:   #121218;    /* soft clay card surface */
+  --bg-surface-elev:   #1a1a24;    /* elevated container */
+  --border-subtle:     rgba(255, 255, 255, 0.08);
+  --border-glitch:     rgba(0, 240, 255, 0.3);
 
-  --color-ink:        #181817;    /* deep graphite ink */
-  --color-ink-2:      #3e3e3b;    /* secondary copy */
-  --color-muted:      #4e4e4a;    /* captions / metadata (adjusted for contrast) */
-  --color-rule:       #b8b8b0;    /* concrete seam dividers */
+  --color-text-main:   #f8fafc;
+  --color-text-muted:  #94a3b8;
+  --color-text-dim:    #64748b;
 
-  --color-accent:     #c83228;    /* industrial safety red accent */
-  --color-accent-soft:#f4d8d6;
-  --color-mustard:    #2b2b29;    /* dark graphite contrast */
+  --accent-cyan:       #00f0ff;    /* glitch electric cyan */
+  --accent-purple:     #a855f7;    /* electric violet */
+  --accent-teal:       #2dd4bf;    /* soft mint teal */
+  --accent-coral:      #f43f5e;    /* glitch coral red */
+  --accent-indigo:     #6366f1;    /* soft indigo */
 
-  --font-display: "Big Shoulders Display", sans-serif;
-  --font-body:    "DM Sans", sans-serif;
-  --font-mono:    "JetBrains Mono", monospace;
-  --font-typewriter: "JetBrains Mono", monospace;
-
-  --space-3xs:  0.25rem;
-  --space-2xs:  0.5rem;
-  --space-xs:   0.75rem;
-  --space-sm:   1rem;
-  --space-md:   1.5rem;
-  --space-lg:   2rem;
-  --space-xl:   3rem;
-  --space-2xl:  4rem;
-  --space-3xl:  6rem;
-  --space-4xl:  8rem;
-  --space-5xl:  11rem;
+  --font-display:      "Syne", "Big Shoulders Display", sans-serif;
+  --font-body:         "DM Sans", sans-serif;
+  --font-mono:         "JetBrains Mono", monospace;
 }
 ```
 
-## Spacing
-4-point named scale. Pages must use named tokens (`var(--space-md)`), never raw values.
-
-## Motion
-- Easings: cubic-bezier(0.22, 1, 0.36, 1) named `--ease-out`
-- Reveal pattern: none beyond the pure CSS ticker-scroll animation.
-- Transitions: snappy hover shifts.
-
 ## Microinteractions stance
-- Action rows highlight with accent colored text shifts.
-- Outline focus visible states are highly contrastive, ticket-like tight borders.
-
-## CTA voice
-- Primary CTA: Bold outline block with monospace labels.
-- Secondary CTA: Typographic link text with horizontal arrow glyph (`↳`).
+- Big typography headers feature RGB split text glitch animation on hover.
+- Buttons feature tactile double-bezel borders with glowing accent background shifts.
+- Interactive Web Audio sound effects provide optional futuristic feedback.
