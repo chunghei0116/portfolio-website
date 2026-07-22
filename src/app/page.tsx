@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import MinimalHero from '@/components/MinimalHero';
 import MinimalLabors from '@/components/MinimalLabors';
-import MinimalStack from '@/components/MinimalStack';
 import MinimalContact from '@/components/MinimalContact';
 import Footer from '@/components/Footer';
 
@@ -17,9 +16,6 @@ export default function Home() {
 
       {/* Selected Labors / Works */}
       <MinimalLabors />
-
-      {/* Technical Stack */}
-      <MinimalStack />
 
       {/* Contact Portal */}
       <MinimalContact />

@@ -15,7 +15,6 @@ export default function Navbar() {
         {/* Links */}
         <nav className="flex items-center gap-6 font-mono text-xs text-[#475569]">
           <a href="#labors" className="hover:text-[#B8860B] transition-colors">Works</a>
-          <a href="#stack" className="hover:text-[#B8860B] transition-colors">Stack</a>
           <a href="#summon" className="hover:text-[#B8860B] transition-colors">Contact</a>
         </nav>
 
