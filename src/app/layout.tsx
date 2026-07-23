@@ -1,22 +1,37 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import { Cinzel, Cormorant_Garamond, Montserrat, Inter } from 'next/font/google';
 import './globals.css';
 
-const sans = Plus_Jakarta_Sans({
+const cinzel = Cinzel({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-cinzel',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
-const mono = JetBrains_Mono({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-mono',
+  variable: '--font-cormorant',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+  weight: ['200', '300', '400', '500', '600'],
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Wandering Workshop | Studio Ghibli Portfolio",
-  description: "A hand-painted, whimsical developer portfolio inspired by Howl's Moving Castle, featuring magic doorway project portals, aged parchment stories, and elemental magic skills.",
+  title: "THE ODYSSEY | Creative Directory MMXXVI",
+  description: "A minimalist, highly cinematic museum portfolio inspired by luxury art galleries and ancient Mediterranean mythology.",
 };
 
 export default function RootLayout({
@@ -25,11 +40,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} scroll-smooth`}>
-      <body className="bg-[#7EC8E3] text-[#1C2833] selection:bg-[#9B72AA]/30 selection:text-[#4A3525] font-sans antialiased ghibli-scrollbar">
+    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${montserrat.variable} ${inter.variable} scroll-smooth dark`}>
+      <body className="bg-[#0A0B0D] text-[#E5E7EB] font-sans antialiased selection:bg-[#D4AF37]/40 selection:text-[#FFF8E7] overflow-x-hidden">
         {children}
       </body>
     </html>
   );
 }
+
 

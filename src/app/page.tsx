@@ -1,35 +1,39 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import SkillsSection from '@/components/SkillsSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import CustomCursor from '@/components/CustomCursor';
+import AtmosphericBackground from '@/components/AtmosphericBackground';
+import OdysseyNavbar from '@/components/OdysseyNavbar';
+import OdysseyHeroSection from '@/components/OdysseyHeroSection';
+import OdysseyWorksSection from '@/components/OdysseyWorksSection';
+import OdysseyArtifactsSection from '@/components/OdysseyArtifactsSection';
+import OdysseyRegistrySection from '@/components/OdysseyRegistrySection';
+import OdysseyFooter from '@/components/OdysseyFooter';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full ghibli-bg-gradient text-[#1C2833] selection:bg-[#9B72AA]/30 selection:text-[#4A3525] overflow-x-hidden">
-      {/* Floating Wooden Signpost Navigation */}
-      <Navbar />
+    <main className="relative min-h-screen w-full bg-[#0A0B0D] text-[#E5E7EB] selection:bg-[#D4AF37]/40 selection:text-[#FFF8E7] overflow-x-hidden">
+      {/* Golden Cursor Follower Ring */}
+      <CustomCursor />
 
-      {/* Hero Section with Cloudscape & Swirling Petals */}
-      <HeroSection />
+      {/* Dynamic Atmospheric Mediterranean & Ancient Marble Background */}
+      <AtmosphericBackground />
 
-      {/* Aged Parchment Journal About Me Section */}
-      <AboutSection />
+      {/* Floating Liquid-Glass Pill Navigation */}
+      <OdysseyNavbar />
 
-      {/* Howl's Magic Doorways Project Showcase */}
-      <ProjectsSection />
+      {/* Hero Section: Entrance Exhibit */}
+      <OdysseyHeroSection />
 
-      {/* Skills & Elemental Magic Section */}
-      <SkillsSection />
+      {/* Section I: Selected Works (The Art Cards) */}
+      <OdysseyWorksSection />
 
-      {/* Wax-Sealed Flying Message Contact Section */}
-      <ContactSection />
+      {/* Section II: Artifacts / Skills */}
+      <OdysseyArtifactsSection />
 
-      {/* Brass Compass Footer */}
-      <Footer />
-    </div>
+      {/* Section III: Contact (The Registry) */}
+      <OdysseyRegistrySection />
+
+      {/* Luxury Museum Footer */}
+      <OdysseyFooter />
+    </main>
   );
 }
