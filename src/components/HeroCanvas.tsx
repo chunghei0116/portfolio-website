@@ -2,14 +2,12 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import dynamic from 'next/dynamic';
-
-const HeroScene = dynamic(() => import('./HeroScene'), { ssr: false });
+import HeroScene from './HeroScene';
 
 export function HeroGradientFallback() {
   return (
     <div
-      className="absolute inset-0 -z-10 bg-[#09090b] transition-opacity duration-1000"
+      className="absolute inset-0 z-0 bg-[#09090b] transition-opacity duration-1000"
       aria-hidden="true"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.15),rgba(255,255,255,0))]" />
@@ -30,7 +28,7 @@ export default function HeroCanvas() {
   }
 
   return (
-    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden pointer-events-auto cursor-pointer touch-none">
+    <div className="absolute inset-0 z-0 h-full w-full overflow-hidden pointer-events-auto cursor-pointer touch-none">
       <HeroGradientFallback />
       <Suspense fallback={null}>
         <Canvas
@@ -39,7 +37,8 @@ export default function HeroCanvas() {
           gl={{ antialias: true, alpha: true, powerPreference: 'default', failIfMajorPerformanceCaveat: false }}
           eventSource={typeof document !== 'undefined' ? (document.body as HTMLElement) : undefined}
           eventPrefix="client"
-          className="h-full w-full"
+          className="h-full w-full absolute inset-0"
+          style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
         >
           <HeroScene />
         </Canvas>
