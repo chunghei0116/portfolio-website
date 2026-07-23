@@ -30,7 +30,7 @@ export default function HeroCanvas() {
   }
 
   return (
-    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden pointer-events-auto cursor-pointer">
       <HeroGradientFallback />
       <Suspense fallback={null}>
         <Canvas
