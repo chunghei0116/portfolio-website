@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import MinimalHero from '@/components/MinimalHero';
 import MinimalLabors from '@/components/MinimalLabors';
 import MinimalAbout from '@/components/MinimalAbout';
-import MinimalContact from '@/components/MinimalContact';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -21,8 +21,8 @@ export default function Home() {
       {/* Engineering Philosophy & Capability Matrix */}
       <MinimalAbout />
 
-      {/* Direct Contact Section */}
-      <MinimalContact />
+      {/* Wax-Sealed Flying Message Contact Section */}
+      <ContactSection />
 
       {/* Minimal Footer */}
       <Footer />
