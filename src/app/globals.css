@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -8,6 +9,20 @@
 :root {
   --background: #050507;
   --foreground: #fafafa;
+
+  /* Studio Ghibli Color Palette Tokens */
+  --sky-blue: #7EC8E3;
+  --sunset-gold: #FDE1A9;
+  --cloud-white: #F7F9FA;
+  --brass-gold: #D4AF37;
+  --sage-green: #88B04B;
+  --wildflower-lavender: #9B72AA;
+  --dark-ink: #1C2833;
+  --rustic-brown: #4A3525;
+
+  /* Studio Ghibli Typography Tokens */
+  --font-ghibli-heading: 'Playfair Display', 'Cinzel', Georgia, serif;
+  --font-ghibli-body: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
@@ -30,6 +45,137 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
+}
+
+/* Ghibli Custom Scrollbar Utility */
+.ghibli-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.ghibli-scrollbar::-webkit-scrollbar-track {
+  background: rgba(74, 53, 37, 0.08);
+  border-radius: 3px;
+}
+.ghibli-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--brass-gold);
+  border-radius: 3px;
+}
+.ghibli-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--rustic-brown);
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes petal-swirl {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(120px, 250px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes brass-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(212, 175, 55, 0.6), inset 0 0 25px rgba(212, 175, 55, 0.35);
+  }
+}
+
+@keyframes wax-seal-press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-cloud-drift {
+  animation: cloud-drift 45s linear infinite;
+}
+
+.animate-petal-swirl {
+  animation: petal-swirl 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-brass-glow {
+  animation: brass-glow 3s ease-in-out infinite;
+}
+
+.animate-wax-seal {
+  animation: wax-seal-press 0.4s ease-in-out;
+}
+
+/* Ghibli Custom Utilities & Classes */
+.ghibli-bg-gradient {
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sunset-gold) 60%, var(--cloud-white) 100%);
+}
+
+.ghibli-parchment {
+  background-color: var(--cloud-white);
+  background-image: radial-gradient(circle at 50% 50%, rgba(253, 225, 169, 0.25) 0%, rgba(247, 249, 250, 0.8) 100%),
+                    repeating-linear-gradient(45deg, rgba(74, 53, 37, 0.02) 0px, rgba(74, 53, 37, 0.02) 2px, transparent 2px, transparent 4px);
+  color: var(--dark-ink);
+  border-radius: 1rem;
+  border: 1px solid rgba(74, 53, 37, 0.15);
+  box-shadow: 0 10px 30px -5px rgba(74, 53, 37, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ghibli-brass-card {
+  border: 2px solid var(--rustic-brown);
+  outline: 1px solid var(--brass-gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+  background: linear-gradient(180deg, rgba(253, 225, 169, 0.15) 0%, rgba(28, 40, 51, 0.05) 100%);
+  transition: all 0.3s ease;
+}
+
+.ghibli-brass-card:hover {
+  animation: brass-glow 2s ease-in-out infinite;
+  border-color: var(--brass-gold);
+}
+
+.ghibli-heading {
+  font-family: var(--font-ghibli-heading);
+  color: var(--rustic-brown);
+  text-shadow: 1px 1px 2px rgba(253, 225, 169, 0.5);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 /* High-End Double Bezel (Doppelrand) Architecture */
