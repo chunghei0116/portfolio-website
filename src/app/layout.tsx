@@ -15,8 +15,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Jones Tse — Creative Technologist & Full-Stack Architect',
-  description: 'Clean, minimalist, and playful portfolio featuring interactive 3D WebGL experiences, clean React architectures, and high-performance web engineering.',
+  title: "Wandering Workshop | Studio Ghibli Portfolio",
+  description: "A hand-painted, whimsical developer portfolio inspired by Howl's Moving Castle, featuring magic doorway project portals, aged parchment stories, and elemental magic skills.",
 };
 
 export default function RootLayout({
@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} dark scroll-smooth`}>
-      <body className="bg-[#09090b] text-[#fafafa] selection:bg-[#10b981]/30 selection:text-[#34d399] font-sans antialiased">
+    <html lang="en" className={`${sans.variable} ${mono.variable} scroll-smooth`}>
+      <body className="bg-[#7EC8E3] text-[#1C2833] selection:bg-[#9B72AA]/30 selection:text-[#4A3525] font-sans antialiased ghibli-scrollbar">
         {children}
       </body>
     </html>
