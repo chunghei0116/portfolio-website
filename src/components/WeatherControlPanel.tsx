@@ -32,7 +32,7 @@ export default function WeatherControlPanel() {
   const ActiveIcon = activeModeConfig.icon;
 
   return (
-    <div className="absolute top-20 right-6 md:top-24 md:right-10 z-30 font-sans">
+    <div className="absolute top-20 right-4 sm:right-6 md:top-24 md:right-10 z-40 font-sans max-w-[calc(100vw-2rem)] pointer-events-auto touch-manipulation">
       <motion.div
         layout
         className="backdrop-blur-xl bg-zinc-950/80 border border-white/15 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden transition-colors"

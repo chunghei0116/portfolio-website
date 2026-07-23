@@ -54,8 +54,8 @@ function HeroSceneContent() {
       <CameraRig />
       <WeatherLighting />
       <group onPointerDown={handlePointerDown}>
-        {/* Invisible raycast plane covering viewport to guarantee click detection */}
-        <mesh position={[0, 0, -10]}>
+        {/* Invisible raycast plane covering viewport at z=0 to guarantee click detection */}
+        <mesh position={[0, 0, 0]}>
           <planeGeometry args={[100, 100]} />
           <meshBasicMaterial transparent opacity={0} depthWrite={false} />
         </mesh>

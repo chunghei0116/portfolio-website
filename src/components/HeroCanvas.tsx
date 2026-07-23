@@ -30,13 +30,13 @@ export default function HeroCanvas() {
   }
 
   return (
-    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden pointer-events-auto cursor-pointer">
+    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden pointer-events-auto cursor-pointer touch-none">
       <HeroGradientFallback />
       <Suspense fallback={null}>
         <Canvas
           camera={{ position: [0, 0.2, 5.5], fov: 48 }}
           dpr={[1, 2]}
-          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+          gl={{ antialias: true, alpha: true, powerPreference: 'default', failIfMajorPerformanceCaveat: false }}
           eventSource={typeof document !== 'undefined' ? (document.body as HTMLElement) : undefined}
           eventPrefix="client"
           className="h-full w-full"
