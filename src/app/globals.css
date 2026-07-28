@@ -29,3 +29,134 @@ h1 { font-size: clamp(3.25rem, 7vw, 7.75rem); font-weight: 800; line-height: .84
 footer { align-items: center; color: rgba(245,239,228,.58); display: flex; font-family: var(--font-source-serif), serif; font-size: .9rem; justify-content: space-between; padding: 2rem clamp(1.25rem, 4vw, 4rem); } footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; } footer a { align-items: center; display: flex; gap: .35rem; transition: color .2s ease; } footer a:hover { color: var(--cream); }
 @media (max-width: 760px) { .nav-links { display: none; }.nav-wrap { padding-top: 1rem; }.hero { display: block; min-height: 0; padding-top: 5rem; }.canvas-frame { height: 25rem; margin: 2rem -1rem 0; }.hero-copy h1 { max-width: 10ch; }.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }.project-card, .project--lead, .project--blue, .project--light { grid-column: span 2; grid-row: auto; min-height: 24rem; }.project-card h3 { font-size: 2.8rem; }.practice-section { display: block; }.practice-title { position: static; margin-bottom: 3.5rem; }.contact-section h2 br { display: none; } footer { align-items: flex-start; flex-direction: column; gap: 1.5rem; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+/* Hallmark · pre-emit critique: P5 H5 E4 S4 R4 V5 */
+/* Hallmark · genre: editorial · macrostructure: Marquee Hero · tone: Homeric epic · anchor hue: bronze · theme: Manifesto · enrichment: user-supplied Greek artwork · nav: N6 · footer: Ft1 */
+
+.odyssey-shell {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: clip;
+}
+
+html, body { overflow-x: clip; }
+.odyssey-shell *, .odyssey-shell *::before, .odyssey-shell *::after { box-sizing: border-box; }
+.odyssey-shell h1, .odyssey-shell h2, .odyssey-shell h3, .odyssey-shell p { margin: 0; }
+.odyssey-shell a { color: inherit; text-decoration: none; }
+.odyssey-shell a:focus-visible { outline: var(--rule-heavy) solid var(--color-focus); outline-offset: var(--space-xs); }
+.odyssey-shell a[aria-disabled="true"], .odyssey-shell a[data-state="disabled"] { color: var(--color-ink-muted); cursor: not-allowed; opacity: 0.55; pointer-events: none; }
+.odyssey-shell a[data-state="loading"] { cursor: progress; }
+.odyssey-shell a[data-state="error"] { color: var(--color-bronze); }
+.odyssey-shell a[data-state="success"] { color: var(--color-bronze-light); }
+
+.odyssey-masthead {
+  align-items: center;
+  border-bottom: var(--rule-hairline) solid var(--color-ink);
+  box-shadow: 0 0.3rem 0 var(--color-paper), 0 0.4rem 0 var(--color-ink);
+  display: grid;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--page-gutter) var(--space-lg);
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.odyssey-mastline, .odyssey-hero-kicker, .odyssey-section-head > p, .odyssey-practice-intro > p, .odyssey-contact > p, .odyssey-project-type, .odyssey-index, .odyssey-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.odyssey-mastline { color: var(--color-ink-muted); }
+.odyssey-name { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 4rem); letter-spacing: -0.06em; line-height: 0.86; }
+.odyssey-nav { display: flex; flex-wrap: wrap; gap: var(--space-lg); justify-content: center; padding-top: var(--space-xs); }
+.odyssey-nav a, .odyssey-footer a { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; white-space: nowrap; }
+.odyssey-nav a:hover, .odyssey-footer a:hover { color: var(--color-bronze); }
+.odyssey-nav a:active, .odyssey-footer a:active, .odyssey-link:active, .odyssey-scroll:active, .odyssey-contact-links a:active { transform: translateY(1px); }
+
+.odyssey-hero { min-height: min(47rem, 83dvh); overflow: hidden; position: relative; isolation: isolate; }
+.odyssey-hero-art { object-fit: cover; object-position: 63% center; z-index: -3; }
+.odyssey-hero-shade { background: linear-gradient(90deg, var(--color-overlay), var(--color-overlay-soft)); inset: 0; position: absolute; z-index: -2; }
+.odyssey-hero-copy { color: var(--color-paper); display: grid; min-height: min(47rem, 83dvh); align-content: end; padding: var(--space-3xl) var(--page-gutter) clamp(6.5rem, 12vw, 10rem); }
+.odyssey-hero-kicker { color: var(--color-bronze-light); margin-bottom: var(--space-lg); }
+.odyssey-hero h1 { font-family: var(--font-display); font-size: var(--text-display); font-style: normal; font-weight: 700; letter-spacing: -0.09em; line-height: 0.71; max-width: 8ch; min-width: 0; overflow-wrap: anywhere; }
+.odyssey-hero h1 span { color: var(--color-bronze-light); }
+.odyssey-caption { bottom: var(--space-lg); color: var(--color-rule-light); left: var(--page-gutter); position: absolute; }
+.odyssey-scroll { align-items: center; bottom: var(--space-lg); color: var(--color-paper); display: inline-flex; font-size: var(--text-sm); font-weight: 700; gap: var(--space-xs); letter-spacing: 0.04em; position: absolute; right: var(--page-gutter); transition: color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); white-space: nowrap; }
+.odyssey-scroll:hover { color: var(--color-bronze-light); }
+
+.odyssey-prologue { border-bottom: var(--rule-heavy) solid var(--color-ink); display: grid; gap: var(--space-xl); padding: var(--space-3xl) var(--page-gutter); }
+.odyssey-prologue-mark { color: var(--color-bronze); font-family: var(--font-display); font-size: var(--text-xl); line-height: 0.8; }
+.odyssey-prologue h2, .odyssey-section-head h2, .odyssey-practice-intro h2, .odyssey-contact h2 { font-family: var(--font-display); font-style: normal; font-weight: 700; letter-spacing: -0.07em; line-height: 0.82; min-width: 0; overflow-wrap: anywhere; }
+.odyssey-prologue h2 { font-size: var(--text-display-s); max-width: 10ch; }
+.odyssey-prologue > div > p { color: var(--color-ink-soft); font-size: var(--text-lg); line-height: 1.45; margin-top: var(--space-xl); max-width: 40rem; }
+.odyssey-prologue-links { display: flex; flex-wrap: wrap; gap: var(--space-lg); margin-top: var(--space-xl); }
+.odyssey-link { align-items: center; border-bottom: var(--rule-hairline) solid currentColor; display: inline-flex; font-size: var(--text-sm); font-weight: 700; gap: var(--space-xs); padding-bottom: var(--space-xs); transition: color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); white-space: nowrap; }
+.odyssey-link:hover { color: var(--color-bronze); }
+
+.odyssey-work { background: var(--color-night); color: var(--color-paper); padding: var(--space-3xl) var(--page-gutter); }
+.odyssey-section-head { display: grid; gap: var(--space-lg); margin-bottom: var(--space-2xl); }
+.odyssey-section-head > p, .odyssey-project-type { color: var(--color-bronze-light); }
+.odyssey-section-head h2 { font-size: var(--text-display-s); }
+.odyssey-projects { border-top: var(--rule-hairline) solid var(--color-rule-light); }
+.odyssey-project { align-items: start; border-bottom: var(--rule-hairline) solid var(--color-rule-light); display: grid; gap: var(--space-md); grid-template-columns: auto minmax(0, 1fr) auto; padding: var(--space-xl) 0; }
+.odyssey-index { color: var(--color-bronze-light); }
+.odyssey-project h3 { font-family: var(--font-display); font-size: var(--text-xl); font-style: normal; font-weight: 700; letter-spacing: -0.065em; line-height: 0.86; margin-top: var(--space-sm); min-width: 0; overflow-wrap: anywhere; }
+.odyssey-project-note { color: var(--color-paper-deep); font-size: var(--text-md); grid-column: 2 / 4; line-height: 1.5; max-width: 40rem; }
+.odyssey-project a { align-items: center; border: var(--rule-hairline) solid var(--color-rule-light); color: var(--color-bronze-light); display: grid; height: 2.75rem; place-items: center; transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), transform var(--dur-short) var(--ease-out); width: 2.75rem; }
+.odyssey-project a:hover { background: var(--color-bronze); color: var(--color-ink); }
+
+.odyssey-practice { display: grid; gap: var(--space-2xl); padding: var(--space-3xl) var(--page-gutter); }
+.odyssey-practice-intro > p { color: var(--color-bronze); margin-bottom: var(--space-lg); }
+.odyssey-practice-intro h2 { font-size: var(--text-display-s); }
+.odyssey-chapters { border-top: var(--rule-hairline) solid var(--color-rule); list-style: none; margin: 0; padding: 0; }
+.odyssey-chapters li { border-bottom: var(--rule-hairline) solid var(--color-rule); display: grid; gap: var(--space-lg); grid-template-columns: 2.5rem minmax(0, 1fr); padding: var(--space-xl) 0; }
+.odyssey-chapters li > p { color: var(--color-bronze); font-family: var(--font-display); font-size: var(--text-lg); }
+.odyssey-chapters h3 { font-family: var(--font-display); font-size: var(--text-xl); font-style: normal; font-weight: 700; letter-spacing: -0.055em; line-height: 0.88; min-width: 0; overflow-wrap: anywhere; }
+.odyssey-chapters div > p { color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.5; margin-top: var(--space-md); max-width: 40rem; }
+
+.odyssey-contact { background: var(--color-paper-deep); border-top: var(--rule-heavy) solid var(--color-bronze); color: var(--color-ink); padding: var(--space-3xl) var(--page-gutter); }
+.odyssey-contact > p { margin-bottom: var(--space-lg); }
+.odyssey-contact h2 { font-size: var(--text-display-s); }
+.odyssey-contact-links { display: flex; flex-wrap: wrap; gap: var(--space-lg); margin-top: var(--space-2xl); }
+.odyssey-contact-links a { align-items: center; border-bottom: var(--rule-heavy) solid currentColor; display: inline-flex; font-size: var(--text-md); font-weight: 700; gap: var(--space-xs); padding-bottom: var(--space-sm); transition: color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); white-space: nowrap; }
+.odyssey-contact-links a:hover { color: var(--color-bronze); }
+
+.odyssey-footer { align-items: baseline; background: var(--color-ink); color: var(--color-paper); display: grid; gap: var(--space-md); padding: var(--space-xl) var(--page-gutter); }
+.odyssey-footer-name { font-family: var(--font-display); font-size: var(--text-xl); font-style: normal; font-weight: 700; letter-spacing: -0.06em; line-height: 0.8; }
+.odyssey-footer > p:not(.odyssey-footer-name) { color: var(--color-paper-deep); font-size: var(--text-sm); }
+.odyssey-footer a { color: var(--color-bronze-light); justify-self: start; transition: color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); }
+
+@media (min-width: 48rem) {
+  .odyssey-masthead { grid-template-columns: 1fr auto 1fr; text-align: center; }
+  .odyssey-mastline { justify-self: start; text-align: left; }
+  .odyssey-nav { justify-self: end; padding-top: 0; }
+  .odyssey-hero { min-height: min(57rem, 88dvh); }
+  .odyssey-hero-copy { min-height: min(57rem, 88dvh); }
+  .odyssey-prologue { grid-template-columns: minmax(0, 2fr) minmax(0, 7fr); }
+  .odyssey-prologue > div { padding-left: var(--space-xl); }
+  .odyssey-section-head { grid-template-columns: minmax(0, 2fr) minmax(0, 7fr); }
+  .odyssey-section-head h2 { grid-column: 2; }
+  .odyssey-project { grid-template-columns: minmax(3rem, 1fr) minmax(0, 4fr) minmax(0, 4fr) auto; }
+  .odyssey-project-note { grid-column: 3; padding-top: var(--space-sm); }
+  .odyssey-practice { grid-template-columns: minmax(0, 3fr) minmax(0, 5fr); }
+  .odyssey-practice-intro { align-self: start; position: sticky; top: var(--space-xl); }
+  .odyssey-footer { grid-template-columns: 1fr 2fr auto; }
+  .odyssey-footer a { justify-self: end; }
+}
+
+@media (max-width: 30rem) {
+  .odyssey-mastline { font-size: 0.6rem; }
+  .odyssey-nav { gap: var(--space-md); }
+  .odyssey-caption { display: none; }
+  .odyssey-hero h1 { font-size: clamp(3.6rem, 18vw, 5.2rem); }
+  .odyssey-scroll { left: var(--page-gutter); right: auto; }
+  .odyssey-contact h2 br { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .odyssey-shell *, .odyssey-shell *::before, .odyssey-shell *::after { animation-duration: var(--dur-instant) !important; transition-duration: var(--dur-instant) !important; }
+}

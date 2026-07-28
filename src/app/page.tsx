@@ -1,55 +1,122 @@
+import Image from 'next/image';
 import { ArrowDownRight, ArrowUpRight, GitFork, Mail } from 'lucide-react';
-import { HeroCanvas } from '../components/hero-canvas';
 
 const projects = [
-  { title: 'Signal / Field', type: 'Product direction', note: 'Turning difficult systems into calm, legible tools for people who need them to work.', className: 'project--lead' },
-  { title: 'Soft Infrastructure', type: 'Platform work', note: 'A considered interface layer for dense operational work.', className: 'project--blue' },
-  { title: 'Useful Oddities', type: 'Experiments', note: 'Small, sharp explorations in interaction, language, and motion.', className: 'project--light' },
+  {
+    title: 'Signal / Field',
+    type: 'Product direction',
+    note: 'Turning difficult systems into calm, legible tools for people who need them to work.',
+  },
+  {
+    title: 'Soft Infrastructure',
+    type: 'Platform work',
+    note: 'A considered interface layer for dense operational work.',
+  },
+  {
+    title: 'Useful Oddities',
+    type: 'Experiments',
+    note: 'Small, sharp explorations in interaction, language, and motion.',
+  },
 ];
 
 const chapters = [
-  ['Now', 'Building the systems behind an excellent experience.', 'Product-minded engineering across the web stack, from the first model to the final interaction.'],
-  ['Previously', 'Making complex work feel near-effortless.', 'A practice shaped by collaboration, close listening, and a refusal to leave rough edges unexamined.'],
-  ['Always', 'Keeping a playground for curious ideas.', 'Independent tools and experiments where new visual languages can earn their keep.'],
+  ['I', 'Find the true shape of the problem.', 'Start with the real constraint, the people around it, and the decision that must become easier.'],
+  ['II', 'Make the system speak plainly.', 'Turn product logic into interfaces, flows, and code that hold together under use.'],
+  ['III', 'Leave room for the next chapter.', 'Build flexible foundations so good work can keep changing without losing its bearing.'],
 ];
 
 export default function Home() {
   return (
-    <main className="site-shell">
-      <nav className="nav-wrap" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Home">JT</a>
-        <div className="nav-links"><a href="#work">Work</a><a href="#practice">Practice</a><a href="#contact">Contact</a></div>
-        <a className="nav-contact" href="mailto:hello@example.com">Let&apos;s talk <ArrowUpRight size={15} /></a>
-      </nav>
+    <main className="odyssey-shell">
+      <header className="odyssey-masthead">
+        <p className="odyssey-mastline">Hong Kong · Independent digital practice · MMXXVI</p>
+        <a className="odyssey-name" href="#top" aria-label="Return to the beginning">Jones Tse</a>
+        <nav className="odyssey-nav" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#practice">Practice</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
 
-      <section className="hero" id="top">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="hero-copy">
-          <p className="kicker">Independent product engineer</p>
-          <h1>Digital work with a <span className="inline-orb" aria-hidden="true" /> human pull.</h1>
-          <p className="hero-intro">I shape product experiences that make dense ideas feel immediate, useful, and a little more alive.</p>
-          <div className="hero-actions"><a className="button button--light" href="#work">See selected work <ArrowDownRight size={17} /></a><a className="underlink" href="#contact">Start a conversation</a></div>
+      <section className="odyssey-hero" id="top" aria-labelledby="hero-title">
+        <Image
+          className="odyssey-hero-art"
+          src="/homeric-hero.png"
+          alt="A classical figure overlooking a coastal city at sunset, holding an architectural drawing."
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className="odyssey-hero-shade" aria-hidden="true" />
+        <div className="odyssey-hero-copy">
+          <p className="odyssey-hero-kicker">Product engineer · systems &amp; interface</p>
+          <h1 id="hero-title">CODE FOR<br />THE LONG<br /><span>ODYSSEY.</span></h1>
         </div>
-        <div className="canvas-frame" aria-label="An interactive three-dimensional sculpture. Move your pointer to influence it."><HeroCanvas /><span className="canvas-note">Move through the field</span></div>
+        <p className="odyssey-caption">Plate I · A practice for useful digital work</p>
+        <a className="odyssey-scroll" href="#work">Read the record <ArrowDownRight aria-hidden="true" size={18} /></a>
       </section>
 
-      <div className="marquee" aria-hidden="true"><div>Product thinking <i>•</i> System design <i>•</i> Creative engineering <i>•</i> Product thinking <i>•</i> System design <i>•</i> Creative engineering <i>•</i></div></div>
-
-      <section className="work-section" id="work">
-        <header className="section-intro"><p className="kicker">Selected projects</p><h2>Work that pulls its weight — and leaves a mark.</h2></header>
-        <div className="project-grid">
-          {projects.map((project) => <article className={`project-card ${project.className}`} key={project.title}><span>{project.type}</span><div><h3>{project.title}</h3><p>{project.note}</p></div><a href="#contact" aria-label={`Discuss ${project.title}`}><ArrowUpRight size={24} /></a></article>)}
+      <section className="odyssey-prologue" aria-labelledby="prologue-title">
+        <p className="odyssey-prologue-mark">01</p>
+        <div>
+          <h2 id="prologue-title">I make ambitious products feel inevitable.</h2>
+          <p>I work across product thinking, system design, and front-end engineering—helping teams turn difficult ideas into clear, durable experiences.</p>
+          <div className="odyssey-prologue-links">
+            <a className="odyssey-link" href="#contact">Discuss a contract <ArrowUpRight aria-hidden="true" size={17} /></a>
+            <a className="odyssey-link" href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">View GitHub <GitFork aria-hidden="true" size={17} /></a>
+          </div>
         </div>
       </section>
 
-      <section className="practice-section" id="practice">
-        <div className="practice-title"><p className="kicker">How I work</p><h2>Clarity takes craft.</h2></div>
-        <div className="chapter-list">{chapters.map(([time, title, body], index) => <article className="chapter" key={time}><span>0{index + 1} / {time}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
+      <section className="odyssey-work" id="work" aria-labelledby="work-title">
+        <header className="odyssey-section-head">
+          <p>Selected work</p>
+          <h2 id="work-title">A record of<br />things made clear.</h2>
+        </header>
+        <div className="odyssey-projects">
+          {projects.map((project, index) => (
+            <article className="odyssey-project" key={project.title}>
+              <p className="odyssey-index">0{index + 1}</p>
+              <div>
+                <p className="odyssey-project-type">{project.type}</p>
+                <h3>{project.title}</h3>
+              </div>
+              <p className="odyssey-project-note">{project.note}</p>
+              <a href="#contact" aria-label={`Discuss ${project.title}`}><ArrowUpRight aria-hidden="true" size={24} /></a>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="contact-section" id="contact"><p className="kicker">An open invitation</p><h2>Have a project<br />with gravity?</h2><a className="contact-link" href="mailto:hello@example.com">hello@example.com <ArrowUpRight /></a></section>
+      <section className="odyssey-practice" id="practice" aria-labelledby="practice-title">
+        <div className="odyssey-practice-intro">
+          <p>How I work</p>
+          <h2 id="practice-title">A disciplined<br />way forward.</h2>
+        </div>
+        <ol className="odyssey-chapters">
+          {chapters.map(([numeral, title, body]) => (
+            <li key={numeral}>
+              <p>{numeral}</p>
+              <div><h3>{title}</h3><p>{body}</p></div>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-      <footer><p>Made with care, from Hong Kong.</p><div><a href="https://github.com/your-handle" target="_blank" rel="noreferrer"><GitFork size={15} /> GitHub</a><a href="mailto:hello@example.com"><Mail size={15} /> Email</a></div></footer>
+      <section className="odyssey-contact" id="contact" aria-labelledby="contact-title">
+        <p>Begin a conversation</p>
+        <h2 id="contact-title">Have a project<br />worth carrying<br />home?</h2>
+        <div className="odyssey-contact-links">
+          <a href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">Find me on GitHub <GitFork aria-hidden="true" size={20} /></a>
+          <a href="mailto:hello@example.com">Send an email <Mail aria-hidden="true" size={20} /></a>
+        </div>
+      </section>
+
+      <footer className="odyssey-footer">
+        <p className="odyssey-footer-name">Jones Tse</p>
+        <p>Product systems, considered from Hong Kong.</p>
+        <a href="#top">Return to the beginning ↑</a>
+      </footer>
     </main>
   );
 }

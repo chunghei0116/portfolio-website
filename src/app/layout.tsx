@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Your Name — Developer Portfolio',
-  description: 'A portfolio of thoughtful digital work.',
+  title: 'Jones Tse — Product Engineer',
+  description: 'Product systems and interface engineering from Hong Kong.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
