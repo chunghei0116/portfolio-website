@@ -1,97 +1,55 @@
+import { ArrowDownRight, ArrowUpRight, GitFork, Mail } from 'lucide-react';
+import { HeroCanvas } from '../components/hero-canvas';
+
 const projects = [
-  {
-    number: 'I',
-    title: 'Case study one',
-    type: 'Product engineering',
-    note: 'Add a project title, your role, and the problem you helped solve.',
-    tone: 'terracotta',
-  },
-  {
-    number: 'II',
-    title: 'Case study two',
-    type: 'Platform work',
-    note: 'Use this space for an experience that shows your technical depth.',
-    tone: 'cobalt',
-  },
-  {
-    number: 'III',
-    title: 'Case study three',
-    type: 'Creative build',
-    note: 'Add something curious, collaborative, or especially well-crafted.',
-    tone: 'olive',
-  },
+  { title: 'Signal / Field', type: 'Product direction', note: 'Turning difficult systems into calm, legible tools for people who need them to work.', className: 'project--lead' },
+  { title: 'Soft Infrastructure', type: 'Platform work', note: 'A considered interface layer for dense operational work.', className: 'project--blue' },
+  { title: 'Useful Oddities', type: 'Experiments', note: 'Small, sharp explorations in interaction, language, and motion.', className: 'project--light' },
+];
+
+const chapters = [
+  ['Now', 'Building the systems behind an excellent experience.', 'Product-minded engineering across the web stack, from the first model to the final interaction.'],
+  ['Previously', 'Making complex work feel near-effortless.', 'A practice shaped by collaboration, close listening, and a refusal to leave rough edges unexamined.'],
+  ['Always', 'Keeping a playground for curious ideas.', 'Independent tools and experiments where new visual languages can earn their keep.'],
 ];
 
 export default function Home() {
   return (
-    <main>
-      <nav className="masthead" aria-label="Primary navigation">
+    <main className="site-shell">
+      <nav className="nav-wrap" aria-label="Primary navigation">
         <a className="wordmark" href="#top" aria-label="Home">JT</a>
-        <div className="masthead__links">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <a className="masthead__github" href="https://github.com/your-handle" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <div className="nav-links"><a href="#work">Work</a><a href="#practice">Practice</a><a href="#contact">Contact</a></div>
+        <a className="nav-contact" href="mailto:hello@example.com">Let&apos;s talk <ArrowUpRight size={15} /></a>
       </nav>
 
       <section className="hero" id="top">
-        <div className="hero__copy">
-          <p className="hero__eyebrow">Developer portfolio · available for considered work</p>
-          <h1>Builds with<br /><span>mythic</span> intent.</h1>
-          <p className="hero__intro">I make thoughtful digital products, from the first sketch to the last shipped detail.</p>
-          <a className="text-link" href="#work">See selected work <span aria-hidden="true">↓</span></a>
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="hero-copy">
+          <p className="kicker">Independent product engineer</p>
+          <h1>Digital work with a <span className="inline-orb" aria-hidden="true" /> human pull.</h1>
+          <p className="hero-intro">I shape product experiences that make dense ideas feel immediate, useful, and a little more alive.</p>
+          <div className="hero-actions"><a className="button button--light" href="#work">See selected work <ArrowDownRight size={17} /></a><a className="underlink" href="#contact">Start a conversation</a></div>
         </div>
-        <figure className="hero__art">
-          <Image src="/greek-hero.svg" alt="An original Greek-inspired illustration of a messenger holding a tablet." width={760} height={950} priority />
-          <figcaption>Method, not mythology: clear thinking, careful craft.</figcaption>
-        </figure>
+        <div className="canvas-frame" aria-label="An interactive three-dimensional sculpture. Move your pointer to influence it."><HeroCanvas /><span className="canvas-note">Move through the field</span></div>
       </section>
 
-      <section className="portfolio" id="work" aria-labelledby="work-heading">
-        <header className="section-head">
-          <p>Selected work</p>
-          <h2 id="work-heading">A small index of things made well.</h2>
-        </header>
+      <div className="marquee" aria-hidden="true"><div>Product thinking <i>•</i> System design <i>•</i> Creative engineering <i>•</i> Product thinking <i>•</i> System design <i>•</i> Creative engineering <i>•</i></div></div>
+
+      <section className="work-section" id="work">
+        <header className="section-intro"><p className="kicker">Selected projects</p><h2>Work that pulls its weight — and leaves a mark.</h2></header>
         <div className="project-grid">
-          {projects.map((project) => (
-            <article className={`project project--${project.tone}`} key={project.number}>
-              <div className="project__topline"><span>{project.number}</span><span>{project.type}</span></div>
-              <div className="project__orb" aria-hidden="true"><span /></div>
-              <h3>{project.title}</h3>
-              <p>{project.note}</p>
-              <a href="#contact">Discuss this kind of work <span aria-hidden="true">↗</span></a>
-            </article>
-          ))}
+          {projects.map((project) => <article className={`project-card ${project.className}`} key={project.title}><span>{project.type}</span><div><h3>{project.title}</h3><p>{project.note}</p></div><a href="#contact" aria-label={`Discuss ${project.title}`}><ArrowUpRight size={24} /></a></article>)}
         </div>
       </section>
 
-      <section className="experience" id="experience" aria-labelledby="experience-heading">
-        <header className="section-head section-head--light">
-          <p>Experience</p>
-          <h2 id="experience-heading">A working history, ready for your chapters.</h2>
-        </header>
-        <div className="experience__rows">
-          <article><span>Now</span><h3>Your current role</h3><p>Add your company, remit, and the kind of problems you own.</p></article>
-          <article><span>Before</span><h3>Previous chapter</h3><p>Add the experience that best shows progression and collaboration.</p></article>
-          <article><span>Always</span><h3>Independent work</h3><p>Use this row for contracting, open source, or a practice you maintain.</p></article>
-        </div>
+      <section className="practice-section" id="practice">
+        <div className="practice-title"><p className="kicker">How I work</p><h2>Clarity takes craft.</h2></div>
+        <div className="chapter-list">{chapters.map(([time, title, body], index) => <article className="chapter" key={time}><span>0{index + 1} / {time}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
       </section>
 
-      <section className="contact" id="contact" aria-labelledby="contact-heading">
-        <p>Let&apos;s make the next chapter</p>
-        <h2 id="contact-heading">Have a project<br />worth telling?</h2>
-        <div className="contact__actions">
-          <a className="button" href="mailto:your@email.com">Start a conversation <span aria-hidden="true">↗</span></a>
-          <a className="text-link text-link--dark" href="https://github.com/your-handle" target="_blank" rel="noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-      </section>
+      <section className="contact-section" id="contact"><p className="kicker">An open invitation</p><h2>Have a project<br />with gravity?</h2><a className="contact-link" href="mailto:hello@example.com">hello@example.com <ArrowUpRight /></a></section>
 
-      <footer className="footer">
-        <p>Yours in craft,<br /><strong>Your Name</strong></p>
-        <p>Replace the placeholders with your own work, experience, email, and GitHub handle.</p>
-      </footer>
+      <footer><p>Made with care, from Hong Kong.</p><div><a href="https://github.com/your-handle" target="_blank" rel="noreferrer"><GitFork size={15} /> GitHub</a><a href="mailto:hello@example.com"><Mail size={15} /> Email</a></div></footer>
     </main>
   );
 }
-import Image from 'next/image';
