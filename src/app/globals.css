@@ -238,43 +238,76 @@ button:focus-visible {
 
 .hero-media {
   position: relative;
+  isolation: isolate;
   align-self: stretch;
   min-height: 36rem;
   margin: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 64% 38%, rgb(255 255 255 / 0.78), transparent 23%),
-    linear-gradient(155deg, #b8c9d4 0%, #8096a6 45%, #314351 100%);
+    radial-gradient(circle at 72% 18%, rgb(71 113 255 / 0.48), transparent 30%),
+    radial-gradient(circle at 20% 82%, rgb(217 255 79 / 0.13), transparent 28%),
+    linear-gradient(155deg, #18243a 0%, #0f1728 48%, #070b13 100%);
 }
 
 .hero-media::before {
   position: absolute;
+  z-index: 2;
   inset: -15%;
   background:
-    linear-gradient(90deg, transparent 47%, rgb(255 255 255 / 0.4) 48%, transparent 49%),
-    linear-gradient(0deg, transparent 62%, rgb(255 255 255 / 0.18) 63%, transparent 64%);
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(12.5% - 1px),
+      rgb(255 255 255 / 0.045) 12.5%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent calc(12.5% - 1px),
+      rgb(255 255 255 / 0.04) 12.5%
+    );
   content: "";
-  transform: rotate(-13deg) scale(1.15);
+  pointer-events: none;
+  transform: rotate(-8deg) scale(1.15);
 }
 
 .hero-media::after {
   position: absolute;
+  z-index: 3;
   inset: 8%;
   border: 1px solid rgb(255 255 255 / 0.42);
   content: "";
+  pointer-events: none;
   box-shadow: 0 0 0 22px rgb(255 255 255 / 0.05);
 }
 
 .hero-media-wash {
   position: absolute;
+  z-index: 2;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 42%, transparent 0 22%, rgb(10 14 17 / 0.08) 57%, rgb(10 14 17 / 0.42) 100%),
-    linear-gradient(180deg, transparent 55%, rgb(11 14 17 / 0.62));
+    radial-gradient(circle at 50% 44%, transparent 0 28%, rgb(5 8 14 / 0.08) 58%, rgb(5 8 14 / 0.58) 100%),
+    linear-gradient(180deg, transparent 55%, rgb(5 8 14 / 0.58));
+  pointer-events: none;
 }
 
-.hero-monogram {
+.hero-three-stage {
   position: absolute;
+  z-index: 1;
+  inset: 0;
+  cursor: crosshair;
+}
+
+.hero-three-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: pan-y;
+}
+
+.hero-three-fallback {
+  position: absolute;
+  z-index: 1;
   top: 50%;
   left: 50%;
   color: rgb(255 255 255 / 0.9);
@@ -287,6 +320,7 @@ button:focus-visible {
 
 .hero-media figcaption {
   position: absolute;
+  z-index: 4;
   right: 1.5rem;
   bottom: 1.5rem;
   left: 1.5rem;
@@ -971,7 +1005,7 @@ button:focus-visible {
     min-height: 27rem;
   }
 
-  .hero-monogram {
+  .hero-three-fallback {
     font-size: 10rem;
   }
 

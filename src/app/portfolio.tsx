@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
+import dynamic from 'next/dynamic';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -15,14 +16,23 @@ import {
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+const HeroThreeScene = dynamic(() => import('./hero-three-scene'), {
+  ssr: false,
+  loading: () => (
+    <div className="hero-three-fallback" aria-hidden="true">
+      JT
+    </div>
+  ),
+});
+
 const experience = [
   {
     period: '2025 — Present',
     company: 'AS Watson Group',
     role: 'Mobile Application Developer',
     location: 'Hong Kong',
-    image: 'https://picsum.photos/seed/retail-architecture/1920/1080',
-    imageAlt: 'An abstract architectural facade with a precise repeating structure.',
+    image: '/helmet.jpg',
+    imageAlt: 'An archival illustration of an ornate ancient Greek helmet.',
     summary:
       'Building enterprise retail experiences where polished interfaces meet demanding release operations.',
     achievements: [
@@ -217,10 +227,8 @@ export default function Portfolio() {
         </div>
 
         <figure className="hero-media hero-image">
+          <HeroThreeScene />
           <div className="hero-media-wash" aria-hidden="true" />
-          <div className="hero-monogram" aria-hidden="true">
-            JT
-          </div>
           <figcaption>
             <span>Product surface</span>
             <span>Platform foundation</span>
