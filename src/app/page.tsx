@@ -1,122 +1,51 @@
 import Image from 'next/image';
-import { ArrowDownRight, ArrowUpRight, GitFork, Mail } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, GitFork } from 'lucide-react';
 
-const projects = [
-  {
-    title: 'Signal / Field',
-    type: 'Product direction',
-    note: 'Turning difficult systems into calm, legible tools for people who need them to work.',
-  },
-  {
-    title: 'Soft Infrastructure',
-    type: 'Platform work',
-    note: 'A considered interface layer for dense operational work.',
-  },
-  {
-    title: 'Useful Oddities',
-    type: 'Experiments',
-    note: 'Small, sharp explorations in interaction, language, and motion.',
-  },
+const focusAreas = [
+  { title: 'Product engineering', body: 'Frontend systems that make complex products feel direct, fast, and understandable.' },
+  { title: 'Cloud and DevOps', body: 'Deployment workflows, platform foundations, and operational practices built for reliable change.' },
+  { title: 'Technical direction', body: 'Clear decisions across product, design, and infrastructure when the work needs one accountable view.' },
 ];
 
-const chapters = [
-  ['I', 'Find the true shape of the problem.', 'Start with the real constraint, the people around it, and the decision that must become easier.'],
-  ['II', 'Make the system speak plainly.', 'Turn product logic into interfaces, flows, and code that hold together under use.'],
-  ['III', 'Leave room for the next chapter.', 'Build flexible foundations so good work can keep changing without losing its bearing.'],
+const workingPrinciples = [
+  ['Make the path clear', 'Start from the user, the team, and the constraint that matters most.'],
+  ['Automate the repeatable', 'Build delivery and operations around reliable systems, not heroic manual effort.'],
+  ['Keep the system legible', 'Leave behind code, interfaces, and documentation that make the next decision easier.'],
 ];
 
 export default function Home() {
   return (
-    <main className="odyssey-shell">
-      <header className="odyssey-masthead">
-        <p className="odyssey-mastline">Hong Kong · Independent digital practice · MMXXVI</p>
-        <a className="odyssey-name" href="#top" aria-label="Return to the beginning">Jones Tse</a>
-        <nav className="odyssey-nav" aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#practice">Practice</a>
-          <a href="#contact">Contact</a>
-        </nav>
+    <main className="portfolio-shell">
+      <header className="site-header">
+        <a className="site-mark" href="#top" aria-label="Jones Tse home">JT</a>
+        <nav aria-label="Primary navigation"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#contact">Contact</a></nav>
+        <a className="header-github" href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">GitHub <GitFork aria-hidden="true" size={16} /></a>
       </header>
 
-      <section className="odyssey-hero" id="top" aria-labelledby="hero-title">
-        <Image
-          className="odyssey-hero-art"
-          src="/homeric-hero.png"
-          alt="A classical figure overlooking a coastal city at sunset, holding an architectural drawing."
-          fill
-          priority
-          sizes="100vw"
-        />
-        <div className="odyssey-hero-shade" aria-hidden="true" />
-        <div className="odyssey-hero-copy">
-          <p className="odyssey-hero-kicker">Product engineer · systems &amp; interface</p>
-          <h1 id="hero-title">CODE FOR<br />THE LONG<br /><span>ODYSSEY.</span></h1>
+      <section className="hero" id="top" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow">Developer and DevOps engineer</p>
+          <h1 id="hero-title">BUILD CALM<br />SYSTEMS.</h1>
+          <p className="hero-lede">I design, build, and run reliable digital products for teams that need software to hold up under real work.</p>
+          <div className="hero-actions"><a className="button button-primary" href="#work">View work <ArrowDownRight aria-hidden="true" size={17} /></a><a className="text-link" href="#contact">Contact me <ArrowUpRight aria-hidden="true" size={17} /></a></div>
         </div>
-        <p className="odyssey-caption">Plate I · A practice for useful digital work</p>
-        <a className="odyssey-scroll" href="#work">Read the record <ArrowDownRight aria-hidden="true" size={18} /></a>
+        <figure className="hero-visual"><Image src="/devops-hero.png" alt="A brushed metal server rack in a quiet architectural space." fill priority sizes="(min-width: 900px) 48vw, 100vw" /></figure>
       </section>
 
-      <section className="odyssey-prologue" aria-labelledby="prologue-title">
-        <p className="odyssey-prologue-mark">01</p>
-        <div>
-          <h2 id="prologue-title">I make ambitious products feel inevitable.</h2>
-          <p>I work across product thinking, system design, and front-end engineering—helping teams turn difficult ideas into clear, durable experiences.</p>
-          <div className="odyssey-prologue-links">
-            <a className="odyssey-link" href="#contact">Discuss a contract <ArrowUpRight aria-hidden="true" size={17} /></a>
-            <a className="odyssey-link" href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">View GitHub <GitFork aria-hidden="true" size={17} /></a>
-          </div>
-        </div>
+      <section className="intro-section" aria-labelledby="intro-title"><h2 id="intro-title">Technical work should feel steady, not dramatic.</h2><p>I work where product engineering and operational discipline meet. The goal is simple: useful software, reliable delivery, and systems people can trust.</p></section>
+
+      <section className="focus-section" id="work" aria-labelledby="focus-title">
+        <div className="section-heading"><p className="eyebrow">What I do</p><h2 id="focus-title">From product surface<br />to platform foundation.</h2></div>
+        <div className="focus-grid">{focusAreas.map((area, index) => <article className={`focus-card focus-card-${index + 1}`} key={area.title}><h3>{area.title}</h3><p>{area.body}</p></article>)}</div>
       </section>
 
-      <section className="odyssey-work" id="work" aria-labelledby="work-title">
-        <header className="odyssey-section-head">
-          <p>Selected work</p>
-          <h2 id="work-title">A record of<br />things made clear.</h2>
-        </header>
-        <div className="odyssey-projects">
-          {projects.map((project, index) => (
-            <article className="odyssey-project" key={project.title}>
-              <p className="odyssey-index">0{index + 1}</p>
-              <div>
-                <p className="odyssey-project-type">{project.type}</p>
-                <h3>{project.title}</h3>
-              </div>
-              <p className="odyssey-project-note">{project.note}</p>
-              <a href="#contact" aria-label={`Discuss ${project.title}`}><ArrowUpRight aria-hidden="true" size={24} /></a>
-            </article>
-          ))}
-        </div>
+      <section className="approach-section" id="approach" aria-labelledby="approach-title">
+        <div className="section-heading"><h2 id="approach-title">A practical way<br />to move work forward.</h2></div>
+        <div className="principle-list">{workingPrinciples.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div>
       </section>
 
-      <section className="odyssey-practice" id="practice" aria-labelledby="practice-title">
-        <div className="odyssey-practice-intro">
-          <p>How I work</p>
-          <h2 id="practice-title">A disciplined<br />way forward.</h2>
-        </div>
-        <ol className="odyssey-chapters">
-          {chapters.map(([numeral, title, body]) => (
-            <li key={numeral}>
-              <p>{numeral}</p>
-              <div><h3>{title}</h3><p>{body}</p></div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="odyssey-contact" id="contact" aria-labelledby="contact-title">
-        <p>Begin a conversation</p>
-        <h2 id="contact-title">Have a project<br />worth carrying<br />home?</h2>
-        <div className="odyssey-contact-links">
-          <a href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">Find me on GitHub <GitFork aria-hidden="true" size={20} /></a>
-          <a href="mailto:hello@example.com">Send an email <Mail aria-hidden="true" size={20} /></a>
-        </div>
-      </section>
-
-      <footer className="odyssey-footer">
-        <p className="odyssey-footer-name">Jones Tse</p>
-        <p>Product systems, considered from Hong Kong.</p>
-        <a href="#top">Return to the beginning ↑</a>
-      </footer>
+      <section className="contact-section" id="contact" aria-labelledby="contact-title"><p className="eyebrow">Available for the right challenge</p><h2 id="contact-title">Let&apos;s make the<br />next release easier.</h2><a className="button button-primary" href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">Start on GitHub <GitFork aria-hidden="true" size={17} /></a></section>
+      <footer className="site-footer"><p>Jones Tse</p><a href="https://github.com/chunghei0116" target="_blank" rel="noreferrer">github.com/chunghei0116</a></footer>
     </main>
   );
 }
