@@ -1,4 +1,5 @@
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap");
 @import "tailwindcss";
 @import "../../tokens.css";
 
@@ -129,16 +130,15 @@ button:focus-visible {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.14fr) minmax(19rem, 0.86fr);
-  gap: clamp(2rem, 5vw, 6rem);
+  display: flex;
+  align-items: center;
   min-height: calc(100svh - 5.5rem);
   padding-block: clamp(4rem, 8vw, 8rem);
 }
 
 .hero-copy {
   z-index: 1;
-  align-self: center;
+  width: 100%;
 }
 
 .hero-kicker,
@@ -164,6 +164,7 @@ button:focus-visible {
 }
 
 .hero h1 {
+  font-family: Geist, Satoshi, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(4rem, 8vw, 9.4rem);
   line-height: 0.82;
   white-space: nowrap;
@@ -236,101 +237,41 @@ button:focus-visible {
   background: var(--acid);
 }
 
-.hero-media {
+.hero-title-effect {
   position: relative;
   isolation: isolate;
-  align-self: stretch;
-  min-height: 36rem;
-  margin: 0;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 72% 18%, rgb(71 113 255 / 0.48), transparent 30%),
-    radial-gradient(circle at 20% 82%, rgb(217 255 79 / 0.13), transparent 28%),
-    linear-gradient(155deg, #18243a 0%, #0f1728 48%, #070b13 100%);
-}
-
-.hero-media::before {
-  position: absolute;
-  z-index: 2;
-  inset: -15%;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(12.5% - 1px),
-      rgb(255 255 255 / 0.045) 12.5%
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent calc(12.5% - 1px),
-      rgb(255 255 255 / 0.04) 12.5%
-    );
-  content: "";
-  pointer-events: none;
-  transform: rotate(-8deg) scale(1.15);
-}
-
-.hero-media::after {
-  position: absolute;
-  z-index: 3;
-  inset: 8%;
-  border: 1px solid rgb(255 255 255 / 0.42);
-  content: "";
-  pointer-events: none;
-  box-shadow: 0 0 0 22px rgb(255 255 255 / 0.05);
-}
-
-.hero-media-wash {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 44%, transparent 0 28%, rgb(5 8 14 / 0.08) 58%, rgb(5 8 14 / 0.58) 100%),
-    linear-gradient(180deg, transparent 55%, rgb(5 8 14 / 0.58));
-  pointer-events: none;
-}
-
-.hero-three-stage {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
+  width: min(100%, 93rem);
+  height: clamp(10rem, 17vw, 18rem);
   cursor: crosshair;
 }
 
-.hero-three-stage canvas {
+.hero-title-source {
+  position: relative;
+  z-index: 1;
+  transition: opacity 180ms ease-out;
+}
+
+.hero-title-effect.is-ready .hero-title-source {
+  opacity: 0;
+}
+
+.hero-title-canvas {
+  position: absolute;
+  z-index: 2;
+  inset: -5% -2%;
+  opacity: 0;
+  transition: opacity 280ms ease-out;
+}
+
+.hero-title-effect.is-ready .hero-title-canvas {
+  opacity: 1;
+}
+
+.hero-title-canvas canvas {
   display: block;
   width: 100% !important;
   height: 100% !important;
   touch-action: pan-y;
-}
-
-.hero-three-fallback {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  color: rgb(255 255 255 / 0.9);
-  font-size: clamp(8rem, 17vw, 18rem);
-  font-weight: 300;
-  letter-spacing: -0.16em;
-  line-height: 0.7;
-  transform: translate(-53%, -48%);
-}
-
-.hero-media figcaption {
-  position: absolute;
-  z-index: 4;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  color: var(--white);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .marquee {
@@ -891,10 +832,6 @@ button:focus-visible {
 }
 
 @media (max-width: 72rem) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.72fr);
-  }
-
   .hero h1 {
     font-size: clamp(3.8rem, 7.8vw, 7rem);
   }
@@ -918,17 +855,12 @@ button:focus-visible {
   }
 
   .hero {
-    grid-template-columns: 1fr;
     min-height: auto;
     padding-top: 7rem;
   }
 
   .hero h1 {
     font-size: clamp(4rem, 12vw, 7rem);
-  }
-
-  .hero-media {
-    min-height: 35rem;
   }
 
   .experience-layout,
@@ -1001,12 +933,8 @@ button:focus-visible {
     width: 100%;
   }
 
-  .hero-media {
-    min-height: 27rem;
-  }
-
-  .hero-three-fallback {
-    font-size: 10rem;
+  .hero-title-effect {
+    height: clamp(9rem, 29vw, 13rem);
   }
 
   .experience-section,

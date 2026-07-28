@@ -2,7 +2,6 @@
 
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
-import dynamic from 'next/dynamic';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -13,17 +12,9 @@ import {
   GitFork,
   Plus,
 } from 'lucide-react';
+import HeroTitleEffect from './hero-title-effect';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
-
-const HeroThreeScene = dynamic(() => import('./hero-three-scene'), {
-  ssr: false,
-  loading: () => (
-    <div className="hero-three-fallback" aria-hidden="true">
-      JT
-    </div>
-  ),
-});
 
 const experience = [
   {
@@ -130,8 +121,7 @@ export default function Portfolio() {
           '.hero-reveal',
           { opacity: 0, y: 54, duration: 1.05, stagger: 0.12 },
           '-=0.25',
-        )
-        .from('.hero-image', { opacity: 0, scale: 0.88, duration: 1.2 }, '-=0.9');
+        );
 
       const media = gsap.matchMedia();
 
@@ -209,10 +199,7 @@ export default function Portfolio() {
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="hero-kicker hero-reveal">Mobile developer · DevOps engineer · Hong Kong</p>
-          <h1 id="hero-title" className="hero-reveal w-full max-w-6xl">
-            MOBILE CRAFT.
-            <span>CLOUD CALM.</span>
-          </h1>
+          <HeroTitleEffect />
           <p className="hero-lede hero-reveal">
             I build refined mobile products and the quiet infrastructure that keeps them moving.
           </p>
@@ -225,15 +212,6 @@ export default function Portfolio() {
             </a>
           </div>
         </div>
-
-        <figure className="hero-media hero-image">
-          <HeroThreeScene />
-          <div className="hero-media-wash" aria-hidden="true" />
-          <figcaption>
-            <span>Product surface</span>
-            <span>Platform foundation</span>
-          </figcaption>
-        </figure>
       </section>
 
       <div className="marquee" aria-hidden="true">
