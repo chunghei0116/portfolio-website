@@ -118,11 +118,11 @@ function drawHeadlineTexture(width: number, height: number) {
 
   context.textAlign = 'left';
   context.textBaseline = 'middle';
-  context.font = `300 ${fontSize}px Geist, Satoshi, "Helvetica Neue", Arial, sans-serif`;
+  context.font = `300 ${fontSize}px Satoshi, "Helvetica Neue", Arial, sans-serif`;
 
   const widestLine = Math.max(...lines.map((line) => context.measureText(line).width));
   fontSize *= Math.min(1, (textureWidth * 0.97) / widestLine);
-  context.font = `300 ${fontSize}px Geist, Satoshi, "Helvetica Neue", Arial, sans-serif`;
+  context.font = `300 ${fontSize}px Satoshi, "Helvetica Neue", Arial, sans-serif`;
   context.lineJoin = 'round';
 
   const gradient = context.createLinearGradient(0, 0, textureWidth, textureHeight);
@@ -175,10 +175,7 @@ function BulgeHeadline({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     let active = true;
 
-    Promise.all([
-      document.fonts.load('300 180px Geist'),
-      document.fonts.load('300 180px Satoshi'),
-    ]).then(() => {
+    document.fonts.load('300 180px Satoshi').then(() => {
       if (active) setFontRevision((revision) => revision + 1);
     });
 
