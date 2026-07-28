@@ -275,23 +275,31 @@ export default function Portfolio() {
         <div className="capability-grid grid-flow-dense">
           <article className="capability-card capability-lead">
             <p className="capability-quote">
-              Product thinking at the surface.
-              <span>Operational discipline underneath.</span>
+              Mobile products built for the full release cycle.
+              <span>Flutter craft, automated delivery, measured performance.</span>
             </p>
             <p className="capability-copy">
-              I connect interface decisions to release mechanics, telemetry, and infrastructure so
-              the whole product moves as one system.
+              I engineer scalable Flutter applications with thoughtful architecture, native iOS
+              and Android integrations, automated CI/CD, testing, and store delivery. I tune
+              rendering, startup time, memory, networking, and background work so every release
+              remains fast and reliable across devices.
             </p>
           </article>
           <article className="capability-card capability-mobile">
-            <p className="capability-index">Mobile</p>
-            <h3>Native feel, shared velocity.</h3>
-            <p>Flutter systems with thoughtful native bridges and measured performance.</p>
+            <p className="capability-index">DevOps</p>
+            <h3>Infrastructure that ships with confidence.</h3>
+            <p>
+              GitHub Actions and GitLab CI pipelines, Docker images, Kubernetes, Argo CD GitOps,
+              cloud infrastructure, and ELK logging and monitoring.
+            </p>
           </article>
           <article className="capability-card capability-platform">
-            <p className="capability-index">Platform</p>
-            <h3>Calm releases at production scale.</h3>
-            <p>Automated delivery, observable services, and infrastructure that stays legible.</p>
+            <p className="capability-index">AI engineering</p>
+            <h3>Agents that improve the loop.</h3>
+            <p>
+              Reusable agents, structured workflows, skills, MCP integrations, and loop
+              engineering for continuous planning, implementation, verification, and improvement.
+            </p>
           </article>
         </div>
       </section>
