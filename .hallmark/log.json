@@ -1,27 +1,6 @@
 [
-  {
-    "date": "2026-07-16",
-    "macrostructure": "custom-03",
-    "theme": "custom-03 studied-DNA",
-    "theme_axes": "light / characterful-soft-serif / hot-vermilion",
-    "vibe": "apothecary parchment, steeped brown ink, hot vermilion",
-    "enrichment": "none",
-    "brief": "studied custom-03 with interactive milestones timeline table"
-  },
-  {
-    "date": "2026-07-16",
-    "macrostructure": "dashboard-split",
-    "theme": "custom",
-    "theme_axes": "light / geometric-sans / cool",
-    "vibe": "devops precision, mobile architecture, tactile terminal",
-    "enrichment": "none",
-    "brief": "DevOps and Mobile engineering portfolio, utilitarian and austere."
-  },
-  {
-    "date": "2026-07-16",
-    "macrostructure": "Marquee Hero",
-    "theme": "Carnival (Pressroom drop)",
-    "enrichment": "none",
-    "brief": "Developer portfolio for tech recruiters, inspired by usehallmark.com press-01 broadsheet zine aesthetic"
-  }
+  {"date":"2026-07-28","macrostructure":"Portfolio Grid","theme":"Atelier","enrichment":"E5 hand-built SVG","brief":"Homeric developer portfolio for recruiters and GitHub-facing developers"},
+  {"date":"2026-07-16","macrostructure":"custom-03","theme":"custom-03 studied-DNA","theme_axes":"light / characterful-soft-serif / hot-vermilion","vibe":"apothecary parchment, steeped brown ink, hot vermilion","enrichment":"none","brief":"studied custom-03 with interactive milestones timeline table"},
+  {"date":"2026-07-16","macrostructure":"dashboard-split","theme":"custom","theme_axes":"light / geometric-sans / cool","vibe":"devops precision, mobile architecture, tactile terminal","enrichment":"none","brief":"DevOps and Mobile engineering portfolio, utilitarian and austere."},
+  {"date":"2026-07-16","macrostructure":"Marquee Hero","theme":"Carnival (Pressroom drop)","enrichment":"none","brief":"Developer portfolio for tech recruiters, inspired by usehallmark.com press-01 broadsheet zine aesthetic"}
 ]
