@@ -1,2 +1,15 @@
-:root { --canvas: oklch(97% 0.004 255); --surface: oklch(93% 0.011 255); --ink: oklch(19% 0.018 255); --muted: oklch(44% 0.019 255); --line: oklch(19% 0.018 255 / 0.16); --accent: oklch(52% 0.17 255); --focus: oklch(52% 0.17 255); --canvas-muted: oklch(79% 0.016 255); --font-sans: Arial, Helvetica, sans-serif; --page-width: 88rem; --gutter: clamp(1.25rem, 4vw, 4rem); }
-@media (prefers-color-scheme: dark) { :root { --canvas: oklch(15% 0.018 255); --surface: oklch(20% 0.02 255); --ink: oklch(94% 0.008 255); --muted: oklch(70% 0.015 255); --line: oklch(94% 0.008 255 / 0.16); --accent: oklch(69% 0.16 255); --focus: oklch(73% 0.15 255); --canvas-muted: oklch(72% 0.014 255); } }
+:root {
+  --paper: #f2f0ea;
+  --white: #fffef9;
+  --ink: #17191b;
+  --muted: #62666a;
+  --line: rgb(23 25 27 / 0.17);
+  --line-strong: rgb(23 25 27 / 0.32);
+  --blue: #214df1;
+  --blue-soft: #dfe7f5;
+  --acid: #d9ff4f;
+  --font-sans: "Satoshi", "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+  --page-width: 100rem;
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
