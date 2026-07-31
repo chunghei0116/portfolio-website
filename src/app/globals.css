@@ -1098,11 +1098,12 @@ body {
 }
 
 .hero h1 {
+  font-family: var(--font-hermes-display), Didot, Georgia, serif;
   max-width: 10ch;
   font-size: clamp(3.7rem, 7.8vw, 8.7rem);
-  font-weight: 500;
-  letter-spacing: -0.085em;
-  line-height: 0.88;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.82;
 }
 
 .hero h1 span {
@@ -1115,6 +1116,11 @@ body {
 
 .hero-lede {
   color: #b8bdc9;
+  font-family: "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.55;
 }
 
 .button {

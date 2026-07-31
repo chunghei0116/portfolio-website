@@ -114,15 +114,18 @@ function drawHeadlineTexture(width: number, height: number) {
 
   const { width: textureWidth, height: textureHeight } = canvas;
   const lines = ['MOBILE CRAFT.', 'CLOUD CALM.'];
+  const displayFont =
+    getComputedStyle(document.body).getPropertyValue('--font-hermes-display').trim() ||
+    'Bodoni Moda, Didot, Georgia, serif';
   let fontSize = textureHeight * 0.46;
 
   context.textAlign = 'left';
   context.textBaseline = 'middle';
-  context.font = `500 ${fontSize}px "SF Pro Display", "Helvetica Neue", Arial, sans-serif`;
+  context.font = `500 ${fontSize}px ${displayFont}`;
 
   const widestLine = Math.max(...lines.map((line) => context.measureText(line).width));
   fontSize *= Math.min(1, (textureWidth * 0.97) / widestLine);
-  context.font = `500 ${fontSize}px "SF Pro Display", "Helvetica Neue", Arial, sans-serif`;
+  context.font = `500 ${fontSize}px ${displayFont}`;
   context.lineJoin = 'round';
 
   const gradient = context.createLinearGradient(0, 0, textureWidth, textureHeight);
@@ -175,7 +178,11 @@ function BulgeHeadline({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     let active = true;
 
-    document.fonts.load('500 180px "SF Pro Display"').then(() => {
+    const displayFont =
+      getComputedStyle(document.body).getPropertyValue('--font-hermes-display').trim() ||
+      'Bodoni Moda, Didot, Georgia, serif';
+
+    document.fonts.load(`500 180px ${displayFont}`).then(() => {
       if (active) setFontRevision((revision) => revision + 1);
     });
 

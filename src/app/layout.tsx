@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
+import { Bodoni_Moda } from 'next/font/google';
 import './globals.css';
+
+const hermesDisplay = Bodoni_Moda({
+  subsets: ['latin'],
+  variable: '--font-hermes-display',
+  weight: ['400', '500'],
+});
 
 export const metadata: Metadata = {
   title: 'Jones Tse | Mobile Developer & DevOps Engineer',
@@ -10,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={hermesDisplay.variable}>{children}</body>
     </html>
   );
 }
