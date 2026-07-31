@@ -13,6 +13,7 @@ import {
   Plus,
 } from 'lucide-react';
 import HeroTitleEffect from './hero-title-effect';
+import HikingStickHero from './hiking-stick-hero';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -197,6 +198,7 @@ export default function Portfolio() {
       </header>
 
       <section className="hero" id="top" aria-labelledby="hero-title">
+        <HikingStickHero />
         <div className="hero-copy">
           <p className="hero-kicker hero-reveal">Mobile developer / DevOps engineer / Hong Kong</p>
           <HeroTitleEffect />

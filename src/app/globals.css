@@ -128,15 +128,36 @@ button:focus-visible {
 }
 
 .hero {
+  position: relative;
   display: flex;
   align-items: center;
   min-height: calc(100svh - 5.5rem);
   padding-block: clamp(4rem, 8vw, 8rem);
+  overflow: hidden;
 }
 
 .hero-copy {
   z-index: 1;
   width: 100%;
+}
+
+.hiking-stick-ambient {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: clamp(-5.25rem, -1vw, -1.25rem);
+  width: min(37vw, 30rem);
+  height: min(92%, 49rem);
+  min-width: 17rem;
+  transform: translateY(-50%);
+  opacity: 0.64;
+  pointer-events: none;
+}
+
+.hiking-stick-ambient canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .hero-kicker,
@@ -194,6 +215,14 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 2rem;
+}
+
+@media (max-width: 760px) {
+  .hiking-stick-ambient {
+    right: -8rem;
+    width: 20rem;
+    opacity: 0.22;
+  }
 }
 
 .button {
