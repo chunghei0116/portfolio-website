@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const experience = [
   {
-    period: '2025 — Present',
+    period: '2025 - Present',
     company: 'AS Watson Group',
     role: 'Mobile Application Developer',
     location: 'Hong Kong',
@@ -33,7 +33,7 @@ const experience = [
     ],
   },
   {
-    period: '2023 — 2025',
+    period: '2023 - 2025',
     company: 'Major Infrastructure Group',
     role: 'Programmer, DevOps & Infrastructure',
     location: 'Hong Kong',
@@ -53,19 +53,19 @@ const practices = [
   {
     title: 'Build',
     text: 'Cross-platform mobile experiences with the native depth to handle the difficult edges.',
-    detail: 'Flutter · Swift · Gradle · Firebase',
+    detail: 'Flutter, Swift, Gradle, Firebase',
     image: 'https://picsum.photos/seed/mobile-interface/1200/900',
   },
   {
     title: 'Ship',
     text: 'Delivery systems that make frequent releases predictable, observable, and recoverable.',
-    detail: 'GitLab CI · ArgoCD · Shorebird · Kubernetes',
+    detail: 'GitLab CI, ArgoCD, Shorebird, Kubernetes',
     image: 'https://picsum.photos/seed/release-pipeline/1200/900',
   },
   {
     title: 'Operate',
     text: 'Cloud foundations that stay legible when traffic, teams, and operational pressure increase.',
-    detail: 'AWS · NGINX · ELK · PostgreSQL',
+    detail: 'AWS, NGINX, ELK, PostgreSQL',
     image: 'https://picsum.photos/seed/observability-grid/1200/900',
   },
 ];
@@ -198,7 +198,7 @@ export default function Portfolio() {
 
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="hero-kicker hero-reveal">Mobile developer · DevOps engineer · Hong Kong</p>
+          <p className="hero-kicker hero-reveal">Mobile developer / DevOps engineer / Hong Kong</p>
           <HeroTitleEffect />
           <p className="hero-lede hero-reveal">
             I build refined mobile products and the quiet infrastructure that keeps them moving.
@@ -388,8 +388,8 @@ export default function Portfolio() {
       </section>
 
       <footer className="site-footer">
-        <p>Jones Tse · Hong Kong</p>
-        <p>Mobile development · DevOps engineering</p>
+        <p>Jones Tse, Hong Kong</p>
+        <p>Mobile development, DevOps engineering</p>
         <a href="#top">Back to top <ArrowUpRight aria-hidden="true" size={14} /></a>
       </footer>
     </main>

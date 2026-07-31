@@ -1,14 +1,17 @@
 :root {
-  --paper: #f2f0ea;
-  --white: #fffef9;
-  --ink: #17191b;
-  --muted: #62666a;
-  --line: rgb(23 25 27 / 0.17);
-  --line-strong: rgb(23 25 27 / 0.32);
-  --blue: #214df1;
-  --blue-soft: #dfe7f5;
-  --acid: #d9ff4f;
-  --font-sans: "Satoshi", "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+  --paper: #101113;
+  --white: #f5f7fb;
+  --ink: #f5f7fb;
+  --muted: #9aa0ad;
+  --line: rgb(255 255 255 / 0.1);
+  --line-strong: rgb(255 255 255 / 0.18);
+  --blue: #8b7cff;
+  --blue-soft: #1c1d2a;
+  --acid: #b9ff72;
+  --surface: #18191d;
+  --surface-raised: #202126;
+  --font-sans: "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", "Cascadia Code", "Roboto Mono", monospace;
   --page-width: 100rem;
   --gutter: clamp(1.25rem, 4vw, 4.5rem);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

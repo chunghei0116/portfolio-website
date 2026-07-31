@@ -118,17 +118,17 @@ function drawHeadlineTexture(width: number, height: number) {
 
   context.textAlign = 'left';
   context.textBaseline = 'middle';
-  context.font = `300 ${fontSize}px Satoshi, "Helvetica Neue", Arial, sans-serif`;
+  context.font = `500 ${fontSize}px "SF Pro Display", "Helvetica Neue", Arial, sans-serif`;
 
   const widestLine = Math.max(...lines.map((line) => context.measureText(line).width));
   fontSize *= Math.min(1, (textureWidth * 0.97) / widestLine);
-  context.font = `300 ${fontSize}px Satoshi, "Helvetica Neue", Arial, sans-serif`;
+  context.font = `500 ${fontSize}px "SF Pro Display", "Helvetica Neue", Arial, sans-serif`;
   context.lineJoin = 'round';
 
   const gradient = context.createLinearGradient(0, 0, textureWidth, textureHeight);
-  gradient.addColorStop(0, '#11171f');
-  gradient.addColorStop(0.48, '#263756');
-  gradient.addColorStop(1, '#4771ff');
+  gradient.addColorStop(0, '#f5f7fb');
+  gradient.addColorStop(0.48, '#c9c4ff');
+  gradient.addColorStop(1, '#8b7cff');
 
   const linePositions = [textureHeight * 0.27, textureHeight * 0.73];
 
@@ -138,19 +138,19 @@ function drawHeadlineTexture(width: number, height: number) {
 
     context.save();
     context.globalAlpha = 0.18;
-    context.strokeStyle = index === 0 ? '#4771ff' : '#d9ff4f';
+    context.strokeStyle = index === 0 ? '#8b7cff' : '#b9ff72';
     context.lineWidth = Math.max(1.5, fontSize * 0.006);
     context.strokeText(line, x + fontSize * 0.018, y + fontSize * 0.018);
     context.restore();
 
     context.fillStyle = gradient;
-    context.shadowColor = 'rgba(71, 113, 255, 0.18)';
+    context.shadowColor = 'rgba(139, 124, 255, 0.24)';
     context.shadowBlur = fontSize * 0.025;
     context.fillText(line, x, y);
 
     context.shadowBlur = 0;
     context.globalAlpha = 0.42;
-    context.strokeStyle = index === 0 ? '#11171f' : '#4771ff';
+    context.strokeStyle = index === 0 ? '#f5f7fb' : '#8b7cff';
     context.lineWidth = Math.max(1, fontSize * 0.0016);
     context.strokeText(line, x, y);
     context.globalAlpha = 1;
@@ -175,7 +175,7 @@ function BulgeHeadline({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     let active = true;
 
-    document.fonts.load('300 180px Satoshi').then(() => {
+    document.fonts.load('500 180px "SF Pro Display"').then(() => {
       if (active) setFontRevision((revision) => revision + 1);
     });
 
