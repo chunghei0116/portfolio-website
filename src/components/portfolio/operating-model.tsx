@@ -28,16 +28,18 @@ export default function OperatingModel({ items }: Props) {
             <article className={`practice-row ${isOpen ? 'is-open' : ''}`} key={item.title}>
               <div className="practice-row-main">
                 <span className="practice-index">0{index + 1}</span>
-                <button
-                  className="practice-toggle"
-                  type="button"
-                  aria-expanded={isOpen}
-                  aria-controls={detailId}
-                  onClick={() => setActiveIndex(isOpen ? null : index)}
-                >
-                  <span>{item.title}</span>
-                  <ChevronDown aria-hidden="true" size={19} />
-                </button>
+                <h3 className="practice-heading">
+                  <button
+                    className="practice-toggle"
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={detailId}
+                    onClick={() => setActiveIndex(isOpen ? null : index)}
+                  >
+                    <span>{item.title}</span>
+                    <ChevronDown aria-hidden="true" size={19} />
+                  </button>
+                </h3>
               </div>
               <p className="practice-summary">{item.summary}</p>
               <div id={detailId} className="practice-detail" hidden={!isOpen}>

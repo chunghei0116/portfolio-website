@@ -550,6 +550,12 @@
   align-items: start;
 }
 
+.practice-heading {
+  min-width: 0;
+  margin: 0;
+  font: inherit;
+}
+
 .practice-toggle {
   display: flex;
   min-height: 2.75rem;

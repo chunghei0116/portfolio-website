@@ -52,3 +52,19 @@ The pre-existing `public/infrastructure-editorial.png` asset was preserved and s
 - Finding: the mobile hero H1 could exceed its narrow column because its `ch` max width was wider than the available viewport, and page-level clipping masked the overrun.
 - Fix: at the mobile breakpoint, the H1 now uses `width: 100%` and `max-width: 100%` with normal word-boundary wrapping. Desktop sizing and the two-line composition are unchanged. No body copy sizing or global overflow suppression changed.
 - Verification: `npm run lint`, `npm run build`, and `git diff --check` passed after the focused CSS change.
+
+## Final Sol review follow-up
+
+- Removed the `/_next/` robots disallow so the generated crawl policy permits the framework assets required by the public page.
+- Replaced the deprecated `next/image` `priority` prop with `preload` for the above-fold local artifact image.
+- Removed global `overflow-x: clip`; the hiking-stick artifact keeps local `overflow: hidden` containment.
+- Wrapped operating-model disclosure controls in semantic `h3` headings without changing their `aria-expanded`, `aria-controls`, or `hidden` behavior.
+- Removed unused `@gsap/react` and `gsap` dependencies from `package.json` and `package-lock.json`.
+- Moved Three/R3F/model code to `hiking-stick-canvas.tsx` and dynamically imports it from the client hero only after desktop, connection, hardware, and WebGL eligibility. The static image remains in the prerendered root HTML, and the production output emits the Three code in a separate chunk that is not part of the initial script tags.
+
+## Final Sol verification
+
+- `npm run lint` - passed.
+- `npm run build` - passed. Routes generated: `/`, `/robots.txt`, `/sitemap.xml`, and `/_not-found`.
+- `git diff --check` - passed.
+- Production output inspection confirmed `hiking-stick-reference.png` in `.next/server/app/index.html`, no initial script tag for the Three chunk, and a separate `0ajo5.e5su-l-.js` chunk containing the Three/R3F model symbols.
