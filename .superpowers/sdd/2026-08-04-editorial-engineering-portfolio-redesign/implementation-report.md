@@ -3,6 +3,8 @@
 ## Commits
 
 - `46e361b` - `feat: deliver editorial engineering portfolio`
+- `9b4fba5` - `docs: record editorial portfolio verification`
+- `b579533` - `chore: include editorial infrastructure asset`
 
 The pre-existing `public/infrastructure-editorial.png` asset was preserved and staged with the implementation after final integration direction confirmed it as an intentional production asset.
 
