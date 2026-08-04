@@ -176,14 +176,22 @@ button:focus-visible {
 .capability-heading h2,
 .practice-heading h2,
 .note-carousel > h2,
-.contact-section h2 {
+.contact-section h2,
+.experience-card h3,
+.capability-quote,
+.capability-card h3,
+.practice-title,
+.note-card h3 {
   margin: 0;
-  font-weight: 300;
-  letter-spacing: -0.075em;
+  font-family: var(--font-hermes-display), Didot, "Bodoni 72", Georgia, serif;
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
 }
 
 .hero h1 {
-  font-family: var(--font-sans);
   font-size: clamp(4rem, 8vw, 9.4rem);
   line-height: 0.82;
   white-space: nowrap;
@@ -416,8 +424,7 @@ button:focus-visible {
 .experience-card h3 {
   margin: 1.65rem 0 0.3rem;
   font-size: clamp(2.4rem, 5vw, 5.3rem);
-  font-weight: 300;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.045em;
   line-height: 0.9;
 }
 
@@ -520,8 +527,7 @@ button:focus-visible {
   max-width: 46rem;
   margin: 0;
   font-size: clamp(2.6rem, 5.3vw, 6.2rem);
-  font-weight: 300;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
   line-height: 0.9;
 }
 
@@ -542,8 +548,7 @@ button:focus-visible {
   max-width: 32rem;
   margin: auto 0 0.65rem;
   font-size: clamp(1.8rem, 3.4vw, 3.8rem);
-  font-weight: 300;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.045em;
   line-height: 0.92;
 }
 
@@ -632,8 +637,7 @@ button:focus-visible {
   justify-content: space-between;
   gap: 1rem;
   font-size: clamp(2rem, 4vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.045em;
 }
 
 .practice-title svg {
@@ -754,8 +758,7 @@ button:focus-visible {
 .note-card h3 {
   margin: 2.5rem 0 0.75rem;
   font-size: clamp(2rem, 4vw, 4.4rem);
-  font-weight: 300;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.045em;
   line-height: 0.95;
 }
 
@@ -942,11 +945,6 @@ button:focus-visible {
     padding-block: 5rem 4rem;
   }
 
-  .hero h1 {
-    font-size: clamp(3.15rem, 15vw, 5rem);
-    letter-spacing: -0.08em;
-  }
-
   .hero-lede {
     max-width: 26rem;
   }
@@ -1127,7 +1125,6 @@ body {
 }
 
 .hero h1 {
-  font-family: var(--font-hermes-display), Didot, Georgia, serif;
   max-width: 10ch;
   font-size: clamp(3.7rem, 7.8vw, 8.7rem);
   font-weight: 400;
@@ -1304,7 +1301,7 @@ body {
 }
 
 .contact-section h2 {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .contact-link:hover {
@@ -1328,6 +1325,13 @@ body {
     right: -5rem;
     bottom: 2rem;
     width: 16rem;
+  }
+}
+
+@media (max-width: 42rem) {
+  .hero h1 {
+    font-size: clamp(2.5rem, 12.5vw, 5rem);
+    letter-spacing: -0.065em;
   }
 }
 
