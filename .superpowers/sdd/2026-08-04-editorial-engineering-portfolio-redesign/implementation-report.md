@@ -5,6 +5,9 @@
 - `46e361b` - `feat: deliver editorial engineering portfolio`
 - `9b4fba5` - `docs: record editorial portfolio verification`
 - `b579533` - `chore: include editorial infrastructure asset`
+- `76e41e7` - `docs: list final editorial portfolio commits`
+- `10c7849` - `fix: contain mobile hero headline`
+- `56b31fd` - `fix: close final portfolio review findings`
 
 The pre-existing `public/infrastructure-editorial.png` asset was preserved and staged with the implementation after final integration direction confirmed it as an intentional production asset.
 
@@ -28,7 +31,7 @@ The pre-existing `public/infrastructure-editorial.png` asset was preserved and s
 - Production HTML inspection - H1, primary work action, navigation, experience records, capabilities, practice summaries, principles, contact, and JSON-LD appear before JavaScript. Images use local optimized paths with explicit dimensions and responsive `sizes`.
 - Browser-use production check with `npm run start -- -p 3010` - no page overflow at 320, 375, 768, 1024, 1440, or 1920 CSS pixels. Desktop H1 measured at two lines at 1024, 1440, and 1920; primary action was in the initial viewport. Mobile stacked copy and artifact without clipping.
 - Browser interaction check - mobile menu opens with `aria-expanded`, focuses the first link, closes on Escape, restores trigger focus, and closes on link activation. Experience and practice disclosures update `aria-expanded`, `aria-controls`, and `hidden` state.
-- Crawl checks without `NEXT_PUBLIC_SITE_URL` - robots allows `/` and disallows `/_next/`; sitemap is empty; no made-up canonical or social origin is emitted. With a verified origin, canonical, absolute social image URLs, sitemap, and sitemap reference are enabled.
+- Crawl checks without `NEXT_PUBLIC_SITE_URL` - robots allows the public site without blocking framework assets; sitemap is empty; no made-up canonical or social origin is emitted. With a verified origin, canonical, absolute social image URLs, sitemap, and sitemap reference are enabled.
 
 ## Design pre-flight audit
 
@@ -68,3 +71,5 @@ The pre-existing `public/infrastructure-editorial.png` asset was preserved and s
 - `npm run build` - passed. Routes generated: `/`, `/robots.txt`, `/sitemap.xml`, and `/_not-found`.
 - `git diff --check` - passed.
 - Production output inspection confirmed `hiking-stick-reference.png` in `.next/server/app/index.html`, no initial script tag for the Three chunk, and a separate `0ajo5.e5su-l-.js` chunk containing the Three/R3F model symbols.
+- Targeted Sol re-review of `10c7849..56b31fd` found no unresolved Critical, Important, or Minor issues and returned Ready to merge: Yes.
+- Parent re-ran lint, production build, and diff integrity checks after the review fixes. Real 390x844 and 320x720 CSS viewport checks showed document width equal to viewport width, with the headline and primary CTA contained in the initial viewport.
