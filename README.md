@@ -1,64 +1,46 @@
-# Developer Portfolio (March 2026)
+# Jones Tse portfolio
 
-A high-performance, immersive portfolio website built with a "Clean & Punchy" aesthetic. Featuring a reactive 3D particle background, 2026-style Bento Grid layouts, and seamless route transitions.
+An editorial engineering portfolio for Jones Tse, a Hong Kong mobile developer and DevOps engineer. The page keeps the essential story in server-rendered HTML, then adds small client islands for navigation and progressive disclosure.
 
-## 🚀 Core Tech Stack
+## Stack
 
-- **Framework:** [Next.js 16.2.1](https://nextjs.org/) (App Router)
-- **Runtime:** React 19/20 (for optimized server components)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (Native CSS engine)
-- **3D Graphics:** [Three.js](https://threejs.org/) via `react-three-fiber`
-- **Animation:** [Framer Motion 12+](https://www.framer.com/motion/)
-- **Type Safety:** TypeScript 5.5+
+- Next.js 16.2.1 App Router with React Server Components
+- React 19 and TypeScript
+- Tailwind CSS 4 import pipeline with native CSS layout tokens
+- Lucide React for the single icon family
+- Three.js and React Three Fiber for the optional hiking-stick artifact
 
-## ✨ Key Features
+## Development
 
-- **Interactive 3D Background:** A vertex shader-driven particle system (8,000+ points) that reacts to mouse proximity on desktop and gyroscope tilt on mobile.
-- **"Clean & Punchy" UI:** Bold typography (Inter Tight), high-contrast light-mode primary aesthetic, and tactile "squircle" rounding (`2.5rem`).
-- **Active Bento Grid:** 2026-style "Active Grids" with glassmorphism and backdrop-blur effects that let 3D particles show through the UI.
-- **Skills Cloud:** An interactive, floating tech-tag cloud that responds to cursor movement on the About page.
-- **Route Transitions:** "Punchy" staggered animations between Home and About pages using `AnimatePresence`.
-- **Mobile Optimized:** Integrated iOS gyroscope permission handling and responsive touch interactions.
+Install dependencies and start the local server:
 
-## 🛠️ Getting Started
-
-### Prerequisites
-- Node.js 18.17 or later
-- npm (standard)
-
-### Installation
 ```bash
-git clone <your-repo-url>
-cd personal
-npm install
-```
-
-### Development
-```bash
+npm ci
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to view the development server.
 
-### Build
+Production checks:
+
 ```bash
+npm run lint
 npm run build
-npm start
+npm run start
 ```
 
-## 📂 Project Structure
+## Architecture
 
-- `src/app`: Next.js App Router (pages, layout, globals).
-- `src/components/canvas`: 3D-specific components (Scene, Particles).
-- `src/components/ui`: Shared UI components (Hero, BentoGrid, Navbar).
-- `src/hooks`: Custom React hooks (Device Orientation, Cursor Tracking).
-- `docs/plans`: Architectural design and implementation plans.
+- `src/app/page.tsx` is the server-rendered page composition and JSON-LD entry point.
+- `src/content/portfolio.ts` is the only source for experience, capability, practice, and principle copy.
+- `src/types/portfolio.ts` defines the immutable content contracts.
+- `src/components/portfolio/` contains focused section components. `mobile-menu.tsx`, `experience-details.tsx`, and `operating-model.tsx` are the interactive client leaves.
+- `src/app/globals.css` owns reset, tokens, focus behavior, and reduced-motion defaults.
+- `src/app/portfolio.css` owns the editorial page layout and responsive section styles.
+- `src/app/hiking-stick-hero.tsx` renders a static local reference first and enhances it with Three.js only when the device and viewport support it.
 
-## 🎨 Design Principles
+## Editing content and assets
 
-1. **YAGNI:** Keep the code lean and focused.
-2. **Performance First:** 60fps 3D interactions even on mid-range mobile devices.
-3. **Accessibility:** WCAG 2.1 AA compliant contrast and semantic structure.
-4. **Visual Hierarchy:** Using size and bold weights to signal importance ("Loudness Control").
+Edit verified claims in `src/content/portfolio.ts`. Experience images live in `public/` and must have explicit dimensions, useful alt text, and a stable aspect ratio in their component. Do not add random remote placeholders, invented employers, metrics, contact channels, or confidential details.
 
----
-Built with ⚡ by Gemini CLI (March 2026)
+`NEXT_PUBLIC_SITE_URL` is optional. Set it to a verified absolute `http:` or `https:` origin to enable canonical metadata, absolute social image URLs, the sitemap, and the sitemap reference in `robots.txt`. Without it, the site remains valid and does not invent an origin.
+
+The page is intentionally light and print-emulating. Reduced-motion preferences disable transitions and continuous artifact motion while leaving all content available. The hiking-stick image remains the static fallback for small screens, Save-Data connections, constrained devices, and missing WebGL.

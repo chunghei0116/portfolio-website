@@ -1,7 +1,8 @@
 'use client';
 
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import * as THREE from 'three';
 
 function useReducedMotion() {
@@ -18,6 +19,46 @@ function useReducedMotion() {
   return reduced;
 }
 
+function useArtifactEnhancement() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 48rem)');
+    const connection = (navigator as Navigator & {
+      connection?: { saveData?: boolean };
+    }).connection;
+    const constrained = Boolean(connection?.saveData) || navigator.hardwareConcurrency <= 4;
+
+    if (!media.matches || constrained) return;
+
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    const frame = window.requestAnimationFrame(() => setEnabled(Boolean(context)));
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  return enabled;
+}
+
+function useVisibility(ref: RefObject<HTMLElement | null>) {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    if (!ref.current || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return visible;
+}
+
 function Tube({ points, radius, material }: { points: THREE.Vector3[]; radius: number; material: THREE.Material }) {
   const geometry = useMemo(
     () => new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), 92, radius, 10, false),
@@ -28,15 +69,15 @@ function Tube({ points, radius, material }: { points: THREE.Vector3[]; radius: n
   return <mesh geometry={geometry} material={material} castShadow receiveShadow />;
 }
 
-function HikingStick({ reducedMotion }: { reducedMotion: boolean }) {
+function HikingStick({ reducedMotion, visible }: { reducedMotion: boolean; visible: boolean }) {
   const root = useRef<THREE.Group>(null);
   const wood = useMemo(
-    () => new THREE.MeshPhysicalMaterial({ color: '#2d1b16', roughness: 0.39, metalness: 0, clearcoat: 0.18, clearcoatRoughness: 0.48 }),
+    () => new THREE.MeshPhysicalMaterial({ color: '#3b2b20', roughness: 0.44, metalness: 0, clearcoat: 0.16, clearcoatRoughness: 0.52 }),
     [],
   );
-  const grip = useMemo(() => new THREE.MeshStandardMaterial({ color: '#191b20', roughness: 0.72, metalness: 0.08 }), []);
-  const cord = useMemo(() => new THREE.MeshStandardMaterial({ color: '#9e75c7', roughness: 0.58, metalness: 0.03 }), []);
-  const ferrule = useMemo(() => new THREE.MeshPhysicalMaterial({ color: '#c6c8ca', roughness: 0.22, metalness: 0.9 }), []);
+  const grip = useMemo(() => new THREE.MeshStandardMaterial({ color: '#222621', roughness: 0.72, metalness: 0.08 }), []);
+  const cord = useMemo(() => new THREE.MeshStandardMaterial({ color: '#46584b', roughness: 0.58, metalness: 0.03 }), []);
+  const ferrule = useMemo(() => new THREE.MeshPhysicalMaterial({ color: '#b9b8ae', roughness: 0.25, metalness: 0.82 }), []);
   const shaft = useMemo(() => [
     new THREE.Vector3(-0.05, -3.9, 0), new THREE.Vector3(-0.17, -2.65, 0.02),
     new THREE.Vector3(-0.02, -1.25, -0.02), new THREE.Vector3(-0.11, 0.2, 0),
@@ -49,7 +90,7 @@ function HikingStick({ reducedMotion }: { reducedMotion: boolean }) {
   ], []);
 
   useFrame((state) => {
-    if (!root.current || reducedMotion) return;
+    if (!root.current || reducedMotion || !visible) return;
     root.current.rotation.z = -0.12 + Math.sin(state.clock.elapsedTime * 0.46) * 0.018;
     root.current.rotation.y = -0.27 + Math.sin(state.clock.elapsedTime * 0.32) * 0.045;
   });
@@ -87,20 +128,41 @@ function HikingStick({ reducedMotion }: { reducedMotion: boolean }) {
 
 export default function HikingStickHero() {
   const reducedMotion = useReducedMotion();
+  const enhancementEnabled = useArtifactEnhancement();
+  const artifactRef = useRef<HTMLDivElement>(null);
+  const visible = useVisibility(artifactRef);
+
   return (
-    <div className="hiking-stick-ambient" aria-hidden="true">
-      <Canvas
-        camera={{ fov: 33, position: [0, 0, 9.2] }}
-        dpr={[1, 1.5]}
-        frameloop={reducedMotion ? 'demand' : 'always'}
-        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
-        onCreated={({ gl }) => { gl.outputColorSpace = THREE.SRGBColorSpace; gl.toneMapping = THREE.ACESFilmicToneMapping; gl.toneMappingExposure = 1.12; }}
-      >
-        <ambientLight intensity={0.72} />
-        <directionalLight position={[-3, 5, 5]} intensity={2.4} color="#fff0dc" />
-        <directionalLight position={[4, 1, 2]} intensity={1.2} color="#a89cff" />
-        <HikingStick reducedMotion={reducedMotion} />
-      </Canvas>
+    <div ref={artifactRef} className="hiking-stick-ambient">
+      <Image
+        className="artifact-reference"
+        src="/hiking-stick-reference.png"
+        alt=""
+        fill
+        priority
+        sizes="(max-width: 767px) 90vw, 38vw"
+      />
+
+      {enhancementEnabled ? (
+        <Canvas
+          className="artifact-canvas"
+          camera={{ fov: 33, position: [0, 0, 9.2] }}
+          dpr={[1, 1.35]}
+          frameloop={reducedMotion || !visible ? 'demand' : 'always'}
+          fallback={<span className="sr-only">Static hiking stick artifact</span>}
+          gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+          onCreated={({ gl }) => {
+            gl.outputColorSpace = THREE.SRGBColorSpace;
+            gl.toneMapping = THREE.ACESFilmicToneMapping;
+            gl.toneMappingExposure = 1.08;
+          }}
+        >
+          <ambientLight intensity={0.72} />
+          <directionalLight position={[-3, 5, 5]} intensity={2.15} color="#ede6d8" />
+          <directionalLight position={[4, 1, 2]} intensity={0.85} color="#89988d" />
+          <HikingStick reducedMotion={reducedMotion} visible={visible} />
+        </Canvas>
+      ) : null}
     </div>
   );
 }
