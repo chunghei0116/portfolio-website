@@ -4,7 +4,7 @@
 
 - `46e361b` - `feat: deliver editorial engineering portfolio`
 
-The pre-existing untracked `public/infrastructure-editorial.png` asset was preserved and intentionally not staged by this worktree.
+The pre-existing `public/infrastructure-editorial.png` asset was preserved and staged with the implementation after final integration direction confirmed it as an intentional production asset.
 
 ## Implementation
 
@@ -41,6 +41,6 @@ The pre-existing untracked `public/infrastructure-editorial.png` asset was prese
 
 ## Concerns
 
-- The local infrastructure image remains untracked by instruction. The parent integration must keep or stage `public/infrastructure-editorial.png` when finalizing the branch.
+- `public/infrastructure-editorial.png` is an intentional generated production asset and is included in the implementation commit.
 - Lighthouse and a full assistive-technology audit were not available in this worktree session. Static and rendered keyboard checks passed; a final integration environment can run Lighthouse if required.
 - Social image and canonical metadata intentionally remain absent when `NEXT_PUBLIC_SITE_URL` is unset to avoid inventing an origin. Set that variable only with a verified absolute production URL.
