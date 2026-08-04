@@ -46,3 +46,9 @@ The pre-existing `public/infrastructure-editorial.png` asset was preserved and s
 - `public/infrastructure-editorial.png` is an intentional generated production asset and is included in the implementation commit.
 - Lighthouse and a full assistive-technology audit were not available in this worktree session. Static and rendered keyboard checks passed; a final integration environment can run Lighthouse if required.
 - Social image and canonical metadata intentionally remain absent when `NEXT_PUBLIC_SITE_URL` is unset to avoid inventing an origin. Set that variable only with a verified absolute production URL.
+
+## Round 1 visual verification follow-up
+
+- Finding: the mobile hero H1 could exceed its narrow column because its `ch` max width was wider than the available viewport, and page-level clipping masked the overrun.
+- Fix: at the mobile breakpoint, the H1 now uses `width: 100%` and `max-width: 100%` with normal word-boundary wrapping. Desktop sizing and the two-line composition are unchanged. No body copy sizing or global overflow suppression changed.
+- Verification: `npm run lint`, `npm run build`, and `git diff --check` passed after the focused CSS change.

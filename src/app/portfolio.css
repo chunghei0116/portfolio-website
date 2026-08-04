@@ -777,8 +777,12 @@
   }
 
   .hero h1 {
-    max-width: 16ch;
+    width: 100%;
+    max-width: 100%;
     font-size: clamp(3rem, 12vw, 4.75rem);
+    overflow-wrap: normal;
+    text-wrap: pretty;
+    word-break: normal;
   }
 
   .hero-lede {
